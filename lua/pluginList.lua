@@ -47,6 +47,12 @@ return packer.startup(
         use "kdav5758/TrueZen.nvim"
         use "folke/which-key.nvim"
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+
+        --python
+        use 'davidhalter/jedi-vim'
+        -- use 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+        use 'vim-python/python-syntax'
+
     end,
     {
         display = {

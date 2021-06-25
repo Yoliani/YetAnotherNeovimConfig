@@ -1,3 +1,5 @@
+local g = vim.g
+
 vim.cmd(
   [[
   augroup My_group
@@ -8,3 +10,6 @@ vim.cmd(
   
   ]]
 )
+
+vim.g['jedi#completions_enabled'] = 1
+

@@ -47,7 +47,7 @@ g.nvim_tree_icons = {
 
 vim.api.nvim_set_keymap(
     "n",
-    "<leader>e",
+    "<leader>1",
     ":NvimTreeToggle<CR>",
     {
         noremap = true,

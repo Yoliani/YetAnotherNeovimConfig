@@ -1,3 +1,25 @@
+local o = vim.o
+local wo = vim.wo
+local bo = vim.bo
+
+-- global options
+--[[o.swapfile = true
+o.dir = '/tmp'
+o.smartcase = true
+o.laststatus = 2
+o.hlsearch = true
+o.incsearch = true
+o.ignorecase = true
+o.scrolloff = 12
+-- ... snip ... 
+
+-- window-local options
+wo.number = false
+wo.wrap = false
+
+-- buffer-local options
+bo.expandtab = true
+--]]
 -- load all plugins
 require "pluginList"
 require "misc-utils"
@@ -67,3 +89,8 @@ require("nvim_comment").setup()
 
 -- Para ejecutar python con la tecla F5
 require "pythonterminal"
+
+-- Instalador de plugins similar a vim-plug
+-- require "paq-nvim"
+
+--require'lspconfig'.pyright.setup{}

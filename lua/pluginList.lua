@@ -9,10 +9,11 @@ return packer.startup(
         -- color related stuff
         use "siduck76/nvim-base16.lua"
         use "norcalli/nvim-colorizer.lua"
-
+       -- use  'nvim-lua/completion-nvim'
         -- lang stuff
         use "nvim-treesitter/nvim-treesitter"
         use "neovim/nvim-lspconfig"
+
         use "hrsh7th/nvim-compe"
         use "onsails/lspkind-nvim"
         use "sbdchd/neoformat"
@@ -52,8 +53,26 @@ return packer.startup(
         use 'davidhalter/jedi-vim'
         -- use 'raimon49/requirements.txt.vim', {'for': 'requirements'}
         use 'vim-python/python-syntax'
+        
+        -- Java syntax
+        use 'uiiaoo/java-syntax.vim'
 
+        --Coc 
+        --use 'neoclide/coc.nvim'
+        --
+        --
+        --Orgmode
+        --
+        use {'kristijanhusak/orgmode.nvim', config = function()
+                require('orgmode').setup{}
+        end
+        }
+        --https://github.com/kristijanhusak/orgmode.nvim
+
+
+        
     end,
+  
     {
         display = {
             border = {"┌", "─", "┐", "│", "┘", "─", "└", "│"}

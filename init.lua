@@ -93,4 +93,8 @@ require "pythonterminal"
 -- Instalador de plugins similar a vim-plug
 -- require "paq-nvim"
 
---require'lspconfig'.pyright.setup{}
+require'lspconfig'.pyright.setup{}
+require('languages-config')
+
+
+

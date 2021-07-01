@@ -11,5 +11,5 @@ vim.cmd(
   ]]
 )
 
-vim.g['jedi#completions_enabled'] = 1
+vim.g['jedi#completions_enabled'] = 0
 

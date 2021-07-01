@@ -202,3 +202,18 @@ gls.right[7] = {
         highlight = {colors.green, colors.lightbg}
     }
 }
+
+-- [[
+gls.right[8] = {
+    ViMode = {
+        provider = function()
+            return ' ' .. '  ' .. os.date('%H:%M') .. ' ' 
+        end,
+        highlight = {colors.background, colors.grey},
+        separator = " ",
+        separator_highlight = {colors.lightBackground, colors.lightBackground}
+    }
+}
+--]]
+--
+

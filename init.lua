@@ -43,9 +43,12 @@ g.auto_save = 0
 -- colorscheme related stuff
 cmd "syntax on"
 
+--Themes
+--local base16 = require "base16"
+--base16(base16.themes["onedark"], true)
+cmd('colorscheme gruvbox')
+--require('moonlight').set()
 
-local base16 = require "base16"
-base16(base16.themes["onedark"], true)
 
 require "highlights"
 
@@ -94,7 +97,19 @@ require "pythonterminal"
 -- require "paq-nvim"
 
 require'lspconfig'.pyright.setup{}
+--Configuracion para todos los lenguajes usados
 require('languages-config')
+
+-- Configuracion de multiples cursores como vscode
+require('multiple-cursors')
+
+-- terminal flotante
+require('float-term')
+
+
+
+
+
 
 
 

@@ -16,7 +16,7 @@ gls.left[1] = {
 gls.left[2] = {
     statusIcon = {
         provider = function()
-            return "  "
+            return ""
         end,
         highlight = {colors.statusline_bg, colors.nord_blue},
         separator = "  ",
@@ -46,7 +46,7 @@ gls.left[5] = {
     current_dir = {
         provider = function()
             local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-            return "  " .. dir_name .. " "
+            return " " .. dir_name .. " "
         end,
         highlight = {colors.grey_fg2, colors.lightbg2},
         separator = " ",
@@ -122,7 +122,7 @@ gls.right[1] = {
 gls.right[2] = {
     GitIcon = {
         provider = function()
-            return " "
+            return " "
         end,
         condition = require("galaxyline.provider_vcs").check_git_workspace,
         highlight = {colors.grey_fg2, colors.lightbg},
@@ -203,17 +203,5 @@ gls.right[7] = {
     }
 }
 
--- [[
-gls.right[8] = {
-    ViMode = {
-        provider = function()
-            return ' ' .. '  ' .. os.date('%H:%M') .. ' ' 
-        end,
-        highlight = {colors.background, colors.grey},
-        separator = " ",
-        separator_highlight = {colors.lightBackground, colors.lightBackground}
-    }
-}
---]]
 --
 

@@ -38,6 +38,15 @@ map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
 map("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
 map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
 
+--Diffview
+map("n", "<leader>2", ":DiffviewOpen<CR>", {noremap = true, silent = true})
+map("n", "<leader>21", ":DiffviewClose<CR>", {noremap = true, silent = true})
+map("n", "<leader>22", ":DiffviewOpen master<CR>", {noremap = true, silent = true})
+
+--Split
+map("n", "<leader>3", ":<C-u>split<CR>")
+map("n", "<leader>31", ":<C-u>vsplit<CR>")     
+
 
 
 local cmd = vim.cmd

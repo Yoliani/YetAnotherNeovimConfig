@@ -68,9 +68,23 @@ return packer.startup(
         end
         }
         --https://github.com/kristijanhusak/orgmode.nvim
-
-
         
+        --Para Maven Proyects
+        --use 'mikelue/vim-maven-plugin'
+        use 'terryma/vim-multiple-cursors'
+        use {
+            "numtostr/FTerm.nvim",
+            config = function()
+              require("FTerm").setup()
+            end
+        } 
+         -- use 'TimUntersberger/neogit'
+         use 'sindrets/diffview.nvim'
+
+         --Temas
+         --use 'morhetz/gruvbox'
+         use 'shaunsingh/moonlight.nvim'
+         use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
     end,
   
     {

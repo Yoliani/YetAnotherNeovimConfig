@@ -9,7 +9,10 @@ ts_config.setup {
         "lua",
         "json",
         "python",
-        "go"
+        "go",
+        "java",
+        "dart",
+        "bash",
         -- "rust",
         -- "go"
     },

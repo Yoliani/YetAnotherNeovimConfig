@@ -106,8 +106,12 @@ require('multiple-cursors')
 -- terminal flotante
 require('float-term')
 
+--Navigator config
+require 'navigator-config'
+--Discord
+require 'discord'
 
-
+require'lspconfig'.pyls.setup{on_attach=require'completion'.on_attach}
 
 
 

@@ -9,11 +9,11 @@ return packer.startup(
         -- color related stuff
         use "siduck76/nvim-base16.lua"
         use "norcalli/nvim-colorizer.lua"
-       -- use  'nvim-lua/completion-nvim'
+     
         -- lang stuff
         use "nvim-treesitter/nvim-treesitter"
         use "neovim/nvim-lspconfig"
-
+        use 'nvim-lua/completion-nvim'
         use "hrsh7th/nvim-compe"
         use "onsails/lspkind-nvim"
         use "sbdchd/neoformat"
@@ -85,8 +85,19 @@ return packer.startup(
          --use 'morhetz/gruvbox'
          use 'shaunsingh/moonlight.nvim'
          use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-    end,
-  
+        
+         -- Discord presence
+         use 'andweeb/presence.nvim'
+         --Navegar
+         use { 'numToStr/Navigator.nvim', 
+               config = function()
+                  require('Navigator').setup()
+               end
+            }
+         use 'jmckiern/vim-shoot'
+
+   end,
+         
     {
         display = {
             border = {"┌", "─", "┐", "│", "┘", "─", "└", "│"}

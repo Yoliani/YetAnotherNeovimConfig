@@ -9,7 +9,7 @@ return packer.startup(
         -- color related stuff
         use "siduck76/nvim-base16.lua"
         use "norcalli/nvim-colorizer.lua"
-     
+  
         -- lang stuff
         use "nvim-treesitter/nvim-treesitter"
         use "neovim/nvim-lspconfig"
@@ -49,20 +49,16 @@ return packer.startup(
         use "folke/which-key.nvim"
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
 
-        --python
-        use 'davidhalter/jedi-vim'
-        -- use 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-        use 'vim-python/python-syntax'
+        --use 'vim-python/python-syntax'
         
         -- Java syntax
         use 'uiiaoo/java-syntax.vim'
 
-        --Coc 
-        --use 'neoclide/coc.nvim'
-        --
-        --
+        --Coc neovim
+        --use 'neoclide/coc.nvim' --Problems with LSP
+        
+        
         --Orgmode
-        --
         use {'kristijanhusak/orgmode.nvim', config = function()
                 require('orgmode').setup{}
         end
@@ -71,23 +67,28 @@ return packer.startup(
         
         --Para Maven Proyects
         --use 'mikelue/vim-maven-plugin'
-        use 'terryma/vim-multiple-cursors'
+
+        --Terminal flotante
         use {
             "numtostr/FTerm.nvim",
             config = function()
               require("FTerm").setup()
             end
-        } 
-         -- use 'TimUntersberger/neogit'
+        }
+        
+        --Ver diferencias del repositorio comparado con el ultimo commit
          use 'sindrets/diffview.nvim'
 
          --Temas
          --use 'morhetz/gruvbox'
          use 'shaunsingh/moonlight.nvim'
          use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+         use 'folke/tokyonight.nvim'
+
         
-         -- Discord presence
+         -- Discord presence ---
          use 'andweeb/presence.nvim'
+         
          --Navegar
          use { 'numToStr/Navigator.nvim', 
                config = function()

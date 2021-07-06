@@ -19,5 +19,9 @@ ts_config.setup {
     highlight = {
         enable = true,
         use_languagetree = true
+    },
+    autotag = {
+    enable = true,
+    filetypes = {"html", "javascript", "xml", 'javascriptreact','typescriptreact', 'vue' }
     }
 }

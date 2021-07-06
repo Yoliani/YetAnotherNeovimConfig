@@ -67,6 +67,9 @@ require 'discord'
 --require'lspconfig'.pyls.setup{on_attach=require'completion'.on_attach}
 require("neoformat-config")
 
+--Todo comments
+require 'todo-list'
 
-
-
+--TODO: Mejorar neovim
+--
+-- 

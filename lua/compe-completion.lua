@@ -1,6 +1,6 @@
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = "menuone,noselect,noinsert"
 
-require "compe".setup {
+require('compe').setup {
     enabled = true,
     autocomplete = true,
     debug = false,
@@ -15,10 +15,30 @@ require "compe".setup {
     documentation = true,
     source = {
         buffer = {kind = "﬘", true},
-        vsnip = {kind = "﬌"}, --replace to what sign you prefer
-        nvim_lsp = true
+        luasnip = {kind = "﬌", true},
+        path =  {kind = "", true },
+        calc = true,
+        nvim_lsp = true,
+        nvim_lua = true,
+        tabnine = true,
+        snippets_nvim = true,
+        ultisnips = true,
+        vsnip = true,
     }
 }
+
+--g.compe.source.tabnine = true
+--vim.cmd(' let g:compe.source.tabnine = v:true')
+local ls = require("luasnip")
+
+ls.config.set_config(
+    {
+        history = true,
+        updateevents = "TextChanged,TextChangedI"
+    }
+)
+require("luasnip/loaders/from_vscode").load()
+
 
 local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -72,3 +92,4 @@ function _G.completions()
 end
 
 vim.api.nvim_set_keymap("i", "<CR>", "v:lua.completions()", {expr = true})
+

@@ -40,3 +40,13 @@ g.indent_blankline_buftype_exclude = {"terminal"}
 
 g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
+
+cmd([[
+    if has('nv  im-0.5')
+        augroup lsp
+        au!
+        au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})
+        augroup end
+    endif
+    ]])
+

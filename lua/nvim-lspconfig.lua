@@ -88,3 +88,16 @@ vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnos
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
+
+--[[
+vim.api.nvim_command([[
+        au User lsp_setup call lsp#register_server({
+     \ 'name': 'kite',
+     \ 'cmd': '~/.local/share/kite/current/kite-lsp --editor=vim',
+     \ 'whitelist': ["php", "javascript", "python", "bash", "html"],
+     \ })
+    ]]--)
+
+--]]
+
+

@@ -30,12 +30,30 @@ function on_attach(client, bufnr)
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
         buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    elseif client.resolved_capabilities.document_range_formatting then
+    elseif client.resolved_capabilities.document_range_formatting then 
         buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 end
 
+
+--kite 
+--local config = require'lspinstall/util'.extract_config('kite')
+
+--config.default_config.cmd[1] =  '$HOME/.local/share/kite/current/kite-lsp'
+--[[
+local nvim_lsp = require "lspconfig"
+local name = "kite-lsp"
+local cmd = {"~/.local/share/kite/current/kite-lsp --editor=nvim"}
+nvim_lsp[name].setup {
+    cmd = cmd,
+    on_attach = on_attach,
+}
+--]]
+--FIX:No funciona la implementacion de kite en LSP
 -- lspInstall + lspconfig stuff
+
+
+
 
 local function setup_servers()
     require "lspinstall".setup()
@@ -88,6 +106,62 @@ vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnos
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
+
+local function setup_servers2()
+  require'lspinstall'.setup()
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup{}
+  end
+end
+
+setup_servers2()
+
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function ()
+  setup_servers2() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
+
+
+
+local protocol = require'vim.lsp.protocol'
+  protocol.CompletionItemKind = {
+    '', -- Text
+    '', -- Method
+    '', -- Function
+    '', -- Constructor
+    '', -- Field
+    '', -- Variable
+    '', -- Class
+    'ﰮ', -- Interface
+    '', -- Module
+    '', -- Property
+    '', -- Unit
+    '', -- Value
+    '', -- Enum
+    '', -- Keyword
+    '﬌', -- Snippet
+    '', -- Color
+    '', -- File
+    '', -- Reference
+    '', -- Folder
+    '', -- EnumMember
+    '', -- Constant
+    '', -- Struct
+    '', -- Event
+    'ﬦ', -- Operator
+    '', -- TypeParameter
+  }
+
+--[[
+local nvim_lsp = require "lspconfig"
+
+nvim_lsp.gopls.setup {
+  on_attach = on_attach
+}
+
+--]]
 
 --[[
 vim.api.nvim_command([[

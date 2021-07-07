@@ -18,25 +18,9 @@ return packer.startup(
         use 'nvim-lua/completion-nvim'
         use "hrsh7th/nvim-compe"
         use 'L3MON4D3/LuaSnip'
-        use {
-            "hrsh7th/nvim-compe",
-            event = "InsertEnter",
-            config = function()
-            require("compe-completion").config()
-            end,
-            wants = {"LuaSnip"},
-            requires = {
-                {
-                    "L3MON4D3/LuaSnip",
-                    wants = "friendly-snippets",
-                    event = "InsertCharPre",
-                    config = function()
-                        require("compe-completion").snippets()
-                    end
-                },
-                "rafamadriz/friendly-snippets"
-            }
-        }
+      
+
+
         use "onsails/lspkind-nvim"
         use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
@@ -51,7 +35,7 @@ return packer.startup(
         -- use 'windwp/nvim-ts-autotag'
         --Tabnine
         use {'tzachar/compe-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-compe'}
-
+        --use {'aca/completion-tabnine',  run= './install.sh' }
 
 
 
@@ -78,7 +62,7 @@ return packer.startup(
         use "hrsh7th/vim-vsnip-integ"
         use 'SirVer/ultisnips'
         --use 
-        ----use "rafamadriz/friendly-snippets"
+        use "rafamadriz/friendly-snippets"
 
 
 
@@ -195,8 +179,8 @@ return packer.startup(
          use "monaqa/dial.nvim"
 
 
-
-
+        --Languages 
+        use "fatih/vim-go" --Golang
 
 
 

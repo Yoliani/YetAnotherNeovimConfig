@@ -93,3 +93,6 @@ end
 
 vim.api.nvim_set_keymap("i", "<CR>", "v:lua.completions()", {expr = true})
 
+local completion = require('completion')
+--vim.g.completions_enable_snippet =
+

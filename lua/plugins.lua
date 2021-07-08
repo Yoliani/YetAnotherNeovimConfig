@@ -58,8 +58,10 @@ require("neoformat-config")
 
 --Todo comments
 require 'todo-list'
+--Configs-lsp
 require 'flutter-config-tools'
 
 require 'rust-config-tools'
-
+-- Reload config
+require 'nv-reload.init'
 

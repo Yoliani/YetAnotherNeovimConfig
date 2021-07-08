@@ -35,6 +35,14 @@ opt("b", "expandtab", true)
 opt("b", "shiftwidth", 2)
 opt("b", "smartindent", true)
 
+
+local cmd = vim.cmd
+local g = vim.g
+g.vsnip_snippet_dir = "~/.config/nvim/snippets"
+
+
+
+
 local M = {}
 
 function M.is_buffer_empty()
@@ -49,3 +57,10 @@ end
 -- file extension specific tabbing
 vim.cmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
 return M
+
+
+
+
+
+
+

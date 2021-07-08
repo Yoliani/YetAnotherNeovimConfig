@@ -38,7 +38,7 @@ return packer.startup(
         use {'tzachar/compe-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-compe'}
         --use {'aca/completion-tabnine',  run= './install.sh' }
 
-
+        use 'famiu/nvim-reload' --Reload config
         
 
 
@@ -151,8 +151,8 @@ return packer.startup(
          use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
          use 'folke/tokyonight.nvim'
 
-         use "sainnhe/gruvbox-material"
-         use "gruvbox-community/gruvbox"
+         --use "sainnhe/gruvbox-material"
+         --use "gruvbox-community/gruvbox"
          use "Iron-E/nvim-highlite"
          use "mhartington/oceanic-next"
          use "heraldofsolace/nisha-vim"

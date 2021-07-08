@@ -59,5 +59,39 @@ cmd(':command! W w')
 cmd(':command! Q q')
 
 
+local settings_manager = require '../misc-utils/settings'
+settings_manager.load_settings()
+
+--
+--  Cycle Themes
+--
+local base16 = require "base16"
+local themes_names = {
+    "material","onedark","nord", "monokai", "solarized", "twilight", "ocean", "google","brewer", "default"
+}
+local log_cycle_theme = true
+local base16_position = settings_manager.get_value("current_theme", 1)
+base16_position = (base16_position - 1 % #themes_names) + 1
+base16(base16.themes[themes_names[base16_position]], true)
+
+function _G.cycle_teme ()
+    if base16_position == 11 then 
+        base16_position = 0
+    end
+    base16_position = (base16_position % #themes_names) + 1
+    --print("BAse position = ", base16_position)
+    base16(base16.themes[themes_names[base16_position]], true)
+    settings_manager.set_value("current_theme", base16_position)
+    if log_cycle_theme == true then
+        print(base16_position)
+        print("Theme changed to: " .. themes_names[base16_position])
+    end
+end
 
 
+
+--
+--  Mappings
+--
+
+map("n", "<leader>tn", ":lua cycle_teme()<Cr>")

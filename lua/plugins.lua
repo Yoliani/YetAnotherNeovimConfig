@@ -58,3 +58,8 @@ require("neoformat-config")
 
 --Todo comments
 require 'todo-list'
+require 'flutter-config-tools'
+
+require 'rust-config-tools'
+
+

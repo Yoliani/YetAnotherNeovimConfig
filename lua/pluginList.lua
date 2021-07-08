@@ -15,6 +15,7 @@ return packer.startup(
         use "neovim/nvim-lspconfig"
         use "nvim-lua/lsp_extensions.nvim"
         use "glepnir/lspsaga.nvim"
+        use({'scalameta/nvim-metals'})
         use 'nvim-lua/completion-nvim'
         use "hrsh7th/nvim-compe"
         use 'L3MON4D3/LuaSnip'
@@ -38,7 +39,7 @@ return packer.startup(
         --use {'aca/completion-tabnine',  run= './install.sh' }
 
 
-
+        
 
 
         -- Comments
@@ -100,7 +101,7 @@ return packer.startup(
         use 'mfussenegger/nvim-jdtls'
 
         --Coc neovim
-        --use 'neoclide/coc.nvim' --Problems with compe-completion
+        use 'neoclide/coc.nvim' --Problems with compe-completion
         
         
 
@@ -181,8 +182,8 @@ return packer.startup(
 
         --Languages 
         use "fatih/vim-go" --Golang
-
-
+        use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+        use 'simrat39/rust-tools.nvim'
 
         -- Bracey live server
          use 'turbio/bracey.vim'

@@ -13,8 +13,7 @@ ts_config.setup {
         "java",
         "dart",
         "bash",
-        -- "rust",
-        -- "go"
+        "rust",
     },
     highlight = {
         enable = true,

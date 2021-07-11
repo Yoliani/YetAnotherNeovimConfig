@@ -101,7 +101,7 @@ return packer.startup(
         use 'mfussenegger/nvim-jdtls'
 
         --Coc neovim
-        use 'neoclide/coc.nvim' --Problems with compe-completion
+        --use 'neoclide/coc.nvim' --Problems with compe-completion and disable automatically by Kite
         
         
 
@@ -150,7 +150,7 @@ return packer.startup(
          use 'shaunsingh/moonlight.nvim'
          use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
          use 'folke/tokyonight.nvim'
-
+         use 'projekt0n/github-nvim-theme'
          --use "sainnhe/gruvbox-material"
          --use "gruvbox-community/gruvbox"
          use "Iron-E/nvim-highlite"

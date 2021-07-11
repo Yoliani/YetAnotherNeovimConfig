@@ -17,8 +17,18 @@ cmd "syntax on"
 --base16(base16.themes["onedark"], true)
 --base16(base16.themes["gruvbox"], true)
 
-cmd('colorscheme gruvbox')
+------cmd('colorscheme gruvbox')
 --require('moonlight').set()
+
+require("github-theme").setup({
+  themeStyle = "dark",
+  commentStyle = "italic",
+  keywordStyle = "italic",
+  functionStyle = "italic",
+  variableStyle = "italic"
+  -- ... your github-theme config
+})
+
 
 --- Settings ----
 opt.fileencoding = "utf-8"  -- the encoding written to a file

@@ -14,8 +14,10 @@ require "bufferline".setup {
         view = "multiwindow",
         show_buffer_close_icons = true,
         separator_style = "thin",
-        mappings = "true"
+        mappings = "true",
+        right_mouse_command = "vertical sbuffer %d"
     }
+    
 }
 
 local opt = {silent = true}

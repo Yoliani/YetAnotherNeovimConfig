@@ -155,12 +155,12 @@ gls.right[5] = {
         provider = function()
             local alias = {
                 n = "Normal",
-                i = "Insert",
-                c = "Command",
+                i = "Insertar",
+                c = "Comando",
                 V = "Visual",
                 [""] = "Visual",
                 v = "Visual",
-                R = "Replace"
+                R = "Reemplazar"
             }
             local current_Mode = alias[vim.fn.mode()]
 
@@ -192,9 +192,9 @@ gls.right[7] = {
             local total_line = vim.fn.line("$")
 
             if current_line == 1 then
-                return "  Top "
+                return "  Arriba "
             elseif current_line == vim.fn.line("$") then
-                return "  Bot "
+                return "  Abajo "
             end
             local result, _ = math.modf((current_line / total_line) * 100)
             return "  " .. result .. "% "

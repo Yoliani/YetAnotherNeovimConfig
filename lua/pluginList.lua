@@ -19,7 +19,8 @@ return packer.startup(
         use 'nvim-lua/completion-nvim'
         use "hrsh7th/nvim-compe"
         use 'L3MON4D3/LuaSnip'
-      
+        use 'mfussenegger/nvim-dap' --debugger 
+        --use 'romgrk/barbar.nvim' --organizar buffers
 
 
         use "onsails/lspkind-nvim"
@@ -64,13 +65,15 @@ return packer.startup(
         use 'SirVer/ultisnips'
         --use 
         use "rafamadriz/friendly-snippets"
+        use 'dsznajder/vscode-es7-javascript-react-snippets'
+        use 'xabikos/vscode-javascript'
+        use 'abusaidm/html-snippets'
 
 
 
 
 
-
-        -- file managing , picker etc
+        --ile managing , picker etc
         use "kyazdani42/nvim-tree.lua"
         use "kyazdani42/nvim-web-devicons"
         use "nvim-telescope/telescope.nvim"
@@ -88,7 +91,7 @@ return packer.startup(
         use "kdav5758/TrueZen.nvim"
         use "folke/which-key.nvim"
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
-
+        use 'mg979/vim-visual-multi' --multicursors
 
 
 

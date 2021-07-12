@@ -26,29 +26,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
+  
 end
 
 
---kite 
---local config = require'lspinstall/util'.extract_config('kite')
-
---config.default_config.cmd[1] =  '$HOME/.local/share/kite/current/kite-lsp'
---[[
-local nvim_lsp = require "lspconfig"
-local name = "kite-lsp"
-local cmd = {"~/.local/share/kite/current/kite-lsp --editor=nvim"}
-nvim_lsp[name].setup {
-    cmd = cmd,
-    on_attach = on_attach,
-}
---]]
---FIX:No funciona la implementacion de kite en LSP
--- lspInstall + lspconfig stuff
-
-
-
---[[
 local function setup_servers()
     require "lspinstall".setup()
 
@@ -87,7 +68,7 @@ local function setup_servers()
     end
 end
 
---setup_servers()
+setup_servers()
 
 -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
 

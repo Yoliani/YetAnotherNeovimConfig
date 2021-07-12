@@ -1,108 +1,96 @@
 
 <h1 align="center">Yoliani-Neovim</h1>
-_Configuración del editor de codigo NEOVIM con lua, basado en la configuración de NcChad, donde se implementan más snippets, implementacion de Kite y Tabnine, a su vez tiene un ciclador de tema con cierta "keybind".
-_
-## Comenzando 🚀
-
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
-
-Mira **Deployment** para conocer como desplegar el proyecto.
-
+_Configuración del editor de codigo NEOVIM con lua, basado en la configuración de NcChad, donde se implementan más snippets, implementacion de Kite y Tabnine, a su vez tiene un ciclador de tema con cierta "keybind"._
 
 ### Pre-requisitos 📋
 
 _Que cosas necesitas para instalar el software y como instalarlas_
 
-```
-Neovim +0.5v
-```
+
+- Neovim +0.5v
+- Python +3.8v
+- Una terminal que soporte [nerdfont](https://github.com/ryanoasis/nerd-fonts)
+- Colocar el inner padding en 0.
+
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+_Se realiza un_ 
+```
+git clone https://github.com/Yoliani/Neovim-lua.git
+```
+ 
+### Despliegue 📦
+_Se realiza un:_
 
-_Dí cómo será ese paso_
 
 ```
-Da un ejemplo
-```
-
-_Y repite_
+:PackerInstall
 
 ```
-hasta finalizar
-```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+_Dentro de NEOVIM para instalar todos los plugins_
 
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
+_Aún hay que instalar ciertos requerimientos, los cuales se encontraran en_
 
 ```
-Da un ejemplo
+#~/.local/share/nvim/site/pack/packer/start
+#El primero seria vim-shoot plugin utilizado para tomar capturas al codigo.
+#Se escribe en la terminal lo siguiente
+python3 ~/.local/share/nvim/site/pack/packer/start/vim-shoot/install.py chromedriver
+
+#Lo segundo por hacer seria instalar los requerimientos de Bracey.nvim
+npm install --prefix server
+
 ```
+### Caracteristicas 
+- Navegar por los archivos con Nvimtree.
+- Ciclar temas con una combinaciión de teclas.
+- Manejo de tabs y buffers con bufeerline.
+- Autoguardado.
+- Iconos en Nvimtree, telescope, bufferline/statusline.
+- Uso de nvim-lsp.
+- lspInstall para instalar servidores facilmente.
+- packer.nvim como gestor de paquetes.
+- Multiples snippets.
+- Formateo de codigo.
+- telescope para buscar archivos, vista previa, etc.
+- Implementación de Tabnine y Kite con lsp y compe-completion.
+- Statusline minimalista.
+- Autopairs
+- Lineas de identación.
+- Ver diferencias entre los archivos con diffview.
+- Termianl flotante Fterm.
 
-### Y las pruebas de estilo de codificación ⌨️
 
-_Explica que verifican estas pruebas y por qué_
 
-```
-Da un ejemplo
-```
+##TODO 
+- Ampliar los sistemas operativos compatibles.
+- Una configuración global.
+- Una función para reiniciar la configuración de NEOVIM cuando se realice un cambio al .config/nvim/
 
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
+## Restricciones
+* Actualmente solo puede ser usado en linux.
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+_Para el desarrollo de esta configuración de NEOVIM se utilizo vim scripting y lua como base, y se utilizaron los siguientes repositorios como base:_
 
 * [NvChad](https://github.com/siduck76/NvChad) - Se basa en parte en esta configuracion
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
 
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
+* **Edgardo Yoliani** - *Trabajo Inicial y Documentación* - [Yoliani](https://github.com/Yoliani)
 
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
 
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
 
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
 
 
 
----
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+
+
+
 
 
 

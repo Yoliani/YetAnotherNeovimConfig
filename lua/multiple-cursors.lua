@@ -1,21 +1,16 @@
 local g = vim.g
 
 
-g.multi_cursor_use_default_mapping = 0
+g.VM_maps['Find Under']                  = '<C-n>'
+g.VM_maps['Find Subword Under']          = '<C-n>'
+g.VM_maps["Select All"]                  = '\\A'
+g.VM_maps["Start Regex Search"]          = '\\/'
+g.VM_maps["Add Cursor Down"]             = '<C-Down>'
+g.VM_maps["Add Cursor Up"]               = '<C-Up>'
+--g.VM_maps["Add Cursor At Pos"]           = '\\\'
 
---Default mapping
-g.multi_cursor_start_word_key      = '<C-2>'
-g.multi_cursor_select_all_word_key = '<A-2>'
-g.multi_cursor_start_key           = 'g<C-n>'
-g.multi_cursor_select_all_key      = 'g<A-n>'
-g.multi_cursor_next_key            = '<C-n>'
-g.multi_cursor_prev_key            = '<C-p>'
-g.multi_cursor_skip_key            = '<C-x>'
-g.multi_cursor_quit_key            = '<Esc>'
-
-
-
-
-
-
-
+g.VM_maps["Visual Regex"]                = '\\/'
+g.VM_maps["Visual All"]                  = '\\A'
+g.VM_maps["Visual Add"]                  = '\\a'
+g.VM_maps["Visual Find"]                 = '\\f'
+g.VM_maps["Visual Cursors"]              = '\\c'

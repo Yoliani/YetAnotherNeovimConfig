@@ -43,7 +43,7 @@ require'lspconfig'.pyright.setup{}
 require('languages-config')
 
 -- Configuracion de multiples cursores como vscode
-require('multiple-cursors')
+--require('multiple-cursors')
 
 -- terminal flotante
 require('float-term')

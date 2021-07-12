@@ -63,5 +63,4 @@ source $HOME/.config/nvim/plugins/telescope.vim
 
 
 
-
-
+ 

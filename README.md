@@ -17,6 +17,9 @@ _Que cosas necesitas para instalar el software y como instalarlas_
 
 _Se realiza un_ 
 ```
+#Se instala packer para el manejo de los plugins
+git clone https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 git clone https://github.com/Yoliani/Neovim-lua.git
 ```
  
@@ -43,6 +46,16 @@ python3 ~/.local/share/nvim/site/pack/packer/start/vim-shoot/install.py chromedr
 npm install --prefix server
 
 ```
+
+###Instalar Lsp servers
+- Instala el lenguaje que tu quieras. Para más información revisa [nvim-lspInstall](https://github.com/kabouzeid/nvim-lspinstall)
+
+
+```
+ejemplo -:LspInstall html
+```
+
+
 ### Caracteristicas 
 - Navegar por los archivos con Nvimtree.
 - Ciclar temas con una combinaciión de teclas.

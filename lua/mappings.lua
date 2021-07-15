@@ -17,8 +17,8 @@ map("v", "x", [=[ "_x ]=], opt)
 
  this line too ]]
 -- OPEN TERMINALS --
-map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt) -- term over right
-map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) --  term bottom
+map("n", "<C-l>", [[<Cmd>vnew term://zsh <CR>]], opt) -- term over right
+map("n", "<C-x>", [[<Cmd> split term://zsh | resize 10 <CR>]], opt) --  term bottom
 map("n", "<C-t>t", [[<Cmd> tabnew | term <CR>]], opt) -- term newtab
 -- map("n",)
 -- COPY EVERYTHING --
@@ -46,7 +46,6 @@ map("n", "<leader>22", ":DiffviewOpen master<CR>", {noremap = true, silent = tru
 --Split
 map("n", "<leader>3", ":<C-u>split<CR>")
 map("n", "<leader>31", ":<C-u>vsplit<CR>")     
-
 
 
 local cmd = vim.cmd

@@ -19,10 +19,16 @@ return packer.startup(
         use 'nvim-lua/completion-nvim'
         use "hrsh7th/nvim-compe"
         use 'L3MON4D3/LuaSnip'
-        use 'mfussenegger/nvim-dap' --debugger 
+        use 'mfussenegger/nvim-dap' --debugger
         --use 'romgrk/barbar.nvim' --organizar buffers
-
-
+        --FIX: crash NEOVIM
+        --[[
+        use { 'ibhagwan/fzf-lua',
+             requires = {
+                'vijaymarupudi/nvim-fzf'
+            }
+        }
+        ]]--
         use "onsails/lspkind-nvim"
         use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
@@ -63,11 +69,10 @@ return packer.startup(
         use "hrsh7th/vim-vsnip"
         use "hrsh7th/vim-vsnip-integ"
         use 'SirVer/ultisnips'
-        --use 
         use "rafamadriz/friendly-snippets"
-        use 'dsznajder/vscode-es7-javascript-react-snippets'
-        use 'xabikos/vscode-javascript'
-        use 'abusaidm/html-snippets'
+        --use 'dsznajder/vscode-es7-javascript-react-snippets'
+        --use 'xabikos/vscode-javascript'
+        --use 'abusaidm/html-snippets'
 
 
 
@@ -89,6 +94,18 @@ return packer.startup(
         use "907th/vim-auto-save"
         use "karb94/neoscroll.nvim"
         use "kdav5758/TrueZen.nvim"
+            
+        -- Lua twilight plugin
+        use {
+            "folke/twilight.nvim",
+            config = function()
+                require("twilight").setup {
+                    -- your configuration comes here
+                    -- or leave it empty to use the default settings
+                     -- refer to the configuration section below
+                }
+            end
+        }
         use "folke/which-key.nvim"
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
         use 'mg979/vim-visual-multi' --multicursors

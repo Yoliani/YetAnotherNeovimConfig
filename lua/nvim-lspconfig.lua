@@ -139,18 +139,5 @@ local protocol = require'vim.lsp.protocol'
   }
 
 
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.bashls.setup{}
---require'lspconfig'.html.setup{}
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.cssls.setup{}
-require'lspconfig'.vuels.setup{}
-require'lspconfig'.sumneko_lua.setup{}
-require'lspconfig'.omnisharp.setup{}
-require'lspconfig'.intelephense.setup{}
-require'lspconfig'.java_language_server.setup{}
-
-
 
 

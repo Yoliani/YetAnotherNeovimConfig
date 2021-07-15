@@ -11,7 +11,7 @@ _Que cosas necesitas para instalar el software y como instalarlas_
 - Python +3.8v
 - Una terminal que soporte [nerdfont](https://github.com/ryanoasis/nerd-fonts)
 - Colocar el inner padding en 0.
-
+- Instalar [Fzf](https://github.com/junegunn/fzf) y [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
 
 ### Instalación 🔧
 
@@ -74,6 +74,12 @@ ejemplo -:LspInstall html
 - Lineas de identación.
 - Ver diferencias entre los archivos con diffview.
 - Termianl flotante Fterm.
+- Iluminar codigo que se este escribiendo, y opacar el codigo que no esta seleccionado. 
+```
+#Para activarlo se usa: 
+:TwilightEnable 
+```
+
 
 
 

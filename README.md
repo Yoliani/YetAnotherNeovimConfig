@@ -1,10 +1,10 @@
 
 <h1 align="center">Yoliani-Neovim</h1>
 
-[![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]()
+[![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]() [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
 
 
-_Configuración del editor de codigo NEOVIM con lua, basado en la configuración de NcChad, donde se implementan más snippets, implementacion de Kite y Tabnine, a su vez tiene un ciclador de tema con cierta "keybind"._
+__Configuración del editor de codigo NEOVIM con lua, basado en la configuración de NcChad, donde se implementan más snippets, implementacion de Kite y Tabnine, a su vez tiene un ciclador de tema con cierta "keybind".__
 <img src="/assets/dashboard.png"><hr>
 
 ### Pre-requisitos 📋
@@ -54,7 +54,7 @@ npm install --prefix server
 
 ```
 
-###Instalar Lsp servers
+### Instalar Lsp servers
 - Instala el lenguaje que tu quieras. Para más información revisa [nvim-lspInstall](https://github.com/kabouzeid/nvim-lspinstall)
 
 
@@ -63,7 +63,7 @@ ejemplo -:LspInstall html
 ```
 
 
-### Caracteristicas 
+## Caracteristicas 
 - Navegar por los archivos con Nvimtree.
 - Ciclar temas con una combinaciión de teclas.
 - Manejo de tabs y buffers con bufeerline.
@@ -90,7 +90,7 @@ ejemplo -:LspInstall html
 
 
 
-##TODO 
+## TODO 
 - Ampliar los sistemas operativos compatibles.
 - Una configuración global.
 - Una función para reiniciar la configuración de NEOVIM cuando se realice un cambio al .config/nvim/

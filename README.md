@@ -1,6 +1,11 @@
 
 <h1 align="center">Yoliani-Neovim</h1>
+<div align="center">
+[![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]()
+[![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
+</div>
 _Configuración del editor de codigo NEOVIM con lua, basado en la configuración de NcChad, donde se implementan más snippets, implementacion de Kite y Tabnine, a su vez tiene un ciclador de tema con cierta "keybind"._
+<img src="/assets/dashboard.png"><hr>
 
 ### Pre-requisitos 📋
 

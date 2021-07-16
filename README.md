@@ -26,6 +26,8 @@ _Se realiza un_
 #Se instala packer para el manejo de los plugins
 git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+#Se clona el repositorio en .config/nvim/
 git clone https://github.com/Yoliani/Neovim-lua.git
 ```
 
@@ -90,7 +92,7 @@ ejemplo -:LspInstall html
 
 
 
-## TODO 
+## Para hacer:
 - Ampliar los sistemas operativos compatibles.
 - Una configuración global.
 - Una función para reiniciar la configuración de NEOVIM cuando se realice un cambio al .config/nvim/

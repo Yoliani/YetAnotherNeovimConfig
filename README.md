@@ -2,7 +2,7 @@
 <h1 align="center">Yoliani-Neovim</h1>
 <div align="center">
 [![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]()
-[![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
+
 </div>
 _Configuración del editor de codigo NEOVIM con lua, basado en la configuración de NcChad, donde se implementan más snippets, implementacion de Kite y Tabnine, a su vez tiene un ciclador de tema con cierta "keybind"._
 <img src="/assets/dashboard.png"><hr>
@@ -18,6 +18,7 @@ _Que cosas necesitas para instalar el software y como instalarlas_
 - Colocar el inner padding en 0.
 - Instalar [Fzf](https://github.com/junegunn/fzf) y [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
 
+<hr>
 ### Instalación 🔧
 
 _Se realiza un_ 
@@ -27,7 +28,7 @@ git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 git clone https://github.com/Yoliani/Neovim-lua.git
 ```
- 
+<hr> 
 ### Despliegue 📦
 _Se realiza un:_
 
@@ -51,7 +52,7 @@ python3 ~/.local/share/nvim/site/pack/packer/start/vim-shoot/install.py chromedr
 npm install --prefix server
 
 ```
-
+<hr>
 ###Instalar Lsp servers
 - Instala el lenguaje que tu quieras. Para más información revisa [nvim-lspInstall](https://github.com/kabouzeid/nvim-lspinstall)
 
@@ -60,7 +61,7 @@ npm install --prefix server
 ejemplo -:LspInstall html
 ```
 
-
+<hr>
 ### Caracteristicas 
 - Navegar por los archivos con Nvimtree.
 - Ciclar temas con una combinaciión de teclas.
@@ -87,7 +88,7 @@ ejemplo -:LspInstall html
 
 
 
-
+<hr>
 ##TODO 
 - Ampliar los sistemas operativos compatibles.
 - Una configuración global.

@@ -1,11 +1,11 @@
 
 <h1 align="center">Yoliani-Neovim</h1>
 <div align="center">
-[![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]()
+[(https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]()
 
 </div>
 _Configuración del editor de codigo NEOVIM con lua, basado en la configuración de NcChad, donde se implementan más snippets, implementacion de Kite y Tabnine, a su vez tiene un ciclador de tema con cierta "keybind"._
-<img src="/assets/dashboard.png"></hr>
+<img src="/assets/dashboard.png"><hr>
 
 ### Pre-requisitos 📋
 
@@ -18,7 +18,7 @@ _Que cosas necesitas para instalar el software y como instalarlas_
 - Colocar el inner padding en 0.
 - Instalar [Fzf](https://github.com/junegunn/fzf) y [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
 
-</hr>
+<hr>
 ### Instalación 🔧
 
 _Se realiza un_ 
@@ -28,7 +28,8 @@ git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 git clone https://github.com/Yoliani/Neovim-lua.git
 ```
-</hr> 
+</hr>
+<hr>
 ### Despliegue 📦
 _Se realiza un:_
 
@@ -61,7 +62,7 @@ npm install --prefix server
 ejemplo -:LspInstall html
 ```
 
-</hr>
+<hr>
 ### Caracteristicas 
 - Navegar por los archivos con Nvimtree.
 - Ciclar temas con una combinaciión de teclas.

@@ -31,7 +31,8 @@ require "zenmode"
 require "whichkey"
 require "dashboard"
 require("nvim_comment").setup()
-
+--
+--
 -- Para ejecutar python con la tecla F5
 require "pythonterminal"
 

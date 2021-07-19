@@ -28,7 +28,7 @@ git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 #Se clona el repositorio en .config/nvim/
-git clone https://github.com/Yoliani/Neovim-lua.git
+git clone https://github.com/Yoliani/Neovim-lua.git $HOME/.config/nvim
 ```
 
 

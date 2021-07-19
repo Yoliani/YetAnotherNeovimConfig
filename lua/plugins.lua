@@ -41,7 +41,7 @@ require "pythonterminal"
 
 require'lspconfig'.pyright.setup{}
 --Configuracion para todos los lenguajes usados
-require('languages-config')
+--require('languages-config')
 
 -- Configuracion de multiples cursores como vscode
 --require('multiple-cursors')

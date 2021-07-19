@@ -54,4 +54,55 @@ function M.get_value(name, default)
     end
 end
 
+function M.reload_lv_config()
+  vim.cmd "source ~/.config/nvim/lua/mappings.lua"
+  vim.cmd "source ~/.config/nvim/lua/misc-utils.lua"
+  vim.cmd "source ~/.config/nvim/lua/plugins.lua"
+  vim.cmd "source ~/.config/nvim/lua/settings.lua"
+  vim.cmd "source ~/.config/nvim/lua/init.lua"
+  vim.cmd "source ~/.config/nvim/lua/pluginList.lua"
+  vim.cmd "source ~/.config/nvim/lua/"
+  vim.cmd ":PackerCompile"
+  vim.cmd ":PackerInstall"
+  -- vim.cmd ":PackerClean"
+end
+
+function M.check_lsp_client_active(name)
+  local clients = vim.lsp.get_active_clients()
+  for _, client in pairs(clients) do
+    if client.name == name then
+      return true
+    end
+  end
+  return false
+end
+
+function M.add_keymap(mode, opts, keymaps)
+  for _, keymap in ipairs(keymaps) do
+    vim.api.nvim_set_keymap(mode, keymap[1], keymap[2], opts)
+  end
+end
+
+function M.add_keymap_normal_mode(opts, keymaps)
+  M.add_keymap("n", opts, keymaps)
+end
+
+function M.add_keymap_visual_mode(opts, keymaps)
+  M.add_keymap("v", opts, keymaps)
+end
+
+function M.add_keymap_visual_block_mode(opts, keymaps)
+  M.add_keymap("x", opts, keymaps)
+end
+
+function M.add_keymap_insert_mode(opts, keymaps)
+  M.add_keymap("i", opts, keymaps)
+end
+
+function M.add_keymap_term_mode(opts, keymaps)
+  M.add_keymap("t", opts, keymaps)
+end
+
+
+
 return M

@@ -1,7 +1,6 @@
 -- load all plugins
 require "pluginList"
-require "misc-utils"
-
+require "utils"
 require "top-bufferline"
 require "statusline"
 

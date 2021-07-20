@@ -21,6 +21,7 @@
 "
 "    https://github.com/Yoliani
 "-------------------------Lua-----------------------"
+set termguicolors
 lua require("init")
 
 

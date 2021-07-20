@@ -58,7 +58,7 @@ cmd(':command! W w')
 cmd(':command! Q q')
 
 
-local settings_manager = require '../misc-utils/settings'
+local settings_manager = require '../utils/functions'
 settings_manager.load_settings()
 
 --
@@ -74,7 +74,7 @@ base16_position = (base16_position - 1 % #themes_names) + 1
 base16(base16.themes[themes_names[base16_position]], true)
 
 function _G.cycle_teme ()
-    if base16_position == 11 then 
+    if base16_position == 11 then
         base16_position = 0
     end
     base16_position = (base16_position % #themes_names) + 1
@@ -91,6 +91,7 @@ end
 
 --
 --  Mappings
---
+
 
 map("n", "<leader>tn", ":lua cycle_teme()<Cr>")
+

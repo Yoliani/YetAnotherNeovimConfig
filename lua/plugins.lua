@@ -1,6 +1,7 @@
 -- load all plugins
-require "pluginList"
-require "utils"
+--require"pluginList"
+--require "utils"
+
 require "top-bufferline"
 require "statusline"
 
@@ -13,7 +14,7 @@ require "compe-completion"
 
 require "highlights"
 require "treesitter-nvim"
-require "mappings"
+--ñrequire "mappings"
 require "telescope-nvim"
 require "nvimTree" -- file tree stuff
 require "file-icons"
@@ -24,8 +25,7 @@ require("nvim-autopairs").setup()
 require("lspkind").init()
 
 --Settings--
-require('settings')
-
+--require('settings')
 require "zenmode"
 require "whichkey"
 require "dashboard"
@@ -38,7 +38,7 @@ require "pythonterminal"
 -- Instalador de plugins similar a vim-plug
 -- require "paq-nvim"
 
-require'lspconfig'.pyright.setup{}
+--require'lspconfig'.pyright.setup{}
 --Configuracion para todos los lenguajes usados
 --require('languages-config')
 

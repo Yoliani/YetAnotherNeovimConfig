@@ -35,6 +35,7 @@ function M.load_settings()
     if file == nil then
         print("Couldn't open file: "..err)
     else
+        print("TEST")
         local content = file:read("*a")
         local lines_arr = lines(content)
         if next(lines_arr) ~= nil then

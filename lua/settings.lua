@@ -11,36 +11,20 @@ local function isempty(s)
     return s == nil or s == ''
 end
 
+
+
+local vcmd = vim.cmd
+vcmd "syntax on"
+vcmd "colorscheme gruvbox"
+
 require('utils')
-local g = vim.g
-local cmd = vim.cmd
-g.mapleader = " "
-g.auto_save = 0
-
---Requeimientos
---
-
 
 -- colorscheme related stuff
-cmd "syntax on"
-
 --Themes
 --local base16 = require "base16"
 --base16(base16.themes["onedark"], true)
---base16(base16.themes["gruvbox"], true)
-
-cmd('colorscheme gruvbox')
 --require('moonlight').set()
---[[
-require("github-theme").setup({
-  themeStyle = "dark",
-  commentStyle = "italic",
-  keywordStyle = "italic",
-  functionStyle = "italic",
-  variableStyle = "italic"
-  -- ... your github-theme config
-})
---]]--
+
 
 --- Settings ----
 Option.g{
@@ -64,6 +48,8 @@ Option.g{
   termguicolors =  true,
   cmdheight = 1,
   numberwidth = 2,
+  
+  
 }
 
 
@@ -77,7 +63,8 @@ Variable.g {
   indent_blankline_show_trailing_blankline_indent = false,
   indent_blankline_show_first_indent_level = false,
   vsnip_snippet_dir = "~/.config/nvim/snippets",
-
+  mapleader = " ",
+  auto_save = 0,
 }
 
 
@@ -96,8 +83,10 @@ Option.b {
   smartindent = true,
 }
 
+vim.cmd [[packadd packer.nvim]]
+vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
-cmd([[
+vcmd([[
     if has('nv  im-0.5')
         augroup lsp
         au!
@@ -106,7 +95,17 @@ cmd([[
     endif
     ]])
 
-  cmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
+vcmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
+
+ -- hide line numbers , statusline in specific buffers!
+vim.api.nvim_exec(
+    [[
+   au BufEnter term://* setlocal nonumber
+   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
+   au BufEnter term://* set laststatus=0 
+]],
+    false
+)
 
 
 

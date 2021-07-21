@@ -8,8 +8,7 @@ return packer.startup(
 
         -- color related stuff
         use "siduck76/nvim-base16.lua"
-        use "norcalli/nvim-colorizer.lua"
-  
+        use "norcalli/nvim-colorizer.lua" 
         -- lang stuff
         use "nvim-treesitter/nvim-treesitter"
         use "neovim/nvim-lspconfig"
@@ -20,15 +19,6 @@ return packer.startup(
         use "hrsh7th/nvim-compe"
         use 'L3MON4D3/LuaSnip'
         use 'mfussenegger/nvim-dap' --debugger
-        --use 'romgrk/barbar.nvim' --organizar buffers
-        --FIX: crash NEOVIM
-        --[[
-        use { 'ibhagwan/fzf-lua',
-             requires = {
-                'vijaymarupudi/nvim-fzf'
-            }
-        }
-        ]]--
         use "onsails/lspkind-nvim"
         use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
@@ -62,20 +52,11 @@ return packer.startup(
             }
          end
         }
-
-
-
         -- snippet support
         use "hrsh7th/vim-vsnip"
         use "hrsh7th/vim-vsnip-integ"
         use 'SirVer/ultisnips'
         use "rafamadriz/friendly-snippets"
-        --use 'dsznajder/vscode-es7-javascript-react-snippets'
-        --use 'xabikos/vscode-javascript'
-        --use 'abusaidm/html-snippets'
-
-
-
 
 
         --ile managing , picker etc
@@ -84,8 +65,6 @@ return packer.startup(
         use "nvim-telescope/telescope.nvim"
         use "nvim-telescope/telescope-media-files.nvim"
         use "nvim-lua/popup.nvim"
-
-
 
 
         -- misc
@@ -111,59 +90,17 @@ return packer.startup(
         use 'mg979/vim-visual-multi' --multicursors
 
 
-
-
-
-        --use 'vim-python/python-syntax'
-        
-        -- Java 
-        use 'uiiaoo/java-syntax.vim'
-        use 'mfussenegger/nvim-jdtls'
-
-        --Coc neovim
-        --use 'neoclide/coc.nvim' --Problems with compe-completion and disable automatically by Kite
-        
-        
-
-
-
-
-
-
-
-        --Orgmode
-        use {'kristijanhusak/orgmode.nvim', config = function()
-                require('orgmode').setup{}
-        end
-        }
-        --https://github.com/kristijanhusak/orgmode.nvim
-        
-        --Para Maven Proyects
-        --use 'mikelue/vim-maven-plugin'
-
-
-
-
-
         --Terminal flotante
         use {
             "numtostr/FTerm.nvim",
-            config = function()
+            config = function(
               require("FTerm").setup()
             end
         }
 
-
-
-
         
         --Ver diferencias del repositorio comparado con el ultimo commit
          use 'sindrets/diffview.nvim'
-
-
-
-
-
 
          --Themes
          --use 'morhetz/gruvbox'
@@ -171,49 +108,15 @@ return packer.startup(
          use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
          use 'folke/tokyonight.nvim'
          use 'projekt0n/github-nvim-theme'
-         --use "sainnhe/gruvbox-material"
-         --use "gruvbox-community/gruvbox"
-         use "Iron-E/nvim-highlite"
-         use "mhartington/oceanic-next"
-         use "heraldofsolace/nisha-vim"
-         use "bluz71/vim-moonfly-colors"
-         use "bluz71/vim-nightfly-guicolors"
-         use "chuling/vim-equinusocio-material"
-         use "ChristianChiarulli/nvcode-color-schemes.vim"
-         use {
-             "glepnir/zephyr-nvim",
-             branch = "main"
-          }
-         use "sainnhe/sonokai"
-         use "rockerBOO/boo-colorscheme-nvim"
-         use "jim-at-jibba/ariake-vim-colors"
-         use "Th3Whit3Wolf/onebuddy"
-         use "Th3Whit3Wolf/spacebuddy"
-         use {
-             "ishan9299/modus-theme-vim",
-             branch = "stable"
-          }
-         use "RishabhRD/nvim-rdark"
-         use "sainnhe/edge"
-         use "theniceboy/nvim-deus"
-         use "bkegley/gloombuddy"
-         use "monaqa/dial.nvim"
 
 
-        --Languages 
-        use "fatih/vim-go" --Golang
+
+        --Languages  
         use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
         use 'simrat39/rust-tools.nvim'
 
         -- Bracey live server
          use 'turbio/bracey.vim'
-
-
-
-         -- Discord presence ---
-         use 'andweeb/presence.nvim'
-        
-
 
 
          --Navegar

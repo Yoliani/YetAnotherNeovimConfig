@@ -18,29 +18,51 @@ return packer.startup(
         use({'scalameta/nvim-metals'})
         use 'nvim-lua/completion-nvim'
         use "hrsh7th/nvim-compe"
-        use 'L3MON4D3/LuaSnip'
-        use 'mfussenegger/nvim-dap' --debugger
-        --use 'romgrk/barbar.nvim' --organizar buffers
-        --FIX: crash NEOVIM
-        --[[
-        use { 'ibhagwan/fzf-lua',
-             requires = {
-                'vijaymarupudi/nvim-fzf'
+        use {
+            "hrsh7th/nvim-compe",
+            event = "InsertEnter",
+            config = function()
+                require "plugins.compe"
+            end,
+            wants = "LuaSnip",
+            requires = {
+                {
+                    "L3MON4D3/LuaSnip",
+                    wants = "friendly-snippets",
+                    event = "InsertCharPre",
+                    config = function()
+                        require "plugins.luasnip"
+                    end
+                },
+                {
+                    "rafamadriz/friendly-snippets",
+                    event = "InsertCharPre"
+                },
+                
             }
         }
-        ]]--
+        use 'L3MON4D3/LuaSnip'
+        use 'mfussenegger/nvim-dap' --debugger
+        
         use "onsails/lspkind-nvim"
         use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
         use "kabouzeid/nvim-lspinstall"
-        use "sheerun/vim-polyglot"
+        --use "sheerun/vim-polyglot"
         use "lewis6991/gitsigns.nvim"
         use "akinsho/nvim-bufferline.lua"
         use "glepnir/galaxyline.nvim"
+        use {
+            "glepnir/galaxyline.nvim",
+            after = "nord.nvim",
+            config = function()
+                require "plugins.statusline"
+            end
+        }
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
         use 'lukas-reineke/format.nvim'-- format on save
-        -- use 'windwp/nvim-ts-autotag'
+        
         --Tabnine
         use {'tzachar/compe-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-compe'}
         --use {'aca/completion-tabnine',  run= './install.sh' }
@@ -89,7 +111,20 @@ return packer.startup(
 
 
         -- misc
-        use "glepnir/dashboard-nvim"
+        use {
+            "glepnir/dashboard-nvim",
+            cmd = {
+                "Dashboard",
+                "DashboardNewFile",
+                "DashboardJumpMarks",
+                "SessionLoad",
+                "SessionSave"
+            },
+            setup = function()
+                require "plugins.dashboard"
+            end
+        }
+
         use "tweekmonster/startuptime.vim"
         use "907th/vim-auto-save"
         use "karb94/neoscroll.nvim"
@@ -107,7 +142,7 @@ return packer.startup(
             end
         }
         use "folke/which-key.nvim"
-        use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+        use {"lukas-reineke/indent-blankline.nvim"}
         use 'mg979/vim-visual-multi' --multicursors
 
 
@@ -117,7 +152,7 @@ return packer.startup(
         --use 'vim-python/python-syntax'
         
         -- Java 
-        use 'uiiaoo/java-syntax.vim'
+        --use 'uiiaoo/java-syntax.vim'
         use 'mfussenegger/nvim-jdtls'
 
         --Coc neovim
@@ -130,12 +165,13 @@ return packer.startup(
 
 
 
-
+    
         --Orgmode
+        --[[
         use {'kristijanhusak/orgmode.nvim', config = function()
                 require('orgmode').setup{}
         end
-        }
+        }--]]
         --https://github.com/kristijanhusak/orgmode.nvim
         
         --Para Maven Proyects
@@ -171,37 +207,10 @@ return packer.startup(
          use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
          use 'folke/tokyonight.nvim'
          use 'projekt0n/github-nvim-theme'
-         --use "sainnhe/gruvbox-material"
-         --use "gruvbox-community/gruvbox"
-         use "Iron-E/nvim-highlite"
-         use "mhartington/oceanic-next"
-         use "heraldofsolace/nisha-vim"
-         use "bluz71/vim-moonfly-colors"
-         use "bluz71/vim-nightfly-guicolors"
-         use "chuling/vim-equinusocio-material"
-         use "ChristianChiarulli/nvcode-color-schemes.vim"
-         use {
-             "glepnir/zephyr-nvim",
-             branch = "main"
-          }
-         use "sainnhe/sonokai"
-         use "rockerBOO/boo-colorscheme-nvim"
-         use "jim-at-jibba/ariake-vim-colors"
-         use "Th3Whit3Wolf/onebuddy"
-         use "Th3Whit3Wolf/spacebuddy"
-         use {
-             "ishan9299/modus-theme-vim",
-             branch = "stable"
-          }
-         use "RishabhRD/nvim-rdark"
-         use "sainnhe/edge"
-         use "theniceboy/nvim-deus"
-         use "bkegley/gloombuddy"
-         use "monaqa/dial.nvim"
-
+         
 
         --Languages 
-        use "fatih/vim-go" --Golang
+        --use "fatih/vim-go" --Golang
         use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
         use 'simrat39/rust-tools.nvim'
 

@@ -2,38 +2,38 @@
 --require"pluginList"
 --require "utils"
 
-require "top-bufferline"
-require "statusline"
+require "plugins.top-bufferline"
+require "plugins.statusline"
 
 require("colorizer").setup()
 require("neoscroll").setup() -- smooth scroll
 
 -- lsp stuff
-require "nvim-lspconfig"
-require "compe-completion"
-
-require "highlights"
-require "treesitter-nvim"
+require "plugins.nvim-lspconfig"
+require "plugins.compe-completion"
+  
+require "plugins.highlights"
+require "plugins.treesitter-nvim"
 --ñrequire "mappings"
-require "telescope-nvim"
-require "nvimTree" -- file tree stuff
-require "file-icons"
-
+require "plugins.telescope-nvim"
+require "plugins.nvimTree" -- file tree stuff
+require "plugins.file-icons"
+   
 -- git signs , lsp symbols etc
-require "gitsigns-nvim"
+require "plugins.gitsigns-nvim"
 require("nvim-autopairs").setup()
 require("lspkind").init()
 
 --Settings--
 --require('settings')
-require "zenmode"
-require "whichkey"
-require "dashboard"
+require "plugins.zenmode"
+require "plugins.whichkey"
+require "plugins.dashboard"
 require("nvim_comment").setup()
 --
 --
 -- Para ejecutar python con la tecla F5
-require "pythonterminal"
+require "plugins.pythonterminal"
 
 -- Instalador de plugins similar a vim-plug
 -- require "paq-nvim"
@@ -46,22 +46,22 @@ require "pythonterminal"
 --require('multiple-cursors')
 
 -- terminal flotante
-require('float-term')
+require('plugins.float-term')
 
 --Navigator config
-require 'navigator-config'
+require 'plugins.navigator-config'
 --Discord
-require 'discord'
+require 'plugins.discord'
 
 --require'lspconfig'.pyls.setup{on_attach=require'completion'.on_attach}
-require("neoformat-config")
+require("plugins.neoformat-config")
 
 --Todo comments
-require 'todo-list'
+require 'plugins.todo-list'
 --Configs-lsp
-require 'flutter-config-tools'
+require 'plugins.flutter-config-tools'
 
-require 'rust-config-tools'
+require 'plugins.rust-config-tools'
 -- Reload config
 require 'nv-reload.init'
 

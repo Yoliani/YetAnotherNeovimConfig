@@ -1,4 +1,4 @@
---equire"settings"
+--require"settings"
 
 local async
 

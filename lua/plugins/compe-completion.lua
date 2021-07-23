@@ -12,7 +12,14 @@ require('compe').setup {
     max_abbr_width = 100,
     max_kind_width = 100,
     max_menu_width = 100,
-    documentation = true,
+    documentation = {
+    	border = { '', '' ,'', ' ', '', '', '', ' ' },
+	winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+    	max_width = 120,
+    	min_width = 60,
+    	max_height = math.floor(vim.o.lines * 0.3),
+    	min_height = 1,
+    },
     source = {
         buffer = {kind = "﬘", true},
         luasnip = {kind = "﬌", true},
@@ -64,6 +71,7 @@ _G.tab_complete = function()
         return vim.fn["compe#complete"]()
     end
 end
+
 _G.s_tab_complete = function()
     if vim.fn.pumvisible() == 1 then
         return t "<C-p>"

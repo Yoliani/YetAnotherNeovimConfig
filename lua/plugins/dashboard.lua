@@ -31,5 +31,5 @@ g.dashboard_custom_section = {
 
 g.dashboard_custom_footer = {
     "   ",
-    "Yoliani v0.6"
+    "Tab-Neovim v0.6"
 }

@@ -1,5 +1,5 @@
 
-<h1 align="center">Neovim-tab</h1>
+<h1 align="center">Tab-Neovim</h1>
 
 [![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]() [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
 

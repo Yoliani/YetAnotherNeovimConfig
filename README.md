@@ -1,5 +1,5 @@
 
-<h1 align="center">Yoliani-Neovim</h1>
+<h1 align="center">Neovim-tab</h1>
 
 [![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]() [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
 
@@ -12,7 +12,8 @@ __Configuración del editor de codigo NEOVIM con lua, basado en la configuració
 _Que cosas necesitas para instalar el software y como instalarlas_
 
 
-- Neovim +0.5v
+- Neovim +0.6v
+- Node
 - Python +3.8v
 - Una terminal que soporte [nerdfont](https://github.com/ryanoasis/nerd-fonts)
 - Colocar el inner padding en 0.
@@ -113,6 +114,7 @@ _Para el desarrollo de esta configuración de NEOVIM se utilizo vim scripting y 
 
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
 
+## Mi configuración
 
 
 

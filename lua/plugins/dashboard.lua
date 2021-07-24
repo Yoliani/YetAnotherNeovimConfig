@@ -31,5 +31,5 @@ g.dashboard_custom_section = {
 
 g.dashboard_custom_footer = {
     "   ",
-    "Yoliani v0.5"
+    "Yoliani v0.6"
 }

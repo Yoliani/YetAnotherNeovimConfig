@@ -112,20 +112,7 @@ return packer.startup(
 	use 'MunifTanjim/nui.nvim'
 
         -- misc
-        use {
-            "glepnir/dashboard-nvim",
-            cmd = {
-                "Dashboard",
-                "DashboardNewFile",
-                "DashboardJumpMarks",
-                "SessionLoad",
-                "SessionSave"
-            },
-            setup = function()
-                require "plugins.dashboard"
-            end
-        }
-
+	use "glepnir/dashboard-nvim"
         use "tweekmonster/startuptime.vim"
         use "907th/vim-auto-save"
         use "karb94/neoscroll.nvim"

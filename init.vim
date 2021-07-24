@@ -39,10 +39,10 @@ augroup number_toggle
 augroup END
 
 " TODO: Find out why tf I do this
-augroup win_resize
-  autocmd!
-  autocmd VimResized * wincmd =
-augroup END
+"augroup win_resize
+""  autocmd!
+""  autocmd VimResized * wincmd =
+"augroup END
 
 " Go away, netrw!
 augroup hide_netrw
@@ -52,7 +52,7 @@ augroup END
 
 source $HOME/.config/nvim/plugins/kite.vim
 
-if has('nvim-0.5')
+if has('nvim-0.6')
   augroup lsp
     au!
     au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})

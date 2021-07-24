@@ -95,20 +95,21 @@ return packer.startup(
         --use 'dsznajder/vscode-es7-javascript-react-snippets'
         --use 'xabikos/vscode-javascript'
         --use 'abusaidm/html-snippets'
+	
 
 
 
 
-
-        --ile managing , picker etc
+        --File managing , picker etc
         use "kyazdani42/nvim-tree.lua"
         use "kyazdani42/nvim-web-devicons"
         use "nvim-telescope/telescope.nvim"
         use "nvim-telescope/telescope-media-files.nvim"
         use "nvim-lua/popup.nvim"
 
-
-
+	--Para Terminal Kitty
+	use "fladson/vim-kitty"
+	use 'MunifTanjim/nui.nvim'
 
         -- misc
         use {

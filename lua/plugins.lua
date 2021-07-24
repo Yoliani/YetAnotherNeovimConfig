@@ -42,7 +42,7 @@ require "plugins.pythonterminal"
 --Configuracion para todos los lenguajes usados
 --require('languages-config')
 
--- Configuracion de multiples cursores como vscode
+--Configuracion de multiples cursores como vscode
 --require('multiple-cursors')
 
 -- terminal flotante
@@ -65,3 +65,5 @@ require 'plugins.rust-config-tools'
 -- Reload config
 require 'nv-reload.init'
 
+--Tests
+--require("tests.nui_lsp")

@@ -94,4 +94,9 @@ end
 
 
 map("n", "<leader>tn", ":lua cycle_teme()<Cr>")
-
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>ln",
+  "<cmd>lua require('tests.nui_lsp').lsp_rename()<CR>",
+  { noremap = true, silent = true }
+)

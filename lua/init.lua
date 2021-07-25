@@ -9,10 +9,8 @@ async =
             require("pluginList")
             require("utils")
             require("plugins")
-         
             require("settings")
 	    require("mappings")
-            
          end
    )
 )

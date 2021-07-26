@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 
-local colors = require "themes/gruvbox"
+local colors = require "themes/onedark"
 
 local white = colors.white
 local darker_black = colors.darker_black

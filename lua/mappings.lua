@@ -87,7 +87,7 @@ function _G.cycle_teme ()
     end
 end
 
---print(vim.inspect(base16.theme_names()))
+print(vim.inspect(base16.theme_names()))
 
 --
 --  Mappings
@@ -100,3 +100,5 @@ vim.api.nvim_set_keymap(
   "<cmd>lua require('tests.nui_lsp').lsp_rename()<CR>",
   { noremap = true, silent = true }
 )
+
+map("n","<leader>t1","<cmd>lua require('tests.nui_base16themes').b16themes()<CR>", { noremap = true, silent = true })

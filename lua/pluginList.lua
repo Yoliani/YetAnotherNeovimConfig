@@ -7,7 +7,7 @@ return packer.startup(
         use "wbthomason/packer.nvim"
 
         -- color related stuff
-        use "siduck76/nvim-base16.lua"
+        use "norcalli/nvim-base16.lua"
         use "norcalli/nvim-colorizer.lua"
   
         -- lang stuff
@@ -22,7 +22,7 @@ return packer.startup(
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
             config = function()
-                require "plugins.compe"
+                require "plugins.compe-completion"
             end,
             wants = "LuaSnip",
             requires = {

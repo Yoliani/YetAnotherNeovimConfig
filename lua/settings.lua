@@ -12,7 +12,7 @@ local function isempty(s)
 end
 
 
-
+vim.opt.termguicolors = true
 local vcmd = vim.cmd
 vcmd "syntax on"
 --vcmd "colorscheme gruvbox"

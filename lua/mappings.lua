@@ -87,13 +87,13 @@ function _G.cycle_teme ()
     end
 end
 
-print(vim.inspect(base16.theme_names()))
+--print(vim.inspect(base16.theme_names()))
 
 --
 --  Mappings
 
 
-map("n", "<leader>tn", ":lua cycle_teme()<Cr>")
+--map("n", "<leader>tn", ":lua cycle_teme()<Cr>")
 vim.api.nvim_set_keymap(
   "n",
   "<leader>ln",
@@ -101,4 +101,4 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true }
 )
 
-map("n","<leader>t1","<cmd>lua require('tests.nui_base16themes').b16themes()<CR>", { noremap = true, silent = true })
+map("n","<leader>tn","<cmd>lua require('tests.nui_base16themes').b16themes()<CR>", { noremap = true, silent = true })

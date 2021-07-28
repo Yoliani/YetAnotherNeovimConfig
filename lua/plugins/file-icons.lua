@@ -106,6 +106,23 @@ require "nvim-web-devicons".setup {
             icon = "",
             color = colors.orange,
             name = "rpm"
-        }
+        },
+	bashrc = {
+		icon = "",
+		color = colors.dark_purple,
+		name = "basrc"
+	},
+	zshrc = {
+		icon = "",
+		color = colors.dark_purple,
+		name = "basrc"
+	},
+	yml = {
+		icon = "",
+		color = colors.blue,
+		name = "yml"
+	}
+
+	
     }
 }

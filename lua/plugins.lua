@@ -4,7 +4,8 @@
 
 require "plugins.top-bufferline"
 require "plugins.statusline"
-
+--require "plugins.statustabline"
+--require "modules._statusline"
 require("colorizer").setup()
 require("neoscroll").setup() -- smooth scroll
 

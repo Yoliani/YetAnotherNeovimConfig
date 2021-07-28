@@ -203,6 +203,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/edgardoyoliani/.local/share/nvim/site/pack/packer/start/nvim-jdtls"
   },
+  ["nvim-lightbulb"] = {
+    loaded = true,
+    path = "/home/edgardoyoliani/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/edgardoyoliani/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
@@ -297,6 +301,10 @@ _G.packer_plugins = {
   ["vim-kitty"] = {
     loaded = true,
     path = "/home/edgardoyoliani/.local/share/nvim/site/pack/packer/start/vim-kitty"
+  },
+  ["vim-polyglot"] = {
+    loaded = true,
+    path = "/home/edgardoyoliani/.local/share/nvim/site/pack/packer/start/vim-polyglot"
   },
   ["vim-shoot"] = {
     loaded = true,

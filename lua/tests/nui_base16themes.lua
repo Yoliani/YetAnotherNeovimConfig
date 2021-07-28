@@ -1,6 +1,9 @@
 local Menu = require("nui.menu")
 local event = require("nui.utils.autocmd").event
 local base16 = require "base16"
+local settings_manager = require '../utils/functions'
+settings_manager.load_settings()
+
 local function nui_base16_change_theme()
     	local menu = Menu( { relative = "cursor",
 	  border = {
@@ -59,6 +62,7 @@ local function nui_base16_change_theme()
 	   on_submit = function(item)
 	    --print("SUBMITTED", vim.inspect(item))
 	    base16(base16.themes[item.text], true)
+			settings_manager.set_value("current_theme", item.text)
 	  end
 	})
 

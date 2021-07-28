@@ -48,17 +48,21 @@ return packer.startup(
         use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
         use "kabouzeid/nvim-lspinstall"
-        --use "sheerun/vim-polyglot"
+        use "sheerun/vim-polyglot"
         use "lewis6991/gitsigns.nvim"
         use "akinsho/nvim-bufferline.lua"
         use "glepnir/galaxyline.nvim"
+        use "kosayoda/nvim-lightbulb"
+
+	--[[
         use {
             "glepnir/galaxyline.nvim",
-            after = "nord.nvim",
+            after = "nvim-base16.lua",
             config = function()
                 require "plugins.statusline"
             end
         }
+	--]]
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
         use 'lukas-reineke/format.nvim'-- format on save

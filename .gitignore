@@ -1,0 +1,2 @@
+#Ignore compile plugins for packer
+/plugin/

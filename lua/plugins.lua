@@ -31,10 +31,10 @@ require "plugins.zenmode"
 require "plugins.whichkey"
 require "plugins.dashboard"
 require("nvim_comment").setup()
---
+require("plugins.nv-jdtls")
 --
 -- Para ejecutar python con la tecla F5
-require "plugins.pythonterminal"
+--require "plugins.pythonterminal"
 
 -- Instalador de plugins similar a vim-plug
 -- require "paq-nvim"

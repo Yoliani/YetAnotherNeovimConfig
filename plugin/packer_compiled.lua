@@ -199,6 +199,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/edgardoyoliani/.local/share/nvim/site/pack/packer/start/nvim-dap"
   },
+  ["nvim-dap-python"] = {
+    loaded = true,
+    path = "/home/edgardoyoliani/.local/share/nvim/site/pack/packer/start/nvim-dap-python"
+  },
   ["nvim-jdtls"] = {
     loaded = true,
     path = "/home/edgardoyoliani/.local/share/nvim/site/pack/packer/start/nvim-jdtls"
@@ -263,6 +267,10 @@ _G.packer_plugins = {
   ["startuptime.vim"] = {
     loaded = true,
     path = "/home/edgardoyoliani/.local/share/nvim/site/pack/packer/start/startuptime.vim"
+  },
+  ["telescope-dap.nvim"] = {
+    loaded = true,
+    path = "/home/edgardoyoliani/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim"
   },
   ["telescope-media-files.nvim"] = {
     loaded = true,

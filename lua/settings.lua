@@ -7,11 +7,6 @@ local function opts(scope, key, value)
     end
   end
 opts("o", "termguicolors", true)
-local function isempty(s)
-    return s == nil or s == ''
-end
-
-
 vim.opt.termguicolors = true
 local vcmd = vim.cmd
 vcmd "syntax on"
@@ -34,7 +29,7 @@ Option.g{
   titlestring  = "%<%F%=%l/%L - nvim",    -- what the title of the window will be set to
   backup          = false,                     -- creates a backup file
   swapfile        = false,                     -- creates a swapfile
-  smartindent     = true,                      -- make indenting smarter again
+  smartindent     = false,                      -- make indenting smarter again
   
   mouse = "a",
   clipboard = "unnamedplus",
@@ -137,11 +132,14 @@ end
 
 
 vim.cmd("source $HOME/.config/nvim/plugins/kite.vim")
+--[[
 vim.cmd("source $HOME/.config/nvim/plugins/jdtls.vim")
+
 vim.cmd([[if has('nvim-0.6')
  			 augroup lsp
    			 au!
 		    	  au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})
   			 augroup end
-		      endif]])
+		      endif]]--)
+
 

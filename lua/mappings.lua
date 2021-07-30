@@ -45,7 +45,7 @@ map("n", "<leader>22", ":DiffviewOpen master<CR>", {noremap = true, silent = tru
 
 --Split
 map("n", "<leader>3", ":<C-u>split<CR>")
-map("n", "<leader>31", ":<C-u>vsplit<CR>")     
+map("n", "<leader>31", ":<C-u>vsplit<CR>")
 
 
 local cmd = vim.cmd
@@ -95,6 +95,8 @@ function _G.cycle_teme ()
 
 --
 --  Mappings
+--TODO: Add a mapping for execute java
+-- /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Dfile.encoding=UTF-8
 
 
 --map("n", "<leader>tn", ":lua cycle_teme()<Cr>")
@@ -104,5 +106,19 @@ vim.api.nvim_set_keymap(
   "<cmd>lua require('tests.nui_lsp').lsp_rename()<CR>",
   { noremap = true, silent = true }
 )
+vim.cmd(
+  [[
+  augroup My_group
+  autocmd!
+  autocmd Filetype python nnoremap <F5> :w<CR>:vert ter python3 "%"<CR>
+  augroup END
+  
+  ]]
+)
 
+map("n", "<F4>", [[:w<CR>:vert ter python3 "%"<CR>]], {noremap = true, silent = true}) -- term over right
 map("n","<leader>tn","<cmd>lua require('tests.nui_base16themes').b16themes()<CR>", { noremap = true, silent = true })
+
+map("n", "<F9>", [[:w<CR>:vert ter /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 "%"<CR>]], {noremap = true, silent = true})
+
+map('n', '<F8>', ':!jfx %<CR>', {noremap = true, silent = true})

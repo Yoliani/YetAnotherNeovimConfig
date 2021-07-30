@@ -31,6 +31,8 @@ require('compe').setup {
         snippets_nvim = true,
         ultisnips = true,
         vsnip = true,
+        tags = true,
+        spell = true,
     }
 }
 

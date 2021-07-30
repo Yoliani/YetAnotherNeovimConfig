@@ -42,7 +42,7 @@ return packer.startup(
             }
         }
         use 'L3MON4D3/LuaSnip'
-        use 'mfussenegger/nvim-dap' --debugger
+        
         
         use "onsails/lspkind-nvim"
         use "sbdchd/neoformat"
@@ -89,7 +89,10 @@ return packer.startup(
          end
         }
 
-
+        -- DAP
+        use { 'mfussenegger/nvim-dap' }
+        use { 'nvim-telescope/telescope-dap.nvim' }
+        use { 'mfussenegger/nvim-dap-python' }
 
         -- snippet support
         use "hrsh7th/vim-vsnip"
@@ -112,11 +115,11 @@ return packer.startup(
         use "nvim-lua/popup.nvim"
 
 	--Para Terminal Kitty
-	use "fladson/vim-kitty"
-	use 'MunifTanjim/nui.nvim'
+        use "fladson/vim-kitty"
+	      use 'MunifTanjim/nui.nvim'
 
         -- misc
-	use "glepnir/dashboard-nvim"
+        use "glepnir/dashboard-nvim"
         use "tweekmonster/startuptime.vim"
         use "907th/vim-auto-save"
         use "karb94/neoscroll.nvim"
@@ -205,7 +208,7 @@ return packer.startup(
         --use "fatih/vim-go" --Golang
         use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
         use 'simrat39/rust-tools.nvim'
-
+        use 'mfussenegger/nvim-jdtls'
         -- Bracey live server
          use 'turbio/bracey.vim'
 

@@ -9,6 +9,7 @@ async =
             require("utils")
             require("plugins")
             require("mappings")
+            require("autocmds")
          end
    )
 )

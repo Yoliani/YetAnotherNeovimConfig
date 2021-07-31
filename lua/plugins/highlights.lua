@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 
-local colors = require "themes/javacafe"
+local colors = require "themes/gruvbox"
 
 local white = colors.white
 local darker_black = colors.darker_black

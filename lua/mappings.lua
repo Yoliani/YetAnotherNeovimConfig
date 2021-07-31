@@ -122,3 +122,14 @@ map("n","<leader>tn","<cmd>lua require('tests.nui_base16themes').b16themes()<CR>
 map("n", "<F9>", [[:w<CR>:vert ter /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 "%"<CR>]], {noremap = true, silent = true})
 
 map('n', '<F8>', ':!jfx %<CR>', {noremap = true, silent = true})
+
+-- Java specific
+map("n", "<leader>di", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opt)
+map("n", "<leader>dt", "<Cmd>lua require'jdtls'.test_class()<CR>", opt)
+map("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opt)
+map("v", "<leader>de", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opt)
+map("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opt)
+map("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opt)
+map("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+
+

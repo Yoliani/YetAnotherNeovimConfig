@@ -12,6 +12,11 @@ local def = {
       "python",
       "nnoremap <buffer> <F5> :w<CR>:vert ter python3 '%'<CR>",
     },
+    {
+      "custom_statusline",
+      "*",
+      "VimEnter,ColorScheme * call v:lua.tab.statusline.set_colors()"
+    },
     --[[
     {
       "BufWinEnter",

@@ -1,2 +1,2 @@
 #Ignore compile plugins for packer
-/plugin/
+**/plugin/packer_compiled.lua

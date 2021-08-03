@@ -4,6 +4,8 @@
 
 require "plugins.top-bufferline"
 require "plugins.statusline"
+--require "tests.statusline"
+--require "tests.statustabline"
 --require "plugins.statustabline"
 --require "modules._statusline"
 require("colorizer").setup()
@@ -65,6 +67,7 @@ require 'plugins.flutter-config-tools'
 require 'plugins.rust-config-tools'
 -- Reload config
 require 'nv-reload.init'
-
+--require 'plugins.orgmode_config'
+--require"plugins"
 --Tests
 --require("tests.nui_lsp")

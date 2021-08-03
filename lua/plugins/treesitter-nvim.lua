@@ -14,7 +14,7 @@ ts_config.setup {
         "dart",
         "bash",
         "rust",
-	"typescript",
+        "typescript",
 	"tsx",
 	"regex"
     },
@@ -33,4 +33,14 @@ ts_config.setup {
     colors = {}, -- table of hex strings
     termcolors = {} -- table of colour name strings
   }
+}
+
+local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+
+parser_configs.norg = {
+    install_info = {
+        url = "https://github.com/vhyrro/tree-sitter-norg",
+        files = { "src/parser.c" },
+        branch = "main"
+    },
 }

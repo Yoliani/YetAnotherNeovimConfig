@@ -43,7 +43,7 @@ Option.g{
   termguicolors =  true,
   cmdheight = 1,
   numberwidth = 1,
-  
+  cursorline = true,  
   
 }
 
@@ -132,6 +132,7 @@ end
 
 
 vim.cmd("source $HOME/.config/nvim/plugins/kite.vim")
+vim.cmd("source $HOME/.config/nvim/plugins/cursor.vim")
 --[[
 vim.cmd("source $HOME/.config/nvim/plugins/jdtls.vim")
 
@@ -142,4 +143,4 @@ vim.cmd([[if has('nvim-0.6')
   			 augroup end
 		      endif]]--)
 
-
+vim.cmd("set guicursor=v-c-sm:block,n-i-ci-ve:ver25,r-cr-o:hor20")

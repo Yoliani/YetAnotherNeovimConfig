@@ -109,7 +109,8 @@ return packer.startup(
         --use {'kristijanhusak/vim-dadbod-completion', { type = 'opt', branch = 'async' }}
         --use {'kristijanhusak/vim-dadbod-ui', { branch = 'async' }}
 
-
+        --Minimap
+        use 'wfxr/minimap.vim'
 
         --File managing , picker etc
         use "kyazdani42/nvim-tree.lua"

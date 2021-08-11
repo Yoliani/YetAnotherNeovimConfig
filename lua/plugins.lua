@@ -67,7 +67,11 @@ require 'plugins.flutter-config-tools'
 require 'plugins.rust-config-tools'
 -- Reload config
 require 'nv-reload.init'
+
+--Notes
+require "plugins.neorg-config"
 --require 'plugins.orgmode_config'
 --require"plugins"
 --Tests
 --require("tests.nui_lsp")
+

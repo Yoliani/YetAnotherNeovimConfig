@@ -207,4 +207,7 @@ function M.setup()
     require('jdtls').start_or_attach(config)
 end
  vim.fn.expand("$HOME/jdtls_launch.sh")
+
+_G.tab.nvjdtls = M
 return M
+

@@ -33,11 +33,10 @@ require('compe').setup {
         vsnip = true,
         tags = true,
         spell = true,
+        neorg = true,
     }
 }
 
---g.compe.source.tabnine = true
---vim.cmd(' let g:compe.source.tabnine = v:true')
 local ls = require("luasnip")
 
 ls.config.set_config(
@@ -103,6 +102,4 @@ end
 
 vim.api.nvim_set_keymap("i", "<CR>", "v:lua.completions()", {expr = true})
 
-local completion = require('completion')
---vim.g.completions_enable_snippet =
 

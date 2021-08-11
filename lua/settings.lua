@@ -43,8 +43,9 @@ Option.g{
   termguicolors =  true,
   cmdheight = 1,
   numberwidth = 1,
-  cursorline = true,  
-  
+  cursorline = true,
+  --columns = 100,
+  --lines = 50,
 }
 
 
@@ -68,7 +69,8 @@ Option.w {
   cul = true,
   signcolumn =  "yes",
   number = true,
-
+  
+  
 }
 
 --Buffer options

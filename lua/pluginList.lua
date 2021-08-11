@@ -17,7 +17,7 @@ return packer.startup(
         use "glepnir/lspsaga.nvim"
         use({'scalameta/nvim-metals'})
         use 'nvim-lua/completion-nvim'
-        use "hrsh7th/nvim-compe"
+        use  "hrsh7th/nvim-compe"
         use {
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
@@ -45,7 +45,7 @@ return packer.startup(
         
         
         use "onsails/lspkind-nvim"
-        use "sbdchd/neoformat"
+        use "sbdchd/neoformat"--Formatter
         use "nvim-lua/plenary.nvim"
         use "kabouzeid/nvim-lspinstall"
         use "sheerun/vim-polyglot"
@@ -65,7 +65,7 @@ return packer.startup(
 	--]]
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
-        use 'lukas-reineke/format.nvim'-- format on save
+        --use 'lukas-reineke/format.nvim'-- format on save
         
         --Tabnine
         use {'tzachar/compe-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-compe'}
@@ -119,8 +119,8 @@ return packer.startup(
         use "nvim-telescope/telescope-media-files.nvim"
         use "nvim-lua/popup.nvim"
 
-	--Para Terminal Kitty
-        use "fladson/vim-kitty"
+				--Para Terminal Kitty
+        --use "fladson/vim-kitty"
 	      use 'MunifTanjim/nui.nvim'
 
         -- misc
@@ -158,49 +158,12 @@ return packer.startup(
         --Coc neovim
         --use 'neoclide/coc.nvim' --Problems with compe-completion and disable automatically by Kite
         
-        
-
-
-
-
-
-
-    
-        --Orgmode
-        --[[
-        use {'kristijanhusak/orgmode.nvim', config = function()
-                require('orgmode').setup{}
-        end
-        }--]]
-        --https://github.com/kristijanhusak/orgmode.nvim
-        
-        --Para Maven Proyects
-        --use 'mikelue/vim-maven-plugin'
+      
         -- Neorg, TAKE NOTES
+				use  "vhyrro/neorg"
         use {
             "vhyrro/neorg",
-            config = function()
-                require('neorg').setup {
-                    -- Tell Neorg what modules to load
-                    load = {
-                        ["core.defaults"] = {}, -- Load all the default modules
-                        ["core.keybinds"] = { -- Configure core.keybinds
-                            config = {
-                                default_keybinds = true, -- Generate the default keybinds
-                                neorg_leader = "<Leader>o" -- This is the default if unspecified
-                            }
-                        },
-                        ["core.norg.concealer"] = {}, -- Allows for use of icons
-                        ["core.norg.dirman"] = { -- Manage your directories with Neorg
-                            config = {
-                                workspaces = {
-                                    my_workspace = "~/neorg"
-                                }
-                            }
-                        }
-                    },
-                }
-            end,
+            after = "nvim-treesitter",
             requires = "nvim-lua/plenary.nvim"
         }
 

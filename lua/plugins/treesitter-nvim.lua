@@ -1,5 +1,15 @@
 local ts_config = require("nvim-treesitter.configs")
 
+local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+
+parser_configs.norg = {
+    install_info = {
+        url = "https://github.com/vhyrro/tree-sitter-norg",
+        files = { "src/parser.c" },
+        branch = "main"
+    },
+}
+
 ts_config.setup {
     ensure_installed = {
         "javascript",
@@ -11,6 +21,7 @@ ts_config.setup {
         "python",
         "go",
         "java",
+        "norg",
         "dart",
         "bash",
         "rust",
@@ -35,12 +46,4 @@ ts_config.setup {
   }
 }
 
-local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
 
-parser_configs.norg = {
-    install_info = {
-        url = "https://github.com/vhyrro/tree-sitter-norg",
-        files = { "src/parser.c" },
-        branch = "main"
-    },
-}

@@ -1,77 +1,39 @@
--- load all plugins
---require"pluginList"
---require "utils"
-
-require "plugins.top-bufferline"
-require "plugins.statusline"
---require "tests.statusline"
---require "tests.statustabline"
---require "plugins.statustabline"
---require "modules._statusline"
-require("colorizer").setup()
-require("neoscroll").setup() -- smooth scroll
-
--- lsp stuff
-require "plugins.nvim-lspconfig"
-require "plugins.compe-completion"
-  
-require "plugins.highlights"
-require "plugins.treesitter-nvim"
---ñrequire "mappings"
-require "plugins.telescope-nvim"
-require "plugins.nvimTree" -- file tree stuff
-require "plugins.file-icons"
-   
--- git signs , lsp symbols etc
-require "plugins.gitsigns-nvim"
+--Load plugins config
 require("nvim-autopairs").setup()
 require("lspkind").init()
-
---Settings--
---require('settings')
-require "plugins.zenmode"
-require "plugins.whichkey"
-require "plugins.dashboard"
 require("nvim_comment").setup()
-require("plugins.nv-jdtls")
---
--- Para ejecutar python con la tecla F5
---require "plugins.pythonterminal"
+require("colorizer").setup()
+require("neoscroll").setup()
 
--- Instalador de plugins similar a vim-plug
--- require "paq-nvim"
+local tab_modules = {
+    "plugins.top-bufferline",
+    "plugins.lualine",
+    "plugins.nvim-lspconfig",
+    "plugins.compe-completion",
+    "plugins.highlights",
+    "plugins.treesitter-nvim",
+    "plugins.telescope-nvim",
+    "plugins.file-icons",
+    "plugins.nvimTree",
+    "plugins.gitsigns-nvim",
+    "plugins.zenmode",
+    "plugins.whichkey",
+    "plugins.dashboard",
+    "plugins.nv-jdtls",
+    "plugins.float-term",
+    "plugins.navigator-config",
+    "plugins.discord",
+    "plugins.neoformat-config",
+    "plugins.todo-list",
+    "plugins.flutter-config-tools",
+    "plugins.rust-config-tools",
+    "nv-reload.init",
+    "plugins.neorg-config",
+    "plugins.formatter-config",
+    --Tests
+    --"tests.nui_lsp"
+}
 
---require'lspconfig'.pyright.setup{}
---Configuracion para todos los lenguajes usados
---require('languages-config')
-
---Configuracion de multiples cursores como vscode
---require('multiple-cursors')
-
--- terminal flotante
-require('plugins.float-term')
-
---Navigator config
-require 'plugins.navigator-config'
---Discord
-require 'plugins.discord'
-
---require'lspconfig'.pyls.setup{on_attach=require'completion'.on_attach}
-require("plugins.neoformat-config")
-
---Todo comments
-require 'plugins.todo-list'
---Configs-lsp
-require 'plugins.flutter-config-tools'
-
-require 'plugins.rust-config-tools'
--- Reload config
-require 'nv-reload.init'
-
---Notes
-require "plugins.neorg-config"
---require 'plugins.orgmode_config'
---require"plugins"
---Tests
---require("tests.nui_lsp")
-
+for i = 1, #tab_modules, 1 do
+    pcall(require, tab_modules[i])
+end

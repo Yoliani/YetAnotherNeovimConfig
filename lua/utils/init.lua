@@ -2,7 +2,9 @@ Option = require "utils.option"
 Variable = require "utils.variable"
 Keymap = require "utils.keymap"
 Agrp = require "utils.agrp"
+Functions = require "utils.functions"
 Augroup = Agrp.set
+
 --print ("fuck require utils.agrp and set global Augroup.type=" .. type(Augroup) .. ', my_name=' .. Agrp.my_name)
 
 map = vim.keymap.map
@@ -20,3 +22,11 @@ function _G.dump(...)
 	local objects = vim.tbl_map(vim.inspect, { ... })
 	print(unpack(objects))
 end
+
+
+
+_G.tab.options = Option
+_G.tab.variables = Variable
+_G.tab.keymaps = Keymap
+_G.tab.augroups = Augroup
+_G.tab.functions = Functions

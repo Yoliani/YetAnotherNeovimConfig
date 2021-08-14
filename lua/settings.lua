@@ -10,7 +10,7 @@ opts("o", "termguicolors", true)
 vim.opt.termguicolors = true
 local vcmd = vim.cmd
 vcmd "syntax on"
---vcmd "colorscheme gruvbox"
+vcmd "colorscheme onedark"
 
 require('utils')
 
@@ -44,6 +44,7 @@ Option.g{
   cmdheight = 1,
   numberwidth = 1,
   cursorline = true,
+  
   --columns = 100,
   --lines = 50,
 }
@@ -134,7 +135,7 @@ end
 
 
 vim.cmd("source $HOME/.config/nvim/plugins/kite.vim")
-vim.cmd("source $HOME/.config/nvim/plugins/cursor.vim")
+
 --[[
 vim.cmd("source $HOME/.config/nvim/plugins/jdtls.vim")
 

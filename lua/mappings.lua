@@ -64,7 +64,7 @@ settings_manager.load_settings()
 --
 -- Cycle Themes
 --
-local base16 = require "base16"
+--local base16 = require "base16"
 --[[
 local themes_names = {
     "material","onedark","nord", "monokai", "gruvbox-light-hard", "twilight", "google-light", "google-dark","brewer", "gruvbox-light-soft", "solarized-light", "solarized-dark", "space", "default", "zenburn"
@@ -72,9 +72,9 @@ local themes_names = {
 
 local log_cycle_theme = true
 ]]--
-local base16_position = settings_manager.get_value("current_theme", 0)
+--local base16_position = settings_manager.get_value("current_theme", 0)
 --base16_position = (base16_position - 1 % #themes_names) + 1
-base16(base16.themes[base16_position], true)
+--base16(base16.themes[base16_position], true)
 
 --[[
 function _G.cycle_teme ()

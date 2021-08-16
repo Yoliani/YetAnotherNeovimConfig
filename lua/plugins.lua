@@ -6,34 +6,34 @@ require("colorizer").setup()
 require("neoscroll").setup()
 
 local tab_modules = {
-    "plugins.top-bufferline",
-    "plugins.lualine",
-    "plugins.nvim-lspconfig",
-    "plugins.compe-completion",
-    "plugins.highlights",
-    "plugins.treesitter-nvim",
-    "plugins.telescope-nvim",
-    "plugins.file-icons",
-    "plugins.nvimTree",
-    "plugins.gitsigns-nvim",
-    "plugins.zenmode",
-    "plugins.whichkey",
-    "plugins.dashboard",
-    "plugins.nv-jdtls",
-    "plugins.float-term",
-    "plugins.navigator-config",
-    "plugins.discord",
-    "plugins.neoformat-config",
-    "plugins.todo-list",
-    "plugins.flutter-config-tools",
-    "plugins.rust-config-tools",
-    "nv-reload.init",
-    "plugins.neorg-config",
-    "plugins.formatter-config",
-    --Tests
-    --"tests.nui_lsp"
+  "plugins.top-bufferline",
+  "plugins.lualine",
+  "plugins.nvim-lspconfig",
+  "plugins.compe-completion",
+  "plugins.highlights",
+  "plugins.treesitter-nvim",
+  "plugins.telescope-nvim",
+  "plugins.file-icons",
+  "plugins.nvimTree",
+  "plugins.gitsigns-nvim",
+  "plugins.zenmode",
+  "plugins.whichkey",
+  "plugins.dashboard",
+  "plugins.nv-jdtls",
+  "plugins.float-term",
+  "plugins.navigator-config",
+  "plugins.discord",
+  "plugins.neoformat-config",
+  "plugins.todo-list",
+  "plugins.flutter-config-tools",
+  "plugins.rust-config-tools",
+  "nv-reload.init",
+  "plugins.neorg-config",
+  "plugins.formatter-config"
+  --Tests
+  --"tests.nui_lsp"
 }
 
 for i = 1, #tab_modules, 1 do
-    pcall(require, tab_modules[i])
+  pcall(require, tab_modules[i])
 end

@@ -10,8 +10,14 @@ opts("o", "termguicolors", true)
 vim.opt.termguicolors = true
 local vcmd = vim.cmd
 vcmd "syntax on"
-vcmd "colorscheme onedark"
+--vcmd "colorscheme nightfox"
+-- Example in lua
+vim.g.nightfox_style = "palefox"
+vim.g.nightfox_color_delimiter = "red"
+vim.g.nightfox_italic_comments = 1
 
+-- Load the colorscheme
+require("nightfox").set()
 require("utils")
 
 -- colorscheme related stuff
@@ -76,13 +82,15 @@ Option.b {
 vim.cmd [[packadd packer.nvim]]
 vim.cmd "autocmd BufWritePost pluginsList.lua PackerCompile"
 
-vcmd(
+vim.cmd(
   [[
+  
     augroup lsp
-    au!
-    au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})
+      au!
+      au FileType java lua require('jdtls').start_or_attach({cmd = {'~/.config/nvim/plugins/java-lsp.sh'}})
     augroup end
-  ]]
+  
+]]
 )
 
 vcmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])

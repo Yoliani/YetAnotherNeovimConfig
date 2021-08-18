@@ -4,13 +4,14 @@ require("lspkind").init()
 require("nvim_comment").setup()
 require("colorizer").setup()
 require("neoscroll").setup()
+--require("plugins.nv-jdtls").setup()
 
 local tab_modules = {
   "plugins.top-bufferline",
-  "plugins.lualine",
+  "plugins.galaxyline-config",
   "plugins.nvim-lspconfig",
   "plugins.compe-completion",
-  "plugins.highlights",
+  --"plugins.highlights",
   "plugins.treesitter-nvim",
   "plugins.telescope-nvim",
   "plugins.file-icons",

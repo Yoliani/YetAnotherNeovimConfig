@@ -44,18 +44,20 @@ return packer.startup(
 
     use "onsails/lspkind-nvim"
     use "sbdchd/neoformat"
-     --Formatter
+    --Formatter
     use "mhartington/formatter.nvim"
     use "nvim-lua/plenary.nvim"
     use "kabouzeid/nvim-lspinstall"
     use "sheerun/vim-polyglot"
     use "lewis6991/gitsigns.nvim"
     use "akinsho/nvim-bufferline.lua"
-    --use "glepnir/galaxyline.nvim"
+    use "glepnir/galaxyline.nvim"
+    --[[
     use {
       "hoob3rt/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
+    --]]
     use "kosayoda/nvim-lightbulb"
 
     --[[
@@ -148,6 +150,7 @@ return packer.startup(
     --use 'neoclide/coc.nvim' --Problems with compe-completion and disable automatically by Kite
 
     -- Neorg, TAKE NOTES
+    use "vhyrro/neorg"
     use {
       "vhyrro/neorg",
       after = "nvim-treesitter",
@@ -172,6 +175,7 @@ return packer.startup(
     use "folke/tokyonight.nvim"
     use "navarasu/onedark.nvim"
     use "projekt0n/github-nvim-theme"
+    use "EdenEast/nightfox.nvim"
 
     --Languages
     --use "fatih/vim-go" --Golang

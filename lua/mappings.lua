@@ -1,9 +1,9 @@
- local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true}
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+local function map(mode, lhs, rhs, opts)
+  local options = {noremap = true}
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 local opt = {}
@@ -47,19 +47,19 @@ map("n", "<leader>22", ":DiffviewOpen master<CR>", {noremap = true, silent = tru
 map("n", "<leader>3", ":<C-u>split<CR>")
 map("n", "<leader>31", ":<C-u>vsplit<CR>")
 
-
 local cmd = vim.cmd
 
-cmd(':command! WQ wq')
-cmd(':command! WQ wq')
-cmd(':command! Wq wq')
-cmd(':command! Wqa wqa')
-cmd(':command! W w')
-cmd(':command! Q q')
+cmd(":command! WQ wq")
+cmd(":command! WQ wq")
+cmd(":command! Wq wq")
+cmd(":command! Wqa wqa")
+cmd(":command! W w")
+cmd(":command! Q q")
 
-
-local settings_manager = require '../utils/functions'
-settings_manager.load_settings()
+local settings_manager = require "../utils/functions"
+settings_manager.load_settings() --local base16_position = settings_manager.get_value("current_theme", 0) -- settings_manager.set_value("current_theme", base16_position) --base16_position = (base16_position - 1 % #themes_names) + 1 -- if log_cycle_theme == true then --base16(base16.themes[base16_position], true) --print(base16_position)
+--
+--, true)
 
 --
 -- Cycle Themes
@@ -71,24 +71,15 @@ local themes_names = {
 }
 
 local log_cycle_theme = true
-]]--
---local base16_position = settings_manager.get_value("current_theme", 0)
---base16_position = (base16_position - 1 % #themes_names) + 1
---base16(base16.themes[base16_position], true)
-
---[[
+]] --[[
 function _G.cycle_teme ()
     if base16_position == #themes_names then
         base16_position = 0
     end
     base16_position = (base16_position % #themes_names) + 1
     --print("BAse position = ", base16_position)
-    base16(base16.themes[themes_names[base16_position]]--, true)
-   -- settings_manager.set_value("current_theme", base16_position)
-   -- if log_cycle_theme == true then
-        --print(base16_position)
-   --     print("Theme changed to: " .. themes_names[base16_position])
-   -- end
+    base16(base16.themes[themes_names[base16_position]] --     print("Theme changed to: " .. themes_names[base16_position])
+-- end
 --end
 --]]
 --print(vim.inspect(base16.theme_names()))
@@ -98,13 +89,12 @@ function _G.cycle_teme ()
 --TODO: Add a mapping for execute java
 -- /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Dfile.encoding=UTF-8
 
-
 --map("n", "<leader>tn", ":lua cycle_teme()<Cr>")
 vim.api.nvim_set_keymap(
   "n",
   "<leader>ln",
   "<cmd>lua require('tests.nui_lsp').lsp_rename()<CR>",
-  { noremap = true, silent = true }
+  {noremap = true, silent = true}
 )
 vim.cmd(
   [[
@@ -117,11 +107,16 @@ vim.cmd(
 )
 
 map("n", "<F4>", [[:w<CR>:vert ter python3 "%"<CR>]], {noremap = true, silent = true}) -- term over right
-map("n","<leader>tn","<cmd>lua require('tests.nui_base16themes').b16themes()<CR>", { noremap = true, silent = true })
+map("n", "<leader>tn", "<cmd>lua require('tests.nui_base16themes').b16themes()<CR>", {noremap = true, silent = true})
 
-map("n", "<F9>", [[:w<CR>:vert ter /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 "%"<CR>]], {noremap = true, silent = true})
+map(
+  "n",
+  "<F9>",
+  [[:w<CR>:vert ter /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 "%"<CR>]],
+  {noremap = true, silent = true}
+)
 
-map('n', '<F8>', ':!jfx %<CR>', {noremap = true, silent = true})
+map("n", "<F8>", ":!jfx %<CR>", {noremap = true, silent = true})
 
 -- Java specific
 map("n", "<leader>di", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opt)
@@ -131,5 +126,3 @@ map("v", "<leader>de", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR
 map("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opt)
 map("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opt)
 map("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
-
-

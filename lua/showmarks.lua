@@ -1,3 +1,4 @@
+local _2afile_2a = "fnl/showmarks.fnl"
 local function get_marks()
   local marks = vim.fn.getmarklist("%")
   local ns = 0

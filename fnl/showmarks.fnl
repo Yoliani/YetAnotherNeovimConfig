@@ -5,3 +5,4 @@
    (print (vim.inspect marks))))
 
 (get-marks)
+

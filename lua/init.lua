@@ -45,6 +45,9 @@ do local _ = ({nil, _1_, nil, {{}, nil, nil, nil}})[2] end
 nvim.g.maplocalleader = " "
 nvim.o.termguicolors = true
 nvim.o.mouse = "a"
-nvim.ex.colorscheme("gruvbox")
+nvim.o.clipboard = "unnamedplus"
+nvim.w.number = true
+nvim.o.updatetime = 100
+nvim.ex.colorscheme("nightfox")
 nvim.ex.highlight("NormalFloat ctermbg=grey guibg=grey")
 return mapping.setup()

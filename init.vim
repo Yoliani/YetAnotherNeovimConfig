@@ -11,7 +11,9 @@ Plug 'folke/which-key.nvim'
 Plug 'preservim/nerdtree'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'neovim/nvim-lspconfig'
-
+Plug 'akinsho/nvim-bufferline.lua'
+Plug 'tanvirtin/monokai.nvim'
+Plug 'EdenEast/nightfox.nvim'
 call plug#end()
 
 

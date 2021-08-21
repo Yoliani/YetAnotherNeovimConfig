@@ -45,7 +45,6 @@ do
   do
     local v_25_auto
     local function setup0()
-      return print("I would do some mappings")
     end
     v_25_auto = setup0
     _1_["setup"] = v_25_auto

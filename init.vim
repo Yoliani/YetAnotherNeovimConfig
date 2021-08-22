@@ -14,6 +14,10 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'tanvirtin/monokai.nvim'
 Plug 'EdenEast/nightfox.nvim'
+Plug 'Mofiqul/vscode.nvim'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 

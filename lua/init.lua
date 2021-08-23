@@ -1,4 +1,4 @@
-local _2afile_2a = "fnl/init.fnl"
+local _2afile_2a = "/home/edgardoyoliani/.config/nvim/fnl/init.fnl"
 local _1_
 do
   local name_4_auto = "dotfiles"
@@ -25,11 +25,11 @@ autoload = _3_
 local function _6_(...)
   local ok_3f_21_auto, val_22_auto = nil, nil
   local function _5_()
-    return {require("dotfiles.mapping"), require("aniseed.nvim"), require("plugins.nerdTree")}
+    return {require("dotfiles.mapping"), require("aniseed.nvim"), require("plugins.bufferline-config")}
   end
   ok_3f_21_auto, val_22_auto = pcall(_5_)
   if ok_3f_21_auto then
-    _1_["aniseed/local-fns"] = {require = {mapping = "dotfiles.mapping", nvim = "aniseed.nvim", plugins = "plugins.nerdTree"}}
+    _1_["aniseed/local-fns"] = {require = {mapping = "dotfiles.mapping", nvim = "aniseed.nvim", plugins = "plugins.bufferline-config"}}
     return val_22_auto
   else
     return print(val_22_auto)
@@ -48,7 +48,7 @@ nvim.o.mouse = "a"
 nvim.o.clipboard = "unnamedplus"
 nvim.w.number = true
 nvim.o.updatetime = 100
-nvim.ex.colorscheme("vscode")
+nvim.ex.colorscheme("nightfox")
 nvim.ex.highlight("NormalFloat ctermbg=grey guibg=grey")
 mapping.setup()
 local _1_ = _1_

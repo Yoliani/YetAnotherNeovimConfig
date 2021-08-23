@@ -1,4 +1,4 @@
-local _2afile_2a = "fnl/plugins/nerdTree.fnl"
+local _2afile_2a = "/home/edgardoyoliani/.config/nvim/fnl/plugins/nerdTree.fnl"
 local _1_
 do
   local name_4_auto = "plugins.nerdTree"

@@ -1,4 +1,4 @@
-local _2afile_2a = "fnl/dotfiles/mapping.fnl"
+local _2afile_2a = "/home/edgardoyoliani/.config/nvim/fnl/dotfiles/mapping.fnl"
 local _1_
 do
   local name_4_auto = "dotfiles.mapping"

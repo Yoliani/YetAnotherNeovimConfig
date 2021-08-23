@@ -14,7 +14,7 @@
 (set nvim.w.number  true)
 ;(vim.g.vscode_style "dark")
 (set nvim.o.updatetime 100)
-(nvim.ex.colorscheme :vscode)
+(nvim.ex.colorscheme :nightfox)
 (nvim.ex.highlight "NormalFloat ctermbg=grey guibg=grey")
 
 (mapping.setup)

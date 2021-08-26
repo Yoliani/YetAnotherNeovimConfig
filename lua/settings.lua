@@ -10,14 +10,17 @@ opts("o", "termguicolors", true)
 vim.opt.termguicolors = true
 local vcmd = vim.cmd
 vcmd "syntax on"
---vcmd "colorscheme nightfox"
+vcmd "colorscheme gruvbox"
+
+vcmd ":hi NonText guifg=bg"
 -- Example in lua
-vim.g.nightfox_style = "palefox"
-vim.g.nightfox_color_delimiter = "red"
-vim.g.nightfox_italic_comments = 1
+--vim.g.nightfox_style = "palefox"
+--vim.g.nightfox_color_delimiter = "red"
+--vim.g.nightfox_italic_comments = 1
 
 -- Load the colorscheme
-require("nightfox").set()
+--require("nightfox").set()
+
 require("utils")
 
 -- colorscheme related stuff

@@ -83,34 +83,24 @@ local function make_config()
   }
 end
 
--- lsp-install
 local function setup_servers()
   require "lspinstall".setup()
-
-  -- get all installed servers
   local servers = require "lspinstall".installed_servers()
-  -- ... and add manually installed servers
-  table.insert(servers, "clangd")
-  table.insert(servers, "sourcekit")
-
   for _, server in pairs(servers) do
     local config = make_config()
-
-    -- language specific config
     if server == "lua" then
       config.settings = lua_settings
+      require "lspconfig"[server].setup(config)
+    else
+      require "lspconfig"[server].setup {
+        on_attach = on_attach,
+        flags = {
+          debounce_text_changes = 150
+        }
+      }
     end
-    if server == "sourcekit" then
-      config.filetypes = {"swift", "objective-c", "objective-cpp"} -- we don't want c and cpp!
-    end
-    if server == "clangd" then
-      config.filetypes = {"c", "cpp"} -- we don't want objective-c and objective-cpp!
-    end
-
-    require "lspconfig"[server].setup(config)
   end
 end
-
 setup_servers()
 
 -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
@@ -124,27 +114,6 @@ vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnos
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
-
-local function setup_servers2()
-  require "lspinstall".setup()
-  local servers = require "lspinstall".installed_servers()
-  for _, server in pairs(servers) do
-    require "lspconfig"[server].setup {
-      on_attach = on_attach,
-      flags = {
-        debounce_text_changes = 150
-      }
-    }
-  end
-end
-
-setup_servers2()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require "lspinstall".post_install_hook = function()
-  setup_servers2() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
 
 local protocol = require "vim.lsp.protocol"
 protocol.CompletionItemKind = {

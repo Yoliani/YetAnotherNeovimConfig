@@ -1,4 +1,5 @@
 local async
+--require "impatient"
 _G.tab = {}
 async =
   vim.loop.new_async(

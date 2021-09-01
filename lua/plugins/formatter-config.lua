@@ -27,6 +27,17 @@ require("formatter").setup(
           }
         end
       }
+      --[[
+          php = {
+      function()
+        {
+          exe = './vendor/bin/phpcbf',
+          args = { '--standard=PSR12', bufname },
+          stdin = false,
+        }
+      end
+    }
+--]]
     }
   }
 )

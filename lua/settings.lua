@@ -84,7 +84,7 @@ Option.b {
 
 vim.cmd [[packadd packer.nvim]]
 vim.cmd "autocmd BufWritePost pluginsList.lua PackerCompile"
-
+--[[
 vim.cmd(
   [[
   
@@ -94,7 +94,7 @@ vim.cmd(
     augroup end
   
 ]]
-)
+--)]]
 
 vcmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
 
@@ -135,6 +135,8 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 vim.cmd("source $HOME/.config/nvim/plugins/kite.vim")
+vim.cmd("source $HOME/.config/nvim/plugins/jdtls.vim")
+
 --)
 
 --[[
@@ -145,6 +147,5 @@ vim.cmd([[if has('nvim-0.6')
    			 au!
 		    	  au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})
   			 augroup end
-		      endif]] vim.cmd(
-  "set guicursor=v-c-sm:block,n-i-ci-ve:ver25,r-cr-o:hor20"
-)
+		      endif]]
+vim.cmd("set guicursor=v-c-sm:block,n-i-ci-ve:ver25,r-cr-o:hor20")

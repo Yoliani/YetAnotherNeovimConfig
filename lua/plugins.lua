@@ -21,7 +21,7 @@ local tab_modules = {
   "plugins.zenmode",
   "plugins.whichkey",
   "plugins.dashboard",
-  "plugins.nv-jdtls",
+  "plugins.jdtls",
   "plugins.float-term",
   "plugins.navigator-config",
   "plugins.discord",
@@ -32,7 +32,8 @@ local tab_modules = {
   "nv-reload.init",
   "plugins.neorg-config",
   "plugins.formatter-config"
-  --Tests
+  --Test
+  --re('impatient'):e
   --"tests.nui_lsp"
 }
 

@@ -5,7 +5,7 @@ local use = packer.use
 return packer.startup(
   function()
     use "wbthomason/packer.nvim"
-
+    use {"lewis6991/impatient.nvim", rocks = "mpack"}
     -- color related stuff
     use "norcalli/nvim-base16.lua"
     use "norcalli/nvim-colorizer.lua"
@@ -52,12 +52,12 @@ return packer.startup(
     use "lewis6991/gitsigns.nvim"
     use "akinsho/nvim-bufferline.lua"
     --use "glepnir/galaxyline.nvim"
-    
+
     use {
       "hoob3rt/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
-    
+
     use "kosayoda/nvim-lightbulb"
 
     --[[

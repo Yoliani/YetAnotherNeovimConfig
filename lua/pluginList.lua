@@ -177,13 +177,14 @@ return packer.startup(
     use "projekt0n/github-nvim-theme"
     use "EdenEast/nightfox.nvim"
     use "bluz71/vim-nightfly-guicolors"
+    use "shaunsingh/nord.nvim"
     --Languages
     --use "fatih/vim-go" --Golang
-    use {"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"}
+    --use {"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"}
     use "simrat39/rust-tools.nvim"
     --use 'mfussenegger/nvim-jdtls'
     -- Bracey live server
-    use "turbio/bracey.vim"
+    --use "turbio/bracey.vim"
 
     -- Discord presence ---
     use "andweeb/presence.nvim"

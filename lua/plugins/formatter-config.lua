@@ -11,6 +11,15 @@ require("formatter").setup(
   {
     logging = false,
     filetype = {
+      php = {
+        function()
+          return {
+            exe = "php-cs-fixer",
+            args = {"fix", "-q"},
+            stdin = false
+          }
+        end
+      },
       javascript = {prettier},
       typescript = {prettier},
       html = {prettier},
@@ -47,7 +56,7 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.js,*.ts,*.css,*.scss,*.md,*.html,*.lua : FormatWrite
+  autocmd BufWritePost *.js,*.ts,*.css,*.scss,*.md,*.html,*.lua,*.php : FormatWrite
 augroup END
 ]],
   true

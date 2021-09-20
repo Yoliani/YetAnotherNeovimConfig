@@ -125,7 +125,7 @@ return packer.startup(
     -- misc
     use "glepnir/dashboard-nvim"
     use "tweekmonster/startuptime.vim"
-    use "907th/vim-auto-save"
+    --use "907th/vim-auto-save"
     use "karb94/neoscroll.nvim"
     use "kdav5758/TrueZen.nvim"
 
@@ -170,13 +170,13 @@ return packer.startup(
 
     --Themes
     --use 'morhetz/gruvbox'
-    use "shaunsingh/moonlight.nvim"
+    --use "shaunsingh/moonlight.nvim"
     use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-    use "folke/tokyonight.nvim"
+    --use "folke/tokyonight.nvim"
     use "navarasu/onedark.nvim"
-    use "projekt0n/github-nvim-theme"
+    --use "projekt0n/github-nvim-theme"
     use "EdenEast/nightfox.nvim"
-    use "bluz71/vim-nightfly-guicolors"
+    --use "bluz71/vim-nightfly-guicolors"
     use "shaunsingh/nord.nvim"
     --Languages
     --use "fatih/vim-go" --Golang
@@ -208,6 +208,7 @@ return packer.startup(
         require("rest-nvim").setup()
       end
     }
+
   end,
   {
     display = {

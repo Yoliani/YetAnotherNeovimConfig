@@ -1,19 +1,47 @@
+local cmd = vim.cmd
 
--- Auto install if not exist
-local install_path = vim.fn.stdpath('data')..'/site/pack/paqs/opt/paq-nvim'
+cmd "packadd packer.nvim"
 
-if fn.empty(vim.fn.glob(install_path)) > 0 then
-  cmd('!git clone --depth 1 https://github.com/savq/paq-nvim.git '..install_path)
+local present, packer = pcall(require, "packer")
+
+if not present then
+  local packer_path = vim.fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
+
+  print "Cloning packer.."
+  -- remove the dir before cloning
+  vim.fn.delete(packer_path, "rf")
+  vim.fn.system {
+    "git",
+    "clone",
+    "https://github.com/wbthomason/packer.nvim",
+    "--depth",
+    "20",
+    packer_path
+  }
+
+  cmd "packadd packer.nvim"
+  present, packer = pcall(require, "packer")
+
+  if present then
+    print "Packer cloned successfully."
+  else
+    error("Couldn't clone packer !\nPacker path: " .. packer_path .. "\n" .. packer)
+  end
 end
 
--- Load the plugin manager
-cmd 'packadd paq-nvim'
+packer.init {
+  display = {
+    open_fn = function()
+      return require("packer.util").float {border = "single"}
+    end,
+    prompt_border = "single"
+  },
+  git = {
+    clone_timeout = 600 -- Timeout, in seconds, for git clones
+  },
+  auto_clean = true,
+  compile_on_sync = true
+  --    auto_reload_compiled = true
+}
 
--- Set the short hand
-local plug = require('paq-nvim').paq
-
--- Make paq manage it self
-plug {'savq/paq-nvim', opt=true}
-
-
-require "paq-plugs"
+return packers

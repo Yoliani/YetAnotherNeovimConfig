@@ -10,8 +10,27 @@ opts("o", "termguicolors", true)
 vim.opt.termguicolors = true
 local vcmd = vim.cmd
 vcmd "syntax on"
-vcmd "colorscheme nord"
-
+require("github-theme").setup(
+  {
+    comment_style = "NONE",
+    keyword_style = "bold",
+    function_style = "italic",
+    variable_style = "NONE"
+    -- other config
+  }
+)
+require("circles").setup(
+  {
+    icons = {
+      empty = "",
+      filled = "",
+      lsp_prefix = ""
+    },
+    -- override lsp_diagnostic virtual-text icon with `icons.lsp_prefix`
+    lsp = true
+  }
+)
+vcmd "colorscheme github_dark"
 vcmd ":hi NonText guifg=bg"
 -- Example in lua
 --vim.g.nightfox_style = "palefox"
@@ -32,7 +51,7 @@ require("utils")
 --- Settings ----
 Option.g {
   fileencoding = "utf-8", -- the encoding written to a file
-  updatetime = 100, -- faster completion
+  updatetime = 200, -- faster completion
   title = true, -- set the title of window to the value of the titlestring
   titlestring = "%<%F%=%l/%L - nvim", -- what the title of the window will be set to
   backup = false, -- creates a backup file
@@ -40,7 +59,7 @@ Option.g {
   smartindent = false, -- make indenting smarter again
   mouse = "a",
   clipboard = "unnamedplus",
-  timeoutlen = 500,
+  timeoutlen = 100,
   ruler = true,
   showmode = false,
   hidden = true,
@@ -96,7 +115,7 @@ vim.cmd(
 ]]
 --)]]
 
-vcmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
+vcmd([[autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])
 
 -- hide line numbers , statusline in specific buffers!
 vim.api.nvim_exec(
@@ -135,7 +154,7 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 --vim.cmd("source $HOME/.config/nvim/plugins/kite.vim")
-vim.cmd("source $HOME/.config/nvim/plugins/jdtls.vim")
+--vim.cmd("source $HOME/.config/nvim/plugins/jdtls.vim")
 
 --)
 

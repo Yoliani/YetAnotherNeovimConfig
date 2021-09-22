@@ -16,6 +16,17 @@ map("v", "dd", [=[ "_dd ]=], opt)
 map("v", "x", [=[ "_x ]=], opt)
 
  this line too ]]
+local opts = {silent = true}
+local maps = vim.api.nvim_set_keymap
+vim.g.mapleader = " "
+
+-- MAPPINGS
+maps("n", "<S-t>", [[<Cmd>tabnew<CR>]], opts) -- new tab
+maps("n", "<S-x>", [[<Cmd>bdelete<CR>]], opts) -- close tab
+
+-- move between tabs
+maps("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opts)
+maps("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opts)
 -- OPEN TERMINALS --
 map("n", "<C-l>", [[<Cmd>vnew term://zsh <CR>]], opt) -- term over right
 map("n", "<C-x>", [[<Cmd> split term://zsh | resize 10 <CR>]], opt) --  term bottom
@@ -116,6 +127,7 @@ map(
 map("n", "<F8>", ":!jfx %<CR>", {noremap = true, silent = true})
 
 -- Java specific
+--[[
 map("n", "<leader>di", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opt)
 map("n", "<leader>dt", "<Cmd>lua require'jdtls'.test_class()<CR>", opt)
 map("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opt)
@@ -123,3 +135,20 @@ map("v", "<leader>de", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR
 map("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opt)
 map("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opt)
 map("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+--]]
+--
+map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)

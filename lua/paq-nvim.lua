@@ -44,4 +44,4 @@ packer.init {
   --    auto_reload_compiled = true
 }
 
-return packers
+return packer

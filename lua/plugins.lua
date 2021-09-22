@@ -22,7 +22,7 @@ local tab_modules = {
   "plugins.whichkey",
   "plugins.dashboard",
   "plugins.jdtls",
-  "plugins.float-term",
+  -- "plugins.float-term",
   "plugins.navigator-config",
   "plugins.discord",
   "plugins.neoformat-config",

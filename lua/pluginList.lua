@@ -57,7 +57,10 @@ return packer.startup(
       "hoob3rt/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
-
+    use {
+      "projekt0n/circles.nvim",
+      requires = {{"kyazdani42/nvim-web-devicons"}, {"kyazdani42/nvim-tree.lua", opt = true}}
+    }
     use "kosayoda/nvim-lightbulb"
 
     --[[
@@ -140,14 +143,9 @@ return packer.startup(
     use {"lukas-reineke/indent-blankline.nvim"}
     use "mg979/vim-visual-multi" --multicursors
 
-    --use 'vim-python/python-syntax'
-
     -- Java
     --use 'uiiaoo/java-syntax.vim'
     use "mfussenegger/nvim-jdtls"
-
-    --Coc neovim
-    --use 'neoclide/coc.nvim' --Problems with compe-completion and disable automatically by Kite
 
     -- Neorg, TAKE NOTES
     use "vhyrro/neorg"
@@ -171,11 +169,23 @@ return packer.startup(
     --Themes
     --use 'morhetz/gruvbox'
     --use "shaunsingh/moonlight.nvim"
-    use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+    --use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
     --use "folke/tokyonight.nvim"
-    use "navarasu/onedark.nvim"
+    --use "navarasu/onedark.nvim"
+    use {
+      "projekt0n/github-nvim-theme",
+      after = "lualine.nvim",
+      config = function()
+        require("github-theme").setup(
+          {
+            theme_style = "dark_default"
+            -- your github config
+          }
+        )
+      end
+    }
     --use "projekt0n/github-nvim-theme"
-    use "EdenEast/nightfox.nvim"
+    --use "EdenEast/nightfox.nvim"
     --use "bluz71/vim-nightfly-guicolors"
     use "shaunsingh/nord.nvim"
     --Languages
@@ -208,7 +218,6 @@ return packer.startup(
         require("rest-nvim").setup()
       end
     }
-
   end,
   {
     display = {

@@ -11,7 +11,8 @@ local tab_modules = {
   --"plugins.galaxyline-config",
   "plugins.lualine",
   "plugins.nvim-lspconfig",
-  "plugins.compe-completion",
+  "plugins.cmp",
+  -- "plugins.compe-completion",
   --"plugins.highlights",
   "plugins.treesitter-nvim",
   "plugins.telescope-nvim",
@@ -40,3 +41,5 @@ local tab_modules = {
 for i = 1, #tab_modules, 1 do
   pcall(require, tab_modules[i])
 end
+
+

@@ -16,8 +16,8 @@ return packer.startup(
     use "nvim-lua/lsp_extensions.nvim"
     use "glepnir/lspsaga.nvim"
     --use({'scalameta/nvim-metals'})
-    use "nvim-lua/completion-nvim"
-    use "hrsh7th/nvim-compe"
+    --use "nvim-lua/completion-nvim"
+    --[[use "hrsh7th/nvim-compe"
     use {
       "hrsh7th/nvim-compe",
       event = "InsertEnter",
@@ -40,6 +40,7 @@ return packer.startup(
         }
       }
     }
+    --]]
     use "L3MON4D3/LuaSnip"
 
     use "onsails/lspkind-nvim"
@@ -77,7 +78,7 @@ return packer.startup(
     --use 'lukas-reineke/format.nvim'-- format on save
 
     --Tabnine
-    use {"tzachar/compe-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-compe"}
+    --use {"tzachar/compe-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-compe"}
     --use {'aca/completion-tabnine',  run= './install.sh' }
 
     use "famiu/nvim-reload" --Reload config
@@ -96,6 +97,14 @@ return packer.startup(
     use {"mfussenegger/nvim-dap"}
     use {"nvim-telescope/telescope-dap.nvim"}
     use {"mfussenegger/nvim-dap-python"}
+    --CMP
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/nvim-cmp"
+    use {"tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"}
+
+    --" For vsnip user.
+    use "hrsh7th/cmp-vsnip"
 
     -- snippet support
     use "hrsh7th/vim-vsnip"
@@ -172,6 +181,7 @@ return packer.startup(
     --use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
     --use "folke/tokyonight.nvim"
     --use "navarasu/onedark.nvim"
+    use "projekt0n/github-nvim-theme"
     use {
       "projekt0n/github-nvim-theme",
       after = "lualine.nvim",
@@ -184,7 +194,7 @@ return packer.startup(
         )
       end
     }
-    --use "projekt0n/github-nvim-theme"
+
     --use "EdenEast/nightfox.nvim"
     --use "bluz71/vim-nightfly-guicolors"
     use "shaunsingh/nord.nvim"

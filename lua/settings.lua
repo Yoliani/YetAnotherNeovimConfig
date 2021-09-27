@@ -19,6 +19,7 @@ require("github-theme").setup(
     -- other config
   }
 )
+--[[
 require("circles").setup(
   {
     icons = {
@@ -30,6 +31,7 @@ require("circles").setup(
     lsp = true
   }
 )
+--]]
 vcmd "colorscheme github_dark"
 vcmd ":hi NonText guifg=bg"
 -- Example in lua

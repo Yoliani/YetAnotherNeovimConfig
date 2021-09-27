@@ -58,12 +58,13 @@ return packer.startup(
       "hoob3rt/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
+    --[[
     use {
       "projekt0n/circles.nvim",
       requires = {{"kyazdani42/nvim-web-devicons"}, {"kyazdani42/nvim-tree.lua", opt = true}}
     }
     use "kosayoda/nvim-lightbulb"
-
+--]]
     --[[
         use {
             "glepnir/galaxyline.nvim",

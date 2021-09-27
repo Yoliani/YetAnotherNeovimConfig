@@ -71,6 +71,20 @@ local lua_settings = {
   }
 }
 
+local go_settings = {
+  go = {
+    cmd = {"gopls", "serve"},
+    settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true
+        },
+        staticcheck = true
+      }
+    },
+    root_dir = {"go.mod", ".git"}
+  }
+}
 -- config that activates keymaps and enables snippet support
 local function make_config()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -92,12 +106,17 @@ local function setup_servers()
       config.settings = lua_settings
       require "lspconfig"[server].setup(config)
     else
-      require "lspconfig"[server].setup {
-        on_attach = on_attach,
-        flags = {
-          debounce_text_changes = 150
+      if server == "go" then
+        config.settings = go_settings
+        require "lspconfig"[server].setup(config)
+      else
+        require "lspconfig"[server].setup {
+          on_attach = on_attach,
+          flags = {
+            debounce_text_changes = 150
+          }
         }
-      }
+      end
     end
   end
 end

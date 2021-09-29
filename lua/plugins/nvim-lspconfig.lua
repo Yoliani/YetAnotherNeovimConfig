@@ -1,4 +1,5 @@
--- keymaps
+local lspinstall = require("lspinstall")
+local lspconfig = require "lspconfig"
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -73,7 +74,7 @@ local lua_settings = {
 
 local go_settings = {
   go = {
-    cmd = {"gopls", "serve"},
+    cmd = {vim.fn.expand("/home/edgardoyoliani/.local/share/nvim/lspinstall/go/gopls")},
     settings = {
       gopls = {
         analyses = {
@@ -81,8 +82,13 @@ local go_settings = {
         },
         staticcheck = true
       }
-    },
-    root_dir = {"go.mod", ".git"}
+    }
+  }
+}
+
+local rust_settings = {
+  rust = {
+    cmd = {vim.fn.expand("/home/edgardoyoliani/.local/share/nvim/lspinstall/rust/rust-analyzer")}
   }
 }
 -- config that activates keymaps and enables snippet support
@@ -103,22 +109,55 @@ local function make_config()
       "additionalTextEdits"
     }
   }
-  return {
-    -- enable snippet support
-    capabilities = capabilities,
-    -- map buffer local keybindings when the language server attaches
-    on_attach = on_attach
-  }
+  capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+  return {capabilities = capabilities, on_attach = on_attach}
 end
 
 local function setup_servers()
   require "lspinstall".setup()
-  local servers = require "lspinstall".installed_servers()
-  for _, server in pairs(servers) do
+  local installed_servers = require "lspinstall".installed_servers()
+  local required_servers = {"lua", "go", "typescript", "python", "bash", "vim"}
+  for _, svr in pairs(required_servers) do
+    if not vim.tbl_contains(installed_servers, svr) then
+      lspinstall.install_server(svr)
+    end
+  end
+  lspinstall.setup()
+
+  for _, server in pairs(installed_servers) do
+    --print(server)
     local config = make_config()
     if server == "lua" then
       config.settings = lua_settings
       require "lspconfig"[server].setup(config)
+    elseif server == "rust" then
+      config.settings = rust_settings
+      require "lspconfig"[server].setup(config)
+    elseif server == "rust-analyzer" then
+      require "lspconfig".rust_analyzer.setup {
+        on_attach = on_attach,
+        settings = {
+          ["rust-analyzer"] = {
+            assist = {
+              importMergeBehavior = "last",
+              importPrefix = "by_self"
+            },
+            diagnostics = {
+              disabled = {"unresolved-import"}
+            },
+            cargo = {
+              loadOutDirsFromCheck = true
+            },
+            procMacro = {
+              enable = true
+            },
+            checkOnSave = {
+              command = "clippy"
+            },
+            root_dir = lspconfig.util.root_pattern("Cargo.toml", "rust-project.json") or lspconfig.util.find_git_root
+          }
+        }
+      }
     else
       if server == "go" then
         config.settings = go_settings
@@ -176,3 +215,4 @@ protocol.CompletionItemKind = {
   "ﬦ", -- Operator
   "" -- TypeParameter
 }
+require("langs.golang")

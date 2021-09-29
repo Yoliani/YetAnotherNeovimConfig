@@ -91,6 +91,32 @@ local rust_settings = {
     cmd = {vim.fn.expand("/home/edgardoyoliani/.local/share/nvim/lspinstall/rust/rust-analyzer")}
   }
 }
+
+local intelephense_settings = {
+  cmd = {"intelephense", "--stdio"},
+  filetypes = {"php"},
+  intelephense = {
+    stubs = {
+      "bcmath",
+      "bz2",
+      "calendar",
+      "Core",
+      "curl",
+      "zip",
+      "zlib",
+      "wordpress",
+      "woocommerce",
+      "acf-pro",
+      "wordpress-globals",
+      "wp-cli",
+      "genesis",
+      "polylang"
+    },
+    files = {
+      maxSize = 5000000
+    }
+  }
+}
 -- config that activates keymaps and enables snippet support
 local function make_config()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -132,6 +158,9 @@ local function setup_servers()
       require "lspconfig"[server].setup(config)
     elseif server == "rust" then
       config.settings = rust_settings
+      require "lspconfig"[server].setup(config)
+    elseif server == "php" then
+      config.settings = intelephense_settings
       require "lspconfig"[server].setup(config)
     elseif server == "rust-analyzer" then
       require "lspconfig".rust_analyzer.setup {

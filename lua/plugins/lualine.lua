@@ -5,7 +5,7 @@ end
 lualine.setup {
   options = {
     icons_enabled = true,
-    theme = "github",
+    theme = "enfocado",
     section_separators = {"", ""},
     component_separators = {"", ""},
     disabled_filetypes = {}

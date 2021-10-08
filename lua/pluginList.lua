@@ -44,6 +44,9 @@ return packer.startup(
     use "L3MON4D3/LuaSnip"
 
     use "onsails/lspkind-nvim"
+    use {
+      "ray-x/lsp_signature.nvim"
+    }
     use "sbdchd/neoformat"
     --Formatter
     use "mhartington/formatter.nvim"
@@ -52,12 +55,46 @@ return packer.startup(
     --use "sheerun/vim-polyglot"
     use "lewis6991/gitsigns.nvim"
     use "akinsho/nvim-bufferline.lua"
-    --use "glepnir/galaxyline.nvim"
+    --[[
+    use {
+      "glepnir/galaxyline.nvim",
+      branch = "main"
+    }
+--]]
+    use {
+      "glepnir/indent-guides.nvim",
+      branch = "main",
+      config = function()
+        require("Dusk-til-Dawn").timeMan(
+          function()
+            require("indent_guides").setup(
+              {
+                even_colors = {fg = "#d3d3e7", bg = "#d3d3e7"},
+                odd_colors = {fg = "#e7e7fc", bg = "#e7e7fc"},
+                indent_guide_size = 4
+              }
+            )
+            require("indent_guides").indent_guides_enable()
+          end,
+          function()
+            require("indent_guides").setup(
+              {
+                even_colors = {fg = "#444155", bg = "#444155"},
+                odd_colors = {fg = "#3b314d", bg = "#3b314d"},
+                indent_guide_size = 4
+              }
+            )
+            require("indent_guides").indent_guides_enable()
+          end
+        )()
+      end
+    }
 
     use {
       "hoob3rt/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
+
     --[[
     use {
       "projekt0n/circles.nvim",
@@ -218,7 +255,7 @@ return packer.startup(
         require("Navigator").setup()
       end
     }
-
+    use "wuelnerdotexe/vim-enfocado"
     --Capturas de codigo
     use "jmckiern/vim-shoot"
 

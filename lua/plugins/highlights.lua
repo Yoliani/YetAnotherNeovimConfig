@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 
-local colors = require "themes/nord"
+local colors = require "themes/javacafe"
 
 local white = colors.white
 local darker_black = colors.darker_black
@@ -23,15 +23,15 @@ local purple = colors.purple
 -- for guifg , bg
 
 local function fg(group, color)
-    cmd("hi " .. group .. " guifg=" .. color)
+  cmd("hi " .. group .. " guifg=" .. color)
 end
 
 local function bg(group, color)
-    cmd("hi " .. group .. " guibg=" .. color)
+  cmd("hi " .. group .. " guibg=" .. color)
 end
 
 local function fg_bg(group, fgcol, bgcol)
-    cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
+  cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
 end
 
 -- blankline

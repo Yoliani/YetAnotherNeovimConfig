@@ -10,15 +10,8 @@ opts("o", "termguicolors", true)
 vim.opt.termguicolors = true
 local vcmd = vim.cmd
 vcmd "syntax on"
-require("github-theme").setup(
-  {
-    comment_style = "NONE",
-    keyword_style = "bold",
-    function_style = "italic",
-    variable_style = "NONE"
-    -- other config
-  }
-)
+--vcmd "set t_Co=256"
+
 --[[
 require("circles").setup(
   {
@@ -32,7 +25,7 @@ require("circles").setup(
   }
 )
 --]]
-vcmd "colorscheme github_dark"
+vcmd "colorscheme enfocado"
 vcmd ":hi NonText guifg=bg"
 -- Example in lua
 --vim.g.nightfox_style = "palefox"

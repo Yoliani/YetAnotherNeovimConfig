@@ -33,6 +33,7 @@ local tab_modules = {
   "nv-reload.init",
   "plugins.neorg-config",
   "plugins.formatter-config"
+  --"plugins.signature"
   --Test
   --re('impatient'):e
   --"tests.nui_lsp"
@@ -41,5 +42,3 @@ local tab_modules = {
 for i = 1, #tab_modules, 1 do
   pcall(require, tab_modules[i])
 end
-
-

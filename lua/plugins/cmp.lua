@@ -121,7 +121,8 @@ cmp.setup(
       {name = "look"},
       {name = "latex_symbols"},
       {name = "cmp_tabnine"},
-      {name = "neorg"}
+      {name = "neorg"},
+      {name = "cmp_luasnip"}
     }
   }
 )

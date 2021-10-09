@@ -25,16 +25,75 @@ require("circles").setup(
   }
 )
 --]]
-vcmd "colorscheme enfocado"
+--vcmd "colorscheme enfocado"
 vcmd ":hi NonText guifg=bg"
 -- Example in lua
 --vim.g.nightfox_style = "palefox"
 --vim.g.nightfox_color_delimiter = "red"
 --vim.g.nightfox_italic_comments = 1
+local catppuccino = require("catppuccino")
 
+-- configure it
+catppuccino.setup(
+  {
+    colorscheme = "dark_catppuccino",
+    transparency = false,
+    term_colors = true,
+    styles = {
+      comments = "italic",
+      functions = "italic",
+      keywords = "italic",
+      strings = "NONE",
+      variables = "NONE"
+    },
+    integrations = {
+      treesitter = true,
+      native_lsp = {
+        enabled = true,
+        virtual_text = {
+          errors = "italic",
+          hints = "italic",
+          warnings = "italic",
+          information = "italic"
+        },
+        underlines = {
+          errors = "underline",
+          hints = "underline",
+          warnings = "underline",
+          information = "underline"
+        }
+      },
+      lsp_trouble = true,
+      lsp_saga = true,
+      gitgutter = false,
+      gitsigns = true,
+      telescope = true,
+      nvimtree = {
+        enabled = true,
+        show_root = true
+      },
+      which_key = true,
+      indent_blankline = {
+        enabled = true,
+        colored_indent_levels = false
+      },
+      dashboard = true,
+      neogit = false,
+      vim_sneak = false,
+      fern = false,
+      barbar = false,
+      bufferline = false,
+      markdown = false,
+      lightspeed = false,
+      ts_rainbow = false,
+      hop = false
+    }
+  }
+)
 -- Load the colorscheme
 --require("nightfox").set()
 
+vim.cmd [[colorscheme catppuccino]]
 require("utils")
 
 -- colorscheme related stuff

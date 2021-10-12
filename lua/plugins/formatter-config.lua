@@ -22,7 +22,15 @@ require("formatter").setup(
       },
       javascript = {prettier},
       typescript = {prettier},
-      html = {prettier},
+      html = {
+        function()
+          return {
+            exe = "prettierd",
+            args = {vim.api.nvim_buf_get_name(0)},
+            stdin = true
+          }
+        end
+      },
       css = {prettier},
       scss = {prettier},
       markdown = {prettier},

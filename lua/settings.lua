@@ -12,32 +12,15 @@ local vcmd = vim.cmd
 vcmd "syntax on"
 --vcmd "set t_Co=256"
 
---[[
-require("circles").setup(
-  {
-    icons = {
-      empty = "",
-      filled = "",
-      lsp_prefix = ""
-    },
-    -- override lsp_diagnostic virtual-text icon with `icons.lsp_prefix`
-    lsp = true
-  }
-)
---]]
---vcmd "colorscheme enfocado"
 vcmd ":hi NonText guifg=bg"
--- Example in lua
---vim.g.nightfox_style = "palefox"
---vim.g.nightfox_color_delimiter = "red"
---vim.g.nightfox_italic_comments = 1
+
 local catppuccino = require("catppuccino")
 
 -- configure it
 catppuccino.setup(
   {
-    colorscheme = "dark_catppuccino",
-    transparency = false,
+    colorscheme = "neon_latte",
+    transparency = true,
     term_colors = true,
     styles = {
       comments = "italic",
@@ -65,7 +48,7 @@ catppuccino.setup(
       },
       lsp_trouble = true,
       lsp_saga = true,
-      gitgutter = false,
+      gitgutter = true,
       gitsigns = true,
       telescope = true,
       nvimtree = {
@@ -75,24 +58,21 @@ catppuccino.setup(
       which_key = true,
       indent_blankline = {
         enabled = true,
-        colored_indent_levels = false
+        colored_indent_levels = true
       },
       dashboard = true,
       neogit = false,
       vim_sneak = false,
       fern = false,
       barbar = false,
-      bufferline = false,
-      markdown = false,
+      bufferline = true,
+      markdown = true,
       lightspeed = false,
-      ts_rainbow = false,
+      ts_rainbow = true,
       hop = false
     }
   }
 )
--- Load the colorscheme
---require("nightfox").set()
-
 vim.cmd [[colorscheme catppuccino]]
 require("utils")
 
@@ -211,14 +191,3 @@ end
 --vim.cmd("source $HOME/.config/nvim/plugins/jdtls.vim")
 
 --)
-
---[[
-vim.cmd("source $HOME/.config/nvim/plugins/jdtls.vim")
-
-vim.cmd([[if has('nvim-0.6')
- 			 augroup lsp
-   			 au!
-		    	  au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})
-  			 augroup end
-		      endif]]
---vim.cmd("set guicursor=v-c-sm:block,n-i-ci-ve:ver25,r-cr-o:hor20")

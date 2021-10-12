@@ -205,10 +205,7 @@ return packer.startup(
 
     --Terminal flotante
     use {
-      "numtostr/FTerm.nvim",
-      config = function()
-        require("FTerm").setup()
-      end
+      "numtostr/FTerm.nvim"
     }
 
     --Ver diferencias del repositorio comparado con el ultimo commit

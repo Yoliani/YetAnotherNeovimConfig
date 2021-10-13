@@ -1,217 +1,244 @@
+local cmd = vim.cmd
+local fn = vim.fn
 local gl = require("galaxyline")
-local gls = gl.section
-gl.short_line_list = {"LuaTree", "vista", "dbui"}
-local i = require("gutil.icons")
-local c = require("gutil.colors")
-local u = require("gutil.utils")
-local diagnostic = require("gutil.providers.diagnostic")
-local vcs = require("gutil.providers.vcs")
-local fileinfo = require("gutil.providers.fileinfo")
-local extension = require("gutil.providers.extension")
-local buffer = require("gutil.providers.buffer")
-local vimode = require("gutil.providers.vimode")
+local line = gl.section
+gl.short_line_list = {"LuaTree", "packager", "Floaterm"}
 
-local bufferIcon = buffer.get_buffer_type_icon
-local bufferNumber = buffer.get_buffer_number
-local diagnosticError = diagnostic.get_diagnostic_error
-local diagnosticWarn = diagnostic.get_diagnostic_warn
-local diagnosticInfo = diagnostic.get_diagnostic_info
-local diagnosticEndSpace = diagnostic.end_space
-local diagnosticSeperator = diagnostic.seperator
-local diffAdd = vcs.diff_add
-local diffModified = vcs.diff_modified
-local diffRemove = vcs.diff_remove
-local fileFormat = fileinfo.get_file_format
-local fileEncode = fileinfo.get_file_encode
-local fileSize = fileinfo.get_file_size
-local fileIcon = fileinfo.get_file_icon
-local fileName = fileinfo.get_current_file_name
-local fileType = fileinfo.get_file_type
-local fileTypeName = buffer.get_buffer_filetype
-local filetTypeSeperator = fileinfo.filetype_seperator
-local gitBranch = vcs.get_git_branch_formatted
-local gitSeperator = vcs.seperator
-local lineColumn = fileinfo.line_column
-local linePercent = fileinfo.current_line_percent
-local scrollBar = extension.scrollbar_instance
-local space = u.space
-local viMode = vimode.get_mode
-local viModeSeperator = vimode.seperator
+local nord_colors = {
+  bg = "NONE",
+  fg = "#81A1C1",
+  line_bg = "NONE",
+  lbg = "NONE",
+  fg_green = "#8FBCBB",
+  yellow = "#EBCB8B",
+  cyan = "#A3BE8C",
+  darkblue = "#81A1C1",
+  green = "#8FBCBB",
+  orange = "#D08770",
+  purple = "#B48EAD",
+  magenta = "#BF616A",
+  gray = "#616E88",
+  blue = "#5E81AC",
+  red = "#BF616A"
+}
+local function getclientnames()
+  local bufnr = vim.fn.bufnr("")
+  local clients = vim.lsp.buf_get_clients(bufnr)
+  local clientnames_tbl = {}
 
-gls.left[1] = {
+  for _, v in pairs(clients) do
+    if v.name then
+      table.insert(clientnames_tbl, v.name)
+    end
+  end
+
+  return table.concat(clientnames_tbl, ",")
+end
+local lsp_text_provider = function()
+  local bufnr = vim.fn.bufnr("")
+  local clients = vim.lsp.buf_get_clients(bufnr)
+  if vim.tbl_isempty(clients) then
+    return ""
+  end
+  local names = getclientnames()
+  return string.format("LSP[%s]", names)
+end
+
+local buffer_not_empty = function()
+  if fn.empty(fn.expand("%:t")) ~= 1 then
+    return true
+  end
+  return false
+end
+
+line.left[1] = {
+  FirstElement = {
+    provider = function()
+      return "  "
+    end,
+    highlight = {nord_colors.blue, nord_colors.line_bg}
+  }
+}
+line.left[2] = {
   ViMode = {
-    provider = viMode,
-    highlight = {c.Color("act1"), c.Color("DarkGoldenrod2")}
+    provider = function()
+      -- auto change color according the vim mode
+      local mode_color = {
+        n = nord_colors.magenta,
+        i = nord_colors.green,
+        v = nord_colors.blue,
+        [""] = nord_colors.blue,
+        V = nord_colors.blue,
+        c = nord_colors.red,
+        no = nord_colors.magenta,
+        s = nord_colors.orange,
+        S = nord_colors.orange,
+        [""] = nord_colors.orange,
+        ic = nord_colors.yellow,
+        R = nord_colors.purple,
+        Rv = nord_colors.purple,
+        cv = nord_colors.red,
+        ce = nord_colors.red,
+        r = nord_colors.cyan,
+        rm = nord_colors.cyan,
+        ["r?"] = nord_colors.cyan,
+        ["!"] = nord_colors.red,
+        t = nord_colors.red
+      }
+      cmd("hi GalaxyViMode guifg=" .. mode_color[fn.mode()])
+      return "     "
+    end
   }
 }
-
-gls.left[2] = {
-  ViModeSeperator = {
-    provider = viModeSeperator,
-    highlight = {c.Color("act1"), c.Color("DarkGoldenrod2")}
+line.left[3] = {
+  FileIcon = {
+    provider = "FileIcon",
+    condition = buffer_not_empty,
+    highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, nord_colors.line_bg}
   }
 }
-
-gls.left[3] = {
-  FileSize = {
-    provider = fileSize,
-    condition = u.buffer_not_empty,
-    highlight = {c.Color("base"), c.Color("act1")}
-  }
-}
-
-gls.left[4] = {
+line.left[4] = {
   FileName = {
-    provider = fileName,
-    condition = u.buffer_not_empty,
-    separator = i.slant.Left,
-    separator_highlight = {c.Color("purple"), c.Color("act1")},
-    highlight = {c.Color("func"), c.Color("act1"), "bold"}
+    -- provider = "FileName",
+    provider = function()
+      return fn.expand("%:F")
+    end,
+    condition = buffer_not_empty,
+    separator = " ",
+    highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, nord_colors.line_bg}
+    --  highlight = {nord_colors.purple, nord_colors.line_bg, "bold"}
   }
 }
 
-gls.left[5] = {
-  FileType = {
-    provider = fileType,
-    condition = u.buffer_not_empty,
-    highlight = {c.Color("base"), c.Color("purple")}
-  }
-}
-
-gls.left[6] = {
-  FiletTypeSeperator = {
-    provider = filetTypeSeperator
-  }
-}
-
-gls.left[7] = {
+line.left[5] = {
   DiagnosticError = {
-    provider = diagnosticError,
-    icon = " " .. i.bullet,
-    highlight = {c.Color("error"), c.Color("act1")}
+    provider = "DiagnosticError",
+    --  separator = " ",
+    icon = " ",
+    highlight = {nord_colors.red, nord_colors.line_bg}
   }
 }
-
-gls.left[8] = {
+line.left[6] = {
   DiagnosticWarn = {
-    provider = diagnosticWarn,
-    icon = " " .. i.bullet,
-    highlight = {c.Color("warning"), c.Color("act1")}
+    provider = "DiagnosticWarn",
+    -- separator = " ",
+    icon = " ",
+    highlight = {nord_colors.yellow, nord_colors.line_bg}
   }
 }
 
-gls.left[9] = {
+line.left[7] = {
   DiagnosticInfo = {
-    provider = diagnosticInfo,
-    icon = " " .. i.bullet,
-    highlight = {c.Color("info"), c.Color("act1")}
+    -- separator = " ",
+    provider = "DiagnosticInfo",
+    icon = " ",
+    highlight = {nord_colors.green, nord_colors.line_bg}
   }
 }
 
-gls.left[10] = {
-  DiagnosticEndSpace = {
-    provider = diagnosticEndSpace,
-    highlight = {c.Color("act1"), c.Color("act1")}
+line.left[8] = {
+  DiagnosticHint = {
+    provider = "DiagnosticHint",
+    -- separator = " ",
+    icon = " ",
+    highlight = {nord_colors.blue, nord_colors.line_bg}
   }
 }
 
-gls.left[11] = {
-  DiagnosticSeperator = {
-    provider = diagnosticSeperator,
-    highlight = {c.Color("purple"), c.Color("act1")}
+line.left[9] = {
+  LspInfo = {
+    provider = lsp_text_provider,
+    icon = " ",
+    highlight = {nord_colors.purple, nord_colors.line_bg}
   }
 }
 
-gls.left[12] = {
+local checkwidth = function()
+  local squeeze_width = fn.winwidth(0) / 2
+  if squeeze_width > 40 then
+    return true
+  end
+  return false
+end
+
+line.right[1] = {
+  DiffAdd = {
+    provider = "DiffAdd",
+    condition = checkwidth,
+    icon = " ",
+    highlight = {nord_colors.green, nord_colors.line_bg}
+  }
+}
+line.right[2] = {
+  DiffModified = {
+    provider = "DiffModified",
+    condition = checkwidth,
+    icon = "柳",
+    highlight = {nord_colors.yellow, nord_colors.line_bg}
+  }
+}
+line.right[3] = {
+  DiffRemove = {
+    provider = "DiffRemove",
+    condition = checkwidth,
+    icon = " ",
+    highlight = {nord_colors.red, nord_colors.line_bg}
+  }
+}
+
+line.right[4] = {
+  GitIcon = {
+    provider = function()
+      return " "
+    end,
+    condition = require("galaxyline.provider_vcs").check_git_workspace,
+    highlight = {nord_colors.orange, nord_colors.line_bg}
+  }
+}
+line.right[5] = {
   GitBranch = {
-    provider = gitBranch,
-    icon = "Git-", --" " .. i.git .. " ",
-    condition = u.buffer_not_empty
-  }
-}
---[[
-gls.left[13] = {
-    DiffAdd = {
-        provider = diffAdd,
-        condition = u.checkwidth,
-        icon = i.diff.Add,
-        highlight = {c.Color('green'), c.Color('purple')}
-    }
-}
-gls.left[14] = {
-    DiffModified = {
-        provider = diffModified,
-        condition = u.checkwidth,
-        icon = i.diff.Modified,
-        highlight = {c.Color('orange'), c.Color('purple')}
-    }
-}
-gls.left[15] = {
-    DiffRemove = {
-        provider = diffRemove,
-        condition = u.checkwidth,
-        icon = i.diff.Remove,
-        highlight = {c.Color('red'), c.Color('purple')}
-    }
-}
---]]
-gls.left[13] = {
-  GitSeperator = {
-    provider = gitSeperator,
-    condition = u.buffer_not_empty
+    provider = "GitBranch",
+    condition = require("galaxyline.provider_vcs").check_git_workspace,
+    highlight = {nord_colors.orange, nord_colors.line_bg, "bold"}
   }
 }
 
-gls.left[14] = {
-  Space = {
-    provider = space,
-    highlight = {c.Color("blue"), c.Color("purple")}
-  }
+-- LineInfo = {
+-- LineInfo = {
+-- provider = "LineColumn",
+-- separator = "",
+-- separator_highlight = {nord_colors.blue, nord_colors.line_bg},
+-- highlight = {nord_colors.gray, nord_colors.line_bg}
+-- section.right[7] = {
+-- }
+--   FileSize = {
+--     provider = "FileSize",
+--     separator = " ",
+--     condition = buffer_not_empty,
+--     separator_highlight = {nord_colors.blue, nord_colors.line_bg},
+--     highlight = {nord_colors.fg, nord_colors.line_bg}
+--   }
+-- }
+
+line.short_line_left[1] = {
+  provider = "FileIcon",
+  separator = " ",
+  highlight = {nord_colors.blue, nord_colors.lbg, "bold"}
 }
 
-gls.right[1] = {
-  FileFormat = {
-    provider = fileFormat,
-    highlight = {c.Color("base"), c.Color("purple")}
-  }
-}
-gls.right[2] = {
-  LineInfo = {
-    provider = lineColumn,
-    separator = " | ",
-    separator_highlight = {c.Color("base"), c.Color("purple")},
-    highlight = {c.Color("base"), c.Color("purple")}
-  }
-}
-gls.right[3] = {
-  PerCent = {
-    provider = linePercent,
-    separator = i.slant.Left,
-    separator_highlight = {c.Color("act1"), c.Color("purple")},
-    highlight = {c.Color("base"), c.Color("act1")}
-  }
-}
-gls.right[4] = {
-  ScrollBar = {
-    provider = scrollBar,
-    highlight = {c.Color("yellow"), c.Color("purple")}
-  }
-}
-
-gls.short_line_left[1] = {
-  BufferType = {
-    provider = fileTypeName,
-    separator = i.slant.Right,
-    separator_highlight = {c.Color("purple"), c.Color("bg")},
-    highlight = {c.Color("base"), c.Color("purple")}
-  }
-}
-
-gls.short_line_right[1] = {
-  BufferIcon = {
-    provider = bufferIcon,
-    separator = i.slant.Left,
-    separator_highlight = {c.Color("purple"), c.Color("bg")},
-    highlight = {c.Color("base"), c.Color("purple")}
+line.short_line_left[2] = {
+  SFileName = {
+    provider = function()
+      local fileinfo = require("galaxyline.provider_fileinfo")
+      local fname = fileinfo.get_current_file_name()
+      for _, v in ipairs(gl.short_line_list) do
+        if v == vim.bo.filetype then
+          return ""
+        end
+      end
+      return fname
+    end,
+    condition = buffer_not_empty,
+    highlight = {nord_colors.white, nord_colors.lbg, "bold"}
   }
 }

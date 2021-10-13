@@ -55,12 +55,12 @@ return packer.startup(
     use "sheerun/vim-polyglot"
     use "lewis6991/gitsigns.nvim"
     use "akinsho/nvim-bufferline.lua"
-    --[[
+    --
     use {
       "glepnir/galaxyline.nvim",
       branch = "main"
     }
---]]
+    --
     use {
       "glepnir/indent-guides.nvim",
       branch = "main",
@@ -89,12 +89,12 @@ return packer.startup(
         )()
       end
     }
-
+    --[[
     use {
       "hoob3rt/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
-
+--]]
     --[[
     use {
       "projekt0n/circles.nvim",
@@ -220,7 +220,7 @@ return packer.startup(
     use "projekt0n/github-nvim-theme"
     use {
       "projekt0n/github-nvim-theme",
-      after = "lualine.nvim",
+      -- after = "lualine.nvim",
       config = function()
         require("github-theme").setup(
           {

@@ -20,13 +20,13 @@ local catppuccino = require("catppuccino")
 catppuccino.setup(
   {
     colorscheme = "neon_latte",
-    transparency = true,
+    transparency = false,
     term_colors = true,
     styles = {
       comments = "italic",
       functions = "italic",
       keywords = "italic",
-      strings = "NONE",
+      strings = "bold",
       variables = "NONE"
     },
     integrations = {
@@ -57,7 +57,7 @@ catppuccino.setup(
       },
       which_key = true,
       indent_blankline = {
-        enabled = true,
+        enabled = false,
         colored_indent_levels = true
       },
       dashboard = true,
@@ -90,7 +90,7 @@ Option.g {
   titlestring = "%<%F%=%l/%L - nvim", -- what the title of the window will be set to
   backup = false, -- creates a backup file
   swapfile = false, -- creates a swapfile
-  smartindent = false, -- make indenting smarter again
+  smartindent = true, -- make indenting smarter again
   mouse = "a",
   clipboard = "unnamedplus",
   timeoutlen = 100,
@@ -110,8 +110,8 @@ Option.g {
 }
 
 Variable.g {
-  indentLine_enabled = 1,
-  indent_blankline_char = "▏",
+  indentLine_enabled = 0,
+  indent_blankline_char = "|",
   indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"},
   indent_blankline_buftype_exclude = {"terminal"},
   indent_blankline_show_trailing_blankline_indent = false,

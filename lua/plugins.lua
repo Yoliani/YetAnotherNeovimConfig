@@ -28,7 +28,7 @@ local tab_modules = {
   "plugins.discord",
   "plugins.neoformat-config",
   "plugins.todo-list",
-  "plugins.flutter-config-tools",
+  "plugins.flutter-config",
   "plugins.rust-config-tools",
   "nv-reload.init",
   "plugins.neorg-config",

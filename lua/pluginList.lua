@@ -237,7 +237,7 @@ return packer.startup(
     use "Pocco81/Catppuccino.nvim"
     --Languages
     --use "fatih/vim-go" --Golang
-    --use {"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"}
+    use {"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"}
     use "simrat39/rust-tools.nvim"
     --use 'mfussenegger/nvim-jdtls'
     -- Bracey live server

@@ -22,7 +22,8 @@ require("formatter").setup(
       },
       javascript = {prettier},
       typescript = {prettier},
-      html = {
+      html = {prettier},
+      --[[      html = {
         function()
           return {
             exe = "prettierd",
@@ -31,6 +32,7 @@ require("formatter").setup(
           }
         end
       },
+--]]
       css = {prettier},
       scss = {prettier},
       markdown = {prettier},

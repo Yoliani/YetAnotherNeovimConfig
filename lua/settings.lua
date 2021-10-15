@@ -14,6 +14,25 @@ vcmd "syntax on"
 
 vcmd ":hi NonText guifg=bg"
 
+vim.opt.list = true
+vim.opt.listchars:append("eol:↴")
+--vim.opt.listchars:append("space:⋅")
+
+require("indent_blankline").setup {
+  show_end_of_line = true,
+  char = "│",
+  buftype_exclude = {"terminal", "help", "dashboard"},
+  space_char_blankline = " ",
+  char_highlight_list = {
+    "IndentBlanklineIndent1",
+    "IndentBlanklineIndent2",
+    "IndentBlanklineIndent3",
+    "IndentBlanklineIndent4",
+    "IndentBlanklineIndent5",
+    "IndentBlanklineIndent6"
+  }
+}
+
 local catppuccino = require("catppuccino")
 
 -- configure it
@@ -57,7 +76,7 @@ catppuccino.setup(
       },
       which_key = true,
       indent_blankline = {
-        enabled = false,
+        enabled = true,
         colored_indent_levels = true
       },
       dashboard = true,
@@ -110,8 +129,8 @@ Option.g {
 }
 
 Variable.g {
-  indentLine_enabled = 0,
-  indent_blankline_char = "|",
+  indentLine_enabled = 1,
+  indent_blankline_char = "│",
   indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"},
   indent_blankline_buftype_exclude = {"terminal"},
   indent_blankline_show_trailing_blankline_indent = false,

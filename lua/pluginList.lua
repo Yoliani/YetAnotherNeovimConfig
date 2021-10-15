@@ -41,6 +41,7 @@ return packer.startup(
       }
     }
     --]]
+    use "lukas-reineke/indent-blankline.nvim"
     use "L3MON4D3/LuaSnip"
 
     use "onsails/lspkind-nvim"
@@ -52,7 +53,7 @@ return packer.startup(
     use "mhartington/formatter.nvim"
     use "nvim-lua/plenary.nvim"
     use "kabouzeid/nvim-lspinstall"
-    use "sheerun/vim-polyglot"
+    --use "sheerun/vim-polyglot"
     use "lewis6991/gitsigns.nvim"
     use "akinsho/nvim-bufferline.lua"
     --
@@ -60,11 +61,11 @@ return packer.startup(
       "glepnir/galaxyline.nvim",
       branch = "main"
     }
-    --
+    --[[ 
     use {
       "glepnir/indent-guides.nvim",
-      branch = "main",
-      config = function()
+      branch = "main"
+       config = function()
         require("Dusk-til-Dawn").timeMan(
           function()
             require("indent_guides").setup(
@@ -87,8 +88,9 @@ return packer.startup(
             require("indent_guides").indent_guides_enable()
           end
         )()
-      end
-    }
+    end 
+   
+    } --]]
     --[[
     use {
       "hoob3rt/lualine.nvim",
@@ -235,13 +237,10 @@ return packer.startup(
     --use "bluz71/vim-nightfly-guicolors"
     use "shaunsingh/nord.nvim"
     use "Pocco81/Catppuccino.nvim"
-    --Languages
-    --use "fatih/vim-go" --Golang
+
     use {"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"}
     use "simrat39/rust-tools.nvim"
     --use 'mfussenegger/nvim-jdtls'
-    -- Bracey live server
-    --use "turbio/bracey.vim"
 
     -- Discord presence ---
     use "andweeb/presence.nvim"

@@ -1,5 +1,5 @@
 local cmp = require("cmp")
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menu,menuone,noselect"
 local luasnip = require("luasnip")
 
 if not luasnip then

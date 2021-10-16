@@ -8,8 +8,8 @@ require("neoscroll").setup()
 
 local tab_modules = {
   "plugins.top-bufferline",
-  "plugins.galaxyline-config",
-  --"plugins.lualine",
+  -- "plugins.galaxyline-config",
+  "plugins.lualine",
   "plugins.nvim-lspconfig",
   "plugins.cmp",
   -- "plugins.compe-completion",

@@ -129,7 +129,7 @@ Option.g {
 }
 
 Variable.g {
-  indentLine_enabled = 1,
+  indentLine_enabled = 0,
   indent_blankline_char = "│",
   indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"},
   indent_blankline_buftype_exclude = {"terminal"},

@@ -15,33 +15,7 @@ return packer.startup(
     use "neovim/nvim-lspconfig"
     use "nvim-lua/lsp_extensions.nvim"
     use "glepnir/lspsaga.nvim"
-    --use({'scalameta/nvim-metals'})
-    --use "nvim-lua/completion-nvim"
-    --[[use "hrsh7th/nvim-compe"
-    use {
-      "hrsh7th/nvim-compe",
-      event = "InsertEnter",
-      config = function()
-        require "plugins.compe-completion"
-      end,
-      wants = "LuaSnip",
-      requires = {
-        {
-          "L3MON4D3/LuaSnip",
-          wants = "friendly-snippets",
-          event = "InsertCharPre",
-          config = function()
-            require "plugins.luasnip"
-          end
-        },
-        {
-          "rafamadriz/friendly-snippets",
-          event = "InsertCharPre"
-        }
-      }
-    }
-    --]]
-    use "lukas-reineke/indent-blankline.nvim"
+
     use "L3MON4D3/LuaSnip"
 
     use "onsails/lspkind-nvim"
@@ -53,66 +27,16 @@ return packer.startup(
     use "mhartington/formatter.nvim"
     use "nvim-lua/plenary.nvim"
     use "kabouzeid/nvim-lspinstall"
-    --use "sheerun/vim-polyglot"
+    use "sheerun/vim-polyglot"
     use "lewis6991/gitsigns.nvim"
     use "akinsho/nvim-bufferline.lua"
+
     --
-    use {
-      "glepnir/galaxyline.nvim",
-      branch = "main"
-    }
-    --[[ 
-    use {
-      "glepnir/indent-guides.nvim",
-      branch = "main"
-       config = function()
-        require("Dusk-til-Dawn").timeMan(
-          function()
-            require("indent_guides").setup(
-              {
-                even_colors = {fg = "#d3d3e7", bg = "#d3d3e7"},
-                odd_colors = {fg = "#e7e7fc", bg = "#e7e7fc"},
-                indent_guide_size = 4
-              }
-            )
-            require("indent_guides").indent_guides_enable()
-          end,
-          function()
-            require("indent_guides").setup(
-              {
-                even_colors = {fg = "#444155", bg = "#444155"},
-                odd_colors = {fg = "#3b314d", bg = "#3b314d"},
-                indent_guide_size = 4
-              }
-            )
-            require("indent_guides").indent_guides_enable()
-          end
-        )()
-    end 
-   
-    } --]]
-    --[[
     use {
       "hoob3rt/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
---]]
-    --[[
-    use {
-      "projekt0n/circles.nvim",
-      requires = {{"kyazdani42/nvim-web-devicons"}, {"kyazdani42/nvim-tree.lua", opt = true}}
-    }
-    use "kosayoda/nvim-lightbulb"
---]]
-    --[[
-        use {
-            "glepnir/galaxyline.nvim",
-            after = "nvim-base16.lua",
-            config = function()
-                require "plugins.statusline"
-            end
-        }
-	--]]
+
     use "windwp/nvim-autopairs"
     use "alvan/vim-closetag"
     --use 'lukas-reineke/format.nvim'-- format on save
@@ -152,18 +76,6 @@ return packer.startup(
     use "hrsh7th/vim-vsnip-integ"
     use "SirVer/ultisnips"
     use "rafamadriz/friendly-snippets"
-    --use 'dsznajder/vscode-es7-javascript-react-snippets'
-    --use 'xabikos/vscode-javascript'
-    --use 'abusaidm/html-snippets'
-
-    --DB
-    --use {'kristijanhusak/vim-dadbod', { branch = 'async-query' }}
-    --use {'kristijanhusak/vim-dadbod-completion', { type = 'opt', branch = 'async' }}
-    --use {'kristijanhusak/vim-dadbod-ui', { branch = 'async' }}
-
-    --Minimap
-    use "wfxr/minimap.vim"
-
     --File managing , picker etc
     use "kyazdani42/nvim-tree.lua"
     use "kyazdani42/nvim-web-devicons"

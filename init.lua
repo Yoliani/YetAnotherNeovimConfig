@@ -1,5 +1,5 @@
 local async
-require "impatient"
+--require "impatient"
 _G.tab = {}
 async =
   vim.loop.new_async(
@@ -7,7 +7,6 @@ async =
     function()
       require("pluginList")
       require("settings")
-      require("utils")
       require("plugins")
       require("mappings")
       require("autocmds")

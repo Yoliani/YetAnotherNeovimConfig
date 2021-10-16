@@ -66,30 +66,6 @@ cmd(":command! Wq wq")
 cmd(":command! Wqa wqa")
 cmd(":command! W w")
 cmd(":command! Q q")
-
-local settings_manager = require "../utils/functions"
-settings_manager.load_settings() --[[
-function _G.cycle_teme ()
-    if base16_position == #themes_names then
-        base16_position = 0
-    end
-    base16_position = (base16_position % #themes_names) + 1
-    --print("BAse position = ", base16_position)
-    base16(base16.themes[themes_names[base16_position]] --local base16_position = settings_manager.get_value("current_theme", 0) -- settings_manager.set_value("current_theme", base16_position) --base16_position = (base16_position - 1 % #themes_names) + 1 -- if log_cycle_theme == true then --base16(base16.themes[base16_position], true) --print(base16_position) --     print("Theme changed to: " .. themes_names[base16_position]) -- end --end --]] --print(vim.inspect(base16.theme_names())) -- --  Mappings --TODO: Add a mapping for execute java -- /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 --map("n", "<leader>tn", ":lua cycle_teme()<Cr>")
---
---, true)
-
---
--- Cycle Themes
---
---local base16 = require "base16"
---[[
-local themes_names = {
-    "material","onedark","nord", "monokai", "gruvbox-light-hard", "twilight", "google-light", "google-dark","brewer", "gruvbox-light-soft", "solarized-light", "solarized-dark", "space", "default", "zenburn"
-}
-
-local log_cycle_theme = true
-]]
 function _G.Indent_Php()
   vim.cmd([[
     set ft=html

@@ -1,12 +1,3 @@
-local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
-
-local function opts(scope, key, value)
-  scopes[scope][key] = value
-  if scope ~= "o" then
-    scopes["o"][key] = value
-  end
-end
-opts("o", "termguicolors", true)
 vim.opt.termguicolors = true
 local vcmd = vim.cmd
 vcmd "syntax on"
@@ -93,7 +84,7 @@ catppuccino.setup(
   }
 )
 vim.cmd [[colorscheme catppuccino]]
-require("utils")
+
 
 -- colorscheme related stuff
 --Themes
@@ -101,58 +92,58 @@ require("utils")
 --base16(base16.themes["onedark"], true)
 --require('moonlight').set()
 
+
+local g = vim.opt
+
 --- Settings ----
-Option.g {
-  fileencoding = "utf-8", -- the encoding written to a file
-  updatetime = 200, -- faster completion
-  title = true, -- set the title of window to the value of the titlestring
-  titlestring = "%<%F%=%l/%L - nvim", -- what the title of the window will be set to
-  backup = false, -- creates a backup file
-  swapfile = false, -- creates a swapfile
-  smartindent = true, -- make indenting smarter again
-  mouse = "a",
-  clipboard = "unnamedplus",
-  timeoutlen = 100,
-  ruler = true,
-  showmode = false,
-  hidden = true,
-  ignorecase = true,
-  splitbelow = true,
-  splitright = true,
-  termguicolors = true,
-  cmdheight = 1,
-  numberwidth = 1,
-  cursorline = true
+
+g.fileencoding = "utf-8" -- the encoding written to a file
+g.updatetime = 200 -- faster completion
+g.title = true -- set the title of window to the value of the titlestring
+g.titlestring = "%<%F%=%l/%L - nvim"-- what the title of the window will be set to 
+g.backup = false -- creates a backup file
+g.swapfile = false-- creates a swapfile
+g.smartindent = false -- make indenting smarter again
+g.mouse = "a"
+g.clipboard = "unnamedplus"
+g.timeoutlen = 100
+g.ruler = true
+g.showmode = false
+g.hidden = true
+g.ignorecase = true
+g.splitbelow = true
+g.splitright = true
+g.termguicolors = true
+g.cmdheight = 1
+g.numberwidth = 1
+g.cursorline = true
 
   --columns = 100,
   --lines = 50,
-}
+local gl = vim.g
+gl.indentLine_enabled = 0
+gl.indent_blankline_char = "│"
+gl.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
+gl.indent_blankline_buftype_exclude = {"terminal"}
+gl.indent_blankline_show_trailing_blankline_indent = false
+gl.indent_blankline_show_first_indent_level = false
+gl.vsnip_snippet_dir = "~/.config/nvim/snippets/"
+gl.mapleader = " "
+gl.auto_save = 0
 
-Variable.g {
-  indentLine_enabled = 0,
-  indent_blankline_char = "│",
-  indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"},
-  indent_blankline_buftype_exclude = {"terminal"},
-  indent_blankline_show_trailing_blankline_indent = false,
-  indent_blankline_show_first_indent_level = false,
-  vsnip_snippet_dir = "~/.config/nvim/snippets/",
-  mapleader = " ",
-  auto_save = 0
-}
-
+local w = vim.w
 --Windows options
-Option.w {
-  cul = true,
-  signcolumn = "yes",
-  number = true
-}
 
+w.cul = true
+w.signcolumn = "yes"
+w.number = true
+
+local b = vim.b
 --Buffer options
-Option.b {
-  expandtab = false,
-  shiftwidth = 2,
-  smartindent = true
-}
+
+b.expandtab = false
+b.shiftwidth = 2
+b.smartindent = true
 
 vim.cmd [[packadd packer.nvim]]
 vim.cmd "autocmd BufWritePost pluginsList.lua PackerCompile"

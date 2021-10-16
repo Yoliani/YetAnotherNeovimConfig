@@ -38,25 +38,25 @@ return packer.startup(
     }
 
     use "windwp/nvim-autopairs"
-    use "alvan/vim-closetag"
+--    use "alvan/vim-closetag"
     --use 'lukas-reineke/format.nvim'-- format on save
 
     --Tabnine
     --use {"tzachar/compe-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-compe"}
     --use {'aca/completion-tabnine',  run= './install.sh' }
 
-    use "famiu/nvim-reload" --Reload config
+   -- use "famiu/nvim-reload" --Reload config
 
     -- Comments
-    use "terrortylor/nvim-comment"
-    use {
+   -- use "terrortylor/nvim-comment"
+   --[[ use {
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
       config = function()
         require("todo-comments").setup {}
       end
     }
-
+--]]
     -- DAP
     use {"mfussenegger/nvim-dap"}
     use {"nvim-telescope/telescope-dap.nvim"}
@@ -88,11 +88,11 @@ return packer.startup(
     use "MunifTanjim/nui.nvim"
 
     -- misc
-    use "glepnir/dashboard-nvim"
-    use "tweekmonster/startuptime.vim"
+--    use "glepnir/dashboard-nvim"
+ --   use "tweekmonster/startuptime.vim"
     --use "907th/vim-auto-save"
     use "karb94/neoscroll.nvim"
-    use "kdav5758/TrueZen.nvim"
+   -- use "kdav5758/TrueZen.nvim"
 
     -- Lua twilight plugin
     use {
@@ -103,7 +103,7 @@ return packer.startup(
     }
     use "folke/which-key.nvim"
     use {"lukas-reineke/indent-blankline.nvim"}
-    use "mg979/vim-visual-multi" --multicursors
+    --use "mg979/vim-visual-multi" --multicursors
 
     -- Java
     --use 'uiiaoo/java-syntax.vim'
@@ -158,7 +158,7 @@ return packer.startup(
     use "andweeb/presence.nvim"
 
     --Navegar
-    use {
+--[[    use {
       "numToStr/Navigator.nvim",
       config = function()
         require("Navigator").setup()
@@ -167,15 +167,16 @@ return packer.startup(
     use "wuelnerdotexe/vim-enfocado"
     --Capturas de codigo
     use "jmckiern/vim-shoot"
-
+--]]
     --HTTP CLIENT
-    use {
+--[[    use {
       "NTBBloodbath/rest.nvim",
       requires = {"nvim-lua/plenary.nvim"},
       config = function()
         require("rest-nvim").setup()
       end
     }
+    --]]
   end,
   {
     display = {

@@ -83,7 +83,39 @@ catppuccino.setup(
     }
   }
 )
-vim.cmd [[colorscheme catppuccino]]
+
+require("material").setup(
+  {
+    contrast = true, -- Enable contrast for sidebars, floating windows and popup menus like Nvim-Tree
+    borders = false, -- Enable borders between verticaly split windows
+    popup_menu = "deep ocean", -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
+    italics = {
+      comments = false, -- Enable italic comments
+      keywords = true, -- Enable italic keywords
+      functions = true, -- Enable italic functions
+      strings = false, -- Enable italic strings
+      variables = false -- Enable italic variables
+    },
+    contrast_windows = {
+      -- Specify which windows get the contrasted (darker) background
+      "terminal", -- Darker terminal background
+      "packer", -- Darker packer background
+      "qf" -- Darker qf list background
+    },
+    text_contrast = {
+      lighter = false, -- Enable higher contrast text for lighter style
+      darker = false -- Enable higher contrast text for darker style
+    },
+    disable = {
+      background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
+      term_colors = false, -- Prevent the theme from setting terminal colors
+      eob_lines = false -- Hide the end-of-buffer lines
+    },
+    custom_highlights = {} -- Overwrite highlights with your own
+  }
+)
+
+vim.cmd [[colorscheme catppuccino ]]
 
 --- Settings ----
 vim.o.fileencoding = "utf-8" -- the encoding written to a file
@@ -172,4 +204,3 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
   vim.g["loaded_" .. plugin] = 1
 end
-

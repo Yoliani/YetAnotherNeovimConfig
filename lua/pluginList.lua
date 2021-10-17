@@ -8,7 +8,7 @@ return packer.startup(
     use {"lewis6991/impatient.nvim", rocks = "mpack"}
     --Highlight
     use "nvim-treesitter/nvim-treesitter"
-     
+
     --Langs, testing  and autocompletion
     --LSP
     use "neovim/nvim-lspconfig"
@@ -24,10 +24,11 @@ return packer.startup(
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/nvim-cmp"
     use {"tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"}
-    use {"saadparwaiz1/cmp_luasnip"}
+    use "saadparwaiz1/cmp_luasnip"
     use "hrsh7th/cmp-vsnip"
     --Langs
-    use {"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"}--Flutter Language
+    use {"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"}
+    --Flutter Language
     use "simrat39/rust-tools.nvim" -- Rust Language
     --For tests
     use {"mfussenegger/nvim-dap"}
@@ -53,15 +54,20 @@ return packer.startup(
     use "vhyrro/neorg" --TAke Notes
     use "andweeb/presence.nvim" --Discord presence
     use "windwp/nvim-autopairs"
-        use "nvim-lua/plenary.nvim"
-
-  
+    use "nvim-lua/plenary.nvim"
+    use {
+      "blackCauldron7/surround.nvim",
+      config = function()
+        require "surround".setup {mappings_style = "sandwich"}
+      end
+    }
     --GIT
     use "sindrets/diffview.nvim"
     use "lewis6991/gitsigns.nvim"
 
-
     --THEMEs
+    use "marko-cerovac/material.nvim"
+
     use "shaunsingh/nord.nvim"
     use "Pocco81/Catppuccino.nvim"
     --Statusline and bufferline
@@ -71,11 +77,9 @@ return packer.startup(
     }
     use "akinsho/nvim-bufferline.lua"
 
-
     --Formatters
     use "mhartington/formatter.nvim"
-
- end,
+  end,
   {
     display = {
       border = {"┌", "─", "┐", "│", "┘", "─", "└", "│"}

@@ -85,79 +85,55 @@ catppuccino.setup(
 )
 vim.cmd [[colorscheme catppuccino]]
 
-
--- colorscheme related stuff
---Themes
---local base16 = require "base16"
---base16(base16.themes["onedark"], true)
---require('moonlight').set()
-
-
-local g = vim.opt
-
 --- Settings ----
+vim.o.fileencoding = "utf-8" -- the encoding written to a file
+vim.o.updatetime = 200 -- faster completion
+vim.o.title = true -- set the title of window to the value of the titlestring
+vim.o.titlestring = "%<%F%=%l/%L - nvim"
+-- what the title of the window will be set to
+vim.o.backup = false -- creates a backup file
+vim.o.swapfile = false
+-- creates a swapfile
+vim.o.smartindent = false -- make indenting smarter again
+vim.o.mouse = "a"
+vim.o.clipboard = "unnamedplus"
+vim.o.timeoutlen = 100
+vim.o.ruler = true
+vim.o.showmode = false
+vim.o.hidden = true
+vim.o.ignorecase = true
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.termguicolors = true
+vim.o.cmdheight = 1
+vim.o.numberwidth = 1
+vim.o.cursorline = true
 
-g.fileencoding = "utf-8" -- the encoding written to a file
-g.updatetime = 200 -- faster completion
-g.title = true -- set the title of window to the value of the titlestring
-g.titlestring = "%<%F%=%l/%L - nvim"-- what the title of the window will be set to 
-g.backup = false -- creates a backup file
-g.swapfile = false-- creates a swapfile
-g.smartindent = false -- make indenting smarter again
-g.mouse = "a"
-g.clipboard = "unnamedplus"
-g.timeoutlen = 100
-g.ruler = true
-g.showmode = false
-g.hidden = true
-g.ignorecase = true
-g.splitbelow = true
-g.splitright = true
-g.termguicolors = true
-g.cmdheight = 1
-g.numberwidth = 1
-g.cursorline = true
+local g = vim.g
+g.indentLine_enabled = 0
+g.indent_blankline_char = "│"
+g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
+g.indent_blankline_buftype_exclude = {"terminal"}
+g.indent_blankline_show_trailing_blankline_indent = false
+g.indent_blankline_show_first_indent_level = false
+g.vsnip_snippet_dir = "~/.config/nvim/snippets/"
+g.mapleader = " "
+g.auto_save = 0
 
-  --columns = 100,
-  --lines = 50,
-local gl = vim.g
-gl.indentLine_enabled = 0
-gl.indent_blankline_char = "│"
-gl.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
-gl.indent_blankline_buftype_exclude = {"terminal"}
-gl.indent_blankline_show_trailing_blankline_indent = false
-gl.indent_blankline_show_first_indent_level = false
-gl.vsnip_snippet_dir = "~/.config/nvim/snippets/"
-gl.mapleader = " "
-gl.auto_save = 0
-
-local w = vim.w
 --Windows options
 
-w.cul = true
-w.signcolumn = "yes"
-w.number = true
+vim.wo.cul = true
+vim.wo.signcolumn = "yes"
+vim.wo.number = true
 
-local b = vim.b
 --Buffer options
 
-b.expandtab = false
-b.shiftwidth = 2
-b.smartindent = true
+vim.bo.expandtab = false
+vim.bo.shiftwidth = 2
+vim.bo.smartindent = true
 
 vim.cmd [[packadd packer.nvim]]
 vim.cmd "autocmd BufWritePost pluginsList.lua PackerCompile"
---[[
-vim.cmd(
-  [[
-  
-    augroup lsp
-      au!
-      au FileType java lua require('jdtls').start_or_attach({cmd = {'~/.config/nvim/plugins/java-lsp.sh'}})
-    augroup end
-  
-]]
---)]]
 
 vcmd([[autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])
 
@@ -197,7 +173,3 @@ for _, plugin in pairs(disabled_built_ins) do
   vim.g["loaded_" .. plugin] = 1
 end
 
---vim.cmd("source $HOME/.config/nvim/plugins/kite.vim")
---vim.cmd("source $HOME/.config/nvim/plugins/jdtls.vim")
-
---)

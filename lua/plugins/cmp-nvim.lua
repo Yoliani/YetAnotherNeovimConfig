@@ -1,10 +1,5 @@
 local cmp = require("cmp")
 vim.opt.completeopt = "menu,menuone,noselect"
-local luasnip = require("luasnip")
-
-if not luasnip then
-  return
-end
 
 local lsp_symbols = {
   Text = "   (Text) ",
@@ -34,11 +29,45 @@ local lsp_symbols = {
   TypeParameter = "   (TypeParameter)"
 }
 
+local lspkind =
+  require("lspkind").init(
+  {
+    -- enables text annotations
+    --
+    -- default: true
+    with_text = true,
+    -- default symbol map
+    -- can be either 'default' (requires nerd-fonts font) or
+    -- 'codicons' for codicon preset (requires vscode-codicons font)
+    --
+    -- default: 'default'
+    preset = "codicons",
+    -- override preset symbols
+    --
+    -- default: {}
+    symbol_map = lsp_symbols
+  }
+)
+
 cmp.setup(
   {
+    completion = {
+      completeopt = "menu,menuone,noinsert"
+    },
+    confirm_opts = {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true
+    },
     snippet = {
       expand = function(args)
+        -- For `vsnip` user.
         vim.fn["vsnip#anonymous"](args.body)
+
+        -- For `luasnip` user.
+        require("luasnip").lsp_expand(args.body)
+
+        -- For `ultisnips` user.
+        vim.fn["UltiSnips#Anon"](args.body)
       end
     },
     mapping = {
@@ -72,7 +101,10 @@ cmp.setup(
       end,
       ["<cr>"] = cmp.mapping.confirm({select = true})
     },
-    formatting = {
+    --    formatting = {
+    --      format = lspkind.cmp_format()
+    --    },
+    --[[    formatting = {
       format = function(entry, item)
         item.kind = lsp_symbols[item.kind] .. " " .. item.kind
         -- set a name for each source
@@ -93,7 +125,7 @@ cmp.setup(
         })[entry.source.name]
         return item
       end
-    },
+    },--]]
     sources = {
       {name = "nvim_lsp"},
       {name = "vsnip"},

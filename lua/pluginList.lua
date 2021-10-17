@@ -55,6 +55,7 @@ return packer.startup(
     use "andweeb/presence.nvim" --Discord presence
     use "windwp/nvim-autopairs"
     use "nvim-lua/plenary.nvim"
+    use "tweekmonster/startuptime.vim"
     use {
       "blackCauldron7/surround.nvim",
       config = function()

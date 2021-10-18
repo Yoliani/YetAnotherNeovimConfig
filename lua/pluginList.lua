@@ -56,12 +56,17 @@ return packer.startup(
     use "windwp/nvim-autopairs"
     use "nvim-lua/plenary.nvim"
     use "tweekmonster/startuptime.vim"
+
     use {
-      "blackCauldron7/surround.nvim",
+      "phaazon/hop.nvim",
+      as = "hop",
       config = function()
-        require "surround".setup {mappings_style = "sandwich"}
+        -- you can configure Hop the way you like here; see :h hop-config
+        require "hop".setup {keys = "etovxqpdygfblzhckisuran"}
       end
     }
+    --Like EasyMontion
+
     --GIT
     use "sindrets/diffview.nvim"
     use "lewis6991/gitsigns.nvim"
@@ -80,6 +85,17 @@ return packer.startup(
 
     --Formatters
     use "mhartington/formatter.nvim"
+
+    --Fennel
+    use "Olical/aniseed"
+    use {
+      "rktjmp/hotpot.nvim",
+      -- packer says this is "code to run after this plugin is loaded."
+      -- but it seems to run before plugin/hotpot.vim (perhaps just barely)
+      config = function()
+        require("hotpot")
+      end
+    }
   end,
   {
     display = {

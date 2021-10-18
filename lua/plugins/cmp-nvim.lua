@@ -1,5 +1,5 @@
 local cmp = require("cmp")
-vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.completeopt = "menuone,noselect"
 
 local lsp_symbols = {
   Text = "   (Text) ",
@@ -52,7 +52,7 @@ local lspkind =
 cmp.setup(
   {
     completion = {
-      completeopt = "menu,menuone,noinsert"
+      completeopt = "menuone,noinsert"
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
@@ -61,26 +61,21 @@ cmp.setup(
     snippet = {
       expand = function(args)
         -- For `vsnip` user.
-        vim.fn["vsnip#anonymous"](args.body)
+        --vim.fn["vsnip#anonymous"](args.body)
 
         -- For `luasnip` user.
         require("luasnip").lsp_expand(args.body)
 
         -- For `ultisnips` user.
-        vim.fn["UltiSnips#Anon"](args.body)
+        -- vim.fn["UltiSnips#Anon"](args.body)
       end
     },
     mapping = {
-      ["<C-p>"] = cmp.mapping.select_prev_item(),
-      ["<C-n>"] = cmp.mapping.select_next_item(),
       ["<C-d>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true
-      },
+      ["<CR>"] = cmp.mapping.confirm({select = true}),
       ["<Tab>"] = function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -98,13 +93,12 @@ cmp.setup(
         else
           fallback()
         end
-      end,
-      ["<cr>"] = cmp.mapping.confirm({select = true})
+      end
     },
     --    formatting = {
     --      format = lspkind.cmp_format()
     --    },
-    --[[    formatting = {
+    formatting = {
       format = function(entry, item)
         item.kind = lsp_symbols[item.kind] .. " " .. item.kind
         -- set a name for each source
@@ -125,7 +119,8 @@ cmp.setup(
         })[entry.source.name]
         return item
       end
-    },--]]
+    },
+    --]]
     sources = {
       {name = "nvim_lsp"},
       {name = "vsnip"},

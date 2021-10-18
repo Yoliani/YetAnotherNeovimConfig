@@ -47,7 +47,7 @@ return packer.startup(
     use "hrsh7th/vim-vsnip-integ"
     use "SirVer/ultisnips"
     use "rafamadriz/friendly-snippets"
-
+    use "L3MON4D3/LuaSnip"
     --MISC
     use "folke/which-key.nvim"
     use {"lukas-reineke/indent-blankline.nvim"}

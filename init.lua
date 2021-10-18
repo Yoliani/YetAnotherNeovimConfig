@@ -1,18 +1,17 @@
---local async
+local async
 require "impatient"
---_G.tab = {}
---[[
+_G.tab = {}
 async =
   vim.loop.new_async(
   vim.schedule_wrap(
     function()
-         end
+      require("pluginList")
+      require("settings")
+      require("plugins")
+      require("mappings")
+      require("autocmds")
+    end
   )
 )
 
---async:send()]]
-require("pluginList")
-require("settings")
-require("plugins")
-require("mappings")
-require("autocmds")
+async:send()

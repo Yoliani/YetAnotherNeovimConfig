@@ -3,11 +3,11 @@ local vcmd = vim.cmd
 vcmd "syntax on"
 --vcmd "set t_Co=256"
 
-vcmd ":hi NonText guifg=bg"
+--vcmd ":hi NonText guifg=bg"
 
 vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
---vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("space:⋅")
 
 require("indent_blankline").setup {
   show_end_of_line = true,
@@ -83,43 +83,11 @@ catppuccino.setup(
     }
   }
 )
-
-require("material").setup(
-  {
-    contrast = true, -- Enable contrast for sidebars, floating windows and popup menus like Nvim-Tree
-    borders = false, -- Enable borders between verticaly split windows
-    popup_menu = "deep ocean", -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
-    italics = {
-      comments = false, -- Enable italic comments
-      keywords = true, -- Enable italic keywords
-      functions = true, -- Enable italic functions
-      strings = false, -- Enable italic strings
-      variables = false -- Enable italic variables
-    },
-    contrast_windows = {
-      -- Specify which windows get the contrasted (darker) background
-      "terminal", -- Darker terminal background
-      "packer", -- Darker packer background
-      "qf" -- Darker qf list background
-    },
-    text_contrast = {
-      lighter = false, -- Enable higher contrast text for lighter style
-      darker = false -- Enable higher contrast text for darker style
-    },
-    disable = {
-      background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
-      term_colors = false, -- Prevent the theme from setting terminal colors
-      eob_lines = false -- Hide the end-of-buffer lines
-    },
-    custom_highlights = {} -- Overwrite highlights with your own
-  }
-)
-
 vim.cmd [[colorscheme catppuccino ]]
 
---- Settings ----
+--- Settingtrue-
 vim.o.fileencoding = "utf-8" -- the encoding written to a file
-vim.o.updatetime = 200 -- faster completion
+vim.o.updatetime = 500 -- faster completion
 vim.o.title = true -- set the title of window to the value of the titlestring
 vim.o.titlestring = "%<%F%=%l/%L - nvim"
 -- what the title of the window will be set to
@@ -142,7 +110,7 @@ vim.o.numberwidth = 1
 vim.o.cursorline = true
 
 local g = vim.g
-g.indentLine_enabled = 0
+g.indentLine_enabled = 1
 g.indent_blankline_char = "│"
 g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
 g.indent_blankline_buftype_exclude = {"terminal"}
@@ -161,10 +129,19 @@ vim.wo.number = true
 --Buffer options
 
 vim.bo.expandtab = false
-vim.bo.shiftwidth = 2
+vim.bo.shiftwidth = 1
 vim.bo.smartindent = true
 
 vim.cmd [[packadd packer.nvim]]
+vim.o.pastetoggle = "<F14>"
+vim.cmd [[
+set clipboard+=unnamedplus
+filetype on
+filetype plugin on
+filetype plugin indent on
+set completeopt=menu,menuone,noselect
+set modifiable
+]]
 vim.cmd "autocmd BufWritePost pluginsList.lua PackerCompile"
 
 vcmd([[autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])

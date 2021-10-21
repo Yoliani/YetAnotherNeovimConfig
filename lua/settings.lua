@@ -79,7 +79,7 @@ catppuccino.setup(
       markdown = true,
       lightspeed = false,
       ts_rainbow = true,
-      hop = false
+      hop = true
     }
   }
 )
@@ -129,7 +129,7 @@ vim.wo.number = true
 --Buffer options
 
 vim.bo.expandtab = false
-vim.bo.shiftwidth = 1
+vim.bo.shiftwidth = 2
 vim.bo.smartindent = true
 
 vim.cmd [[packadd packer.nvim]]

@@ -66,7 +66,12 @@ return packer.startup(
       end
     }
     --Like EasyMontion
-
+    use {
+      "luukvbaal/stabilize.nvim",
+      config = function()
+        require("stabilize").setup()
+      end
+    }
     --GIT
     use "sindrets/diffview.nvim"
     use "lewis6991/gitsigns.nvim"
@@ -85,7 +90,7 @@ return packer.startup(
 
     --Formatters
     use "mhartington/formatter.nvim"
-
+    use "sbdchd/neoformat"
     --Fennel
     use "Olical/aniseed"
     use {

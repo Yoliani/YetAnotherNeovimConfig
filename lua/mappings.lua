@@ -85,6 +85,8 @@ vim.cmd(
   ]]
 )
 
+map("n", "<leader>sp", [[:lua require("stabilize").setup()]], {noremap = true, silent = true})
+
 map("n", "<F4>", [[:w<CR>:vert ter python3 "%"<CR>]], {noremap = true, silent = true}) -- term over right
 
 map(

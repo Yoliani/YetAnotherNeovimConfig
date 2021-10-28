@@ -24,9 +24,9 @@ ts_config.setup {
     enable = true
   },
   highlight = {
-    enable = true,
-    disabled = {"html"},
-    use_languagetree = true
+    --enable = true,
+    disabled = {"html"}
+    --use_languagetree = true
   },
   autotag = {
     enable = true,
@@ -43,3 +43,12 @@ parser_configs.norg = {
     branch = "main"
   }
 }
+--[[
+parser_configs.html = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-html",
+    files = {"html.c", "html.h", "scanner.c", "scanner.h"},
+    branch = "master"
+  }
+}
+--]]

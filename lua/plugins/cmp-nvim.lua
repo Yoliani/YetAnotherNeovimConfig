@@ -1,6 +1,6 @@
 local cmp = require("cmp")
 vim.opt.completeopt = "menuone,noselect"
-
+require("cmp-npm")
 local lsp_symbols = {
   Text = "   (Text) ",
   Method = "   (Method)",
@@ -115,7 +115,8 @@ cmp.setup(
           luasnip = "[LuaSnip]",
           nvim_lua = "[Lua]",
           latex_symbols = "[Latex]",
-          cmp_tabnine = "[Tab9]"
+          cmp_tabnine = "[Tab9]",
+          npm = ""
         })[entry.source.name]
         return item
       end
@@ -137,7 +138,8 @@ cmp.setup(
       {name = "latex_symbols"},
       {name = "cmp_tabnine"},
       {name = "neorg"},
-      {name = "cmp_luasnip"}
+      {name = "cmp_luasnip"},
+      {name = "npm"}
     }
   }
 )

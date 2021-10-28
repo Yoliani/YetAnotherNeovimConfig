@@ -8,12 +8,13 @@ return packer.startup(
     use {"lewis6991/impatient.nvim", rocks = "mpack"}
     --Highlight
     use "nvim-treesitter/nvim-treesitter"
-
+    use "sheerun/vim-polyglot"
     --Langs, testing  and autocompletion
     --LSP
     use "neovim/nvim-lspconfig"
     use "nvim-lua/lsp_extensions.nvim"
-    use "glepnir/lspsaga.nvim"
+    --use "glepnir/lspsaga.nvim"
+    use {"tami5/lspsaga.nvim"}
     use "onsails/lspkind-nvim"
     use {
       "ray-x/lsp_signature.nvim"
@@ -64,6 +65,8 @@ return packer.startup(
         require("goto-preview").setup {}
       end
     }
+    --UI
+    use "MunifTanjim/nui.nvim"
     use {
       "phaazon/hop.nvim",
       as = "hop",
@@ -84,7 +87,7 @@ return packer.startup(
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim"
     }
-
+    use "karb94/neoscroll.nvim"
     --tmux
     use "christoomey/vim-tmux-navigator"
     use "preservim/vimux"

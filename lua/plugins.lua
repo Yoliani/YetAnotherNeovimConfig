@@ -12,7 +12,10 @@ local tab_modules = {
   "plugins.telescope",
   "plugins.whichkey",
   "plugins.discord",
-  "plugins.autopairs"
+  "plugins.autopairs",
+  "plugins.go-preview",
+  "plugins.todo-comments",
+  "plugins.neoscroll"
 }
 
 for i = 1, #tab_modules, 1 do

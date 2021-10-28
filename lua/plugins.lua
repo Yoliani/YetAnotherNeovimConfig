@@ -14,8 +14,8 @@ local tab_modules = {
   "plugins.discord",
   "plugins.autopairs",
   "plugins.go-preview",
-  "plugins.todo-comments",
-  "plugins.neoscroll"
+  "plugins.todo-comments"
+  -- "plugins.neoscroll"
 }
 
 for i = 1, #tab_modules, 1 do

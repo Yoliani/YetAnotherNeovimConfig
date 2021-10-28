@@ -65,7 +65,7 @@ catppuccino.setup(
         enabled = true,
         show_root = true
       },
-      which_key = false,
+      which_key = true,
       indent_blankline = {
         enabled = true,
         colored_indent_levels = true

@@ -25,8 +25,8 @@ ts_config.setup {
   },
   highlight = {
     --enable = true,
-    disabled = {"html"}
-    --use_languagetree = true
+    disabled = {"html"},
+    use_languagetree = true
   },
   autotag = {
     enable = true,

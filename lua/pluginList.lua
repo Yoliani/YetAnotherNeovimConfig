@@ -87,7 +87,7 @@ return packer.startup(
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim"
     }
-    use "karb94/neoscroll.nvim"
+    --use "karb94/neoscroll.nvim"
     --tmux
     use "christoomey/vim-tmux-navigator"
     use "preservim/vimux"

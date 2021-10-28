@@ -26,6 +26,8 @@ return packer.startup(
     use {"tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"}
     use "saadparwaiz1/cmp_luasnip"
     use "hrsh7th/cmp-vsnip"
+    --Github Copílot
+    use "github/copilot.vim"
     --Langs
     use {"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"}
     --Flutter Language
@@ -56,7 +58,12 @@ return packer.startup(
     use "windwp/nvim-autopairs"
     use "nvim-lua/plenary.nvim"
     use "tweekmonster/startuptime.vim"
-
+    use {
+      "rmagatti/goto-preview",
+      config = function()
+        require("goto-preview").setup {}
+      end
+    }
     use {
       "phaazon/hop.nvim",
       as = "hop",
@@ -72,6 +79,15 @@ return packer.startup(
         require("stabilize").setup()
       end
     }
+    --Comments
+    use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim"
+    }
+
+    --tmux
+    use "christoomey/vim-tmux-navigator"
+    use "preservim/vimux"
     --GIT
     use "sindrets/diffview.nvim"
     use "lewis6991/gitsigns.nvim"

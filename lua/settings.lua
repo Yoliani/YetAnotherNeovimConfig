@@ -84,7 +84,9 @@ catppuccino.setup(
   }
 )
 vim.cmd [[colorscheme catppuccino ]]
-
+--for tmux
+vim.cmd [[let g:tmux_navigator_save_on_switch = 2
+]]
 --- Settingtrue-
 vim.o.fileencoding = "utf-8" -- the encoding written to a file
 vim.o.updatetime = 500 -- faster completion

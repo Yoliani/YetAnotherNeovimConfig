@@ -28,12 +28,12 @@ maps("n", "<S-x>", [[<Cmd>bdelete<CR>]], opts) -- close tab
 maps("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opts)
 maps("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opts)
 -- OPEN TERMINALS --
-map("n", "<C-l>", [[<Cmd>vnew term://zsh <CR>]], opt) -- term over right
+--map("n", "<C-l>", [[<Cmd>vnew term://zsh <CR>]], opt) -- term over right
 map("n", "<C-x>", [[<Cmd> split term://zsh | resize 10 <CR>]], opt) --  term bottom
 map("n", "<C-t>t", [[<Cmd> tabnew | term <CR>]], opt) -- term newtab
 -- map("n",)
 -- COPY EVERYTHING --
-map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
+map("n", "<C-y>", [[ <Cmd> %y+<CR>]], opt)
 
 -- toggle numbers ---
 map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)

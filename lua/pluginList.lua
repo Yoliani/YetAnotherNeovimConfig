@@ -1,6 +1,6 @@
 local packer = require("packer")
 local use = packer.use
-
+vim.cmd("packadd packer.nvim")
 -- using { } for using different branch , loading plugin with certain commands etc
 return packer.startup(
   function()
@@ -10,6 +10,7 @@ return packer.startup(
     use "nvim-treesitter/nvim-treesitter"
     use "sheerun/vim-polyglot"
     --Langs, testing  and autocompletion
+
     --LSP
     use "neovim/nvim-lspconfig"
     use "nvim-lua/lsp_extensions.nvim"

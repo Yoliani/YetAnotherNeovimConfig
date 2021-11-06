@@ -57,9 +57,13 @@ return packer.startup(
     use {"lukas-reineke/indent-blankline.nvim"}
     use "vhyrro/neorg" --TAke Notes
     use "andweeb/presence.nvim" --Discord presence
+    use {"ellisonleao/glow.nvim"} --For markdown
     use "windwp/nvim-autopairs"
+    use "norcalli/nvim-colorizer.lua" --For RGB Colors etc
+    use "mhinz/vim-startify"
     use "nvim-lua/plenary.nvim"
     use "tweekmonster/startuptime.vim"
+    use "alvan/vim-closetag"
     use {
       "rmagatti/goto-preview",
       config = function()

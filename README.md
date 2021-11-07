@@ -9,7 +9,7 @@
 
 _Que cosas necesitas para instalar el software y como instalarlas_
 
-- Neovim +0.6v
+- Neovim +0.5v
 - Node
 - Python +3.8v
 - Una terminal que soporte [nerdfont](https://github.com/ryanoasis/nerd-fonts)

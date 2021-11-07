@@ -58,6 +58,7 @@ return packer.startup(
     use "vhyrro/neorg" --TAke Notes
     use "andweeb/presence.nvim" --Discord presence
     use {"ellisonleao/glow.nvim"} --For markdown
+    use {"iamcco/markdown-preview.nvim", run = [[sh -c 'cd app && yarn install']]}
     use "windwp/nvim-autopairs"
     use "norcalli/nvim-colorizer.lua" --For RGB Colors etc
     use "mhinz/vim-startify"

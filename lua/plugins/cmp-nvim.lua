@@ -32,19 +32,8 @@ local lsp_symbols = {
 local lspkind =
   require("lspkind").init(
   {
-    -- enables text annotations
-    --
-    -- default: true
     with_text = true,
-    -- default symbol map
-    -- can be either 'default' (requires nerd-fonts font) or
-    -- 'codicons' for codicon preset (requires vscode-codicons font)
-    --
-    -- default: 'default'
     preset = "codicons",
-    -- override preset symbols
-    --
-    -- default: {}
     symbol_map = lsp_symbols
   }
 )
@@ -160,5 +149,30 @@ tabnine:setup(
     max_num_results = 20,
     sort = true,
     run_on_every_keystroke = true
+  }
+)
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(
+  "/",
+  {
+    sources = {
+      {name = "buffer"}
+    }
+  }
+)
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(
+  ":",
+  {
+    sources = cmp.config.sources(
+      {
+        {name = "path"}
+      },
+      {
+        {name = "cmdline"}
+      }
+    )
   }
 )

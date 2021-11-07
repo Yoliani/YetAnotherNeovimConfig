@@ -27,6 +27,8 @@ return packer.startup(
     use "hrsh7th/nvim-cmp"
     use {"tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"}
     use "saadparwaiz1/cmp_luasnip"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/cmp-cmdline"
     use "hrsh7th/cmp-vsnip"
     --Github Copílot
     use "github/copilot.vim"
@@ -93,7 +95,7 @@ return packer.startup(
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim"
     }
-    --use "karb94/neoscroll.nvim"
+    use "karb94/neoscroll.nvim"
     --tmux
     use "christoomey/vim-tmux-navigator"
     use "preservim/vimux"

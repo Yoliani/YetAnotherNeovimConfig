@@ -11,10 +11,10 @@ local tab_modules = {
   "plugins.bufferline",
   "plugins.telescope",
   "plugins.whichkey",
-  --  "plugins.discord",
   "plugins.autopairs",
   "plugins.go-preview",
-  "plugins.todo-comments"
+  "plugins.todo-comments",
+  "plugins.dap"
   -- "plugins.neoscroll"
 }
 

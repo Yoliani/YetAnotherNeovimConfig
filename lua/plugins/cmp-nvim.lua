@@ -104,7 +104,8 @@ cmp.setup(
           luasnip = "[LuaSnip]",
           nvim_lua = "[Lua]",
           latex_symbols = "[Latex]",
-          cmp_tabnine = "[Tab9]"
+          cmp_tabnine = "[Tab9]",
+          orgmode = "[orgmode]"
           --npm = ""
         })[entry.source.name]
         return item
@@ -127,7 +128,8 @@ cmp.setup(
       {name = "latex_symbols"},
       {name = "cmp_tabnine"},
       {name = "neorg"},
-      {name = "cmp_luasnip"}
+      {name = "cmp_luasnip"},
+      {name = "orgmode"}
       --{name = "npm"}
     }
   }
@@ -153,6 +155,8 @@ tabnine:setup(
 )
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+
+--[[
 cmp.setup.cmdline(
   "/",
   {
@@ -176,3 +180,4 @@ cmp.setup.cmdline(
     )
   }
 )
+--]]

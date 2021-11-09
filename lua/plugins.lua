@@ -1,5 +1,7 @@
 local tab_modules = {
   "plugins.signature-lsp",
+  "plugins.lsp-status",
+  "plugins.luasnip",
   "plugins.cmp-nvim",
   "plugins.lsp",
   "plugins.treesitter-nvim",

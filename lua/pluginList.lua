@@ -8,6 +8,12 @@ return packer.startup(
     use {"lewis6991/impatient.nvim", rocks = "mpack"}
     --Highlight
     use "nvim-treesitter/nvim-treesitter"
+    use {
+      "kristijanhusak/orgmode.nvim",
+      config = function()
+        require("orgmode").setup {}
+      end
+    }
     use "sheerun/vim-polyglot"
     --Langs, testing  and autocompletion
 
@@ -67,6 +73,12 @@ return packer.startup(
     use "nvim-lua/plenary.nvim"
     use "tweekmonster/startuptime.vim"
     use "alvan/vim-closetag"
+    use {
+      "filipdutescu/renamer.nvim",
+      branch = "master",
+      requires = {{"nvim-lua/plenary.nvim"}}
+    }
+    --rename
     use {
       "rmagatti/goto-preview",
       config = function()

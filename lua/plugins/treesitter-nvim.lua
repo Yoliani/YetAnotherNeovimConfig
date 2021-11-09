@@ -18,14 +18,16 @@ ts_config.setup {
     "rust",
     "typescript",
     "tsx",
-    "regex"
+    "regex",
+    "org"
   },
   indent = {
     enable = true
   },
   highlight = {
-    --enable = true,
-    disabled = {"html"},
+    enable = true,
+    additional_vim_regex_highlighting = {"org"},
+    disable = {"org"},
     use_languagetree = true
   },
   autotag = {
@@ -36,19 +38,18 @@ ts_config.setup {
 
 local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 
-parser_configs.norg = {
+parser_configs.org = {
   install_info = {
-    url = "https://github.com/nvim-neorg/tree-sitter-norg",
-    files = {"src/parser.c", "src/scanner.cc"},
-    branch = "main"
-  }
+    url = "https://github.com/milisims/tree-sitter-org",
+    revision = "main",
+    files = {"src/parser.c", "src/scanner.cc"}
+  },
+  filetype = "org"
 }
---[[
-parser_configs.html = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-html",
-    files = {"html.c", "html.h", "scanner.c", "scanner.h"},
-    branch = "master"
+
+require("orgmode").setup(
+  {
+    org_agenda_files = {"~/Notas/org/*"},
+    org_default_notes_file = "~/Notas/org/refile.org"
   }
-}
---]]
+)

@@ -27,7 +27,7 @@ ts_config.setup {
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = {"org"},
-    disable = {"org"},
+    disable = {"org", "html", "php"},
     use_languagetree = true
   },
   autotag = {

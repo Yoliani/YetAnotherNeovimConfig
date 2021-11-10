@@ -27,6 +27,7 @@ return packer.startup(
       "ray-x/lsp_signature.nvim"
     }
     use "kabouzeid/nvim-lspinstall"
+
     --CMP
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-buffer"
@@ -36,6 +37,12 @@ return packer.startup(
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-cmdline"
     use "hrsh7th/cmp-vsnip"
+    use {
+      "Yoliani/cmp-npm",
+      requires = {
+        "nvim-lua/plenary.nvim"
+      }
+    }
     --Github Copílot
     use "github/copilot.vim"
     --Langs

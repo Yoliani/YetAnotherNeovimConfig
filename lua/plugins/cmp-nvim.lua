@@ -105,8 +105,8 @@ cmp.setup(
           nvim_lua = "[Lua]",
           latex_symbols = "[Latex]",
           cmp_tabnine = "[Tab9]",
-          orgmode = "[orgmode]"
-          --npm = ""
+          orgmode = "[orgmode]",
+          npm = ""
         })[entry.source.name]
         return item
       end
@@ -129,8 +129,8 @@ cmp.setup(
       {name = "cmp_tabnine"},
       {name = "neorg"},
       {name = "cmp_luasnip"},
-      {name = "orgmode"}
-      --{name = "npm"}
+      {name = "orgmode"},
+      {name = "npm"}
     }
   }
 )

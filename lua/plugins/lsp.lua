@@ -129,7 +129,7 @@ lspconfig.diagnosticls.setup {
     "pandoc"
   },
   init_options = {
-    linters = {
+    lintrs = {
       eslint = {
         command = "eslint_d",
         rootPatterns = {".git"},
@@ -276,7 +276,7 @@ local function setup_servers()
   lspinstall.setup()
 
   for _, server in pairs(installed_servers) do
-    --print(server)
+    print(server)
     local config = make_config()
     if server == "lua" then
       config.settings = lua_settings
@@ -324,6 +324,10 @@ local function setup_servers()
           }
         }
       end
+    end
+
+    if server == "javascript" then
+      require "lspconfig".eslint.setup {}
     end
   end
 end

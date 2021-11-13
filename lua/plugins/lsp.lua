@@ -276,7 +276,7 @@ local function setup_servers()
   lspinstall.setup()
 
   for _, server in pairs(installed_servers) do
-    print(server)
+    --print(server)
     local config = make_config()
     if server == "lua" then
       config.settings = lua_settings

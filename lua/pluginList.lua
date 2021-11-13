@@ -80,6 +80,7 @@ return packer.startup(
     use "nvim-lua/plenary.nvim"
     use "tweekmonster/startuptime.vim"
     use "alvan/vim-closetag"
+    use "mg979/vim-visual-multi"
     use {
       "filipdutescu/renamer.nvim",
       branch = "master",
@@ -124,7 +125,7 @@ return packer.startup(
 
     --THEMEs
     use "marko-cerovac/material.nvim"
-
+    use "eddyekofo94/gruvbox-flat.nvim"
     use "shaunsingh/nord.nvim"
     use "Pocco81/Catppuccino.nvim"
     --Statusline and bufferline

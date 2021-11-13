@@ -45,8 +45,8 @@ local catppuccino = require("catppuccino")
 catppuccino.setup(
   {
     colorscheme = "neon_latte",
-    transparency = true,
-    term_colors = true,
+    transparency = false,
+    term_colors = false,
     styles = {
       comments = "italic",
       functions = "italic",
@@ -98,6 +98,10 @@ catppuccino.setup(
     }
   }
 )
+
+--Gruvbox
+vim.g.gruvbox_flat_style = "hard"
+--vim.cmd [[colorscheme gruvbox-flat]]
 vim.cmd [[colorscheme catppuccino ]]
 --for tmux
 vim.cmd [[let g:tmux_navigator_save_on_switch = 2
@@ -113,7 +117,7 @@ vim.o.swapfile = false
 -- creates a swapfile
 vim.o.smartindent = false -- make indenting smarter again
 vim.o.mouse = "a"
-vim.o.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 vim.o.timeoutlen = 100
 vim.o.ruler = true
 vim.o.showmode = false
@@ -153,9 +157,12 @@ vim.bo.shiftwidth = 2
 vim.bo.smartindent = true
 
 vim.cmd [[packadd packer.nvim]]
-vim.o.pastetoggle = "<F14>"
+vim.o.pastetoggle = "<F1>"
+--set clipboard+=unnamedplus
+
 vim.cmd [[
 set clipboard+=unnamedplus
+set clipboard+=unnamed
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -226,11 +233,12 @@ vim.cmd([[ autocmd FileType xml,html,xhtml,css,scssjavascript,lua,dart setlocal 
 -- json
 vim.cmd([[ au BufEnter *.json set ai expandtab shiftwidth=2 tabstop=2 sta fo=croql ]])
 
-cmd([[
+cmd(
+  [[
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
-]])
+]]
+)
 
-cmd('autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=grey') --to Show whitespace, MUST be inserted BEFORE the colorscheme command
-
+cmd("autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=grey") --to Show whitespace, MUST be inserted BEFORE the colorscheme command

@@ -79,7 +79,8 @@ end
 
 ins_left {
   function()
-    return "▊"
+    return ""
+    --"▊"
   end,
   color = {fg = colors.blue}, -- Sets highlighting of component
   left_padding = 0 -- We don't need space before this
@@ -112,7 +113,8 @@ ins_left {
       t = colors.red
     }
     vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg)
-    return ""
+    return ""
+    --""
   end,
   color = "LualineMode",
   left_padding = 0
@@ -225,7 +227,8 @@ ins_right {
 
 ins_right {
   function()
-    return "▊"
+    return ""
+    --"▊"
   end,
   color = {fg = colors.blue},
   right_padding = 0

@@ -95,14 +95,7 @@ return packer.startup(
     }
     --UI
     use "MunifTanjim/nui.nvim"
-    use {
-      "phaazon/hop.nvim",
-      as = "hop",
-      config = function()
-        -- you can configure Hop the way you like here; see :h hop-config
-        require "hop".setup {keys = "etovxqpdygfblzhckisuran"}
-      end
-    }
+    use "ggandor/lightspeed.nvim"
     --Like EasyMontion
     use {
       "luukvbaal/stabilize.nvim",

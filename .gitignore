@@ -1,3 +1,4 @@
 #Ignore compile plugins for packer
 **/plugin/packer_compiled.lua
 **/notas.norg
+notas.org

@@ -81,12 +81,7 @@ return packer.startup(
     use "tweekmonster/startuptime.vim"
     use "alvan/vim-closetag"
     use "mg979/vim-visual-multi"
-    use {
-      "filipdutescu/renamer.nvim",
-      branch = "master",
-      requires = {{"nvim-lua/plenary.nvim"}}
-    }
-    --rename
+
     use {
       "rmagatti/goto-preview",
       config = function()

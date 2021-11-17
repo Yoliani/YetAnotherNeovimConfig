@@ -4,6 +4,7 @@ local tab_modules = {
   "plugins.luasnip",
   "plugins.cmp-nvim",
   "plugins.lsp",
+  -- "plugins.startup",
   "plugins.treesitter-nvim",
   "plugins.nvimtree",
   "plugins.lspsaga",

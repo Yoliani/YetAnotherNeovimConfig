@@ -132,6 +132,7 @@ vim.o.cursorline = true
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2 -- spaces per tab (when shifting), when using the >> or << commands, shift lines by 4 spaces
 vim.o.tabstop = 2
+vim.opt.modifiable = true
 
 local g = vim.g
 g.indentLine_enabled = 1
@@ -149,7 +150,7 @@ g.auto_save = 0
 vim.wo.cul = true
 vim.wo.signcolumn = "yes"
 vim.wo.number = true
-
+--vim.wo.wrap = true
 --Buffer options
 
 vim.bo.expandtab = false
@@ -160,7 +161,8 @@ vim.cmd [[packadd packer.nvim]]
 vim.o.pastetoggle = "<F1>"
 --set clipboard+=unnamedplus
 
-vim.cmd [[
+vim.cmd(
+  [[
 set clipboard+=unnamedplus
 set clipboard+=unnamed
 filetype on
@@ -169,6 +171,8 @@ filetype plugin indent on
 set completeopt=menu,menuone,noselect
 set modifiable
 ]]
+)
+
 vim.cmd "autocmd BufWritePost pluginsList.lua PackerCompile"
 
 vcmd([[autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])
@@ -176,7 +180,7 @@ vcmd([[autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2 softtab
 -- hide line numbers , statusline in specific buffers!
 vim.api.nvim_exec(
   [[
-   au BufEnter term://* setlocal nonumber
+au BufEnter term://* setlocal nonumber
    au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
    au BufEnter term://* set laststatus=0 
 ]],

@@ -75,8 +75,8 @@ return packer.startup(
     use {"ellisonleao/glow.nvim"} --For markdown
     use {"iamcco/markdown-preview.nvim", run = [[sh -c 'cd app && yarn install']]}
     use "windwp/nvim-autopairs"
-    use "norcalli/nvim-colorizer.lua" --For RGB Colors etc
-    use "mhinz/vim-startify"
+    use "norcalli/nvim-colorizer.lua"
+    use "glepnir/dashboard-nvim" --For RGB Colors etc
     use "nvim-lua/plenary.nvim"
     use "tweekmonster/startuptime.vim"
     use "alvan/vim-closetag"
@@ -132,15 +132,15 @@ return packer.startup(
     use "mhartington/formatter.nvim"
     use "sbdchd/neoformat"
     --Fennel
-    use "Olical/aniseed"
-    use {
-      "rktjmp/hotpot.nvim",
-      -- packer says this is "code to run after this plugin is loaded."
-      -- but it seems to run before plugin/hotpot.vim (perhaps just barely)
-      config = function()
-        require("hotpot")
-      end
-    }
+    --    use "Olical/aniseed"
+    --    use {
+    --      "rktjmp/hotpot.nvim",
+    --      -- packer says this is "code to run after this plugin is loaded."
+    --      -- but it seems to run before plugin/hotpot.vim (perhaps just barely)
+    --      config = function()
+    --        require("hotpot")
+    --      end
+    --    }
   end,
   {
     display = {

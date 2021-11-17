@@ -16,8 +16,9 @@ local tab_modules = {
   "plugins.autopairs",
   "plugins.go-preview",
   "plugins.todo-comments",
-  "plugins.dap"
-  -- "plugins.neoscroll"
+  "plugins.dap",
+  --ftplugin
+  "ftplugin.java"
 }
 
 for i = 1, #tab_modules, 1 do

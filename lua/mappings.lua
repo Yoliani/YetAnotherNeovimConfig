@@ -98,16 +98,6 @@ map(
 
 map("n", "<F8>", ":!jfx %<CR>", {noremap = true, silent = true})
 
--- Java specific
---[[
-map("n", "<leader>di", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opt)
-map("n", "<leader>dt", "<Cmd>lua require'jdtls'.test_class()<CR>", opt)
-map("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opt)
-map("v", "<leader>de", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opt)
-map("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opt)
-map("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opt)
-map("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
---]]
 --
 map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -125,6 +115,6 @@ map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 
-vim.api.nvim_set_keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<F2>", '<cmd>lua require("renamer").rename()<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>rn", '<cmd>lua require("renamer").rename()<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap("v", "<leader>rn", '<cmd>lua require("renamer").rename()<cr>', {noremap = true, silent = true})

@@ -27,7 +27,7 @@ return packer.startup(
       "ray-x/lsp_signature.nvim"
     }
     use "kabouzeid/nvim-lspinstall"
-
+    use "mfussenegger/nvim-jdtls"
     --CMP
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-buffer"

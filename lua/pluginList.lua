@@ -126,6 +126,7 @@ return packer.startup(
       "hoob3rt/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
+
     use "akinsho/nvim-bufferline.lua"
 
     --Formatters

@@ -45,7 +45,7 @@ local catppuccino = require("catppuccino")
 catppuccino.setup(
   {
     colorscheme = "neon_latte",
-    transparency = false,
+    transparency = true,
     term_colors = false,
     styles = {
       comments = "italic",

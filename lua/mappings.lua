@@ -95,6 +95,7 @@ map(
   [[:w<CR>:vert ter /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 "%"<CR>]],
   {noremap = true, silent = true}
 )
+map("n", "<F10>", [[:w<CR>:vert ter javac "%"<CR>]], {noremap = true, silent = true})
 
 map("n", "<F8>", ":!jfx %<CR>", {noremap = true, silent = true})
 

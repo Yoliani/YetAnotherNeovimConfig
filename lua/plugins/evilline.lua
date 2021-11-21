@@ -53,8 +53,8 @@ local config = {
     lualine_y = {},
     lualine_z = {},
     -- These will be filled later
-    lualine_c = {require "tabline".tabline_buffers},
-    lualine_x = {require "tabline".tabline_tabs}
+    lualine_c = {},
+    lualine_x = {}
   },
   inactive_sections = {
     -- these are to remove the defaults

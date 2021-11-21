@@ -26,8 +26,8 @@ ts_config.setup {
   },
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = {"org"},
     disable = {"org", "html", "php"},
+    additional_vim_regex_highlighting = {"org"},
     use_languagetree = true
   },
   autotag = {
@@ -36,9 +36,9 @@ ts_config.setup {
   }
 }
 
-local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 
-parser_configs.org = {
+parser_config.org = {
   install_info = {
     url = "https://github.com/milisims/tree-sitter-org",
     revision = "main",

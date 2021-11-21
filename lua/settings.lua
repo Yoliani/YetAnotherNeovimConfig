@@ -46,7 +46,7 @@ catppuccino.setup(
   {
     colorscheme = "neon_latte",
     transparency = true,
-    term_colors = false,
+    term_colors = true,
     styles = {
       comments = "italic",
       functions = "italic",
@@ -115,7 +115,7 @@ vim.o.titlestring = "%<%F%=%l/%L - nvim"
 vim.o.backup = false -- creates a backup file
 vim.o.swapfile = false
 -- creates a swapfile
-vim.o.smartindent = false -- make indenting smarter again
+vim.o.smartindent = true -- make indenting smarter again
 vim.o.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.o.timeoutlen = 100
@@ -153,7 +153,7 @@ vim.wo.number = true
 --vim.wo.wrap = true
 --Buffer options
 
-vim.bo.expandtab = false
+vim.bo.expandtab = true
 vim.bo.shiftwidth = 2
 vim.bo.smartindent = true
 
@@ -236,7 +236,6 @@ local cmd = vim.cmd
 vim.cmd([[ autocmd FileType xml,html,xhtml,css,scssjavascript,lua,dart setlocal shiftwidth=2 tabstop=2 ]])
 -- json
 vim.cmd([[ au BufEnter *.json set ai expandtab shiftwidth=2 tabstop=2 sta fo=croql ]])
-
 cmd(
   [[
 if has("autocmd")

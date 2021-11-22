@@ -85,7 +85,7 @@ catppuccino.setup(
         enabled = true,
         colored_indent_levels = true
       },
-      dashboard = true,
+      dashboard = false,
       neogit = false,
       vim_sneak = false,
       fern = false,
@@ -106,6 +106,17 @@ vim.cmd [[colorscheme catppuccino ]]
 --for tmux
 vim.cmd [[let g:tmux_navigator_save_on_switch = 2
 ]]
+vim.cmd(
+  [[
+set clipboard+=unnamedplus
+set clipboard+=unnamed
+filetype on
+filetype plugin on
+filetype plugin indent on
+set completeopt=menu,menuone,noselect
+set modifiable
+]]
+)
 --- Settingtrue-
 vim.o.fileencoding = "utf-8" -- the encoding written to a file
 vim.o.updatetime = 500 -- faster completion
@@ -160,18 +171,6 @@ vim.bo.smartindent = true
 vim.cmd [[packadd packer.nvim]]
 vim.o.pastetoggle = "<F1>"
 --set clipboard+=unnamedplus
-
-vim.cmd(
-  [[
-set clipboard+=unnamedplus
-set clipboard+=unnamed
-filetype on
-filetype plugin on
-filetype plugin indent on
-set completeopt=menu,menuone,noselect
-set modifiable
-]]
-)
 
 vim.cmd "autocmd BufWritePost pluginsList.lua PackerCompile"
 

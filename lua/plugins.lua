@@ -18,6 +18,7 @@ local tab_modules = {
   "plugins.go-preview",
   "plugins.todo-comments",
   "plugins.dap",
+  "plugins.dashboard",
   --ftplugin
   "ftplugin.java"
 }

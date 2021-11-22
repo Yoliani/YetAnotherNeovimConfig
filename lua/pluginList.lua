@@ -76,12 +76,17 @@ return packer.startup(
     use {"iamcco/markdown-preview.nvim", run = [[sh -c 'cd app && yarn install']]}
     use "windwp/nvim-autopairs"
     use "norcalli/nvim-colorizer.lua"
-    use "glepnir/dashboard-nvim" --For RGB Colors etc
+
     use "nvim-lua/plenary.nvim"
     use "tweekmonster/startuptime.vim"
     use "alvan/vim-closetag"
     use "mg979/vim-visual-multi"
-
+    use {
+      "goolord/alpha-nvim",
+      config = function()
+        require "alpha".setup(require "alpha.themes.dashboard".opts)
+      end
+    }
     use {
       "rmagatti/goto-preview",
       config = function()

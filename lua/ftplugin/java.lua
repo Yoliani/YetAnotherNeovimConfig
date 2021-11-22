@@ -26,7 +26,6 @@ local config = {
   root_dir = require("jdtls.setup").find_root({".git", "mvnw", "gradlew"}),
   capabilities = capabilities
 }
-require("jdtls").start_or_attach(config)
 
 -- Java specific
 local opts = {noremap = true, silent = true}
@@ -38,3 +37,4 @@ vim.api.nvim_set_keymap("v", "<leader>de", "<Esc><Cmd>lua require('jdtls').extra
 vim.api.nvim_set_keymap("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
 vim.api.nvim_set_keymap("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+require("jdtls").start_or_attach(config)

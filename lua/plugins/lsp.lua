@@ -276,7 +276,6 @@ local function setup_servers()
   lspinstall.setup()
 
   for _, server in pairs(installed_servers) do
-    --print(server)
     local config = make_config()
     if server == "lua" then
       config.settings = lua_settings
@@ -338,6 +337,25 @@ require "lspinstall".post_install_hook = function()
   setup_servers() -- reload installed servers
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
+
+local configs = require "lspconfig/configs"
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+if not lspconfig.emmet_ls then
+  configs.emmet_ls = {
+    default_config = {
+      cmd = {"emmet-ls", "--stdio"},
+      filetypes = {"html", "css", "blade"},
+      root_dir = function(fname)
+        return vim.loop.cwd()
+      end,
+      settings = {}
+    }
+  }
+end
+lspconfig.emmet_ls.setup {capabilities = capabilities}
 
 -- replace the default lsp diagnostic letters with prettier symbols
 vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})

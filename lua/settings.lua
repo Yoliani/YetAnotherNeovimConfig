@@ -144,6 +144,7 @@ vim.o.softtabstop = 2
 vim.o.shiftwidth = 2 -- spaces per tab (when shifting), when using the >> or << commands, shift lines by 4 spaces
 vim.o.tabstop = 2
 vim.opt.modifiable = true
+vim.o.wildignore = "*node_modules/**"
 
 local g = vim.g
 g.indentLine_enabled = 1

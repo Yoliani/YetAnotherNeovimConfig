@@ -76,7 +76,10 @@ return packer.startup(
     use {"iamcco/markdown-preview.nvim", run = [[sh -c 'cd app && yarn install']]}
     use "windwp/nvim-autopairs"
     use "norcalli/nvim-colorizer.lua"
-
+    use "famiu/nvim-reload"
+    use "SmiteshP/nvim-gps"
+    --Reload and Restart
+    use "rcarriga/nvim-notify"
     use "nvim-lua/plenary.nvim"
     use "tweekmonster/startuptime.vim"
     use "alvan/vim-closetag"
@@ -122,10 +125,12 @@ return packer.startup(
     use "shaunsingh/nord.nvim"
     use "Pocco81/Catppuccino.nvim"
     --Statusline and bufferline
-    use {
+    --[[    use {
       "hoob3rt/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
+   --]]
+    use "glepnir/galaxyline.nvim"
 
     use "akinsho/nvim-bufferline.lua"
 

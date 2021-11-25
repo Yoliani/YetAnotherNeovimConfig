@@ -1,3 +1,4 @@
+--require "alpha".setup(require "alpha.themes.dashboard".opts)
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 
@@ -41,3 +42,4 @@ dashboard.section.footer.val = {
 }
 
 alpha.setup(dashboard.opts)
+require "alpha".setup(require "alpha.themes.dashboard".opts)

@@ -339,15 +339,13 @@ require "lspinstall".post_install_hook = function()
 end
 
 local configs = require "lspconfig/configs"
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local config = make_config()
 
 if not lspconfig.emmet_ls then
   configs.emmet_ls = {
     default_config = {
       cmd = {"emmet-ls", "--stdio"},
-      filetypes = {"html", "css", "blade"},
+      filetypes = {"html", "css", "blade", "jsx", "php", "js"},
       root_dir = function(fname)
         return vim.loop.cwd()
       end,
@@ -355,7 +353,7 @@ if not lspconfig.emmet_ls then
     }
   }
 end
-lspconfig.emmet_ls.setup {capabilities = capabilities}
+lspconfig.emmet_ls.setup {config}
 
 -- replace the default lsp diagnostic letters with prettier symbols
 vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})

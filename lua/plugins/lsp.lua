@@ -2,6 +2,19 @@ local lspinstall = require("lspinstall")
 local lspconfig = require "lspconfig"
 local protocol = require "vim.lsp.protocol"
 
+local buf_map = function(bufnr, mode, lhs, rhs, opts)
+  vim.api.nvim_buf_set_keymap(
+    bufnr,
+    mode,
+    lhs,
+    rhs,
+    opts or
+      {
+        silent = true
+      }
+  )
+end
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -110,8 +123,29 @@ lspconfig.flow.setup {
 }
 
 lspconfig.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = {"typescript", "typescriptreact", "typescript.tsx"}
+  on_attach = function(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+    local ts_utils = require("nvim-lsp-ts-utils")
+    ts_utils.setup(
+      {
+        eslint_bin = "eslint_d",
+        eslint_enable_diagnostics = true,
+        eslint_enable_code_actions = true,
+        enable_formatting = true,
+        formatter = "prettier"
+      }
+    )
+    ts_utils.setup_client(client)
+    buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+    buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+    buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+    on_attach(client, bufnr)
+  end,
+  filetypes = {"typescript", "typescriptreact", "typescript.tsx"},
+  root_dir = function()
+    return vim.loop.cwd()
+  end
 }
 
 lspconfig.diagnosticls.setup {
@@ -242,6 +276,7 @@ local intelephense_settings = {
     }
   }
 }
+
 -- config that activates keymaps and enables snippet support
 local function make_config()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -325,9 +360,9 @@ local function setup_servers()
       end
     end
 
-    if server == "javascript" then
-      require "lspconfig".eslint.setup {}
-    end
+    --  if server == "javascript" then
+    --    require "lspconfig".e.setup {}
+    --  end
   end
 end
 setup_servers()
@@ -354,6 +389,9 @@ if not lspconfig.emmet_ls then
   }
 end
 lspconfig.emmet_ls.setup {config}
+
+require("null-ls").config({})
+lspconfig["null-ls"].setup({on_attach = on_attach})
 
 -- replace the default lsp diagnostic letters with prettier symbols
 vim.fn.sign_define("LspDiagnosticsSignError", {text = "💢", numhl = "LspDiagnosticsDefaultError"})

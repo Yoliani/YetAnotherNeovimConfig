@@ -19,6 +19,8 @@ return packer.startup(
 
     --LSP
     use "neovim/nvim-lspconfig"
+    use "jose-elias-alvarez/null-ls.nvim"
+    use "jose-elias-alvarez/nvim-lsp-ts-utils"
     use "nvim-lua/lsp_extensions.nvim"
     --use "glepnir/lspsaga.nvim"
     use {"tami5/lspsaga.nvim"}

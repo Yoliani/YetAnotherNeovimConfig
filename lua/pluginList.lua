@@ -28,7 +28,8 @@ return packer.startup(
     use {
       "ray-x/lsp_signature.nvim"
     }
-    use "kabouzeid/nvim-lspinstall"
+    -- use "kabouzeid/nvim-lspinstall"
+    use "williamboman/nvim-lsp-installer"
     use "mfussenegger/nvim-jdtls"
     --CMP
     use "hrsh7th/cmp-nvim-lsp"

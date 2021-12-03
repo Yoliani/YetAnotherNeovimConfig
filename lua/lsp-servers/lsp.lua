@@ -120,7 +120,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     underline = true,
     -- This sets the spacing and the prefix, obviously.
     virtual_text = {
-      spacing = 4,
+      spacing = 5,
       prefix = ""
     }
   }
@@ -179,7 +179,6 @@ lsp_installer.on_server_ready(
     -- end
     if server.name == "sumneko_lua" then
       opts.settings = lua_settings
-      print("Sumnekolua")
     elseif server.name == "tsserver" then
       local ts_utils = require("nvim-lsp-ts-utils")
       opts.init_options = ts_utils.init_options
@@ -191,7 +190,9 @@ lsp_installer.on_server_ready(
 
         ts_utils.setup(ts_utils_settings)
         ts_utils.setup_client(client)
-
+        --vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+        --vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", ":TSLspRenameFile<CR>")
+        --vim.api.nvim_buf_set_keymap(bufnr, "n", "go", ":TSLspImportAll<CR>")
         --buf_map("n", "gs", ":TSLspOrganize<CR>", nil, bufnr)
         --buf_map("n", "gI", ":TSLspRenameFile<CR>", nil, bufnr)
         --buf_map("n", "go", ":TSLspImportAll<CR>", nil, bufnr)

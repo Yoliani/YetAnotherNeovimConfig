@@ -123,10 +123,14 @@ return packer.startup(
     use "lewis6991/gitsigns.nvim"
 
     --THEMEs
+    use "folke/tokyonight.nvim"
+
     use "marko-cerovac/material.nvim"
     use "eddyekofo94/gruvbox-flat.nvim"
     use "shaunsingh/nord.nvim"
-    use "Pocco81/Catppuccino.nvim"
+    --use "Pocco81/Catppuccino.nvim"
+    use "catppuccin/nvim"
+
     --Statusline and bufferline
     --[[    use {
       "hoob3rt/lualine.nvim",

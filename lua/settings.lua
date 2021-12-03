@@ -39,13 +39,13 @@ require("indent_blankline").setup {
   }
 }
 
-local catppuccino = require("catppuccino")
+local catppuccino = require("catppuccin")
 
 -- configure it
 catppuccino.setup(
   {
-    colorscheme = "neon_latte",
-    transparency = true,
+    -- colorscheme = "neon_latte",
+    transparency = false,
     term_colors = true,
     styles = {
       comments = "italic",
@@ -100,9 +100,18 @@ catppuccino.setup(
 )
 
 --Gruvbox
-vim.g.gruvbox_flat_style = "hard"
+--vim.g.gruvbox_flat_style = "hard"
 --vim.cmd [[colorscheme gruvbox-flat]]
-vim.cmd [[colorscheme catppuccino ]]
+vim.cmd [[colorscheme catppuccin ]]
+-- Example config in Lua
+--vim.g.tokyonight_style = "storm"
+--vim.g.tokyonight_italic_functions = true
+--vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
+
+-- Change the "hint" color to the "orange" color, and make the "error" color bright red
+--vim.g.tokyonight_colors = {hint = "orange", error = "#ff0000"}
+--vim.cmd [[colorscheme tokyonight]]
+
 --for tmux
 vim.cmd [[let g:tmux_navigator_save_on_switch = 2
 ]]

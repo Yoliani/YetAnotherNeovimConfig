@@ -2,7 +2,7 @@ local autocommands = {}
 
 local def = {
   _general_settings = {
-   {
+    {
       "Filetype",
       "python",
       "nnoremap <buffer> <F5> :w<CR>:vert ter python3 '%'<CR>"
@@ -61,7 +61,6 @@ local def = {
     {"FileType", "markdown", "setlocal wrap"},
     {"FileType", "markdown", "setlocal spell"}
   },
-
   _auto_resize = {
     -- will cause split windows to be resized evenly if main window is resized
     {"VimResized", "*", "wincmd ="}

@@ -120,6 +120,6 @@ map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 --vim.g.copilot_no_tab_map = true
 --map("i", "<C-J>", "copilot#Accept()<CR>", opts)
 vim.cmd([[
-  imap <silent><script><expr> <C-F> copilot#Accept("\<CR>")
-   let g:copilot_no_tab_map = v:true
+  imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+        let g:copilot_no_tab_map = v:true
   ]])

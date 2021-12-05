@@ -12,7 +12,7 @@ vim.opt.listchars = {
   extends = "»", -- RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
   precedes = "«", -- LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
   tab = "▷─", -- WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7) + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
-  trail = "•", -- BULLET (U+2022, UTF-8: E2 80 A2)
+  --  trail = "•", -- BULLET (U+2022, UTF-8: E2 80 A2)
   space = " "
 }
 vim.opt.fillchars = {
@@ -22,7 +22,7 @@ vim.opt.fillchars = {
   vert = " " -- remove ugly vertical lines on window division
 }
 vim.opt.listchars:append("eol:↴")
-vim.opt.listchars:append("space:⋅")
+--vim.opt.listchars:append("space:⋅")
 
 require("indent_blankline").setup {
   show_end_of_line = true,
@@ -38,79 +38,6 @@ require("indent_blankline").setup {
     "IndentBlanklineIndent6"
   }
 }
-
-local catppuccino = require("catppuccin")
-
--- configure it
-catppuccino.setup(
-  {
-    -- colorscheme = "neon_latte",
-    transparency = false,
-    term_colors = true,
-    styles = {
-      comments = "italic",
-      functions = "italic",
-      keywords = "italic",
-      strings = "bold",
-      variables = "NONE"
-    },
-    integrations = {
-      treesitter = true,
-      native_lsp = {
-        enabled = true,
-        virtual_text = {
-          errors = "italic",
-          hints = "italic",
-          warnings = "italic",
-          information = "italic"
-        },
-        underlines = {
-          errors = "underline",
-          hints = "underline",
-          warnings = "underline",
-          information = "underline"
-        }
-      },
-      lsp_trouble = true,
-      lsp_saga = true,
-      gitgutter = true,
-      gitsigns = true,
-      telescope = true,
-      nvimtree = {
-        enabled = true,
-        show_root = true
-      },
-      which_key = true,
-      indent_blankline = {
-        enabled = true,
-        colored_indent_levels = true
-      },
-      dashboard = false,
-      neogit = false,
-      vim_sneak = false,
-      fern = false,
-      barbar = false,
-      bufferline = true,
-      markdown = true,
-      lightspeed = true,
-      ts_rainbow = true,
-      hop = false
-    }
-  }
-)
-
---Gruvbox
---vim.g.gruvbox_flat_style = "hard"
---vim.cmd [[colorscheme gruvbox-flat]]
-vim.cmd [[colorscheme catppuccin ]]
--- Example config in Lua
---vim.g.tokyonight_style = "storm"
---vim.g.tokyonight_italic_functions = true
---vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
-
--- Change the "hint" color to the "orange" color, and make the "error" color bright red
---vim.g.tokyonight_colors = {hint = "orange", error = "#ff0000"}
---vim.cmd [[colorscheme tokyonight]]
 
 --for tmux
 vim.cmd [[let g:tmux_navigator_save_on_switch = 2

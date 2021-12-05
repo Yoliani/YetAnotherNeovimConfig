@@ -148,17 +148,16 @@ local lua_settings = {
   }
 }
 local lspconfig = require "lspconfig"
-local buf_map = function(bufnr, mode, lhs, rhs, opts)
-  vim.api.nvim_buf_set_keymap(
-    bufnr,
-    mode,
-    lhs,
-    rhs,
-    opts or
-      {
-        silent = true
-      }
-  )
+local get_map_options = function(custom_options)
+  local options = {noremap = true, silent = true}
+  if custom_options then
+    options = vim.tbl_extend("force", options, custom_options)
+  end
+  return options
+end
+
+local buf_map = function(mode, target, source, opts, bufnr)
+  vim.api.nvim_buf_set_keymap(bufnr or 0, mode, target, source, get_map_options(opts))
 end
 local ts_utils_settings = {
   -- debug = true,
@@ -193,9 +192,9 @@ lsp_installer.on_server_ready(
         --vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>")
         --vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", ":TSLspRenameFile<CR>")
         --vim.api.nvim_buf_set_keymap(bufnr, "n", "go", ":TSLspImportAll<CR>")
-        --buf_map("n", "gs", ":TSLspOrganize<CR>", nil, bufnr)
-        --buf_map("n", "gI", ":TSLspRenameFile<CR>", nil, bufnr)
-        --buf_map("n", "go", ":TSLspImportAll<CR>", nil, bufnr)
+        buf_map("n", "gs", ":TSLspOrganize<CR>", nil, bufnr)
+        buf_map("n", "gI", ":TSLspRenameFile<CR>", nil, bufnr)
+        buf_map("n", "go", ":TSLspImportAll<CR>", nil, bufnr)
       end
       opts.filetypes = {
         "typescript",

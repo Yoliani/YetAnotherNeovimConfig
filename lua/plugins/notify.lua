@@ -1,5 +1,5 @@
 require("notify").setup {
-  timeout = 3000,
+  timeout = 2000,
   stages = "fade",
   icons = {
     ERROR = "",
@@ -13,7 +13,7 @@ require("notify").setup {
 local log =
   require("plenary.log").new {
   plugin = "notify",
-  level = "debug",
+  level = "error",
   use_console = false
 }
 

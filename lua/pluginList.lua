@@ -81,7 +81,10 @@ return packer.startup(
     use "norcalli/nvim-colorizer.lua"
     use "famiu/nvim-reload"
     use "SmiteshP/nvim-gps"
-    --Reload and Restart
+
+    use {
+      "numToStr/Comment.nvim"
+    } --Reload and Restart
     use "rcarriga/nvim-notify"
     use "nvim-lua/plenary.nvim"
     use "tweekmonster/startuptime.vim"
@@ -125,6 +128,7 @@ return packer.startup(
     --THEMEs
     use "folke/tokyonight.nvim"
 
+    use "EdenEast/nightfox.nvim"
     use "marko-cerovac/material.nvim"
     use "eddyekofo94/gruvbox-flat.nvim"
     use "shaunsingh/nord.nvim"
@@ -132,12 +136,11 @@ return packer.startup(
     use "catppuccin/nvim"
 
     --Statusline and bufferline
-    --[[    use {
-      "hoob3rt/lualine.nvim",
+    use {
+      "nvim-lualine/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
-   --]]
-    use "glepnir/galaxyline.nvim"
+    --use "glepnir/galaxyline.nvim"
 
     use "akinsho/nvim-bufferline.lua"
 

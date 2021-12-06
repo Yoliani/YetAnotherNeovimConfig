@@ -53,10 +53,11 @@ cmp.setup(
         --vim.fn["vsnip#anonymous"](args.body)
 
         -- For `luasnip` user.
-        require("luasnip").lsp_expand(args.body)
+        --require("luasnip").lsp_expand(args.body)
 
         -- For `ultisnips` user.
-        -- vim.fn["UltiSnips#Anon"](args.body)
+        vim.fn["UltiSnips#Anon"](args.body)
+        --
       end
     },
     mapping = {
@@ -117,6 +118,7 @@ cmp.setup(
           latex_symbols = "[Latex]",
           cmp_tabnine = "[Tab9]",
           orgmode = "[orgmode]",
+          ultisnips = "[UltiSnips]",
           npm = ""
         })[entry.source.name]
         return item

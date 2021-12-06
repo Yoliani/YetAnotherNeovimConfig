@@ -93,6 +93,7 @@ end
 -- config that activates keymaps and enables snippet support
 local function make_config()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
   capabilities.textDocument.completion.completionItem.documentationFormat = {"markdown", "plaintext"}
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.textDocument.completion.completionItem.preselectSupport = true
@@ -108,7 +109,7 @@ local function make_config()
       "additionalTextEdits"
     }
   }
-  capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
   return {capabilities = capabilities, on_attach = on_attach}
 end
 
@@ -161,10 +162,40 @@ local buf_map = function(mode, target, source, opts, bufnr)
 end
 local ts_utils_settings = {
   -- debug = true,
-  import_all_scan_buffers = 100,
+  -- import_all_scan_buffers = 100,
+  -- update_imports_on_move = true,
+  -- -- filter out dumb module warning
+  -- filter_out_diagnostics_by_code = {80001}
+  debug = false,
+  disable_commands = false,
+  enable_import_on_completion = true,
+  import_all_timeout = 5000, -- ms
+  -- eslint
+  eslint_enable_code_actions = false,
+  eslint_enable_disable_comments = false,
+  eslint_bin = "eslint_d",
+  eslint_config_fallback = nil,
+  eslint_enable_diagnostics = false,
+  eslint_opts = {
+    -- diagnostics_format = "#{m} [#{c}]",
+    condition = function(utils)
+      return utils.root_has_file(".eslintrc.js")
+    end
+  },
+  -- formatting
+  enable_formatting = false,
+  formatter = "prettier_d_slim",
+  formatter_config_fallback = nil,
+  -- parentheses completion
+  complete_parens = false,
+  signature_help_in_parens = false,
+  -- update imports on file move
   update_imports_on_move = true,
-  -- filter out dumb module warning
-  filter_out_diagnostics_by_code = {80001}
+  require_confirmation_on_move = true,
+  watch_dir = nil,
+  -- filter diagnostics
+  filter_out_diagnostics_by_severity = {"hint"},
+  filter_out_diagnostics_by_code = {}
 }
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
@@ -212,20 +243,7 @@ lsp_installer.on_server_ready(
       require("null-ls").config({})
       lspconfig["null-ls"].setup({on_attach = on_attach})
     elseif server.name == "gopls" then
-      opts.settings = {
-        go = {
-          -- cmd = {vim.fn.expand("/home/edgardoyoliani/.local/share/nvim/lspinstall/go/gopls")},
-          settings = {
-            gopls = {
-              analyses = {
-                unusedparams = true
-              },
-              staticcheck = true
-            }
-          }
-        }
-      }
-    elseif server.name == "php" then
+      --    elseif server.name == "php" then
       --[[
       opts.cmd = {"intelephense", "--stdio"}
       opts.intelephense = {
@@ -250,6 +268,19 @@ lsp_installer.on_server_ready(
         }
       }
         --]]
+      opts.settings = {
+        go = {
+          -- cmd = {vim.fn.expand("/home/edgardoyoliani/.local/share/nvim/lspinstall/go/gopls")},
+          settings = {
+            gopls = {
+              analyses = {
+                unusedparams = true
+              },
+              staticcheck = true
+            }
+          }
+        }
+      }
     elseif server.name == "diagnosticls" then
       opts.filetypes = {
         "javascript",
@@ -335,6 +366,45 @@ lsp_installer.on_server_ready(
             command = "clippy"
           },
           root_dir = lspconfig.util.root_pattern("Cargo.toml", "rust-project.json") or lspconfig.util.find_git_root
+        }
+      }
+    elseif server.name == "jsonls" then
+      opts.settings = {
+        json = {
+          schemas = {
+            {
+              fileMatch = {"package.json"},
+              url = "https://json.schemastore.org/package.json"
+            },
+            {
+              fileMatch = {"tsconfig*.json"},
+              url = "https://json.schemastore.org/tsconfig.json"
+            },
+            {
+              fileMatch = {".prettierrc", ".prettierrc.json", "prettier.config.json"},
+              url = "https://json.schemastore.org/prettierrc.json"
+            },
+            {
+              fileMatch = {".eslintrc", ".eslintrc.json"},
+              url = "https://json.schemastore.org/eslintrc.json"
+            },
+            {
+              fileMatch = {".babelrc", ".babelrc.json", "babel.config.json"},
+              url = "https://json.schemastore.org/babelrc.json"
+            },
+            {
+              fileMatch = {"lerna.json"},
+              url = "https://json.schemastore.org/lerna.json"
+            },
+            {
+              fileMatch = {"now.json", "vercel.json"},
+              url = "https://json.schemastore.org/now.json"
+            },
+            {
+              fileMatch = {"ecosystem.json"},
+              url = "https://json.schemastore.org/pm2-ecosystem.json"
+            }
+          }
         }
       }
     end

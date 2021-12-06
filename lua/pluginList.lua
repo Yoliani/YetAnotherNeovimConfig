@@ -68,6 +68,7 @@ return packer.startup(
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/vim-vsnip-integ"
     use "SirVer/ultisnips"
+    use "mlaursen/vim-react-snippets"
     use "rafamadriz/friendly-snippets"
     use "L3MON4D3/LuaSnip"
     --MISC

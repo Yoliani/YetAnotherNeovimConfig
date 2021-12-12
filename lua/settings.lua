@@ -86,7 +86,7 @@ local g = vim.g
 g.indentLine_enabled = 1
 g.indent_blankline_char = "│"
 g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
-g.indent_blankline_buftype_exclude = {"terminal"}
+g.indent_blankline_buftype_exclude = {"terminal", "dashboard"}
 g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
 g.vsnip_snippet_dir = "~/.config/nvim/snippets/"
@@ -166,7 +166,6 @@ vim.cmd [[
   endfunction
 ]]
 
-local set = vim.opt
 local cmd = vim.cmd
 -- 2 spaces for selected filetypes
 vim.cmd([[ autocmd FileType xml,html,xhtml,css,scssjavascript,lua,dart setlocal shiftwidth=2 tabstop=2 ]])
@@ -180,4 +179,4 @@ endif
 ]]
 )
 
-cmd("autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=grey") --to Show whitespace, MUST be inserted BEFORE the colorscheme command
+--cmd("autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=grey") --to Show whitespace, MUST be inserted BEFORE the colorscheme command

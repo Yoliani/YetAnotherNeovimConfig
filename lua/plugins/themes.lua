@@ -32,9 +32,8 @@ local catppuccino = require("catppuccin")
 -- configure it
 catppuccino.setup(
   {
-    -- colorscheme = "neon_latte",
-    transparency = false,
-    term_colors = false,
+    transparent_background = true,
+    term_colors = true,
     styles = {
       comments = "italic",
       functions = "italic",
@@ -61,7 +60,7 @@ catppuccino.setup(
       },
       lsp_trouble = true,
       lsp_saga = true,
-      gitgutter = true,
+      gitgutter = false,
       gitsigns = true,
       telescope = true,
       nvimtree = {
@@ -82,7 +81,8 @@ catppuccino.setup(
       markdown = true,
       lightspeed = true,
       ts_rainbow = true,
-      hop = false
+      hop = false,
+      cmp = true
     }
   }
 )
@@ -90,13 +90,20 @@ catppuccino.setup(
 --Gruvbox
 --vim.g.gruvbox_flat_style = "hard"
 --vim.cmd [[colorscheme gruvbox-flat]]
---vim.cmd [[colorscheme catppuccin ]]
--- Example config in Lua
-vim.g.tokyonight_style = "storm"
---"storm"
---vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
 
--- Change the "hint" color to the "orange" color, and make the "error" color bright red
+-- catpuccin
+--vim.cmd [[colorscheme catppuccin ]]
+
+-- tokyonight
+vim.g.tokyonight_style = "storm"
+vim.g.tokyonight_italic_functions = true
+vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
 vim.g.tokyonight_colors = {hint = "orange", error = "#ff0000"}
 vim.cmd [[colorscheme tokyonight]]
+
+-- NORD
+--vim.g.nord_contrast = false
+--vim.g.nord_borders = true
+--vim.g.nord_disable_background = true
+--vim.g.nord_italic = false
+--require("nord").set()

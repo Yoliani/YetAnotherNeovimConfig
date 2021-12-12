@@ -13,21 +13,22 @@ local tab_modules = {
   "plugins.colorizer",
   --"plugins.evilline",
   --"plugins.bubbles",
-  --"plugins.statusline",
+
   "plugins.bufferline",
-  "plugins.mystatusline",
+  --"plugins.mystatusline",
   "plugins.telescope",
   "plugins.whichkey",
   "plugins.autopairs",
   "plugins.go-preview",
   "plugins.todo-comments",
   "plugins.dap",
-  "plugins.dashboard",
   --ftplugin
   --"ftplugin.java",
   --  "plugins.notify",
   "plugins.comments",
-  "plugins.themes"
+  "plugins.themes",
+  "plugins.statusline",
+  "plugins.dashboard"
 }
 
 for i = 1, #tab_modules, 1 do

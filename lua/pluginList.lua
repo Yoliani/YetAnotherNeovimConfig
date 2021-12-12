@@ -91,12 +91,13 @@ return packer.startup(
     use "tweekmonster/startuptime.vim"
     use "alvan/vim-closetag"
     use "mg979/vim-visual-multi"
-    use {
-      "goolord/alpha-nvim",
-      config = function()
-        require "alpha".setup(require "alpha.themes.dashboard".opts)
-      end
-    }
+    -- use {
+    --   "goolord/alpha-nvim",
+    --   config = function()
+    --     require "alpha".setup(require "alpha.themes.dashboard".opts)
+    --   end
+    -- }
+    use "glepnir/dashboard-nvim"
     use {
       "rmagatti/goto-preview",
       config = function()
@@ -128,7 +129,7 @@ return packer.startup(
 
     --THEMEs
     use "folke/tokyonight.nvim"
-
+    use "navarasu/onedark.nvim"
     use "EdenEast/nightfox.nvim"
     use "marko-cerovac/material.nvim"
     use "eddyekofo94/gruvbox-flat.nvim"
@@ -137,11 +138,11 @@ return packer.startup(
     use "catppuccin/nvim"
 
     --Statusline and bufferline
-    use {
-      "nvim-lualine/lualine.nvim",
-      requires = {"kyazdani42/nvim-web-devicons", opt = true}
-    }
-    --use "glepnir/galaxyline.nvim"
+    -- use {
+    --   "nvim-lualine/lualine.nvim",
+    --   requires = {"kyazdani42/nvim-web-devicons", opt = true}
+    -- }
+    use "glepnir/galaxyline.nvim"
 
     use "akinsho/nvim-bufferline.lua"
 

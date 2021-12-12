@@ -7,11 +7,11 @@ local def = {
       "python",
       "nnoremap <buffer> <F5> :w<CR>:vert ter python3 '%'<CR>"
     },
-    {
-      "custom_statusline",
-      "*",
-      "VimEnter,ColorScheme * call v:lua.tab.statusline.set_colors()"
-    },
+    -- {
+    --   "custom_statusline",
+    --   "*",
+    --   "VimEnter,ColorScheme * call v:lua.tab.statusline.set_colors()"
+    -- },
     --[[
     {
       "BufWinEnter",
@@ -109,6 +109,6 @@ function autocommands.define_augroups(definitions) -- {{{1
   end
 end
 
---autocommands.define_augroups(def)
+autocommands.define_augroups(def)
 
---return autocommands
+return autocommands

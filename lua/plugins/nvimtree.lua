@@ -109,7 +109,7 @@ require "nvim-tree".setup {
   -- open the tree when running this setup function
   open_on_setup = false,
   -- will not open on setup if the filetype is in this list
-  ignore_ft_on_setup = {},
+  ignore_ft_on_setup = {".git", "node_modules", ".cache"},
   -- closes neovim automatically when the tree is the last **WINDOW** in the view
   auto_close = false,
   -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
@@ -117,7 +117,7 @@ require "nvim-tree".setup {
   -- hijacks new directory buffers when they are opened.
   update_to_buf_dir = {
     -- enable the feature
-    enable = true,
+    enable = false,
     -- allow to open the tree if it was previously closed
     auto_open = true
   },
@@ -145,7 +145,7 @@ require "nvim-tree".setup {
   },
   view = {
     -- width of the window, can be either a number (columns) or a string in `%`, for left or right side placement
-    width = 30,
+    width = 50,
     -- height of the window, can be either a number (columns) or a string in `%`, for top or bottom side placement
     height = 30,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'

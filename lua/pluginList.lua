@@ -82,7 +82,7 @@ return packer.startup(
     use "norcalli/nvim-colorizer.lua"
     use "famiu/nvim-reload"
     use "SmiteshP/nvim-gps"
-
+    use "waylonwalker/Telegraph.nvim"
     use {
       "numToStr/Comment.nvim"
     } --Reload and Restart

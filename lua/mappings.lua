@@ -99,7 +99,18 @@ map("n", "<F10>", [[:w<CR>:vert ter javac "%"<CR>]], {noremap = true, silent = t
 
 map("n", "<F8>", ":!jfx %<CR>", {noremap = true, silent = true})
 
---
+--telegraph
+
+map(
+  "n",
+  "<leader><leader>M",
+  [[:lua require'telegraph'.telegraph({how='tmux_popup', cmd='ils '})<Left><Left><Left>]],
+  {noremap = true, silent = true}
+)
+
+map("n", "<leader><leader>m", [[:Telegraph man]], {noremap = true, silent = true})
+
+-- lsp
 map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)

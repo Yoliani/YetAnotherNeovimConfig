@@ -1,7 +1,6 @@
 local tab_modules = {
   "plugins.signature-lsp",
   "plugins.lsp-status",
-  "plugins.luasnip",
   "lsp.lsp",
   "plugins.cmp-nvim",
   -- "plugins.startup",
@@ -28,7 +27,9 @@ local tab_modules = {
   "plugins.comments",
   "plugins.themes",
   "plugins.statusline",
-  "plugins.dashboard"
+  "plugins.dashboard",
+  "plugins.icons",
+  "plugins.luasnip"
 }
 
 for i = 1, #tab_modules, 1 do

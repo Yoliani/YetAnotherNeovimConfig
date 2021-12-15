@@ -117,7 +117,7 @@ require "nvim-tree".setup {
   -- hijacks new directory buffers when they are opened.
   update_to_buf_dir = {
     -- enable the feature
-    enable = false,
+    enable = true,
     -- allow to open the tree if it was previously closed
     auto_open = true
   },

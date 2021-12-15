@@ -146,6 +146,8 @@ return packer.startup(
     use "marko-cerovac/material.nvim"
     use "eddyekofo94/gruvbox-flat.nvim"
     use "shaunsingh/nord.nvim"
+    use "JoosepAlviste/palenightfall.nvim"
+
     --use "Pocco81/Catppuccino.nvim"
     use "catppuccin/nvim"
 

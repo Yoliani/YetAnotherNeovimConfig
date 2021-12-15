@@ -1,5 +1,6 @@
 require("nvim-autopairs").setup(
   {
+    check_ts = true,
     enable_check_bracket_line = true, -- Don't add pairs if it already have a close pairs in same line
     disable_filetype = {"TelescopePrompt", "vim"}, --
     enable_afterquote = false, -- add bracket pairs after quote
@@ -56,4 +57,11 @@ npairs.add_rules {
       (item)= 	> 	    (item)=> { }
   --]===]
   Rule("%(.*%)%s*%=>$", " {  }", {"typescript", "typescriptreact", "javascript"}):use_regex(true):set_end_pair_length(2)
+}
+
+require("nvim-ts-autotag").setup {
+  autotag = {
+    enable = true,
+    filetypes = {"html", "xml", "javascriptreact", "typescriptreact", "vue"}
+  }
 }

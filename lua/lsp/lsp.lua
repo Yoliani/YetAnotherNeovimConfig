@@ -223,9 +223,9 @@ lsp_installer.on_server_ready(
         --vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>")
         --vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", ":TSLspRenameFile<CR>")
         --vim.api.nvim_buf_set_keymap(bufnr, "n", "go", ":TSLspImportAll<CR>")
-        buf_map("n", "gs", ":TSLspOrganize<CR>", nil, bufnr)
-        buf_map("n", "gI", ":TSLspRenameFile<CR>", nil, bufnr)
-        buf_map("n", "go", ":TSLspImportAll<CR>", nil, bufnr)
+        buf_map("n", "tgs", ":TSLspOrganize<CR>", nil, bufnr)
+        buf_map("n", "tgI", ":TSLspRenameFile<CR>", nil, bufnr)
+        buf_map("n", "tgo", ":TSLspImportAll<CR>", nil, bufnr)
       end
       opts.filetypes = {
         "typescript",

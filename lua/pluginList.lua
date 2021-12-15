@@ -75,21 +75,33 @@ return packer.startup(
     use "folke/which-key.nvim"
     use {"lukas-reineke/indent-blankline.nvim"}
     use "vhyrro/neorg" --TAke Notes
-    use "andweeb/presence.nvim" --Discord presence
-    use {"ellisonleao/glow.nvim"} --For markdown
+    --Discord presence
+    use "andweeb/presence.nvim"
+    use {"ellisonleao/glow.nvim"}
+
+    --For markdown
     use {"iamcco/markdown-preview.nvim", run = [[sh -c 'cd app && yarn install']]}
     use "windwp/nvim-autopairs"
     use "norcalli/nvim-colorizer.lua"
+    -- rauinbow brackets
+    use "luochen1990/rainbow"
+    -- Autoclose tags
+    use "windwp/nvim-ts-autotag"
+    --Reload --Reload and Restart
     use "famiu/nvim-reload"
     use "SmiteshP/nvim-gps"
     use "waylonwalker/Telegraph.nvim"
+    -- Usefyul comments
     use {
       "numToStr/Comment.nvim"
-    } --Reload and Restart
+    }
     use "rcarriga/nvim-notify"
     use "nvim-lua/plenary.nvim"
+    --startuptime
     use "tweekmonster/startuptime.vim"
+    -- Close tags
     use "alvan/vim-closetag"
+    -- Multicursor
     use "mg979/vim-visual-multi"
     -- use {
     --   "goolord/alpha-nvim",

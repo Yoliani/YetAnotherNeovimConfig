@@ -180,3 +180,5 @@ endif
 )
 
 --cmd("autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=grey") --to Show whitespace, MUST be inserted BEFORE the colorscheme command
+--
+vim.g.rainbow_active = 1

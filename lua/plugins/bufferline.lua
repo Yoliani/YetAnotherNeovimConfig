@@ -10,12 +10,14 @@ require "bufferline".setup {
     max_prefix_length = 14,
     tab_size = 20,
     show_tab_indicators = true,
-    enforce_regular_tabs = false,
+    enforce_regular_tabs = true,
     view = "multiwindow",
-    show_buffer_close_icons = true,
+    show_buffer_close_icons = false,
     separator_style = "thick",
     right_mouse_command = "vertical sbuffer %d",
     --numbers = "buffer_id",
-    persist_buffer_sort = true
+    persist_buffer_sort = true,
+    diagnostics = "nvim_lsp",
+    diagnostics_update_in_insert = false
   }
 }

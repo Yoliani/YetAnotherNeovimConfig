@@ -103,13 +103,15 @@ return packer.startup(
     use "alvan/vim-closetag"
     -- Multicursor
     use "mg979/vim-visual-multi"
-    -- use {
-    --   "goolord/alpha-nvim",
-    --   config = function()
-    --     require "alpha".setup(require "alpha.themes.dashboard".opts)
-    --   end
-    -- }
-    use "glepnir/dashboard-nvim"
+    use "goolord/alpha-nvim"
+
+    use {
+      "luukvbaal/stabilize.nvim",
+      config = function()
+        require("stabilize").setup()
+      end
+    }
+    --use "glepnir/dashboard-nvim"
     use {
       "rmagatti/goto-preview",
       config = function()
@@ -119,13 +121,6 @@ return packer.startup(
     --UI
     use "MunifTanjim/nui.nvim"
     use "ggandor/lightspeed.nvim"
-    --Like EasyMontion
-    use {
-      "luukvbaal/stabilize.nvim",
-      config = function()
-        require("stabilize").setup()
-      end
-    }
     --Comments
     use {
       "folke/todo-comments.nvim",

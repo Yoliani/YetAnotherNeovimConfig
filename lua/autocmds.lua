@@ -33,12 +33,12 @@ local def = {
     {
       "BufNewFile",
       "setlocal formatoptions-=c formatoptions-=r formatoptions-=o"
-    },
-    {
-      "FileType",
-      "qf",
-      "set nobuflisted"
     }
+    -- {
+    --   "FileType",
+    --   "qf",
+    --   "set nobuflisted"
+    -- }
     -- { "VimLeavePre", "*", "set title set titleold=" },
   },
   _filetypechanges = {

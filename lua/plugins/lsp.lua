@@ -416,7 +416,7 @@ lspconfig.tsserver.setup {
   end
 }
 
-require("null-ls").config({})
+require("null-ls").setup()
 lspconfig["null-ls"].setup({on_attach = on_attach})
 
 -- replace the default lsp diagnostic letters with prettier symbols

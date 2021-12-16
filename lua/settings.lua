@@ -1,5 +1,6 @@
 vim.opt.termguicolors = true
 local vcmd = vim.cmd
+local opt = vim.opt
 vcmd "syntax on"
 --vcmd "set t_Co=256"
 
@@ -21,6 +22,22 @@ vim.opt.fillchars = {
   fold = "·", -- MIDDLE DOT (U+00B7, UTF-8: C2 B7)
   vert = " " -- remove ugly vertical lines on window division
 }
+
+-- opt.list = true
+-- opt.listchars = {
+--   nbsp = '⦸', -- CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+--   tab = '  ',
+--   extends = '»', -- RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
+--   precedes = '«', -- LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
+--   trail = '·', -- Dot Operator (U+22C5)
+-- }
+-- -- Show cool character on line wrap
+-- opt.showbreak = '↳ ' -- DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
+-- opt.fillchars = {
+--   eob = ' ', -- Suppress ~ at EndOfBuffer
+--   fold = ' ', -- Hide trailing folding characters
+-- }
+
 vim.opt.listchars:append("eol:↴")
 --vim.opt.listchars:append("space:⋅")
 
@@ -55,7 +72,7 @@ set modifiable
 )
 --- Settingtrue-
 vim.o.fileencoding = "utf-8" -- the encoding written to a file
-vim.o.updatetime = 500 -- faster completion
+vim.o.updatetime = 100 -- faster completion
 vim.o.title = true -- set the title of window to the value of the titlestring
 vim.o.titlestring = "%<%F%=%l/%L - nvim"
 -- what the title of the window will be set to
@@ -81,6 +98,29 @@ vim.o.shiftwidth = 2 -- spaces per tab (when shifting), when using the >> or << 
 vim.o.tabstop = 2
 vim.opt.modifiable = true
 vim.o.wildignore = "*node_modules/**"
+vim.opt.linebreak = true -- Break lines by spaces or tabs
+opt.showmatch = true -- Highlight matching parenthesis, etc.
+
+opt.lazyredraw = true -- Redraw only when need to
+opt.formatoptions =
+  table.concat {
+  "c", -- Auto-wrap comments
+  "a", -- Auto format paragraph
+  "2", -- Use the second line's indent vale when indenting (allows indented first line)
+  "q", -- Formatting comments with `gq`
+  "w", -- Trailing whitespace indicates a paragraph
+  "j", -- Remove comment leader when makes sense (joining lines)
+  "r", -- Insert comment leader after hitting Enter
+  "o" -- Insert comment leader after hitting `o` or `O`
+}
+
+-- Messages
+opt.shortmess:append {
+  I = true, -- No splash screen
+  W = true, -- Don't print "written" when editing
+  a = true, -- Use abbreviations in messages ([RO] intead of [readonly])
+  c = true -- Do not show ins-completion-menu messages (match 1 of 2)
+}
 
 local g = vim.g
 g.indentLine_enabled = 1
@@ -114,14 +154,14 @@ vim.cmd "autocmd BufWritePost pluginsList.lua PackerCompile"
 vcmd([[autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])
 
 -- hide line numbers , statusline in specific buffers!
-vim.api.nvim_exec(
-  [[
-au BufEnter term://* setlocal nonumber
-   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
-   au BufEnter term://* set laststatus=0 
-]],
-  false
-)
+--vim.api.nvim_exec(
+--  [[
+--au BufEnter term://* setlocal nonumber
+--   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
+--   au BufEnter term://* set laststatus=0
+--]],
+--  false
+--)
 
 --plugins included with neovim
 local disabled_built_ins = {

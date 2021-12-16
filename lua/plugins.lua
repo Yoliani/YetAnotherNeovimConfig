@@ -1,4 +1,7 @@
 local tab_modules = {
+  "plugins.vsnip",
+  "plugins.icons",
+  "plugins.luasnip",
   "plugins.signature-lsp",
   "plugins.lsp-status",
   "lsp.lsp",
@@ -13,6 +16,7 @@ local tab_modules = {
   --"plugins.evilline",
   --"plugins.bubbles",
 
+  "plugins.statusline",
   "plugins.bufferline",
   --"plugins.mystatusline",
   "plugins.telescope",
@@ -23,13 +27,9 @@ local tab_modules = {
   "plugins.dap",
   --ftplugin
   --"ftplugin.java",
-  --  "plugins.notify",
+  "plugins.notify",
   "plugins.comments",
-  "plugins.themes",
-  "plugins.statusline",
-  "plugins.dashboard",
-  "plugins.icons",
-  "plugins.luasnip"
+  "plugins.themes"
 }
 
 for i = 1, #tab_modules, 1 do

@@ -1,52 +1,10 @@
--- --require "alpha".setup(require "alpha.themes.dashboard".opts)
--- local alpha = require("alpha")
--- local dashboard = require("alpha.themes.dashboard")
---
--- dashboard.section.header.val = {
---   "                                ",
---   "                                ",
---   "    ⢰⣧⣼⣯⠄⣸⣠⣶⣶⣦⣾⠄⠄⠄⠄⡀⠄⢀⣿⣿⠄⠄⠄⢸⡇⠄⠄ ",
---   "    ⣾⣿⠿⠿⠶⠿⢿⣿⣿⣿⣿⣦⣤⣄⢀⡅⢠⣾⣛⡉⠄⠄⠄⠸⢀⣿⠄ ",
---   "   ⢀⡋⣡⣴⣶⣶⡀⠄⠄⠙⢿⣿⣿⣿⣿⣿⣴⣿⣿⣿⢃⣤⣄⣀⣥⣿⣿⠄ ",
---   "   ⢸⣇⠻⣿⣿⣿⣧⣀⢀⣠⡌⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⣿⣿⣿⠄ ",
---   "  ⢀⢸⣿⣷⣤⣤⣤⣬⣙⣛⢿⣿⣿⣿⣿⣿⣿⡿⣿⣿⡍⠄⠄⢀⣤⣄⠉⠋⣰ ",
---   "  ⣼⣖⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⢇⣿⣿⡷⠶⠶⢿⣿⣿⠇⢀⣤ ",
---   " ⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣽⣿⣿⣿⡇⣿⣿⣿⣿⣿⣿⣷⣶⣥⣴⣿⡗ ",
---   " ⢀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟  ",
---   " ⢸⣿⣦⣌⣛⣻⣿⣿⣧⠙⠛⠛⡭⠅⠒⠦⠭⣭⡻⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃  ",
---   " ⠘⣿⣿⣿⣿⣿⣿⣿⣿⡆⠄⠄⠄⠄⠄⠄⠄⠄⠹⠈⢋⣽⣿⣿⣿⣿⣵⣾⠃  ",
---   "  ⠘⣿⣿⣿⣿⣿⣿⣿⣿⠄⣴⣿⣶⣄⠄⣴⣶⠄⢀⣾⣿⣿⣿⣿⣿⣿⠃   ",
---   "   ⠈⠻⣿⣿⣿⣿⣿⣿⡄⢻⣿⣿⣿⠄⣿⣿⡀⣾⣿⣿⣿⣿⣛⠛⠁    ",
---   "     ⠈⠛⢿⣿⣿⣿⠁⠞⢿⣿⣿⡄⢿⣿⡇⣸⣿⣿⠿⠛⠁      ",
---   "        ⠉⠻⣿⣿⣾⣦⡙⠻⣷⣾⣿⠃⠿⠋⠁     ⢀⣠⣴ ",
---   " ⣿⣿⣿⣶⣶⣮⣥⣒⠲⢮⣝⡿⣿⣿⡆⣿⡿⠃⠄⠄⠄⠄⠄⠄⠄⣠⣴⣿⣿⣿ ",
---   "                                ",
---   "                                ",
---   "                                "
--- }
---
--- dashboard.section.buttons.val = {
---   dashboard.button("e", "  New File    ", ":enew<CR>"),
---   dashboard.button("f", "  Find File   ", ":Telescope find_files<CR>"),
---   dashboard.button("t", "  Find Text   ", ":Telescope live_grep<CR>"),
---   dashboard.button("c", "  NVIM Config ", ":Telescope dotfiles<CR>"),
---   dashboard.button("q", "  Quit        ", ":qa<CR>")
--- }
---
--- dashboard.section.footer.val = {
---   "                       ",
---   "I Dont want to be Horny",
---   " I Just wanna be happy ",
---   "          🚀           ",
---   "                       "
--- }
---
--- alpha.setup(dashboard.opts)
--- require "alpha".setup(require "alpha.themes.dashboard".opts)
---
+local status_ok, alpha = pcall(require, "alpha")
+if not status_ok then
+  return
+end
 
-vim.g.dashboard_default_executive = "telescope"
-vim.g.dashboard_custom_header = {
+local dashboard = require("alpha.themes.dashboard")
+dashboard.section.header.val = {
   "                                ",
   "                                ",
   "    ⢰⣧⣼⣯⠄⣸⣠⣶⣶⣦⣾⠄⠄⠄⠄⡀⠄⢀⣿⣿⠄⠄⠄⢸⡇⠄⠄ ",
@@ -66,18 +24,25 @@ vim.g.dashboard_custom_header = {
   " ⣿⣿⣿⣶⣶⣮⣥⣒⠲⢮⣝⡿⣿⣿⡆⣿⡿⠃⠄⠄⠄⠄⠄⠄⠄⣠⣴⣿⣿⣿ ",
   "                                ",
   "                                ",
-  "                                ",
   "                                "
 }
-vim.g.dashboard_custom_section = {
-  a = {description = {"  Find File          "}, command = "Telescope find_files"},
-  d = {description = {"  Search Text        "}, command = "Telescope live_grep"},
-  b = {description = {"  Recent Files       "}, command = "Telescope oldfiles"},
-  e = {description = {"  Config             "}, command = "edit ~/.config/nvim/init.lua"}
+dashboard.section.buttons.val = {
+  dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
+  dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+  dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
+  dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
+  dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+  dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
+  dashboard.button("q", "  Quit Neovim", ":qa<CR>")
 }
-vim.g.dashboard_custom_footer = {
-  "     I Dont want to be Horny    ",
-  "     I Just wanna be happy      ",
-  "               🚀               ",
-  "                                "
+
+dashboard.section.footer.val = {
+  "                       ",
+  "I Dont want to be Horny",
+  " I Just wanna be happy ",
+  "          🚀           ",
+  "                       "
 }
+
+-- vim.cmd([[autocmd User AlphaReady echo 'ready']])
+alpha.setup(dashboard.opts)

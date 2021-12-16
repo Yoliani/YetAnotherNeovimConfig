@@ -86,6 +86,17 @@ catppuccino.setup(
     }
   }
 )
+-- nvim-web-devicons
+-- Create highlights for statusline
+-- local icons = require("nvim-web-devicons").get_icons()
+-- for _, icon_data in pairs(icons) do
+--   if icon_data.color and icon_data.name then
+--     local hl_group = icon_data.name and "StatuslineDevIcon" .. icon_data.name
+--     if hl_group then
+--       highlight(hl_group, {fg = icon_data.color, bg = c.statusline})
+--     end
+--   end
+-- end
 
 --Gruvbox
 --vim.g.gruvbox_flat_style = "hard"
@@ -96,7 +107,7 @@ catppuccino.setup(
 
 -- tokyonight
 vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_italic_functions = true
+vim.g.tokyonight_italic_functions = false
 vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
 vim.g.tokyonight_colors = {hint = "orange", error = "#ff0000"}
 vim.cmd [[colorscheme tokyonight]]

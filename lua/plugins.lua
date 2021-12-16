@@ -1,4 +1,5 @@
 local tab_modules = {
+  "plugins.alpha",
   "plugins.vsnip",
   "plugins.icons",
   "plugins.luasnip",

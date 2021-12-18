@@ -1,10 +1,15 @@
 <h1 align="center">Yet Another Neovim Config</h1>
-<div align=centern">
-[![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]() [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
-</div>
-**NEOVIM code editor configuration with lua, based on configuration by NvChad**
+<br/>
 <br/>
 <img src="/assets/screenshot.png"><hr>
+<div align="center">
+
+[![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]() <br/> [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.6+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
+
+**NEOVIM code editor configuration with lua, based on configuration by NvChad**
+
+</div>
+<hr/>
 
 ### Pre requirements 📋
 
@@ -18,6 +23,7 @@ What things do you need to install the software and how to install them
 - Install[Fzf](https://github.com/junegunn/fzf)
 - Install[ripgrep](https://github.com/BurntSushi/ripgrep#installation)
 
+<hr/>
 ### Installation 🔧
 
 _Se realiza un_
@@ -30,6 +36,8 @@ git clone https://github.com/wbthomason/packer.nvim\
 #Se instala packer para el manejo de los plugins
 git clone https://github.com/Yoliani/Neovim-lua.git $HOME/.config/nvim
 ```
+
+<hr/>
 
 ### Despliegue 📦
 
@@ -49,7 +57,10 @@ _Se realiza un:_
 ejemplo -:LspInstall html
 ```
 
-##
+<hr/>
+<br/>
+
+## Features
 
 - Fast plugin loading.
 - File navigation with nvim-tree.lua.
@@ -65,14 +76,20 @@ ejemplo -:LspInstall html
 - Indentlines with indent-blankline.nvim.
 - Useful snippets with LuaSnip and Vsnip.
 
+<br/>
+
 ## TODO
 
 - Global config
 - Windows branch
 
+<br/>
+
 ## Restrictions
 
 - Linux only
+
+    <br/>
 
 ## Built with 🛠️
 

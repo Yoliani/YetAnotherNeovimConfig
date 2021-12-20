@@ -26,7 +26,7 @@ ts_config.setup {
   },
   highlight = {
     enable = true,
-    disable = {"org", "html", "php"},
+    disable = {"html", "php"},
     additional_vim_regex_highlighting = {"org"},
     use_languagetree = true
   },

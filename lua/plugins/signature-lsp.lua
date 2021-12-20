@@ -1,11 +1,10 @@
-
 local lspsignature = require("lsp_signature")
 if not lspsignature then
   return
 end
 
 lspsignature.setup {
-  bind = false,
+  bind = true,
   doc_lines = 4,
   floating_window = true,
   fix_pos = true,

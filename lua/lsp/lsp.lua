@@ -114,20 +114,59 @@ local function make_config()
 end
 
 -- icon
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] =
+--   vim.lsp.with(
+--   vim.lsp.diagnostic.on_publish_diagnostics,
+--   {
+--     underline = true,
+--     -- This sets the spacing and the prefix, obviously.
+--     virtual_text = {
+--       spacing = 5,
+--       prefix = ""
+--     }
+--   }
+-- )
+
+local function lspSymbol(name, icon)
+  local hl = "DiagnosticSign" .. name
+  vim.fn.sign_define(hl, {text = icon, numhl = hl, texthl = hl})
+end
+
+lspSymbol("Error", "")
+lspSymbol("Info", "")
+lspSymbol("Hint", "")
+lspSymbol("Warn", "")
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics,
   {
-    underline = true,
-    -- This sets the spacing and the prefix, obviously.
     virtual_text = {
-      spacing = 5,
-      prefix = ""
-    }
+      prefix = "",
+      spacing = 0
+    },
+    signs = true,
+    underline = true,
+    update_in_insert = false -- update diagnostics insert mode
+  }
+)
+vim.lsp.handlers["textDocument/hover"] =
+  vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {
+    border = "single"
+  }
+)
+vim.lsp.handlers["textDocument/signatureHelp"] =
+  vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  {
+    border = "single"
   }
 )
 
 local config = make_config()
+--------------------------LUA ----------------------------
 local lua_settings = {
   Lua = {
     runtime = {
@@ -416,10 +455,10 @@ lsp_installer.on_server_ready(
 )
 
 -- replace the default lsp diagnostic letters with prettier symbols
-vim.fn.sign_define("LspDiagnosticsSignError", {text = "💢", numhl = "LspDiagnosticsDefaultError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
-vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "❕", numhl = "LspDiagnosticsDefaultInformation"})
-vim.fn.sign_define("LspDiagnosticsSignHint", {text = "💡", numhl = "LspDiagnosticsDefaultHint"})
+-- vim.fn.sign_define("LspDiagnosticsSignError", {text = "💢", numhl = "LspDiagnosticsDefaultError"})
+-- vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
+-- vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "❕", numhl = "LspDiagnosticsDefaultInformation"})
+-- vim.fn.sign_define("LspDiagnosticsSignHint", {text = "💡", numhl = "LspDiagnosticsDefaultHint"})
 
 protocol.CompletionItemKind = {
   "", -- Text

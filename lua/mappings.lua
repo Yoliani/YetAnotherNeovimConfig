@@ -127,6 +127,9 @@ map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 
+-- LF
+
+map("n", "<space>lf", ":Lf<CR>", opts)
 --Github copilot mapping accept
 --vim.g.copilot_no_tab_map = true
 --map("i", "<C-J>", "copilot#Accept()<CR>", opts)

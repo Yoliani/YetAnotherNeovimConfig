@@ -15,13 +15,13 @@
 
 What things do you need to install the software and how to install them
 
-- Neovim +0.5v
+- Neovim +0.6v
 - Node
 - Python +3.8v
 - A terminal that supports [Nerdfonts](https://github.com/ryanoasis/nerd-fonts)
 - Colocar el inner padding en 0
-- Install[Fzf](https://github.com/junegunn/fzf)
-- Install[ripgrep](https://github.com/BurntSushi/ripgrep#installation)
+- Install [Fzf](https://github.com/junegunn/fzf)
+- Install [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
 
 <hr/>
 ### Installation 🔧
@@ -62,6 +62,7 @@ ejemplo -:LspInstall html
 
 ## Features
 
+- Async plugins load
 - Fast plugin loading.
 - File navigation with nvim-tree.lua.
 - Managing tabs, buffers with bufferline.nvim.

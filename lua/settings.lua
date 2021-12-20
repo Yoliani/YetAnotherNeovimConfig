@@ -125,7 +125,15 @@ opt.shortmess:append {
 local g = vim.g
 g.indentLine_enabled = 1
 g.indent_blankline_char = "│"
-g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
+g.indent_blankline_filetype_exclude = {
+  "help",
+  "terminal",
+  "dashboard",
+  "packer",
+  "lspinfo",
+  "TelescopePrompt",
+  "TelescopeResults"
+}
 g.indent_blankline_buftype_exclude = {"terminal", "dashboard"}
 g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
@@ -222,3 +230,7 @@ endif
 --cmd("autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=grey") --to Show whitespace, MUST be inserted BEFORE the colorscheme command
 --
 vim.g.rainbow_active = 1
+
+-- Lf.vim
+vim.g.lf_replace_netrw = 1
+vim.gNERDTreeHijackNetrw = 0

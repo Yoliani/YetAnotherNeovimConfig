@@ -14,7 +14,7 @@ return packer.startup(
         require("orgmode").setup {}
       end
     }
-    use "sheerun/vim-polyglot"
+    -- use "sheerun/vim-polyglot"
     --Langs, testing  and autocompletion
 
     --LSP
@@ -46,6 +46,7 @@ return packer.startup(
         "nvim-lua/plenary.nvim"
       }
     }
+
     --Github Copílot
     use "github/copilot.vim"
     --Langs
@@ -71,14 +72,16 @@ return packer.startup(
     use "mlaursen/vim-react-snippets"
     use "rafamadriz/friendly-snippets"
     use "L3MON4D3/LuaSnip"
-    --MISC
+    ---------------------MISC---------------------
     use "folke/which-key.nvim"
     use {"lukas-reineke/indent-blankline.nvim"}
+    use "karb94/neoscroll.nvim"
     use "vhyrro/neorg" --TAke Notes
     --Discord presence
     use "andweeb/presence.nvim"
     use {"ellisonleao/glow.nvim"}
 
+    use {"ptzz/lf.vim", requires = {"voldikss/vim-floaterm"}}
     --For markdown
     use {"iamcco/markdown-preview.nvim", run = [[sh -c 'cd app && yarn install']]}
     use "windwp/nvim-autopairs"
@@ -126,7 +129,7 @@ return packer.startup(
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim"
     }
-    use "karb94/neoscroll.nvim"
+
     --tmux
     use "christoomey/vim-tmux-navigator"
     use "preservim/vimux"
@@ -142,7 +145,9 @@ return packer.startup(
     use "eddyekofo94/gruvbox-flat.nvim"
     use "shaunsingh/nord.nvim"
     use "JoosepAlviste/palenightfall.nvim"
-
+    use "Mofiqul/vscode.nvim"
+    use "LunarVim/onedarker.nvim"
+    use "shaunsingh/moonlight.nvim"
     --use "Pocco81/Catppuccino.nvim"
     use "catppuccin/nvim"
 

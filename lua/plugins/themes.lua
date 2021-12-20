@@ -32,8 +32,8 @@ local catppuccino = require("catppuccin")
 -- configure it
 catppuccino.setup(
   {
-    transparent_background = true,
-    term_colors = true,
+    transparent_background = false,
+    term_colors = false,
     styles = {
       comments = "italic",
       functions = "italic",
@@ -86,6 +86,38 @@ catppuccino.setup(
     }
   }
 )
+vim.g.material_style = "palenight"
+require("material").setup(
+  {
+    contrast = true, -- Enable contrast for sidebars, floating windows and popup menus like Nvim-Tree
+    borders = false, -- Enable borders between verticaly split windows
+    popup_menu = "palenight", -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
+    italics = {
+      comments = false, -- Enable italic comments
+      keywords = false, -- Enable italic keywords
+      functions = false, -- Enable italic functions
+      strings = false, -- Enable italic strings
+      variables = false -- Enable italic variables
+    },
+    contrast_windows = {
+      -- Specify which windows get the contrasted (darker) background
+      "terminal", -- Darker terminal background
+      "packer", -- Darker packer background
+      "qf" -- Darker qf list background
+    },
+    text_contrast = {
+      lighter = false, -- Enable higher contrast text for lighter style
+      darker = false -- Enable higher contrast text for darker style
+    },
+    disable = {
+      background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
+      term_colors = false, -- Prevent the theme from setting terminal colors
+      eob_lines = false -- Hide the end-of-buffer lines
+    },
+    custom_highlights = {} -- Overwrite highlights with your own
+  }
+)
+
 -- nvim-web-devicons
 -- Create highlights for statusline
 -- local icons = require("nvim-web-devicons").get_icons()
@@ -99,7 +131,7 @@ catppuccino.setup(
 -- end
 
 --Gruvbox
---vim.g.gruvbox_flat_style = "hard"
+--vim.g.gruvbox_flat_style = "dark"
 --vim.cmd [[colorscheme gruvbox-flat]]
 
 -- catpuccin
@@ -120,3 +152,16 @@ vim.cmd [[colorscheme tokyonight]]
 --require("nord").set()
 --
 --require("palenightfall").setup()
+--
+--Vscode
+
+vim.g.vscode_style = "dark"
+--vim.cmd [[colorscheme vscode]]
+
+--- Moonlight
+--require("moonlight").set()
+
+--Material.nvim
+--vim.cmd [[colorscheme material]]
+
+--vim.cmd [[colorscheme onedarker]]

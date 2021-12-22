@@ -148,6 +148,8 @@ return packer.startup(
     use "Mofiqul/vscode.nvim"
     use "LunarVim/onedarker.nvim"
     use "shaunsingh/moonlight.nvim"
+    use "rebelot/kanagawa.nvim"
+
     --use "Pocco81/Catppuccino.nvim"
     use "catppuccin/nvim"
 

@@ -1,4 +1,5 @@
 local tab_modules = {
+  "plugins.impatient",
   "plugins.alpha",
   "plugins.vsnip",
   "plugins.icons",

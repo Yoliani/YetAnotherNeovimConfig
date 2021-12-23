@@ -62,7 +62,7 @@ return packer.startup(
     use {"mfussenegger/nvim-dap-python"}
 
     --File managing and picker
-    use "kyazdani42/nvim-tree.lua"
+    --use "kyazdani42/nvim-tree.lua"
     use "kyazdani42/nvim-web-devicons"
     use "nvim-telescope/telescope.nvim"
     use "nvim-telescope/telescope-media-files.nvim"

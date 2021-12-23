@@ -330,7 +330,7 @@ lsp_installer.on_server_ready(
         "css",
         "less",
         "scss",
-        "markdown",
+        --"markdown",
         "pandoc"
       }
       opts.init_options = {

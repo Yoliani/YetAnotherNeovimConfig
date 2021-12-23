@@ -30,7 +30,7 @@ local tab_modules = {
   "plugins.configs.dap",
   --ftplugin
   --"ftplugin.java",
-  "plugins.configs.notify",
+  -- "plugins.configs.notify",
   "plugins.configs.comments",
   "plugins.configs.themes"
 }

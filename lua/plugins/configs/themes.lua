@@ -142,7 +142,7 @@ vim.g.tokyonight_style = "storm"
 vim.g.tokyonight_italic_functions = false
 vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
 vim.g.tokyonight_colors = {hint = "orange", error = "#ff0000"}
---vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme tokyonight]]
 
 -- NORD
 --vim.g.nord_contrast = false
@@ -184,4 +184,7 @@ require("kanagawa").setup(
 )
 
 -- setup must be called before loading
-vim.cmd("colorscheme kanagawa")
+--vim.cmd("colorscheme kanagawa")
+
+vim.g.onedark_style = "cool"
+--vim.cmd("colorscheme onedark")

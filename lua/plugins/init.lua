@@ -1,7 +1,10 @@
-local packer = require("packer")
+local present, packer = pcall(require, "plugins.packerInit")
+
+if not present then
+  return false
+end
+
 local use = packer.use
-vim.cmd("packadd packer.nvim")
--- using { } for using different branch , loading plugin with certain commands etc
 return packer.startup(
   function()
     use "wbthomason/packer.nvim"
@@ -80,7 +83,8 @@ return packer.startup(
     --Discord presence
     use "andweeb/presence.nvim"
     use {"ellisonleao/glow.nvim"}
-
+    --Replace nvim tree
+    use {"ms-jpq/chadtree", run = "python3 -m chadtree deps"}
     use {"ptzz/lf.vim", requires = {"voldikss/vim-floaterm"}}
     --For markdown
     use {"iamcco/markdown-preview.nvim", run = [[sh -c 'cd app && yarn install']]}

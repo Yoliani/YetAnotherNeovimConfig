@@ -44,7 +44,7 @@ local def = {
   },
   _packer_compile = {
     -- will cause split windows to be resized evenly if main window is resized
-    {"BufWritePost", "plugins.lua", "PackerCompile"}
+    {"BufWritePost", "settings.lua", "PackerCompile"}
   },
   _general_lsp = {
     {"FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>"}

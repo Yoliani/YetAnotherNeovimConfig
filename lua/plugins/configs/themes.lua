@@ -135,14 +135,14 @@ require("material").setup(
 --vim.cmd [[colorscheme gruvbox-flat]]
 
 -- catpuccin
---vim.cmd [[colorscheme catppuccin ]]
+vim.cmd [[colorscheme catppuccin ]]
 
 -- tokyonight
 vim.g.tokyonight_style = "storm"
 vim.g.tokyonight_italic_functions = false
 vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
 vim.g.tokyonight_colors = {hint = "orange", error = "#ff0000"}
-vim.cmd [[colorscheme tokyonight]]
+--vim.cmd [[colorscheme tokyonight]]
 
 -- NORD
 --vim.g.nord_contrast = false

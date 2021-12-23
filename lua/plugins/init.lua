@@ -1,9 +1,11 @@
-local present, packer = pcall(require, "plugins.packerInit")
+-- local present, packer = pcall(require, "plugins.packerInit")
+--
+-- if not present then
+--   return false
+-- end
+vim.cmd [[packadd packer.nvim]]
 
-if not present then
-  return false
-end
-
+local packer = require("packer")
 local use = packer.use
 return packer.startup(
   function()

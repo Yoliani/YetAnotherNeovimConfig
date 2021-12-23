@@ -11,7 +11,7 @@ local tab_modules = {
   -- "plugins.startup",
   "plugins.configs.treesitter-nvim",
   -- "plugins.nvimtree",
-  "plugins.configs.chadtree",
+  --"plugins.configs.chadtree",
   "plugins.configs.lspsaga",
   "plugins.configs.formatter",
   "plugins.configs.gitsigns",

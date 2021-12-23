@@ -12,14 +12,14 @@ ts_config.setup {
     "python",
     "go",
     "java",
-    "norg",
+--    "norg",
     "dart",
     "bash",
     "rust",
     "typescript",
     "tsx",
     "regex",
-    "org"
+--    "org"
   },
   indent = {
     enable = true
@@ -27,7 +27,7 @@ ts_config.setup {
   highlight = {
     enable = true,
     disable = {"html", "php"},
-    additional_vim_regex_highlighting = {"org"},
+  ----  additional_vim_regex_highlighting = {"org"},
     use_languagetree = true
   },
   autotag = {
@@ -36,16 +36,16 @@ ts_config.setup {
   }
 }
 
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+--local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 
-parser_config.org = {
-  install_info = {
-    url = "https://github.com/milisims/tree-sitter-org",
-    revision = "main",
-    files = {"src/parser.c", "src/scanner.cc"}
-  },
-  filetype = "org"
-}
+--parser_config.org = {
+--  install_info = {
+--    url = "https://github.com/milisims/tree-sitter-org",
+--    revision = "main",
+--    files = {"src/parser.c", "src/scanner.cc"}
+--  },
+--  filetype = "org"
+--}
 
 require("orgmode").setup(
   {

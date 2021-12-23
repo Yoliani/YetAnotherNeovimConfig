@@ -10,7 +10,7 @@ return packer.startup(
     use "wbthomason/packer.nvim"
     use {"lewis6991/impatient.nvim", rocks = "mpack"}
     --Highlight
-    use "nvim-treesitter/nvim-treesitter"
+    use {"nvim-treesitter/nvim-treesitter", config = require("plugins.configs.treesitter-nvim")}
     use {
       "kristijanhusak/orgmode.nvim",
       config = function()

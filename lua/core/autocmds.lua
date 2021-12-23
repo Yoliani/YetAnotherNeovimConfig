@@ -12,11 +12,11 @@ local def = {
       "qf,help,man,lspinfo",
       "nnoremap <silent> <buffer> q :close<CR>"
     },
-    -- {
-    --   "TextYankPost",
-    --   "*",
-    --   "silent!lua require('vim.highlight').on_yank({higroup = 'Search', timeout = 200})"
-    -- },
+    {
+      "TextYankPost",
+      "*",
+      "silent!lua require('vim.highlight').on_yank({higroup = 'Search', timeout = 200})"
+    },
     {
       "BufRead",
       "setlocal formatoptions-=c formatoptions-=r formatoptions-=o"

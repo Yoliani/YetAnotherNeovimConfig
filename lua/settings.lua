@@ -157,9 +157,10 @@ vim.cmd [[packadd packer.nvim]]
 vim.o.pastetoggle = "<F1>"
 --set clipboard+=unnamedplus
 
-vim.cmd "autocmd BufWritePost pluginsList.lua PackerCompile"
+--vim.cmd "autocmd BufWritePost pluginsList.lua PackerCompile"
 
-vcmd([[autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])
+--vcmd([[autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2
+--softtabstop=2]])
 
 -- hide line numbers , statusline in specific buffers!
 --vim.api.nvim_exec(
@@ -216,16 +217,16 @@ vim.cmd [[
 
 local cmd = vim.cmd
 -- 2 spaces for selected filetypes
-vim.cmd([[ autocmd FileType xml,html,xhtml,css,scssjavascript,lua,dart setlocal shiftwidth=2 tabstop=2 ]])
--- json
-vim.cmd([[ au BufEnter *.json set ai expandtab shiftwidth=2 tabstop=2 sta fo=croql ]])
-cmd(
-  [[
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-endif
-]]
-)
+-- vim.cmd([[ autocmd FileType xml,html,xhtml,css,scssjavascript,lua,dart setlocal shiftwidth=2 tabstop=2 ]])
+-- -- json
+-- vim.cmd([[ au BufEnter *.json set ai expandtab shiftwidth=2 tabstop=2 sta fo=croql ]])
+-- cmd(
+--   [[
+-- if has("autocmd")
+--   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+-- endif
+-- ]]
+-- )
 
 --cmd("autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=grey") --to Show whitespace, MUST be inserted BEFORE the colorscheme command
 --
@@ -233,4 +234,4 @@ vim.g.rainbow_active = 1
 
 -- Lf.vim
 vim.g.lf_replace_netrw = 1
-vim.gNERDTreeHijackNetrw = 0
+--[[ vim.gNERDTreeHijackNetrw = 0 ]]

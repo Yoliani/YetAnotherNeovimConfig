@@ -15,7 +15,7 @@ end
 --  Split extension function
 --
 --
-function lines(str)
+local function lines(str)
   local t = {}
   local function helper(line)
     table.insert(t, line)

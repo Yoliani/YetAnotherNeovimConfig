@@ -12,14 +12,15 @@ ts_config.setup {
     "python",
     "go",
     "java",
---    "norg",
+    "c_sharp",
+    "dockerfile",
+    "vim",
     "dart",
     "bash",
     "rust",
     "typescript",
     "tsx",
-    "regex",
---    "org"
+    "regex"
   },
   indent = {
     enable = true
@@ -27,7 +28,7 @@ ts_config.setup {
   highlight = {
     enable = true,
     disable = {"html", "php"},
-  ----  additional_vim_regex_highlighting = {"org"},
+    ----  additional_vim_regex_highlighting = {"org"},
     use_languagetree = true
   },
   autotag = {
@@ -47,9 +48,9 @@ ts_config.setup {
 --  filetype = "org"
 --}
 
-require("orgmode").setup(
-  {
-    org_agenda_files = {"~/Notas/org/*"},
-    org_default_notes_file = "~/Notas/org/refile.org"
-  }
-)
+-- require("orgmode").setup(
+--   {
+--     org_agenda_files = {"~/Notas/org/*"},
+--     org_default_notes_file = "~/Notas/org/refile.org"
+--   }
+-- )

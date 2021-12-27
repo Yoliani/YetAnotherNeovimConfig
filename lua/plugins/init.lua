@@ -1,25 +1,31 @@
--- local present, packer = pcall(require, "plugins.packerInit")
+local present, packer = pcall(require, "plugins.packerInit")
 --
--- if not present then
---   return false
--- end
-vim.cmd [[packadd packer.nvim]]
+if not present then
+  return false
+end
+--vim.cmd [[packadd packer.nvim]]
 
-local packer = require("packer")
+--local packer = require("packer")
 local use = packer.use
 return packer.startup(
   function()
     use "wbthomason/packer.nvim"
     use {"lewis6991/impatient.nvim", rocks = "mpack"}
     --Highlight
-    use {"nvim-treesitter/nvim-treesitter", config = require("plugins.configs.treesitter-nvim")}
+    use {
+      "nvim-treesitter/nvim-treesitter"
+      -- config = function()
+      --   require("plugins.configs.treesitter-nvim")
+      -- end
+    }
+
     use {
       "kristijanhusak/orgmode.nvim",
       config = function()
         require("orgmode").setup {}
       end
     }
-    -- use "sheerun/vim-polyglot"
+
     --Langs, testing  and autocompletion
 
     --LSP
@@ -27,15 +33,20 @@ return packer.startup(
     use "jose-elias-alvarez/null-ls.nvim"
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
     use "nvim-lua/lsp_extensions.nvim"
-    --use "glepnir/lspsaga.nvim"
+
     use {"tami5/lspsaga.nvim"}
     use "onsails/lspkind-nvim"
     use {
       "ray-x/lsp_signature.nvim"
     }
-    -- use "kabouzeid/nvim-lspinstall"
+
     use "williamboman/nvim-lsp-installer"
+    --Java
     use "mfussenegger/nvim-jdtls"
+    --Flutter
+    use {"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"}
+    -- Rust Language
+    use "simrat39/rust-tools.nvim"
     --CMP
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-buffer"
@@ -54,10 +65,7 @@ return packer.startup(
 
     --Github Copílot
     use "github/copilot.vim"
-    --Langs
-    use {"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"}
-    --Flutter Language
-    use "simrat39/rust-tools.nvim" -- Rust Language
+
     --For tests
     use {"mfussenegger/nvim-dap"}
     use {"nvim-telescope/telescope-dap.nvim"}
@@ -70,7 +78,7 @@ return packer.startup(
     use "nvim-telescope/telescope-media-files.nvim"
     use "nvim-lua/popup.nvim"
 
-    --SNIPPETS
+    ---------------------SNIPPETS----------------------
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/vim-vsnip-integ"
     use "SirVer/ultisnips"
@@ -81,7 +89,7 @@ return packer.startup(
     use "folke/which-key.nvim"
     use {"lukas-reineke/indent-blankline.nvim"}
     use "karb94/neoscroll.nvim"
-    use "vhyrro/neorg" --TAke Notes
+    --use "vhyrro/neorg"
     --Discord presence
     use "andweeb/presence.nvim"
     use {"ellisonleao/glow.nvim"}
@@ -112,6 +120,7 @@ return packer.startup(
     use "alvan/vim-closetag"
     -- Multicursor
     use "mg979/vim-visual-multi"
+    --Dashboard
     use "goolord/alpha-nvim"
 
     use {
@@ -120,7 +129,7 @@ return packer.startup(
         require("stabilize").setup()
       end
     }
-    --use "glepnir/dashboard-nvim"
+
     use {
       "rmagatti/goto-preview",
       config = function()
@@ -155,32 +164,25 @@ return packer.startup(
     use "LunarVim/onedarker.nvim"
     use "shaunsingh/moonlight.nvim"
     use "rebelot/kanagawa.nvim"
-
-    --use "Pocco81/Catppuccino.nvim"
+    use "luisiacc/gruvbox-baby"
+    use "olimorris/onedarkpro.nvim"
     use "catppuccin/nvim"
 
     --Statusline and bufferline
-    -- use {
-    --   "nvim-lualine/lualine.nvim",
-    --   requires = {"kyazdani42/nvim-web-devicons", opt = true}
-    -- }
-    use "glepnir/galaxyline.nvim"
-
-    use "akinsho/nvim-bufferline.lua"
+    --use "nvim-lualine/lualine.nvim"
+    --use "glepnir/galaxyline.nvim"
+    --[[ use "akinsho/nvim-bufferline.lua" ]]
+    use "feline-nvim/feline.nvim"
+    use {
+      "noib3/nvim-cokeline",
+      config = function()
+        require("cokeline").setup()
+      end
+    }
 
     --Formatters
     use "mhartington/formatter.nvim"
     use "sbdchd/neoformat"
-    --Fennel
-    --    use "Olical/aniseed"
-    --    use {
-    --      "rktjmp/hotpot.nvim",
-    --      -- packer says this is "code to run after this plugin is loaded."
-    --      -- but it seems to run before plugin/hotpot.vim (perhaps just barely)
-    --      config = function()
-    --        require("hotpot")
-    --      end
-    --    }
   end,
   {
     display = {

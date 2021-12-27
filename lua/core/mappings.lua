@@ -17,8 +17,11 @@ map("n", "<S-t>", [[<Cmd>tabnew<CR>]], opts) -- new tab
 map("n", "<S-x>", [[<Cmd>bdelete<CR>]], opts) -- close tab
 
 -- move between tabs
-map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opts)
-map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opts)
+map("n", "<Tab>", "<Plug>(cokeline-focus-next)", {noremap = false})
+map("n", "<S-Tab>", "<Plug>(cokeline-focus-prev)", {noremap = false})
+--cokeline
+--map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opts)
+--map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opts)
 -- OPEN TERMINALS --
 --map("n", "<C-l>", [[<Cmd>vnew term://zsh <CR>]], opt) -- term over right
 map("n", "<C-x>", [[<Cmd> split term://zsh | resize 10 <CR>]], opt) --  term bottom

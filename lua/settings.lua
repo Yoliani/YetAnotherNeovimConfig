@@ -1,4 +1,9 @@
+vim.cmd [[ set termguicolors
+            let &t_8f = "\e[38;2;%lu;%lu;%lum"
+            let &t_8b = "\e[48;2;%lu;%lu;%lum"
+]]
 vim.opt.termguicolors = true
+vim.o.termguicolors = true
 local vcmd = vim.cmd
 local opt = vim.opt
 vcmd "syntax on"

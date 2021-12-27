@@ -100,6 +100,7 @@ return packer.startup(
     use {"iamcco/markdown-preview.nvim", run = [[sh -c 'cd app && yarn install']]}
     use "windwp/nvim-autopairs"
     use "norcalli/nvim-colorizer.lua"
+
     -- rauinbow brackets
     use "luochen1990/rainbow"
     -- Autoclose tags
@@ -121,7 +122,12 @@ return packer.startup(
     -- Multicursor
     use "mg979/vim-visual-multi"
     --Dashboard
-    use "goolord/alpha-nvim"
+    use {
+      "goolord/alpha-nvim",
+      config = function()
+        require("plugins.configs.alpha")
+      end
+    }
 
     use {
       "luukvbaal/stabilize.nvim",

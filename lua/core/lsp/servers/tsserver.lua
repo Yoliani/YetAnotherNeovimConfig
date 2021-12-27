@@ -1,15 +1,6 @@
 local M = {}
 local lspconfig = require "lspconfig"
-local get_map_options = function(custom_options)
-  local options = {noremap = true, silent = true}
-  if custom_options then
-    options = vim.tbl_extend("force", options, custom_options)
-  end
-  return options
-end
-local buf_map = function(mode, target, source, opts, bufnr)
-  vim.api.nvim_buf_set_keymap(bufnr or 0, mode, target, source, get_map_options(opts))
-end
+
 local ts_utils_settings = {
   -- debug = true,
   -- import_all_scan_buffers = 100,
@@ -51,6 +42,7 @@ local ts_utils_settings = {
 M.setup = function(opts, on_attach)
   local ts_utils = require("nvim-lsp-ts-utils")
   opts.init_options = ts_utils.init_options
+  --root_dir = lspconfig.util.root_pattern(".yarn", "package.json", ".git"),
   opts.on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
@@ -59,12 +51,10 @@ M.setup = function(opts, on_attach)
 
     ts_utils.setup(ts_utils_settings)
     ts_utils.setup_client(client)
-    --vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-    --vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", ":TSLspRenameFile<CR>")
-    --vim.api.nvim_buf_set_keymap(bufnr, "n", "go", ":TSLspImportAll<CR>")
-    buf_map("n", "tgs", ":TSLspOrganize<CR>", nil, bufnr)
-    buf_map("n", "tgI", ":TSLspRenameFile<CR>", nil, bufnr)
-    buf_map("n", "tgo", ":TSLspImportAll<CR>", nil, bufnr)
+
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "tgs", ":TSLspOrganize<CR>", {silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "tgI", ":TSLspRenameFile<CR>", {silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "tgo", ":TSLspImportAll<CR>", {silent = true})
   end
   opts.filetypes = {
     "typescript",
@@ -79,8 +69,7 @@ M.setup = function(opts, on_attach)
   opts.root_dir = function()
     return vim.loop.cwd()
   end
-  require("null-ls").setup()
-  lspconfig["null-ls"].setup({on_attach = on_attach})
+
   return opts
 end
 

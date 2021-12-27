@@ -191,7 +191,7 @@ vim.g.onedark_style = "cool"
 --
 --Gruvbox baby
 
---vim.cmd [[colorscheme gruvbox-baby]]
+vim.cmd [[colorscheme gruvbox-baby]]
 local onedarkpro = require("onedarkpro")
 onedarkpro.setup(
   {
@@ -218,4 +218,4 @@ onedarkpro.setup(
   }
 )
 
-onedarkpro.load()
+--onedarkpro.load()

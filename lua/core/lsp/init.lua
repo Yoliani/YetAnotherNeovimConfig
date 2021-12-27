@@ -226,3 +226,5 @@ protocol.CompletionItemKind = {
   "ﬦ", -- Operator
   "" -- TypeParameter
 }
+
+require("core.lsp.servers.null-ls")

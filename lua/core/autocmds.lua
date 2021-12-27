@@ -42,10 +42,10 @@ local def = {
     -- will cause split windows to be resized evenly if main window is resized
     {"VimResized", "*", "wincmd ="}
   },
-  _packer_compile = {
-    -- will cause split windows to be resized evenly if main window is resized
-    {"BufWritePost", "settings.lua", "PackerCompile"}
-  },
+  -- _packer_compile = {
+  --   -- will cause split windows to be resized evenly if main window is resized
+  --   {"BufWritePost", "settings.lua", "PackerCompile"}
+  -- },
   _general_lsp = {
     {"FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>"}
   }

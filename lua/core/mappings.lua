@@ -34,7 +34,7 @@ map("n", "<C-y>", [[ <Cmd> %y+<CR>]], opt)
 map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 
 -- toogle chadtree ---
-map("n", "<leader>1", [[ <Cmd> CHADopen<CR>]], opt)
+map("n", "<leader>1", [[ <Cmd>CHADopen<CR>]], opt)
 
 -- toggle truezen.nvim's ataraxis and minimalist mode
 map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
@@ -48,8 +48,8 @@ map("n", "<leader>21", ":DiffviewClose<CR>", {noremap = true, silent = true})
 map("n", "<leader>22", ":DiffviewOpen master<CR>", {noremap = true, silent = true})
 
 --Split
-map("n", "<leader>3", ":<C-u>split<CR>")
-map("n", "<leader>31", ":<C-u>vsplit<CR>")
+--map("n", "<leader>3", ":<C-u>split<CR>")
+--map("n", "<leader>31", ":<C-u>vsplit<CR>")
 
 local cmd = vim.cmd
 

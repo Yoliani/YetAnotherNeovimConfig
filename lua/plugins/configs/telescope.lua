@@ -9,7 +9,7 @@ require("telescope").setup {
       "--column",
       "--smart-case"
     },
-    prompt_prefix = "🔎︎ ",
+    prompt_prefix = "🔍",
     selection_caret = "➤ ",
     entry_prefix = "  ",
     initial_mode = "insert",
@@ -48,42 +48,3 @@ require("telescope").setup {
   }
 }
 require("telescope").load_extension("media_files")
-
-local opt = {noremap = true, silent = true}
-
-vim.g.mapleader = " "
-
--- mappings
-vim.api.nvim_set_keymap("n", "<Leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
-vim.api.nvim_set_keymap(
-  "n",
-  "<Leader>fp",
-  [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]],
-  opt
-)
-
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>M",
-  "<cmd>lua require('telescope.builtin').keymaps() <CR>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap("n", "<Leader>fb", [[<Cmd>lua require('telescope.builtin').buffers()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>fh", [[<Cmd>lua require('telescope.builtin').help_tags()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>fo", [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
-
--- dashboard stuff
-vim.api.nvim_set_keymap("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], opt)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>ca",
-  "<cmd>lua  require('telescope.builtin').lsp_code_actions( {layout_config={width=50, height=20} } ) <CR>",
-  {silent = true, noremap = true}
-)
-vim.api.nvim_set_keymap(
-  "x",
-  "<leader>ca",
-  "<cmd>lua  require('telescope.builtin').lsp_range_code_actions( {layout_config={width=50, height=25} } ) <CR>",
-  {silent = true, noremap = true}
-)

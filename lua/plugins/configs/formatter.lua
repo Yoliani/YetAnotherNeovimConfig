@@ -56,17 +56,6 @@ require("formatter").setup(
           }
         end
       }
-      --[[
-          php = {
-      function()
-        {
-          exe = './vendor/bin/phpcbf',
-          args = { '--standard=PSR12', bufname },
-          stdin = false,
-        }
-      end
-    }
---]]
     }
   }
 )
@@ -76,7 +65,7 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.js,*.jsx,*.ts,*.css,*.scss,*.md,*.html,*.lua,*.php,*.rs : FormatWrite
+  autocmd BufWritePost *.js,*.jsx,*.ts,*.css,*.scss,*.md,*.html,*.php,*.rs : FormatWrite
 augroup END
 ]],
   true

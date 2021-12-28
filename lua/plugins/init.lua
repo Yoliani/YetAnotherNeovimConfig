@@ -1,7 +1,8 @@
 local present, packer = pcall(require, "plugins.packerInit")
---
+
 if not present then
-  return false
+  print("packerInit plugin not found, disabling packer")
+  return
 end
 --vim.cmd [[packadd packer.nvim]]
 
@@ -12,12 +13,40 @@ return packer.startup(
     use "wbthomason/packer.nvim"
     use {"lewis6991/impatient.nvim", rocks = "mpack"}
     --Highlight
-    use {
-      "nvim-treesitter/nvim-treesitter"
-      -- config = function()
-      --   require("plugins.configs.treesitter-nvim")
-      -- end
-    }
+
+    use(
+      {
+        "nvim-treesitter/nvim-treesitter", -- Syntax highlighting and navigating for Neovim
+        run = ":TSUpdate",
+        event = "BufRead",
+        requires = {
+          {
+            "windwp/nvim-ts-autotag", -- Autoclose and autorename HTML and Vue tags
+            after = "nvim-treesitter"
+          },
+          {
+            "JoosepAlviste/nvim-ts-context-commentstring", -- Smart commenting in multi language files - Enabled in Treesitter file
+            after = "nvim-treesitter"
+          },
+          {
+            "David-Kunz/treesitter-unit", -- Select a Treesitter unit
+            after = "nvim-treesitter"
+          }
+        }
+        -- setup = function()
+        --   require("core.mappings").treesitter()
+        -- end,
+        -- config = function()
+        --   require("plugins.configs.treesitter-nvim")
+        -- end
+      }
+    )
+    use(
+      {
+        "nvim-treesitter/playground", -- View Treesitter definitions
+        cmd = "TSPlaygroundToggle"
+      }
+    )
 
     use {
       "kristijanhusak/orgmode.nvim",
@@ -29,6 +58,7 @@ return packer.startup(
     --Langs, testing  and autocompletion
 
     --LSP
+    use "williamboman/nvim-lsp-installer"
     use "neovim/nvim-lspconfig"
     use "jose-elias-alvarez/null-ls.nvim"
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
@@ -39,8 +69,8 @@ return packer.startup(
     use {
       "ray-x/lsp_signature.nvim"
     }
+    use "kosayoda/nvim-lightbulb"
 
-    use "williamboman/nvim-lsp-installer"
     --Java
     use "mfussenegger/nvim-jdtls"
     --Flutter
@@ -48,20 +78,30 @@ return packer.startup(
     -- Rust Language
     use "simrat39/rust-tools.nvim"
     --CMP
-    use "hrsh7th/cmp-nvim-lsp"
-    use "hrsh7th/cmp-buffer"
-    use "hrsh7th/nvim-cmp"
-    use {"tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"}
-    use "saadparwaiz1/cmp_luasnip"
-    use "hrsh7th/cmp-path"
-    use "hrsh7th/cmp-cmdline"
-    use "hrsh7th/cmp-vsnip"
-    use {
-      "Yoliani/cmp-npm",
-      requires = {
-        "nvim-lua/plenary.nvim"
+    use(
+      {
+        "hrsh7th/nvim-cmp", -- Code completion menu
+        requires = {
+          {"hrsh7th/cmp-nvim-lsp"},
+          {"hrsh7th/cmp-path", after = "nvim-cmp"},
+          {"hrsh7th/cmp-buffer", after = "nvim-cmp"},
+          {"saadparwaiz1/cmp_luasnip", after = "nvim-cmp"},
+          {"hrsh7th/cmp-cmdline", after = "nvim-cmp"},
+          {"hrsh7th/cmp-vsnip", after = "nvim-cmp"},
+          {"tzachar/cmp-tabnine", run = "./install.sh", after = "nvim-cmp"},
+          {
+            "Yoliani/cmp-npm",
+            requires = {
+              "nvim-lua/plenary.nvim"
+            },
+            after = "nvim-cmp"
+          }
+        }
+        -- config = function()
+        --   require("plugins.configs.cmp-nvim")
+        -- end
       }
-    }
+    )
 
     --Github Copílot
     use "github/copilot.vim"
@@ -74,7 +114,11 @@ return packer.startup(
     --File managing and picker
     --use "kyazdani42/nvim-tree.lua"
     use "kyazdani42/nvim-web-devicons"
-    use "nvim-telescope/telescope.nvim"
+    use(
+      {
+        "nvim-telescope/telescope.nvim"
+      }
+    )
     use "nvim-telescope/telescope-media-files.nvim"
     use "nvim-lua/popup.nvim"
 
@@ -123,10 +167,10 @@ return packer.startup(
     use "mg979/vim-visual-multi"
     --Dashboard
     use {
-      "goolord/alpha-nvim",
-      config = function()
-        require("plugins.configs.alpha")
-      end
+      "goolord/alpha-nvim"
+      -- config = function()
+      --   require("plugins.configs.alpha")
+      -- end
     }
 
     use {

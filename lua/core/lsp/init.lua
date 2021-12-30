@@ -12,6 +12,7 @@ lsp_installer.settings(
   }
 )
 local protocol = require "vim.lsp.protocol"
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -39,12 +40,13 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
   buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
   buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  buf_set_keymap("n", "<space>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<space>fl", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<space>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<space>fl", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    buf_set_keymap("n", "<space>cf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
   -- Set autocommands conditional on server_capabilities
@@ -106,7 +108,8 @@ local function make_config()
     properties = {
       "documentation",
       "detail",
-      "additionalTextEdits"
+      "additionalTextEdits",
+      "kind"
     }
   }
 
@@ -127,6 +130,18 @@ end
 --   }
 -- )
 
+vim.diagnostic.config {
+  severity_sort = true,
+  signs = true,
+  underline = false, -- Do not underline code
+  update_in_insert = false,
+  virtual_text = false
+  -- virtual_text = {
+  -- 	prefix = "",
+  -- 	spacing = 0,
+  -- },
+}
+
 local function lspSymbol(name, icon)
   local hl = "DiagnosticSign" .. name
   vim.fn.sign_define(hl, {text = icon, numhl = hl, texthl = hl})
@@ -136,7 +151,8 @@ lspSymbol("Error", "")
 lspSymbol("Info", "")
 lspSymbol("Hint", "")
 lspSymbol("Warn", "")
-
+local max_width = math.max(math.floor(vim.o.columns * 0.7), 100)
+local max_height = math.max(math.floor(vim.o.lines * 0.3), 30)
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics,
@@ -154,14 +170,28 @@ vim.lsp.handlers["textDocument/hover"] =
   vim.lsp.with(
   vim.lsp.handlers.hover,
   {
-    border = "single"
+    border = "rounded",
+    max_width = max_width,
+    max_height = max_height
   }
 )
 vim.lsp.handlers["textDocument/signatureHelp"] =
   vim.lsp.with(
   vim.lsp.handlers.signature_help,
   {
-    border = "single"
+    border = "rounded",
+    max_width = max_width,
+    max_height = max_height
+  }
+)
+
+vim.lsp.handlers["textDocument/codeLens"] =
+  vim.lsp.with(
+  vim.lsp.handlers.code_lens,
+  {
+    border = "rounded",
+    max_width = max_width,
+    max_height = max_height
   }
 )
 

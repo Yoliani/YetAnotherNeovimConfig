@@ -4,12 +4,11 @@ if not present then
   print("packerInit plugin not found, disabling packer")
   return
 end
---vim.cmd [[packadd packer.nvim]]
 
---local packer = require("packer")
-local use = packer.use
 return packer.startup(
-  function()
+  function(use, use_rocks)
+    use_rocks("penlight")
+
     use "wbthomason/packer.nvim"
     use {"lewis6991/impatient.nvim", rocks = "mpack"}
     --Highlight
@@ -133,7 +132,9 @@ return packer.startup(
     use "folke/which-key.nvim"
     use {"lukas-reineke/indent-blankline.nvim"}
     use "karb94/neoscroll.nvim"
-    --use "vhyrro/neorg"
+
+    use "nvim-neorg/neorg"
+
     --Discord presence
     use "andweeb/presence.nvim"
     use {"ellisonleao/glow.nvim"}
@@ -166,12 +167,14 @@ return packer.startup(
     -- Multicursor
     use "mg979/vim-visual-multi"
     --Dashboard
-    use {
-      "goolord/alpha-nvim"
-      -- config = function()
-      --   require("plugins.configs.alpha")
-      -- end
-    }
+    use(
+      {
+        "goolord/alpha-nvim",
+        config = function()
+          require("plugins.configs.alpha")
+        end
+      }
+    )
 
     use {
       "luukvbaal/stabilize.nvim",

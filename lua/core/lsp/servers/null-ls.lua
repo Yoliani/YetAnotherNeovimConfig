@@ -36,7 +36,7 @@ null_ls.setup(
           -- 	return utils.root_has_file("pyproject.toml")
           -- end,
           args = function(params)
-            local lsputil = require("lspconfig.util")
+            lsputil = require("lspconfig.util")
             local cwd = vim.loop.cwd()
 
             local root = nvim_lsp.pyright.get_root_dir(params.bufname)
@@ -57,6 +57,7 @@ null_ls.setup(
       fmt.djhtml,
       fmt.eslint_d,
       fmt.prettierd,
+      fmt.stylua,
       dg.eslint_d,
       dg.flake8,
       ca.eslint

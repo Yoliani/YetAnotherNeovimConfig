@@ -198,6 +198,7 @@ M.lsp = function()
 end
 
 --Call mappning function
+M.others()
 M.tmux()
 M.treesitter()
 M.telescope()

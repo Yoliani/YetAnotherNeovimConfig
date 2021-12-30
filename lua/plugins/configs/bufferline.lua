@@ -38,7 +38,12 @@ M.cokeline = function()
   end
 
   local colors = require("onedarkpro").get_colors(vim.g.onedarkpro_style)
+  local rq_mappings = require("cokeline/mappings")
+  local rq_get_hex = require("cokeline/utils").get_hex
 
+  local comments_fg = rq_get_hex("Comment", "fg")
+  local errors_fg = rq_get_hex("DiagnosticError", "fg")
+  local warnings_fg = rq_get_hex("DiagnosticWarn", "fg")
   cokeline.setup(
     {
       show_if_buffers_are_at_least = 2,
@@ -58,8 +63,26 @@ M.cokeline = function()
       },
       components = {
         {
+          --Icons
           text = function(buffer)
-            return buffer.index ~= 1 and "  "
+            return (rq_mappings.is_picking_focus() or rq_mappings.is_picking_close()) and buffer.pick_letter .. " " or
+              buffer.devicon.icon
+          end,
+          hl = {
+            fg = function(buffer)
+              return (rq_mappings.is_picking_focus() and colors.purple) or
+                (rq_mappings.is_picking_close() and colors.red) or
+                buffer.devicon.color
+            end,
+            style = function(_)
+              return (rq_mappings.is_picking_focus() or rq_mappings.is_picking_close()) and "italic,bold" or nil
+            end
+          }
+        },
+        {
+          -- buffer index
+          text = function(buffer)
+            return buffer.index ~= 1 and "" or ""
           end
         },
         {
@@ -95,13 +118,30 @@ M.cokeline = function()
         },
         {
           text = function(buffer)
-            return buffer.is_modified and " ●"
+            return (buffer.diagnostics.errors ~= 0 and "  " .. buffer.diagnostics.errors) or
+              (buffer.diagnostics.warnings ~= 0 and "  " .. buffer.diagnostics.warnings) or
+              ""
+          end,
+          hl = {
+            fg = function(buffer)
+              return (buffer.diagnostics.errors ~= 0 and errors_fg) or
+                (buffer.diagnostics.warnings ~= 0 and warnings_fg) or
+                nil
+            end
+          },
+          truncation = {priority = 2}
+        },
+        {
+          text = function(buffer)
+            return buffer.is_modified and " ●" or " "
           end,
           hl = {
             fg = function(buffer)
               return buffer.is_focused and colors.red
             end
-          }
+          },
+          delete_buffer_on_left_click = true,
+          truncation = {priority = 5}
         },
         {
           text = "  "

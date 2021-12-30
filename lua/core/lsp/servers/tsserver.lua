@@ -44,7 +44,7 @@ M.setup = function(opts, on_attach)
   opts.init_options = ts_utils.init_options
   --root_dir = lspconfig.util.root_pattern(".yarn", "package.json", ".git"),
   opts.on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_formatting = true
     client.resolved_capabilities.document_range_formatting = false
 
     on_attach(client, bufnr)

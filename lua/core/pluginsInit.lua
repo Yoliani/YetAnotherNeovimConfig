@@ -24,7 +24,8 @@ local tab_modules = {
   "plugins.configs.neorg",
   "plugins.configs.notify",
   "plugins.configs.comments",
-  "plugins.configs.themes"
+  "plugins.configs.themes",
+  "plugins.configs.presence"
 }
 
 for i = 1, #tab_modules, 1 do

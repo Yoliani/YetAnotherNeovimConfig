@@ -26,8 +26,6 @@ What things do you need to install the software and how to install them
 <hr/>
 ### Installation 🔧
 
-_Se realiza un_
-
 ```
 #Packer is installed to handle the plugins
 git clone https://github.com/wbthomason/packer.nvim\
@@ -39,9 +37,7 @@ git clone https://github.com/Yoliani/Neovim-lua.git $HOME/.config/nvim
 
 <hr/>
 
-### Despliegue 📦
-
-_Se realiza un:_
+### Install plugins 📦
 
 ```
 :PackerInstall

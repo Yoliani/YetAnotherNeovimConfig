@@ -45,11 +45,31 @@ vim.opt.fillchars = {
 
 vim.opt.listchars:append("eol:↴")
 --vim.opt.listchars:append("space:⋅")
-
+local filetypes_to_exclude = {
+  "aerial",
+  "alpha",
+  "help",
+  "gitcommit",
+  "dashboard",
+  "NvimTree",
+  "packer",
+  "lspinfo",
+  "Startify",
+  "TelescopePrompt",
+  "TelescopeResults",
+  "terminal",
+  "Trouble",
+  "undotree",
+  "ChadTree",
+  ""
+}
 require("indent_blankline").setup {
   show_end_of_line = true,
   char = "│",
-  buftype_exclude = {"terminal", "help", "dashboard"},
+  use_treesitter = true,
+  show_first_indent_level = false, -- Hide indentline for the first column
+  filetype_exclude = filetypes_to_exclude,
+  buftype_exclude = {"terminal", "nofile"},
   space_char_blankline = " ",
   char_highlight_list = {
     "IndentBlanklineIndent1",

@@ -87,6 +87,15 @@ function M.check_lsp_client_active(name)
   return false
 end
 
+-- Source a folder of lua files
+function M.source_folder(folder)
+  --[[ local paths = vim.split(vim.fn.glob("~/.config/nvim/lua/plugins/configs/*/*lua"), "\n") ]]
+  local paths = vim.split(vim.fn.glob(folder .. "*/*lua"), "\n")
+  for _, file in pairs(paths) do
+    vim.cmd("source " .. file)
+  end
+end
+
 function M.add_keymap(mode, opts, keymaps)
   for _, keymap in ipairs(keymaps) do
     vim.api.nvim_set_keymap(mode, keymap[1], keymap[2], opts)

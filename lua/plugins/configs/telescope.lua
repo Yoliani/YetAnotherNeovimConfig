@@ -2,6 +2,7 @@ require("telescope").load_extension("media_files")
 
 require("telescope").setup {
   defaults = {
+    color_devicons = true,
     prompt_prefix = "🔍",
     selection_caret = "➤ ",
     entry_prefix = "  ",
@@ -36,7 +37,6 @@ require("telescope").setup {
     winblend = 9,
     border = {},
     borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
-    color_devicons = true,
     use_less = true,
     path_display = {"smart"},
     set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,

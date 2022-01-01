@@ -222,7 +222,8 @@ return packer.startup(
     use "luisiacc/gruvbox-baby"
     use "olimorris/onedarkpro.nvim"
     use "catppuccin/nvim"
-
+    --Theme creation
+    use "rktjmp/lush.nvim"
     --Statusline and bufferline
     --use "nvim-lualine/lualine.nvim"
     --use "glepnir/galaxyline.nvim"

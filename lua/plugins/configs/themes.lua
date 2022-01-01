@@ -225,4 +225,4 @@ M.onedarkpro = function()
   onedarkpro.load()
 end
 
-M.catppuccino()
+M.gruvbox_baby()

@@ -1,19 +1,17 @@
+local o = vim.o
+local cmd = vim.cmd
+local opt = vim.opt
+local wo = vim.wo
+local bo = vim.bo
 vim.cmd [[ set termguicolors
             let &t_8f = "\e[38;2;%lu;%lu;%lum"
             let &t_8b = "\e[48;2;%lu;%lu;%lum"
 ]]
-vim.opt.termguicolors = true
-vim.o.termguicolors = true
-local vcmd = vim.cmd
-local opt = vim.opt
-vcmd "syntax on"
---vcmd "set t_Co=256"
 
---vcmd ":hi NonText guifg=bg"
+cmd "syntax on"
+opt.list = true
 
-vim.opt.list = true
-
-vim.opt.listchars = {
+opt.listchars = {
   nbsp = "⦸", -- CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
   extends = "»", -- RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
   precedes = "«", -- LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
@@ -21,7 +19,7 @@ vim.opt.listchars = {
   --  trail = "•", -- BULLET (U+2022, UTF-8: E2 80 A2)
   space = " "
 }
-vim.opt.fillchars = {
+opt.fillchars = {
   diff = "∙", -- BULLET OPERATOR (U+2219, UTF-8: E2 88 99)
   -- eob = " ", -- NO-BREAK SPACE (U+00A0, UTF-8: C2 A0) to suppress ~ at EndOfBuffer
   fold = "·", -- MIDDLE DOT (U+00B7, UTF-8: C2 B7)
@@ -43,8 +41,8 @@ vim.opt.fillchars = {
 --   fold = ' ', -- Hide trailing folding characters
 -- }
 
-vim.opt.listchars:append("eol:↴")
---vim.opt.listchars:append("space:⋅")
+opt.listchars:append("eol:↴")
+--opt.listchars:append("space:⋅")
 local filetypes_to_exclude = {
   "aerial",
   "alpha",
@@ -60,8 +58,7 @@ local filetypes_to_exclude = {
   "terminal",
   "Trouble",
   "undotree",
-  "ChadTree",
-  ""
+  "ChadTree"
 }
 require("indent_blankline").setup {
   show_end_of_line = true,
@@ -95,37 +92,37 @@ set completeopt=menu,menuone,noselect
 set modifiable
 ]]
 )
---- Settingtrue-
-vim.o.fileencoding = "utf-8" -- the encoding written to a file
-vim.o.updatetime = 100 -- faster completion
-vim.o.title = true -- set the title of window to the value of the titlestring
-vim.o.titlestring = "%<%F%=%l/%L - nvim"
--- what the title of the window will be set to
-vim.o.backup = false -- creates a backup file
-vim.o.swapfile = false
--- creates a swapfile
-vim.o.smartindent = true -- make indenting smarter again
-vim.o.mouse = "a"
-vim.opt.clipboard = "unnamedplus"
-vim.o.timeoutlen = 100
-vim.o.ruler = true
-vim.o.showmode = false
-vim.o.hidden = true
-vim.o.ignorecase = true
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.termguicolors = true
-vim.o.cmdheight = 1
-vim.o.numberwidth = 1
-vim.o.cursorline = true
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 2 -- spaces per tab (when shifting), when using the >> or << commands, shift lines by 4 spaces
-vim.o.tabstop = 2
-vim.opt.modifiable = true
-vim.o.wildignore = "*node_modules/**"
-vim.opt.linebreak = true -- Break lines by spaces or tabs
-opt.showmatch = true -- Highlight matching parenthesis, etc.
 
+--- Settings---
+o.fileencoding = "utf-8"
+o.updatetime = 100
+o.title = true
+o.titlestring = "%<%F%=%l/%L - nvim"
+o.backup = false
+o.swapfile = false
+o.smartindent = true
+o.mouse = "a"
+o.timeoutlen = 100
+o.ruler = true
+o.showmode = false
+o.hidden = true
+o.ignorecase = true
+o.splitbelow = true
+o.splitright = true
+o.termguicolors = true
+o.cmdheight = 1
+o.numberwidth = 1
+o.cursorline = true
+o.softtabstop = 2
+o.shiftwidth = 2 -- spaces per tab (when shifting), when using the >> or << commands, shift lines by 4 spaces
+o.tabstop = 2
+o.wildignore = "*node_modules/**"
+o.pastetoggle = "<F1>"
+
+opt.modifiable = true
+opt.linebreak = true -- Break lines by spaces or tabs
+opt.showmatch = true -- Highlight matching parenthesis, etc.
+opt.clipboard = "unnamedplus"
 opt.lazyredraw = true -- Redraw only when need to
 opt.formatoptions =
   table.concat {
@@ -148,43 +145,28 @@ opt.shortmess:append {
 }
 
 local g = vim.g
-g.indentLine_enabled = 1
-g.indent_blankline_char = "│"
--- g.indent_blankline_filetype_exclude = {
---   "help",
---   "terminal",
---   "dashboard",
---   "packer",
---   "lspinfo",
---   "TelescopePrompt",
---   "TelescopeResults"
--- }
-g.indent_blankline_buftype_exclude = {"terminal", "dashboard"}
-g.indent_blankline_show_trailing_blankline_indent = false
-g.indent_blankline_show_first_indent_level = false
+
 g.vsnip_snippet_dir = "~/.config/nvim/snippets/"
 g.mapleader = " "
 g.auto_save = 0
 
 --Windows options
-
-vim.wo.cul = true
-vim.wo.signcolumn = "yes"
-vim.wo.number = true
---vim.wo.wrap = true
+wo.cul = true
+wo.signcolumn = "yes"
+wo.number = true
+wo.wrap = true
 --Buffer options
+bo.expandtab = true
+bo.shiftwidth = 2
+bo.smartindent = true
 
-vim.bo.expandtab = true
-vim.bo.shiftwidth = 2
-vim.bo.smartindent = true
+cmd [[packadd packer.nvim]]
 
-vim.cmd [[packadd packer.nvim]]
-vim.o.pastetoggle = "<F1>"
 --set clipboard+=unnamedplus
 
 --vim.cmd "autocmd BufWritePost pluginsList.lua PackerCompile"
 
---vcmd([[autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2
+--cmd([[autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2
 --softtabstop=2]])
 
 -- hide line numbers , statusline in specific buffers!
@@ -224,7 +206,7 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 --mouse
-vim.cmd [[
+cmd [[
  let g:is_mouse_enabled = 1 
   noremap <silent> <Leader>mo :call ToggleMouse()<CR> 
   function ToggleMouse() 
@@ -240,7 +222,6 @@ vim.cmd [[
   endfunction
 ]]
 
-local cmd = vim.cmd
 -- 2 spaces for selected filetypes
 -- vim.cmd([[ autocmd FileType xml,html,xhtml,css,scssjavascript,lua,dart setlocal shiftwidth=2 tabstop=2 ]])
 -- -- json

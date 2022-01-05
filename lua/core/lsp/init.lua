@@ -212,6 +212,8 @@ lsp_installer.on_server_ready(
       opts = require("core.lsp.servers.rust_analyzer").setup(opts)
     elseif server.name == "jsonls" then
       opts = require("core.lsp.servers.jsonls").setup(opts)
+    elseif server.name == "efm" then
+      opts.root_dir = require("lspconfig").util.root_pattern {".git/", "."}
     end
 
     server:setup(opts)

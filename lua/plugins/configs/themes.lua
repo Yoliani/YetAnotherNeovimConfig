@@ -69,7 +69,7 @@ M.catppuccino = function()
         gitsigns = true,
         telescope = true,
         nvimtree = {
-          enabled = true,
+          enabled = false,
           show_root = true
         },
         which_key = true,
@@ -225,4 +225,4 @@ M.onedarkpro = function()
   onedarkpro.load()
 end
 
-M.gruvbox_baby()
+M.catppuccino()

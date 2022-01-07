@@ -206,6 +206,12 @@ return packer.startup(
     --GIT
     use "sindrets/diffview.nvim"
     use "lewis6991/gitsigns.nvim"
+    use {
+      "tanvirtin/vgit.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim"
+      }
+    }
 
     --THEMEs
     use "folke/tokyonight.nvim"

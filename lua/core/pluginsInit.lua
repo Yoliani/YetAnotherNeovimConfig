@@ -25,7 +25,8 @@ local tab_modules = {
   "plugins.configs.notify",
   "plugins.configs.comments",
   "plugins.configs.themes",
-  "plugins.configs.presence"
+  "plugins.configs.presence",
+  "plugins.configs.vgit"
 }
 
 for i = 1, #tab_modules, 1 do

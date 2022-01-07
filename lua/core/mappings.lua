@@ -199,7 +199,7 @@ end
 
 --Call mappning function
 M.others()
-M.tmux()
+--M.tmux()
 M.treesitter()
 M.telescope()
 M.visual_multi()

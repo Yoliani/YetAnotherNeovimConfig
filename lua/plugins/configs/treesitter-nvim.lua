@@ -58,7 +58,7 @@ ts_config.setup {
   },
   highlight = {
     enable = true,
-    --disable = {"html", "php", "go"},
+    disable = {"html", "php", "lua"},
     additional_vim_regex_highlighting = false
     --  use_languagetree = true
   },

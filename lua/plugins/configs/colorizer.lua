@@ -1,4 +1,10 @@
-require "colorizer".setup(
+local status, colorizer = pcall(require, "colorizer")
+if not status then
+  print("Error loading colorizer plugin: " .. colorizer)
+  return
+end
+
+colorizer.setup(
   {"*"},
   {
     RGB = true, -- #RGB hex codes

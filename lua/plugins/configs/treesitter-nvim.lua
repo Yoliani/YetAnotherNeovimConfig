@@ -30,6 +30,7 @@ parser_configs.norg_table = {
   }
 }
 ts_config.setup {
+  sync_install = true,
   ensure_installed = {
     "javascript",
     "html",
@@ -55,14 +56,11 @@ ts_config.setup {
     "norg_table",
     "fish"
   },
-  indent = {
-    enable = true
-  },
   highlight = {
     enable = true,
-    disable = {"html", "php"},
-    ----  additional_vim_regex_highlighting = {"org"},
-    use_languagetree = true
+    --disable = {"html", "php", "go"},
+    additional_vim_regex_highlighting = false
+    --  use_languagetree = true
   },
   autotag = {
     enable = true,
@@ -139,7 +137,6 @@ ts_config.setup {
       }
     }
   },
-  --> rainbow tags
   rainbow = {
     enable = true,
     extended_mode = true,

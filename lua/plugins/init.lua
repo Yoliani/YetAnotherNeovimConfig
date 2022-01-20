@@ -16,8 +16,7 @@ return packer.startup(
     use(
       {
         "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-        event = "BufRead"
+        run = ":TSUpdate"
       }
     )
 
@@ -96,6 +95,8 @@ return packer.startup(
     use({"mfussenegger/nvim-dap"})
     use({"nvim-telescope/telescope-dap.nvim"})
     use({"mfussenegger/nvim-dap-python"})
+    use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
+    use "theHamsta/nvim-dap-virtual-text"
 
     --File managing and picker
     --use "kyazdani42/nvim-tree.lua"
@@ -242,7 +243,7 @@ return packer.startup(
     --Formatters
     use("mhartington/formatter.nvim")
     use("sbdchd/neoformat")
-    vim.cmd("PackerInstall")
+    -- vim.cmd("PackerInstall")
   end,
   {
     display = {

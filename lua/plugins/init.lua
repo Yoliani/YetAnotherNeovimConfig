@@ -148,6 +148,9 @@ return packer.startup(
         "numToStr/Comment.nvim"
       }
     )
+    use {
+      "nyngwang/NeoRoot.lua"
+    }
     use("rcarriga/nvim-notify")
     use("nvim-lua/plenary.nvim")
     --startuptime

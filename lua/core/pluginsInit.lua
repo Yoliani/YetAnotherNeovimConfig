@@ -26,7 +26,9 @@ local tab_modules = {
   "plugins.configs.comments",
   "plugins.configs.themes",
   "plugins.configs.presence",
-  "plugins.configs.vgit"
+  "plugins.configs.vgit",
+  "plugins.configs.copilot",
+  "plugins.configs.neoroot"
 }
 
 for i = 1, #tab_modules, 1 do

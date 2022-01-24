@@ -34,7 +34,7 @@ M.others = function()
   map("n", "<S-x>", [[<Cmd>bdelete<CR>]], opts) -- close tab
 
   -- move between tabs
-  map("n", "<Tab>", "<Plug>(cokeline-focus-next)", {noremap = false})
+  map("n", "<Tab>", "<Plug>(cokeline-focus-next)", {noremap = false, silent = true})
   map("n", "<S-Tab>", "<Plug>(cokeline-focus-prev)", {noremap = false})
   --cokeline
   --map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opts)
@@ -113,13 +113,6 @@ M.others = function()
   -- LF
 
   map("n", "<space>lf", ":Lf<CR>", opts)
-  --Github copilot mapping accept
-  --vim.g.copilot_no_tab_map = true
-  --map("i", "<C-J>", "copilot#Accept()<CR>", opts)
-  vim.cmd([[
-  imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-        let g:copilot_no_tab_map = v:true
-  ]])
 end
 
 M.treesitter = function()
@@ -201,7 +194,7 @@ M.dap = function()
   map("n", "<leader>dh", ':lua require"dap".toggle_breakpoint()<CR>')
   map("n", "<leader>dH", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
   map("n", "<c-u>", ':lua require"dap".step_out()<CR>')
-  map("n", "<c-i>", ':lua require"dap".step_into()<CR>')
+  map("n", "<leader>si", ':lua require"dap".step_into()<CR>')
   map("n", "<c-o>", ':lua require"dap".step_over()<CR>')
   map("n", "<c-p>", ':lua require"dap".continue()<CR>')
   map("n", "<leader>dn", ':lua require"dap".run_to_cursor()<CR>')

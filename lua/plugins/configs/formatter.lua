@@ -61,12 +61,12 @@ require("formatter").setup(
 )
 
 -- Runs Formatter on save
-vim.api.nvim_exec(
-  [[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.js,*.jsx,*.ts,*.css,*.lua,*.scss,*.md,*.html,*.php,*.rs : FormatWrite
-augroup END
-]],
-  true
-)
+-- vim.api.nvim_exec(
+--   [[
+-- augroup FormatAutogroup
+--   autocmd!
+--   autocmd BufWritePost *.js,*.jsx,*.ts,*.css,*.lua,*.scss,*.md,*.html,*.php,*.rs : FormatWrite
+-- augroup END
+-- ]],
+--   true
+-- )

@@ -82,6 +82,7 @@ return packer.startup(function(use, use_rocks)
 	--Github Copílot
 	use("github/copilot.vim")
 
+	use("kyazdani42/nvim-tree.lua")
 	--For tests
 	use({ "mfussenegger/nvim-dap" })
 	use({ "nvim-telescope/telescope-dap.nvim" })
@@ -131,7 +132,7 @@ return packer.startup(function(use, use_rocks)
 	use("famiu/nvim-reload")
 	use("SmiteshP/nvim-gps")
 	use("waylonwalker/Telegraph.nvim")
-	-- Usefyul comments
+	-- Usefull comments
 	use({
 		"numToStr/Comment.nvim",
 	})
@@ -160,7 +161,9 @@ return packer.startup(function(use, use_rocks)
 			require("stabilize").setup()
 		end,
 	})
-
+	-- Workspace and sessions
+	use "natecraddock/workspaces.nvim"
+	use "natecraddock/sessions.nvim"
 	use({
 		"rmagatti/goto-preview",
 		config = function()

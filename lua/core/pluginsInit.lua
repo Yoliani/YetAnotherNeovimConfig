@@ -8,7 +8,8 @@ local tab_modules = {
   "core.lsp",
   "plugins.configs.cmp-nvim",
   "plugins.configs.treesitter-nvim",
-  "plugins.configs.chadtree",
+  --"plugins.configs.chadtree",
+  "plugins.configs.nvimtree",
   "plugins.core.lsp.lspsaga",
   "plugins.configs.formatter",
   "plugins.configs.gitsigns",
@@ -28,7 +29,8 @@ local tab_modules = {
   "plugins.configs.presence",
   "plugins.configs.vgit",
   "plugins.configs.copilot",
-  "plugins.configs.neoroot"
+  "plugins.configs.neoroot",
+  "plugins.configs.workspaces-sessions"
 }
 
 for i = 1, #tab_modules, 1 do

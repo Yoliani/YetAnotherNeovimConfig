@@ -37,7 +37,7 @@ M.catppuccino = function()
   -- configure it
   catppuccino.setup(
     {
-      transparent_background = false,
+      transparent_background = true,
       term_colors = true,
       styles = {
         comments = "italic",
@@ -69,7 +69,7 @@ M.catppuccino = function()
         gitsigns = true,
         telescope = true,
         nvimtree = {
-          enabled = false,
+          enabled = true,
           show_root = true
         },
         which_key = true,

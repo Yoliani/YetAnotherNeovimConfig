@@ -11,7 +11,7 @@ set shortmess=aoO
 argglobal
 %argdel
 $argadd init.lua
-edit ~/.dotfile/nvim/lua/plugins/configs/treesitter-nvim.lua
+edit ~/.dotfile/nvim/lua/plugins/configs/copilot.lua
 argglobal
 balt ~/.dotfile/nvim/lua/plugins/configs/cmp-nvim.lua
 setlocal fdm=manual
@@ -24,22 +24,23 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 54 - ((22 * winheight(0) + 24) / 48)
+let s:l = 5 - ((4 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 54
-normal! 011|
+keepjumps 5
+normal! 0
 tabnext 1
 badd +1 init.lua
-badd +59 ~/.dotfile/nvim/lua/plugins/configs/cmp-nvim.lua
+badd +114 ~/.dotfile/nvim/lua/plugins/configs/treesitter-nvim.lua
+badd +50 ~/.dotfile/nvim/lua/plugins/configs/cmp-nvim.lua
 badd +4 lua/core/lsp/servers/diagnosticls.lua
 badd +69 lua/core/lsp/servers/tsserver.lua
 badd +1 lua/settings.lua
 badd +37 lua/plugins/configs/alpha.lua
 badd +73 lua/plugins/configs/telescope.lua
 badd +1 lua/plugins/init.lua
-badd +0 ~/.dotfile/nvim/lua/plugins/configs/treesitter-nvim.lua
+badd +5 ~/.dotfile/nvim/lua/plugins/configs/copilot.lua
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

@@ -29,11 +29,13 @@ local lsp_symbols = {
 	TypeParameter = "   (TypeParameter)",
 }
 
-require("lspkind").init({
-	with_text = true,
-	preset = "codicons",
-	symbol_map = lsp_symbols,
-})
+-- require("lspkind").init({
+-- 	with_text = true,
+-- 	preset = "codicons",
+-- 	symbol_map = lsp_symbols,
+-- })
+local lspkind = require("lspkind")
+lspkind.init()
 
 cmp.setup({
 	completion = {
@@ -46,43 +48,43 @@ cmp.setup({
 	snippet = {
 		expand = function(args)
 			-- For `vsnip` user.
-			vim.fn["vsnip#anonymous"](args.body)
+			--vim.fn["vsnip#anonymous"](args.body)
 
 			-- For `luasnip` user.
-			--require("luasnip").lsp_expand(args.body)
+			require("luasnip").lsp_expand(args.body)
 
 			-- For `ultisnips` user.
 			--vim.fn["UltiSnips#Anon"](args.body)
 			--
 		end,
 	},
-	  sorting = {
-    -- TODO: Would be cool to add stuff like "See variable names before method names" in rust, or something like that.
-    comparators = {
-      cmp.config.compare.offset,
-      cmp.config.compare.exact,
-      cmp.config.compare.score,
+	sorting = {
+		-- TODO: Would be cool to add stuff like "See variable names before method names" in rust, or something like that.
+		comparators = {
+			cmp.config.compare.offset,
+			cmp.config.compare.exact,
+			cmp.config.compare.score,
 
-      -- copied from cmp-under, but I don't think I need the plugin for this.
-      -- I might add some more of my own.
-      function(entry1, entry2)
-        local _, entry1_under = entry1.completion_item.label:find "^_+"
-        local _, entry2_under = entry2.completion_item.label:find "^_+"
-        entry1_under = entry1_under or 0
-        entry2_under = entry2_under or 0
-        if entry1_under > entry2_under then
-          return false
-        elseif entry1_under < entry2_under then
-          return true
-        end
-      end,
+			-- copied from cmp-under, but I don't think I need the plugin for this.
+			-- I might add some more of my own.
+			function(entry1, entry2)
+				local _, entry1_under = entry1.completion_item.label:find("^_+")
+				local _, entry2_under = entry2.completion_item.label:find("^_+")
+				entry1_under = entry1_under or 0
+				entry2_under = entry2_under or 0
+				if entry1_under > entry2_under then
+					return false
+				elseif entry1_under < entry2_under then
+					return true
+				end
+			end,
 
-      cmp.config.compare.kind,
-      cmp.config.compare.sort_text,
-      cmp.config.compare.length,
-      cmp.config.compare.order,
-    },
-  },
+			cmp.config.compare.kind,
+			cmp.config.compare.sort_text,
+			cmp.config.compare.length,
+			cmp.config.compare.order,
+		},
+	},
 	duplicates = {
 		buffer = 1,
 		path = 1,
@@ -125,10 +127,31 @@ cmp.setup({
 	--      format = lspkind.cmp_format()
 	--    },
 	formatting = {
-		format = function(entry, item)
-			item.kind = lsp_symbols[item.kind] .. " " .. item.kind
-			-- set a name for each source
-			item.menu = ({
+		-- format = function(entry, item)
+		-- 	item.kind = lsp_symbols[item.kind] .. " " .. item.kind
+		-- 	-- set a name for each source
+		-- 	item.menu = ({
+		-- 		spell = "(Spell)",
+		-- 		buffer = "(Buffer)",
+		-- 		calc = "(Calc)",
+		-- 		emoji = "(Emoji)",
+		-- 		nvim_lsp = "(LSP)",
+		-- 		path = "(Path)",
+		-- 		look = "(Look)",
+		-- 		treesitter = "(Treesitter)",
+		-- 		luasnip = "(LuaSnip)",
+		-- 		nvim_lua = "(Lua)",
+		-- 		latex_symbols = "(Latex)",
+		-- 		cmp_tabnine = "(Tabnine)",
+		-- 		orgmode = "(orgmode)",
+		-- 		ultisnips = "(UltiSnips)",
+		-- 		npm = "",
+		-- 	})[entry.source.name]
+		-- 	return item
+		-- end,
+		format = lspkind.cmp_format({
+			with_text = true,
+			menu = {
 				spell = "(Spell)",
 				buffer = "(Buffer)",
 				calc = "(Calc)",
@@ -138,18 +161,17 @@ cmp.setup({
 				look = "(Look)",
 				treesitter = "(Treesitter)",
 				luasnip = "(LuaSnip)",
-				nvim_lua = "(Lua)",
+				nvim_lua = "(api)",
 				latex_symbols = "(Latex)",
-				cmp_tabnine = "(Tabnine)",
+				--cmp_tabnine = "(Tabnine)",
 				orgmode = "(orgmode)",
 				ultisnips = "(UltiSnips)",
 				npm = "",
-			})[entry.source.name]
-			return item
-		end,
+			},
+		}),
 	},
 	experimental = {
-		ghost_text = true,
+		ghost_text = false,
 		native_menu = false,
 	},
 	sources = {
@@ -162,15 +184,14 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "treesitter" },
 		{ name = "spell" },
-		{ name = "calc" },
-		{ name = "emoji" },
-		{ name = "look" },
-		{ name = "latex_symbols" },
-		{ name = "cmp_tabnine" },
+		-- { name = "calc" },
+		-- { name = "emoji" },
+		-- { name = "look" },
+		-- { name = "latex_symbols" },
+		--{ name = "cmp_tabnine" },
 		{ name = "neorg" },
-		{ name = "cmp_luasnip" },
 		{ name = "orgmode" },
-		{ name = "npm" },
+		-- { name = "npm" },
 	},
 	documentation = {
 		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
@@ -183,7 +204,7 @@ au!
 au FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
 augroup END
 ]])
-
+--[[
 local tabnine = require("cmp_tabnine.config")
 tabnine:setup({
 	max_lines = 1000,
@@ -191,7 +212,7 @@ tabnine:setup({
 	sort = true,
 	run_on_every_keystroke = true,
 })
-
+--]]
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 
 --[[

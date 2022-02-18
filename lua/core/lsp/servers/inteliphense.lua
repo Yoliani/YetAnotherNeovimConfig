@@ -23,3 +23,6 @@ local intelephense_settings = {
     }
   }
 }
+
+
+return intelephense_settings

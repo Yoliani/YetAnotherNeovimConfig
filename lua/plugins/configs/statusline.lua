@@ -98,7 +98,7 @@ force_inactive.buftypes = {
 
 -- vi-mode
 components.active[1][1] = {
-  provider = " EY ",
+  provider = "  ",
   hl = function()
     local val = {}
 
@@ -144,20 +144,27 @@ components.active[1][3] = {
   }
 }
 -- nvimGps
+-- components.active[1][4] = {
+--   provider = function()
+--     return gps.
+--   end,
+--   enabled = function()
+--     return gps.is_available()
+--   end,
+--   hl = {
+--     fg = "white",
+--     bg = "bg",
+--     style = "bold"
+--   }
+-- }
 components.active[1][4] = {
-  provider = function()
-    return gps.get_location()
-  end,
-  enabled = function()
-    return gps.is_available()
-  end,
+  provider = "file_info",
   hl = {
     fg = "white",
     bg = "bg",
     style = "bold"
   }
 }
-
 -- MID
 
 -- gitBranch
@@ -335,19 +342,19 @@ components.active[3][6] = {
   right_sep = " "
 }
 -- rubyVersion
-components.active[3][7] = {
-  provider = function()
-    return " " --.. vim.fn["rvm#string"]()
-  end,
-  hl = {
-    fg = "red",
-    bg = "bg",
-    style = "bold"
-  },
-  right_sep = " "
-}
+-- components.active[3][7] = {
+--   provider = function()
+--     return " " --.. vim.fn["rvm#string"]()
+--   end,
+--   hl = {
+--     fg = "red",
+--     bg = "bg",
+--     style = "bold"
+--   },
+--   right_sep = " "
+-- }
 -- lineInfo
-components.active[3][8] = {
+components.active[3][7] = {
   provider = "position",
   hl = {
     fg = "white",
@@ -357,7 +364,7 @@ components.active[3][8] = {
   right_sep = " "
 }
 -- linePercent
-components.active[3][9] = {
+components.active[3][8] = {
   provider = "line_percentage",
   hl = {
     fg = "white",
@@ -367,7 +374,7 @@ components.active[3][9] = {
   right_sep = " "
 }
 -- scrollBar
-components.active[3][10] = {
+components.active[3][9] = {
   provider = "scroll_bar",
   hl = {
     fg = "yellow",

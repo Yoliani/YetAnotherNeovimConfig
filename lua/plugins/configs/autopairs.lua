@@ -56,12 +56,32 @@ npairs.add_rules {
       Before 	Insert    After
       (item)= 	> 	    (item)=> { }
   --]===]
-  Rule("%(.*%)%s*%=>$", " {  }", {"typescript", "typescriptreact", "javascript"}):use_regex(true):set_end_pair_length(2)
+  Rule("%(.*%)%s*%=>$", " {  }", {"typescript", "typescriptreact", "javascript", "javascriptreact"}):use_regex(true):set_end_pair_length(2)
 }
 
 require("nvim-ts-autotag").setup {
   autotag = {
     enable = true,
-    filetypes = {"html", "xml", "javascriptreact", "typescriptreact", "vue"}
+    filetypes = {"html", "xml", "javascriptreact", "typescriptreact","javascript", "vue"},
+     skip_tags = {
+        "area",
+        "base",
+        "br",
+        "col",
+        "command",
+        "embed",
+        "hr",
+        "img",
+        "slot",
+        "input",
+        "keygen",
+        "link",
+        "meta",
+        "param",
+        "source",
+        "track",
+        "wbr",
+        "menuitem"
+    }
   }
 }

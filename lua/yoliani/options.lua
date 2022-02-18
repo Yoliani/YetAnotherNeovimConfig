@@ -1,48 +1,11 @@
+
 local o = vim.o
 local cmd = vim.cmd
 local opt = vim.opt
 local wo = vim.wo
 local bo = vim.bo
--- vim.cmd([[ set termguicolors
---             let &t_8f = "\e[38;2;%lu;%lu;%lum"
---             let &t_8b = "\e[48;2;%lu;%lu;%lum"
--- ]])
-
 cmd("syntax on")
--- opt.list = true
---
--- opt.listchars = {
---   nbsp = "⦸",
---   extends = "»",
---   precedes = "«",
---   tab = "─",
---   --  trail = "•",
---   space = " "
--- }
--- opt.fillchars = {
---   diff = "∙",
---   -- eob = " ",
---   fold = "·",
---   vert = " "
--- }
-
--- opt.list = true
--- opt.listchars = {
---   nbsp = '⦸', -- CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
---   tab = '  ',
---   extends = '»', -- RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
---   precedes = '«', -- LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
---   trail = '·', -- Dot Operator (U+22C5)
--- }
--- -- Show cool character on line wrap
--- opt.showbreak = '↳ ' -- DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
--- opt.fillchars = {
---   eob = ' ', -- Suppress ~ at EndOfBuffer
---   fold = ' ', -- Hide trailing folding characters
--- }
-
 opt.listchars:append("eol:↴")
---opt.listchars:append("space:⋅")
 local filetypes_to_exclude = {
 	"aerial",
 	"alpha",
@@ -160,82 +123,8 @@ bo.smartindent = true
 
 cmd([[packadd packer.nvim]])
 
---set clipboard+=unnamedplus
-
---vim.cmd "autocmd BufWritePost pluginsList.lua PackerCompile"
-
---cmd([[autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2
---softtabstop=2]])
-
--- hide line numbers , statusline in specific buffers!
---vim.api.nvim_exec(
---  [[
---au BufEnter term://* setlocal nonumber
---   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
---   au BufEnter term://* set laststatus=0
---]],
---  false
---)
-
---plugins included with neovim
-local disabled_built_ins = {
-	"netrw",
-	"netrwPlugin",
-	"netrwSettings",
-	"netrwFileHandlers",
-	"gzip",
-	"zip",
-	"zipPlugin",
-	"tar",
-	"tarPlugin",
-	"getscript",
-	"getscriptPlugin",
-	"vimball",
-	"vimballPlugin",
-	"2html_plugin",
-	"logipat",
-	"rrhelper",
-	"spellfile_plugin",
-	"matchit",
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-	vim.g["loaded_" .. plugin] = 1
-end
-
---mouse
-cmd([[
- let g:is_mouse_enabled = 1 
-  noremap <silent> <Leader>mo :call ToggleMouse()<CR> 
-  function ToggleMouse() 
-      if g:is_mouse_enabled == 1 
-          echo "Mouse OFF" 
-          set mouse= 
-          let g:is_mouse_enabled = 0 
-      else 
-          echo "Mouse ON" 
-          set mouse=a 
-          let g:is_mouse_enabled = 1 
-      endif 
-  endfunction
-]])
-
--- 2 spaces for selected filetypes
--- vim.cmd([[ autocmd FileType xml,html,xhtml,css,scssjavascript,lua,dart setlocal shiftwidth=2 tabstop=2 ]])
--- -- json
--- vim.cmd([[ au BufEnter *.json set ai expandtab shiftwidth=2 tabstop=2 sta fo=croql ]])
--- cmd(
---   [[
--- if has("autocmd")
---   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
--- endif
--- ]]
--- )
-
---cmd("autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=grey") --to Show whitespace, MUST be inserted BEFORE the colorscheme command
---
 vim.g.rainbow_active = 1
 
 -- Lf.vim
 vim.g.lf_replace_netrw = 1
---[[ vim.gNERDTreeHijackNetrw = 0 ]]
+

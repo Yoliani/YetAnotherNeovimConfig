@@ -1,6 +1,6 @@
 --require("lsp-status").status()
 local error, status = pcall(require, "lsp-status")
-if error then
+if not error then
 	print("lsp-status not found")
 	return
 end

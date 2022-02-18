@@ -1,3 +1,4 @@
+
 local tab_modules = {
 	"plugins.configs.impatient",
 	"plugins.configs.alpha",

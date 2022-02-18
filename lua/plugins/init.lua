@@ -45,7 +45,7 @@ return packer.startup(function(use, use_rocks)
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("nvim-lua/lsp_extensions.nvim")
-
+	use("nvim-lua/lsp-status.nvim")
 	use({ "tami5/lspsaga.nvim" })
 	use("onsails/lspkind-nvim")
 	use({
@@ -59,7 +59,7 @@ return packer.startup(function(use, use_rocks)
 	use({ "akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim" })
 	-- Rust Language
 	use("simrat39/rust-tools.nvim")
-	--CMP
+	---------------------------CMP--------------------------
 	use(
 		"hrsh7th/nvim-cmp" -- Code completion menu
 	)
@@ -68,6 +68,7 @@ return packer.startup(function(use, use_rocks)
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
+	use({ "quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
 	use({ "ray-x/cmp-treesitter", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-vsnip", after = "nvim-cmp" })
@@ -79,6 +80,7 @@ return packer.startup(function(use, use_rocks)
 		},
 		after = "nvim-cmp",
 	})
+	-----------------------------------------------
 	--Github Copílot
 	use("github/copilot.vim")
 
@@ -89,7 +91,6 @@ return packer.startup(function(use, use_rocks)
 	use({ "mfussenegger/nvim-dap-python" })
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	use("theHamsta/nvim-dap-virtual-text")
-
 	--File managing and picker
 	--use "kyazdani42/nvim-tree.lua"
 	use("kyazdani42/nvim-web-devicons")
@@ -115,7 +116,7 @@ return packer.startup(function(use, use_rocks)
 
 	--Discord presence
 	use("andweeb/presence.nvim")
-	use({ "ellisonleao/glow.nvim" })
+
 	--Replace nvim tree
 	use({ "ms-jpq/chadtree", run = "python3 -m chadtree deps" })
 	use({ "ptzz/lf.vim", requires = { "voldikss/vim-floaterm" } })
@@ -131,18 +132,15 @@ return packer.startup(function(use, use_rocks)
 	--Reload --Reload and Restart
 	use("famiu/nvim-reload")
 	use("SmiteshP/nvim-gps")
-	use("waylonwalker/Telegraph.nvim")
+
 	-- Usefull comments
 	use({
 		"numToStr/Comment.nvim",
 	})
-	use({
-		"nyngwang/NeoRoot.lua",
-	})
+
 	use("rcarriga/nvim-notify")
 	use("nvim-lua/plenary.nvim")
-	--startuptime
-	use("tweekmonster/startuptime.vim")
+
 	-- Close tags
 	use("alvan/vim-closetag")
 	-- Multicursor
@@ -162,8 +160,8 @@ return packer.startup(function(use, use_rocks)
 		end,
 	})
 	-- Workspace and sessions
-	use "natecraddock/workspaces.nvim"
-	use "natecraddock/sessions.nvim"
+	use("natecraddock/workspaces.nvim")
+	use("natecraddock/sessions.nvim")
 	use({
 		"rmagatti/goto-preview",
 		config = function()
@@ -191,24 +189,33 @@ return packer.startup(function(use, use_rocks)
 			"nvim-lua/plenary.nvim",
 		},
 	})
+	use({
+		"pwntester/octo.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"kyazdani42/nvim-web-devicons",
+		},
+		config = function()
+			require("octo").setup()
+		end,
+	})
 
 	--THEMEs
 	use("folke/tokyonight.nvim")
 	use("navarasu/onedark.nvim")
-	use("EdenEast/nightfox.nvim")
-	use("marko-cerovac/material.nvim")
+
 	use("eddyekofo94/gruvbox-flat.nvim")
 	use("shaunsingh/nord.nvim")
-	use("JoosepAlviste/palenightfall.nvim")
 	use("Mofiqul/vscode.nvim")
 	use("LunarVim/onedarker.nvim")
-	use("shaunsingh/moonlight.nvim")
-	use("rebelot/kanagawa.nvim")
 	use("luisiacc/gruvbox-baby")
 	use("olimorris/onedarkpro.nvim")
 	use("catppuccin/nvim")
 	--Theme creation
-	use("rktjmp/lush.nvim")
+	use("tjdevries/colorbuddy.nvim")
+	use("~/.dotfile/nvim/lua/core/themes/mytheme")
+	--use("rktjmp/lush.nvim")
 	--Statusline and bufferline
 	--use "nvim-lualine/lualine.nvim"
 	--use "glepnir/galaxyline.nvim"
@@ -224,7 +231,6 @@ return packer.startup(function(use, use_rocks)
 	--Formatters
 	use("mhartington/formatter.nvim")
 	use("sbdchd/neoformat")
-	-- vim.cmd("PackerInstall")
 end, {
 	display = {
 		border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },

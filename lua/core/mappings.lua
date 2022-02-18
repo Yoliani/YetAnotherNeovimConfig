@@ -53,16 +53,11 @@ M.others = function()
   -- toogle chadtree ---
   --map("n", "<leader>1", [[ <Cmd>CHADopen<CR>]], opt)
 
-  -- toggle truezen.nvim's ataraxis and minimalist mode
-  map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
-  map("n", "<leader>m", [[ <Cmd> TZMinimalist<CR>]], opt)
-
   map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
 
   --Diffview
-  map("n", "<leader>2", ":DiffviewOpen<CR>", {noremap = true, silent = true})
-  map("n", "<leader>21", ":DiffviewClose<CR>", {noremap = true, silent = true})
-  map("n", "<leader>22", ":DiffviewOpen master<CR>", {noremap = true, silent = true})
+  map("n", "<leader>vv", ":DiffviewOpen<CR>", {noremap = true, silent = true})
+  map("n", "<leader>vc", ":DiffviewClose<CR>", {noremap = true, silent = true})
 
   --Split
   --map("n", "<leader>3", ":<C-u>split<CR>")

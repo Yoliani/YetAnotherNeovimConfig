@@ -7,7 +7,6 @@ g.nvim_tree_width = 25
 g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
 g.nvim_tree_auto_open = 0
 g.nvim_tree_auto_close = 0
-g.nvim_tree_quit_on_open = 0
 g.nvim_tree_follow = 1
 g.nvim_tree_indent_markers = 1
 g.nvim_tree_hide_dotfiles = 1
@@ -22,6 +21,8 @@ g.nvim_tree_show_icons = {
   files = 1
 }
 --]]
+g.nvim_tree_quit_on_open = 1
+vim.g.nvim_tree_update_cwd = 0
 g.nvim_tree_icons = {
   default = "",
   symlink = "",

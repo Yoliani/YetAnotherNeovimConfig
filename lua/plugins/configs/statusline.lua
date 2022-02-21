@@ -14,7 +14,7 @@ local components = {
 }
 
 local colors = {
-  bg = "#282828",
+  bg = "None",
   black = "#282828",
   yellow = "#d8a657",
   cyan = "#89b482",
@@ -250,97 +250,97 @@ components.active[2][8] = {
 
 -- RIGHT
 
--- LspName
-components.active[3][1] = {
-  provider = "lsp_client_names",
-  hl = {
-    fg = "yellow",
-    bg = "bg",
-    style = "bold"
-  },
-  right_sep = " "
-}
--- fileIcon
-components.active[3][2] = {
-  provider = function()
-    local filename = vim.fn.expand("%:t")
-    local extension = vim.fn.expand("%:e")
-    local icon = require "nvim-web-devicons".get_icon(filename, extension)
-    if icon == nil then
-      icon = ""
-    end
-    return icon
-  end,
-  hl = function()
-    local val = {}
-    local filename = vim.fn.expand("%:t")
-    local extension = vim.fn.expand("%:e")
-    local icon, name = require "nvim-web-devicons".get_icon(filename, extension)
-    if icon ~= nil then
-      val.fg = vim.fn.synIDattr(vim.fn.hlID(name), "fg")
-    else
-      val.fg = "white"
-    end
-    val.bg = "bg"
-    val.style = "bold"
-    return val
-  end,
-  right_sep = " "
-}
+-- -- LspName
+-- components.active[3][1] = {
+--   provider = "lsp_client_names",
+--   hl = {
+--     fg = "yellow",
+--     bg = "bg",
+--     style = "bold"
+--   },
+--   right_sep = " "
+-- }
+-- -- fileIcon
+-- components.active[3][2] = {
+--   provider = function()
+--     local filename = vim.fn.expand("%:t")
+--     local extension = vim.fn.expand("%:e")
+--     local icon = require "nvim-web-devicons".get_icon(filename, extension)
+--     if icon == nil then
+--       icon = ""
+--     end
+--     return icon
+--   end,
+--   hl = function()
+--     local val = {}
+--     local filename = vim.fn.expand("%:t")
+--     local extension = vim.fn.expand("%:e")
+--     local icon, name = require "nvim-web-devicons".get_icon(filename, extension)
+--     if icon ~= nil then
+--       val.fg = vim.fn.synIDattr(vim.fn.hlID(name), "fg")
+--     else
+--       val.fg = "white"
+--     end
+--     val.bg = "bg"
+--     val.style = "bold"
+--     return val
+--   end,
+--   right_sep = " "
+-- }
 -- fileType
-components.active[3][3] = {
-  provider = "file_type",
-  hl = function()
-    local val = {}
-    local filename = vim.fn.expand("%:t")
-    local extension = vim.fn.expand("%:e")
-    local icon, name = require "nvim-web-devicons".get_icon(filename, extension)
-    if icon ~= nil then
-      val.fg = vim.fn.synIDattr(vim.fn.hlID(name), "fg")
-    else
-      val.fg = "white"
-    end
-    val.bg = "bg"
-    val.style = "bold"
-    return val
-  end,
-  right_sep = " "
-}
--- fileSize
-components.active[3][4] = {
-  provider = "file_size",
-  enabled = function()
-    return vim.fn.getfsize(vim.fn.expand("%:t")) > 0
-  end,
-  hl = {
-    fg = "skyblue",
-    bg = "bg",
-    style = "bold"
-  },
-  right_sep = " "
-}
--- fileFormat
-components.active[3][5] = {
-  provider = function()
-    return "" .. vim.bo.fileformat:upper() .. ""
-  end,
-  hl = {
-    fg = "white",
-    bg = "bg",
-    style = "bold"
-  },
-  right_sep = " "
-}
--- fileEncode
-components.active[3][6] = {
-  provider = "file_encoding",
-  hl = {
-    fg = "white",
-    bg = "bg",
-    style = "bold"
-  },
-  right_sep = " "
-}
+-- components.active[3][3] = {
+--   provider = "file_type",
+--   hl = function()
+--     local val = {}
+--     local filename = vim.fn.expand("%:t")
+--     local extension = vim.fn.expand("%:e")
+--     local icon, name = require "nvim-web-devicons".get_icon(filename, extension)
+--     if icon ~= nil then
+--       val.fg = vim.fn.synIDattr(vim.fn.hlID(name), "fg")
+--     else
+--       val.fg = "white"
+--     end
+--     val.bg = "bg"
+--     val.style = "bold"
+--     return val
+--   end,
+--   right_sep = " "
+-- }
+-- -- fileSize
+-- components.active[3][4] = {
+--   provider = "file_size",
+--   enabled = function()
+--     return vim.fn.getfsize(vim.fn.expand("%:t")) > 0
+--   end,
+--   hl = {
+--     fg = "skyblue",
+--     bg = "bg",
+--     style = "bold"
+--   },
+--   right_sep = " "
+-- }
+-- -- fileFormat
+-- components.active[3][5] = {
+--   provider = function()
+--     return "" .. vim.bo.fileformat:upper() .. ""
+--   end,
+--   hl = {
+--     fg = "white",
+--     bg = "bg",
+--     style = "bold"
+--   },
+--   right_sep = " "
+-- }
+-- -- fileEncode
+-- components.active[3][6] = {
+--   provider = "file_encoding",
+--   hl = {
+--     fg = "white",
+--     bg = "bg",
+--     style = "bold"
+--   },
+--   right_sep = " "
+-- }
 -- rubyVersion
 -- components.active[3][7] = {
 --   provider = function()
@@ -354,7 +354,7 @@ components.active[3][6] = {
 --   right_sep = " "
 -- }
 -- lineInfo
-components.active[3][7] = {
+components.active[3][1] = {
   provider = "position",
   hl = {
     fg = "white",
@@ -364,24 +364,24 @@ components.active[3][7] = {
   right_sep = " "
 }
 -- linePercent
-components.active[3][8] = {
-  provider = "line_percentage",
-  hl = {
-    fg = "white",
-    bg = "bg",
-    style = "bold"
-  },
-  right_sep = " "
-}
--- scrollBar
-components.active[3][9] = {
-  provider = "scroll_bar",
-  hl = {
-    fg = "yellow",
-    bg = "bg"
-  }
-}
-
+-- components.active[3][8] = {
+--   provider = "line_percentage",
+--   hl = {
+--     fg = "white",
+--     bg = "bg",
+--     style = "bold"
+--   },
+--   right_sep = " "
+-- }
+-- -- scrollBar
+-- components.active[3][9] = {
+--   provider = "scroll_bar",
+--   hl = {
+--     fg = "yellow",
+--     bg = "bg"
+--   }
+-- }
+--
 -- INACTIVE
 
 -- fileType

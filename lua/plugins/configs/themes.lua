@@ -94,7 +94,6 @@ M.catppuccino = function()
     local api = require("catppuccin.api.colors")
     local colors = api.get_colors()
     vim.cmd [[colorscheme catppuccin ]]
-       
 end
 
 M.material = function()
@@ -231,7 +230,7 @@ end
 
 M.mytheme = function()
     vim.g.mytheme_style = "catppuccin"
-    vim.cmd "colorscheme mytheme"
+    
     
     local Group = require("colorbuddy.group").Group
     local g = require("colorbuddy.group").groups
@@ -242,6 +241,8 @@ M.mytheme = function()
     Group.new("CmpItemAbbrMatchFuzzy", g.CmpItemAbbr.fg:dark(), nil, s.italic)
     Group.new("CmpItemKind", g.Special)
     Group.new("CmpItemMenu", g.NonText)
+    --vim.cmd "colorscheme mytheme"
 end
 
+--M.mytheme()
 M.catppuccino()

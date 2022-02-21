@@ -93,6 +93,9 @@ return packer.startup(function(use, use_rocks)
 	use("theHamsta/nvim-dap-virtual-text")
 	--File managing and picker
 	--use "kyazdani42/nvim-tree.lua"
+
+	--use("yamatsum/nvim-nonicons")
+
 	use("kyazdani42/nvim-web-devicons")
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -214,7 +217,7 @@ return packer.startup(function(use, use_rocks)
 	use("catppuccin/nvim")
 	--Theme creation
 	use("tjdevries/colorbuddy.nvim")
-	use("~/.dotfile/nvim/lua/core/themes/mytheme")
+
 	--use("rktjmp/lush.nvim")
 	--Statusline and bufferline
 	--use "nvim-lualine/lualine.nvim"
@@ -231,6 +234,10 @@ return packer.startup(function(use, use_rocks)
 	--Formatters
 	use("mhartington/formatter.nvim")
 	use("sbdchd/neoformat")
+
+	--Local plugins
+	use("~/.dotfile/nvim/lua/core/themes/mytheme")
+	use("~/plugins/stackmap.nvim")
 end, {
 	display = {
 		border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },

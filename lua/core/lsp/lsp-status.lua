@@ -34,7 +34,7 @@ status.config({
 })
 
 require("lsp-status").register_progress()
-
-vim.cmd([[augroup ey_lsp_status]])
-vim.cmd([[  autocmd CursorHold,BufEnter <buffer> lua require('lsp-status').update_current_function()]])
-vim.cmd([[augroup END]])
+--
+-- vim.cmd([[augroup ey_lsp_status]])
+-- vim.cmd([[  autocmd CursorHold,BufEnter <buffer> lua require('lsp-status').update_current_function()]])
+-- vim.cmd([[augroup END]])

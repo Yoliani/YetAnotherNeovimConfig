@@ -108,6 +108,10 @@ M.others = function()
   -- LF
 
   map("n", "<space>lf", ":Lf<CR>", opts)
+
+  -- Test Lua files 
+  map("n", ",t", "<Plug>PlenaryTestFile", {noremap = true})
+  vim.cmd[[nmap ,t <Plug>PlenaryTestFile]]
 end
 
 M.treesitter = function()

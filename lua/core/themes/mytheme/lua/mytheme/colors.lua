@@ -196,9 +196,9 @@ else vim.g.mytheme_style = 'catppuccin'
 	colors.yellow =			"#FAE3B0"
 	colors.blue = "#96CDFB"
 	colors.paleblue =		"#B5E8E0"
-	colors.cyan = 			"#89DCEB"
+	colors.cyan = 			"#F8BD96"
 	colors.purple =			"#DDB6F2"
-	colors.orange =			"#F8BD96"
+	colors.orange =			 "#89DCEB"
 	colors.pink = 			"#F5C2E7"
 
 end

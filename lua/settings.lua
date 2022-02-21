@@ -154,7 +154,7 @@ wo.signcolumn = "yes"
 wo.number = true
 wo.wrap = true
 --Buffer options
-bo.expandtab = true
+bo.expandtab = false
 bo.shiftwidth = 2
 bo.smartindent = true
 

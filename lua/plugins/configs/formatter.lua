@@ -37,16 +37,16 @@ require("formatter").setup(
       css = {prettier},
       scss = {prettier},
       markdown = {prettier},
-      lua = {
-        -- Stylua
-        function()
-          return {
-            exe = "luafmt",
-            args = {"--indent-count", 2, "--stdin"},
-            stdin = true
-          }
-        end
-      },
+      -- lua = {
+      --   -- Stylua
+      --   function()
+      --     return {
+      --       exe = "luafmt",
+      --       args = {"--indent-count", 2, "--stdin"},
+      --       stdin = true
+      --     }
+      --   end
+      -- },
       rust = {
         rustfmt = function()
           return {
@@ -60,13 +60,13 @@ require("formatter").setup(
   }
 )
 
--- Runs Formatter on save
--- vim.api.nvim_exec(
---   [[
--- augroup FormatAutogroup
---   autocmd!
---   autocmd BufWritePost *.js,*.jsx,*.ts,*.css,*.lua,*.scss,*.md,*.html,*.php,*.rs : FormatWrite
--- augroup END
--- ]],
---   true
--- )
+--Runs Formatter on save
+vim.api.nvim_exec(
+  [[
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost *.js,*.jsx,*.ts,*.css,*.lua,*.scss,*.md,*.html,*.php,*.rs : FormatWrite
+augroup END
+]],
+  true
+)

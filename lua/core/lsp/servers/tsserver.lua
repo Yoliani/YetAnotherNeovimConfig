@@ -14,7 +14,7 @@ local ts_utils_settings = {
   -- eslint
   eslint_enable_code_actions = false,
   eslint_enable_disable_comments = false,
-  eslint_bin = "eslint_d",
+  eslint_bin = "eslint",
   eslint_config_fallback = nil,
   eslint_enable_diagnostics = false,
   eslint_opts = {
@@ -25,7 +25,7 @@ local ts_utils_settings = {
   },
   -- formatting
   enable_formatting = false,
-  formatter = "prettier_d_slim",
+  formatter = "prettier",
   formatter_config_fallback = nil,
   -- parentheses completion
   complete_parens = false,
@@ -38,8 +38,8 @@ local ts_utils_settings = {
   filter_out_diagnostics_by_severity = {"hint"},
   filter_out_diagnostics_by_code = {}
 }
-
-M.setup = function(opts, on_attach)
+local attachments = require("core.lsp.attachments")
+M.setup = function(opts)
   local ts_utils = require("nvim-lsp-ts-utils")
   opts.init_options = ts_utils.init_options
   --root_dir = lspconfig.util.root_pattern(".yarn", "package.json", ".git"),
@@ -47,7 +47,7 @@ M.setup = function(opts, on_attach)
     client.resolved_capabilities.document_formatting = true
     client.resolved_capabilities.document_range_formatting = false
 
-    on_attach(client, bufnr)
+    attachments.common(client, bufnr)
 
     ts_utils.setup(ts_utils_settings)
     ts_utils.setup_client(client)

@@ -158,6 +158,8 @@ M.telescope = function()
     "<cmd>lua  require('telescope.builtin').lsp_range_code_actions( {layout_config={width=50, height=25} } ) <CR>",
     {silent = true, noremap = true}
   )
+  map("n", ",h", [[<Cmd> Telescope help_tags <CR>]], opt)
+
 end
 
 M.visual_multi = function()

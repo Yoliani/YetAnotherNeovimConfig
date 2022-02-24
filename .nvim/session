@@ -8,12 +8,57 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
+badd +1 init.lua
+badd +5 ~/.dotfile/nvim/lua/core/lsp/init.lua
+badd +1 lua/settings.lua
+badd +3 ~/.dotfile/nvim/lua/plugins/configs/copilot.lua
+badd +1 ~/.dotfile/nvim/lua/plugins/configs/cmp-nvim.lua
+badd +114 ~/.dotfile/nvim/lua/plugins/configs/treesitter-nvim.lua
+badd +4 lua/core/lsp/servers/diagnosticls.lua
+badd +69 lua/core/lsp/servers/tsserver.lua
+badd +37 lua/plugins/configs/alpha.lua
+badd +73 lua/plugins/configs/telescope.lua
+badd +1 lua/plugins/init.lua
+badd +1 ~/.dotfile/nvim/lua/core/lsp/lspsaga.lua
+badd +34 ~/.dotfile/nvim/lua/core/lsp/lsp-installer.lua
+badd +1 ~/.dotfile/nvim/lua/core/lsp/servers/solargraph.lua
 argglobal
 %argdel
 $argadd init.lua
 edit ~/.dotfile/nvim/lua/core/lsp/init.lua
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 30 + 95) / 191)
+exe 'vert 2resize ' . ((&columns * 160 + 95) / 191)
 argglobal
-balt lua/settings.lua
+enew
+file NvimTree
+balt ~/.dotfile/nvim/lua/core/lsp/init.lua
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal nofen
+wincmd w
+argglobal
+balt init.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -24,29 +69,24 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 16 - ((15 * winheight(0) + 22) / 45)
+let s:l = 5 - ((4 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 16
-normal! 027|
+keepjumps 5
+normal! 0
+wincmd w
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 30 + 95) / 191)
+exe 'vert 2resize ' . ((&columns * 160 + 95) / 191)
 tabnext 1
-badd +1 init.lua
-badd +3 ~/.dotfile/nvim/lua/plugins/configs/copilot.lua
-badd +1 ~/.dotfile/nvim/lua/plugins/configs/cmp-nvim.lua
-badd +114 ~/.dotfile/nvim/lua/plugins/configs/treesitter-nvim.lua
-badd +4 lua/core/lsp/servers/diagnosticls.lua
-badd +69 lua/core/lsp/servers/tsserver.lua
-badd +1 lua/settings.lua
-badd +37 lua/plugins/configs/alpha.lua
-badd +73 lua/plugins/configs/telescope.lua
-badd +1 lua/plugins/init.lua
-badd +23 ~/.dotfile/nvim/lua/core/lsp/init.lua
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20 shortmess=ifnWaAcTFItoxlO
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

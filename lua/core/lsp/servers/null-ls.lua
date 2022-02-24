@@ -10,7 +10,7 @@ local dg = null_ls.builtins.diagnostics
 local ca = null_ls.builtins.code_actions
 null_ls.setup({
 	debug = false,
-	autostart = false,
+	autostart = true,
 	sources = {
 		fmt.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
 		fmt.black.with({ extra_args = { "--fast" } }),

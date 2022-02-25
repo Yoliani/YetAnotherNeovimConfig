@@ -34,13 +34,21 @@ lsp_installer.on_server_ready(function(server)
 		opts.settings = require("core.lsp.servers." .. server.name)
 	elseif server.name == "zeta_note" then
 		opts.cmd = { "zeta-note" }
+	elseif server.name == "bashls" then
+		opts.cmd = { "bash-language-server", "start" }
 	elseif server.name == "solargraph" then
-		local util = require("lspconfig/util")
-    ---print(vim.inspect(server:get_default_options()))
-		opts.root_dir = util.root_pattern({"Gemfile", ".git/"}) --require("lspconfig").util.root_pattern("Gemfile", ".git");
-
+		opts.cmd = { "solargraph", "stdio" }
+		opts.root_dir = require("lspconfig").util.root_pattern("Gemfile", ".git")
+		opts.settings = {
+			solargraph = {
+				diagnostics = true,
+			},
+		}
+		opts.filetypes = { "ruby" }
+		opts.init_options = {
+			formatting = true,
+		}
 	end
 
 	server:setup(opts)
-
 end)

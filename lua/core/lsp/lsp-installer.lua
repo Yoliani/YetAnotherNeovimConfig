@@ -37,18 +37,25 @@ lsp_installer.on_server_ready(function(server)
 	elseif server.name == "bashls" then
 		opts.cmd = { "bash-language-server", "start" }
 	elseif server.name == "solargraph" then
-		opts.cmd = { "solargraph", "stdio" }
-		opts.root_dir = require("lspconfig").util.root_pattern("Gemfile", ".git")
+		--opts.cmd = { "solargraph", "stdio" }
+		--opts.root_dir = require("lspconfig").util.root_pattern("Gemfile", ".git")
 		opts.settings = {
+			cmd = { "solargraph", "stdio" },
 			solargraph = {
 				diagnostics = true,
 			},
+			root_dir = require("lspconfig").util.root_pattern("Gemfile", ".git"),
+			filetypes = { "ruby" },
 		}
-		opts.filetypes = { "ruby" }
-		opts.init_options = {
-			formatting = true,
-		}
+		-- opts.filetypes = { "ruby" }
+		-- opts.init_options = {
+		-- 	formatting = true,
+		-- }
 	end
+	vim.cmd([[ do User LspAttachBuffers ]])
 
 	server:setup(opts)
 end)
+
+local lsp = require("nvim_lsp")
+lsp.solargraph.setup({ settings = { solargraph = { diagnostics = true , logLevel = "debug"} } })

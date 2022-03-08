@@ -167,6 +167,7 @@ cmp.setup({
 				orgmode = "(orgmode)",
 				ultisnips = "(UltiSnips)",
 				npm = "",
+				copilot = "(Copilot)",
 			},
 		}),
 	},
@@ -184,6 +185,8 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "treesitter" },
 		{ name = "spell" },
+		{ name = 'copilot' },
+
 		-- { name = "calc" },
 		-- { name = "emoji" },
 		-- { name = "look" },

@@ -82,6 +82,7 @@ return packer.startup(
         use({"saadparwaiz1/cmp_luasnip", after = "nvim-cmp"})
         use({"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"})
         use({"quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp"})
+        use({"hrsh7th/cmp-copilot", after = "nvim-cmp"})
         use({"hrsh7th/cmp-cmdline", after = "nvim-cmp"})
         use({"ray-x/cmp-treesitter", after = "nvim-cmp"})
         use({"hrsh7th/cmp-vsnip", after = "nvim-cmp"})

@@ -21,8 +21,6 @@ g.nvim_tree_show_icons = {
   files = 1
 }
 --]]
-g.nvim_tree_quit_on_open = 1
-vim.g.nvim_tree_update_cwd = 0
 g.nvim_tree_icons = {
   default = "",
   symlink = "",
@@ -107,6 +105,8 @@ require "nvim-tree".setup {
   disable_netrw = true,
   -- hijack netrw window on startup
   hijack_netrw = true,
+  nvim_tree_quit_on_open = true,
+  nvim_tree_update_cwd = true,
   -- open the tree when running this setup function
   open_on_setup = false,
   -- will not open on setup if the filetype is in this list

@@ -58,4 +58,4 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 local lsp = require("nvim_lsp")
-lsp.solargraph.setup({ settings = { solargraph = { diagnostics = true , logLevel = "debug"} } })
+lsp.solargraph.setup({ settings = { solargraph = { diagnostics = true, logLevel = "debug" } } })

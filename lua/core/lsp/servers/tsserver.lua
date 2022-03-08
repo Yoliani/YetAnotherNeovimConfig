@@ -1,6 +1,30 @@
 local M = {}
 local lspconfig = require "lspconfig"
 
+local handlers =  {
+  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = "rounded"}),
+  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded"}),
+}
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if status_ok then
+  capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+end
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
 local ts_utils_settings = {
   -- debug = true,
   -- import_all_scan_buffers = 100,
@@ -41,13 +65,15 @@ local ts_utils_settings = {
 local attachments = require("core.lsp.attachments")
 M.setup = function(opts)
   local ts_utils = require("nvim-lsp-ts-utils")
+  opts.handlers = handlers
+  opts.capabilities = capabilities
   opts.init_options = ts_utils.init_options
   --root_dir = lspconfig.util.root_pattern(".yarn", "package.json", ".git"),
   opts.on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = true
     client.resolved_capabilities.document_range_formatting = false
 
-    attachments.common(client, bufnr)
+    attachments.on_attach(client, bufnr)
 
     ts_utils.setup(ts_utils_settings)
     ts_utils.setup_client(client)

@@ -22,7 +22,7 @@ local tab_modules = {
 	"plugins.configs.go-preview",
 	"plugins.configs.todo-comments",
 	"plugins.configs.dap",
-	"plugins.configs.neorg",
+	--"plugins.configs.neorg",
 	"plugins.configs.notify",
 	"plugins.configs.comments",
 	"plugins.configs.themes",

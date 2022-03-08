@@ -6,8 +6,7 @@ if not null_ls_status_ok then
 	return
 end
 local fmt = null_ls.builtins.formatting
-local dg = null_ls.builtins.diagnostics
-local ca = null_ls.builtins.code_actions
+
 null_ls.setup({
 	debug = false,
 	autostart = true,

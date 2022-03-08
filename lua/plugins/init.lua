@@ -121,7 +121,7 @@ return packer.startup(function(use, use_rocks)
 	use("andweeb/presence.nvim")
 
 	--Replace nvim tree
-	use({ "ms-jpq/chadtree", run = "python3 -m chadtree deps" })
+	-- use({ "ms-jpq/chadtree", run = "python3 -m chadtree deps" })
 	use({ "ptzz/lf.vim", requires = { "voldikss/vim-floaterm" } })
 	--For markdown
 	use({ "iamcco/markdown-preview.nvim", run = [[sh -c 'cd app && yarn install']] })

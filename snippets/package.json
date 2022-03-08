@@ -1,0 +1,31 @@
+
+{
+  "name": "dotfiles",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javacript",
+        "path": "javascript.json"
+      },
+      {
+        "language": "javacriptreact",
+        "path": "javascriptreact.json"
+      },
+      {
+        "language": "lua",
+        "path": "lua.json"
+      }
+      ,{
+        "language": "typescript",
+        "path": "typescript.json"
+      }
+      ,{
+        "language": "typescriptreact",
+        "path": "typescriptreact.json"
+      }
+    ]
+  }
+}

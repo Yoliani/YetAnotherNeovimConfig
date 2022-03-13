@@ -2,8 +2,6 @@ require("luasnip/loaders/from_vscode").lazy_load()
 
 local ls = require("luasnip")
 
-
-
 ls.config.set_config({
 	history = false,
 	-- Update more often, :h events for more info.
@@ -11,7 +9,7 @@ ls.config.set_config({
 	-- ref: https://github.com/L3MON4D3/LuaSnip/issues/91
 	region_check_events = "CursorMoved",
 })
-ls.snippets = {all = {}, html = {}}
+ls.snippets = { all = {}, html = {} }
 
 -- enable html snippets in javascript/javascript(REACT)
 -- ls.snippets.javascript = ls.snippets.html
@@ -20,8 +18,6 @@ ls.snippets.typescriptreact = ls.snippets.html
 
 -- enable html snippets in django (htmldjango)
 ls.snippets.htmldjango = ls.snippets.html
-
-
 
 --[[
 -- Beside defining your own snippets you can also load snippets from "vscode-like" packages
@@ -34,7 +30,7 @@ ls.snippets.htmldjango = ls.snippets.html
 -- require("luasnip/loaders/from_vscode").load({ paths = { "~/.config/nvim/extra/snippets" } }) -- Load snippets from my-snippets folder
 
 -- You can also use lazy loading so you only get in memory snippets of languages you use
-require'luasnip/loaders/from_vscode'.lazy_load()
+require("luasnip/loaders/from_vscode").lazy_load()
 -- {
 -- 	paths = {"~/.config/nvim/snippets"},
 -- }
@@ -42,7 +38,7 @@ require'luasnip/loaders/from_vscode'.lazy_load()
 ls.snippets.javascript = ls.snippets.html
 ls.snippets.javascriptreact = ls.snippets.html
 ls.snippets.typescriptreact = ls.snippets.html
-require("luasnip/loaders/from_vscode").load({include = {"html"}})
+require("luasnip/loaders/from_vscode").load({ include = { "html" } })
 
 -- You can also use lazy loading so you only get in memory snippets of languages you use
 --require "luasnip/loaders/from_vscode".lazy_load()
@@ -50,15 +46,15 @@ require("luasnip/loaders/from_vscode").load({include = {"html"}})
 local filetype = vim.bo.filetype
 print(filetype)
 if filetype == "javascript" then
-	require("luasnip/loaders/from_vscode").load({include = {"javascriptreact"}})
+	require("luasnip/loaders/from_vscode").load({ include = { "javascriptreact" } })
 	return
 end
 
 if filetype == "javascriptreact" then
-	require("luasnip/loaders/from_vscode").load({include = {"javascriptreact"}})
+	require("luasnip/loaders/from_vscode").load({ include = { "javascriptreact" } })
 	return
 end
 if filetype == "typescriptreact" then
-	require("luasnip/loaders/from_vscode").load({include = {"typescriptreact"}})
+	require("luasnip/loaders/from_vscode").load({ include = { "typescriptreact" } })
 	return
 end

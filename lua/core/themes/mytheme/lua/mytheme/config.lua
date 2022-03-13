@@ -17,7 +17,7 @@ local defaults = {
 		strings = false, -- Italic strings
 		keywords = false, -- Italic keywords
 		functions = false, -- Italic functions
-		variables = false -- Italic variables
+		variables = false, -- Italic variables
 	},
 
 	contrast_filetypes = {}, -- Select which windows get the contrast background
@@ -26,25 +26,25 @@ local defaults = {
 		borders = false, -- Disable window split borders
 		background = false, -- Disable setting the background color
 		term_colors = false, -- Disable setting the terminal colors
-		eob_lines = false -- Make end-of-buffer lines invisible
+		eob_lines = false, -- Make end-of-buffer lines invisible
 	},
 
 	high_visibility = {
 		lighter = false, -- Higher contrast text for lighter style
-		darker = false -- Higher contrast text for darker style
+		darker = false, -- Higher contrast text for darker style
 	},
 
-	lualine_style = 'default', -- Lualine style ( can be 'stealth' or 'default' )
+	lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
 
 	custom_colors = {}, -- TODO: define custom colors
 	custom_highlights = {}, -- define custom highlights
 
-	async_loading = true -- Load parts of the theme asyncronously for faster startup
+	async_loading = true, -- Load parts of the theme asyncronously for faster startup
 }
 
 Config.options = {}
 
-Config.setup = function (options)
+Config.setup = function(options)
 	Config.options = vim.tbl_deep_extend("force", {}, defaults, options or {})
 end
 

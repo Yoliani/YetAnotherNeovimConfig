@@ -58,7 +58,6 @@ M.cokeline = function()
 			style = function(buffer)
 				return buffer.is_focused and "bold" or "NONE"
 			end,
-
 		},
 		components = {
 			{

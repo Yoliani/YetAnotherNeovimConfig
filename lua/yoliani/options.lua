@@ -1,4 +1,3 @@
-
 local o = vim.o
 local cmd = vim.cmd
 local opt = vim.opt
@@ -86,7 +85,7 @@ opt.showmatch = true -- Highlight matching parenthesis, etc.
 opt.clipboard = "unnamedplus"
 opt.lazyredraw = true -- Redraw only when need to
 opt.spell = false
-opt.spelllang = {'en_us'}
+opt.spelllang = { "en_us" }
 opt.formatoptions = opt.formatoptions
 	- "a" -- Auto formatting is BAD.
 	- "t" -- Don't auto format my code. I got linters for that.
@@ -127,4 +126,3 @@ vim.g.rainbow_active = 1
 
 -- Lf.vim
 vim.g.lf_replace_netrw = 1
-

@@ -1,13 +1,13 @@
 local Type = {
-	GLOBAL_VARIABLE = 'g',
-	WINDOW_VARIABLE = 'w',
-	BUFFER_VARIABLE = 'b',
-	TAB_PAGE_VARIABLE = 't',
-	VIM_VARIABLE = 'v',
+	GLOBAL_VARIABLE = "g",
+	WINDOW_VARIABLE = "w",
+	BUFFER_VARIABLE = "b",
+	TAB_PAGE_VARIABLE = "t",
+	VIM_VARIABLE = "v",
 }
 
-local function add_variables (variable_type, variables)
-	if type(variables) ~= 'table' then
+local function add_variables(variable_type, variables)
+	if type(variables) ~= "table" then
 		error('variables should be a type of "table"')
 		return
 	end
@@ -48,4 +48,3 @@ variable.g = function(list)
 end
 
 return variable
-

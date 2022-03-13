@@ -1,27 +1,27 @@
 vim.diagnostic.config({
-  float = {
-    format = function(diagnostic)
-      if not diagnostic.source or not diagnostic.user_data.lsp.code then
-        return string.format('%s', diagnostic.message)
-      end
+	float = {
+		format = function(diagnostic)
+			if not diagnostic.source or not diagnostic.user_data.lsp.code then
+				return string.format("%s", diagnostic.message)
+			end
 
-      if diagnostic.source == 'eslint' then
-        return string.format('%s [%s]', diagnostic.message, diagnostic.user_data.lsp.code)
-      end
+			if diagnostic.source == "eslint" then
+				return string.format("%s [%s]", diagnostic.message, diagnostic.user_data.lsp.code)
+			end
 
-      return string.format('%s [%s]', diagnostic.message, diagnostic.source)
-    end
-  },
-  severity_sort = true,
-  signs = true,
-  underline = true,
-  update_in_insert = false,
-  virtual_text = true,
+			return string.format("%s [%s]", diagnostic.message, diagnostic.source)
+		end,
+	},
+	severity_sort = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	virtual_text = true,
 })
 
 local function lspSymbol(name, icon)
-  local hl = "DiagnosticSign" .. name
-  vim.fn.sign_define(hl, {text = icon, numhl = hl, texthl = hl})
+	local hl = "DiagnosticSign" .. name
+	vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
 
 lspSymbol("Error", "")

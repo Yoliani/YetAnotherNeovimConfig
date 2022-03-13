@@ -1,78 +1,75 @@
 local autocommands = {}
 
 local def = {
-  _general_settings = {
-    {
-      "Filetype",
-      "python",
-      "nnoremap <buffer> <F5> :w<CR>:vert ter python3 '%'<CR>"
-    },
-    {
-      "Filetype",
-      "qf,help,man,lspinfo",
-      "nnoremap <silent> <buffer> q :close<CR>"
-    },
-    {
-      "TextYankPost",
-      "*",
-      "silent!lua require('vim.highlight').on_yank({higroup = 'Search', timeout = 200})"
-    },
-    {
-      "BufRead",
-      "setlocal formatoptions-=c formatoptions-=r formatoptions-=o"
-    },
-    {
-      "BufNewFile",
-      "setlocal formatoptions-=c formatoptions-=r formatoptions-=o"
-    }
-  },
-  _filetypechanges = {
-    {"BufWinEnter", ".tf", "setlocal filetype=terraform"},
-    {"BufRead", "*.tf", "setlocal filetype=terraform"},
-    {"BufNewFile", "*.tf", "setlocal filetype=terraform"},
-    {"BufWinEnter", ".zsh", "setlocal filetype=sh"},
-    {"BufRead", "*.zsh", "setlocal filetype=sh"},
-    {"BufNewFile", "*.zsh", "setlocal filetype=sh"}
-  },
-  _markdown = {
-    {"FileType", "markdown", "setlocal wrap"},
-    {"FileType", "markdown", "setlocal spell"}
-  },
-  _auto_resize = {
-    -- will cause split windows to be resized evenly if main window is resized
-    {"VimResized", "*", "wincmd ="}
-  },
-  -- _packer_compile = {
-  --   -- will cause split windows to be resized evenly if main window is resized
-  --   {"BufWritePost", "settings.lua", "PackerCompile"}
-  -- },
-  _general_lsp = {
-    {"FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>"}
-  }
+	_general_settings = {
+		{
+			"Filetype",
+			"python",
+			"nnoremap <buffer> <F5> :w<CR>:vert ter python3 '%'<CR>",
+		},
+		{
+			"Filetype",
+			"qf,help,man,lspinfo",
+			"nnoremap <silent> <buffer> q :close<CR>",
+		},
+		{
+			"TextYankPost",
+			"*",
+			"silent!lua require('vim.highlight').on_yank({higroup = 'Search', timeout = 200})",
+		},
+		{
+			"BufRead",
+			"setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
+		},
+		{
+			"BufNewFile",
+			"setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
+		},
+	},
+	_filetypechanges = {
+		{ "BufWinEnter", ".tf", "setlocal filetype=terraform" },
+		{ "BufRead", "*.tf", "setlocal filetype=terraform" },
+		{ "BufNewFile", "*.tf", "setlocal filetype=terraform" },
+		{ "BufWinEnter", ".zsh", "setlocal filetype=sh" },
+		{ "BufRead", "*.zsh", "setlocal filetype=sh" },
+		{ "BufNewFile", "*.zsh", "setlocal filetype=sh" },
+	},
+	_markdown = {
+		{ "FileType", "markdown", "setlocal wrap" },
+		{ "FileType", "markdown", "setlocal spell" },
+	},
+	_auto_resize = {
+		-- will cause split windows to be resized evenly if main window is resized
+		{ "VimResized", "*", "wincmd =" },
+	},
+	-- _packer_compile = {
+	--   -- will cause split windows to be resized evenly if main window is resized
+	--   {"BufWritePost", "settings.lua", "PackerCompile"}
+	-- },
+	_general_lsp = {
+		{ "FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>" },
+	},
 }
 
 function autocommands.define_augroups(definitions) -- {{{1
-  for group_name, definition in pairs(definitions) do
-    vim.cmd("augroup " .. group_name)
-    vim.cmd "autocmd!"
+	for group_name, definition in pairs(definitions) do
+		vim.cmd("augroup " .. group_name)
+		vim.cmd("autocmd!")
 
-    for _, def in pairs(definition) do
-      local command = table.concat(vim.tbl_flatten {"autocmd", def}, " ")
-      vim.cmd(command)
-    end
+		for _, def in pairs(definition) do
+			local command = table.concat(vim.tbl_flatten({ "autocmd", def }), " ")
+			vim.cmd(command)
+		end
 
-    vim.cmd "augroup END"
-  end
+		vim.cmd("augroup END")
+	end
 end
 
 autocommands.define_augroups(def)
-vim.api.nvim_create_augroup("AutoUpdatePlugins", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", { pattern = "plugins.lua", command = "source <afile> | PackerSync", group = 'AutoUpdatePlugins' })
-
-vim.api.nvim_create_augroup("Highlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", { command = "silent! lua vim.highlight.on_yank() {higroup='IncSearch', timeout=400}", group = 'Highlight' })
-
-vim.api.nvim_create_augroup("LspNodeModules", { clear = true })
-vim.api.nvim_create_autocmd("BufRead", { pattern = "*/node_modules/*", command = "lua vim.diagnostic.disable(0)", group = 'LspNodeModules' })
-vim.api.nvim_create_autocmd("BufNewFile", { pattern = "*/node_modules/*", command = "lua vim.diagnostic.disable(0)", group = 'LspNodeModules' })
+-- vim.api.nvim_create_augroup("Highlight", { clear = true })
+-- vim.api.nvim_create_autocmd("TextYankPost", { command = "silent! lua vim.highlight.on_yank() {higroup='IncSearch', timeout=400}", group = 'Highlight' })
+--
+-- vim.api.nvim_create_augroup("LspNodeModules", { clear = true })
+-- vim.api.nvim_create_autocmd("BufRead", { pattern = "*/node_modules/*", command = "lua vim.diagnostic.disable(0)", group = 'LspNodeModules' })
+-- vim.api.nvim_create_autocmd("BufNewFile", { pattern = "*/node_modules/*", command = "lua vim.diagnostic.disable(0)", group = 'LspNodeModules' })
 return autocommands

@@ -47,6 +47,7 @@ return packer.startup(
                 end
             }
         )
+        use("dstein64/vim-startuptime")
 
         --Langs, testing  and autocompletion
 
@@ -66,11 +67,8 @@ return packer.startup(
         )
         use("kosayoda/nvim-lightbulb")
 
-        
         --use("mfussenegger/nvim-jdtls")--Java
-        
         --use({"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"})--Flutter
-        
         --use("simrat39/rust-tools.nvim")-- Rust Language
         ---------------------------CMP--------------------------
         use(

@@ -11,6 +11,7 @@ async =
       require("yoliani.plugins")
       require("core.mappings")
       require("core.autocmds")
+      require("core.commands")
       require("yoliani.custom_plugins")
     end
   )

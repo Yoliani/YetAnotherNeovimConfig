@@ -9,7 +9,7 @@
 local icons = require('yoliani.icons')
 
 YantNeovim = {
-  colorscheme = 'tokyonight', -- nightfly/tokyonight
+  colorscheme = 'tokyonight', 
   ui = {
     float = {
       border = 'rounded',

@@ -1,42 +1,17 @@
 local cmp = require("cmp")
 vim.opt.completeopt = "menuone,noselect"
---require("cmp-npm")
-local lsp_symbols = {
-	Text = "   (Text) ",
-	Method = "   (Method)",
-	Function = "   (Function)",
-	Constructor = "   (Constructor)",
-	Field = " ﴲ  (Field)",
-	Variable = "[] (Variable)",
-	Class = "   (Class)",
-	Interface = " ﰮ  (Interface)",
-	Module = "   (Module)",
-	Property = " 襁 (Property)",
-	Unit = "   (Unit)",
-	Value = "   (Value)",
-	Enum = " 練 (Enum)",
-	Keyword = "   (Keyword)",
-	Snippet = "   (Snippet)",
-	Color = "   (Color)",
-	File = "   (File)",
-	Reference = "   (Reference)",
-	Folder = "   (Folder)",
-	EnumMember = "   (EnumMember)",
-	Constant = " ﲀ  (Constant)",
-	Struct = " ﳤ  (Struct)",
-	Event = "   (Event)",
-	Operator = "   (Operator)",
-	TypeParameter = "   (TypeParameter)",
-}
-
--- require("lspkind").init({
--- 	with_text = true,
--- 	preset = "codicons",
--- 	symbol_map = lsp_symbols,
--- })
+require("plugins.configs.luasnip")
+local snip_status_ok, luasnip = pcall(require, "luasnip")
+if not snip_status_ok then
+	return
+end
 local lspkind = require("lspkind")
 lspkind.init()
-
+-- Utils
+local check_backspace = function()
+	local col = vim.fn.col(".") - 1
+	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+end
 cmp.setup({
 	completion = {
 		completeopt = "menuone,noinsert, noselect",
@@ -64,7 +39,6 @@ cmp.setup({
 			cmp.config.compare.offset,
 			cmp.config.compare.exact,
 			cmp.config.compare.score,
-
 			-- copied from cmp-under, but I don't think I need the plugin for this.
 			-- I might add some more of my own.
 			function(entry1, entry2)
@@ -78,7 +52,6 @@ cmp.setup({
 					return true
 				end
 			end,
-
 			cmp.config.compare.kind,
 			cmp.config.compare.sort_text,
 			cmp.config.compare.length,
@@ -104,51 +77,40 @@ cmp.setup({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
 		}),
-		["<Tab>"] = function(fallback)
+		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif require("luasnip").expand_or_jumpable() then
-				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+			elseif luasnip.expandable() then
+				luasnip.expand()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			elseif check_backspace() then
+				fallback()
 			else
 				fallback()
 			end
-		end,
-		["<S-Tab>"] = function(fallback)
+		end, {
+			"i",
+			"s",
+		}),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif require("luasnip").jumpable(-1) then
-				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
 			else
 				fallback()
 			end
-		end,
+		end, {
+			"i",
+			"s",
+		}),
 	},
 	--    formatting = {
 	--      format = lspkind.cmp_format()
 	--    },
 	formatting = {
-		-- format = function(entry, item)
-		-- 	item.kind = lsp_symbols[item.kind] .. " " .. item.kind
-		-- 	-- set a name for each source
-		-- 	item.menu = ({
-		-- 		spell = "(Spell)",
-		-- 		buffer = "(Buffer)",
-		-- 		calc = "(Calc)",
-		-- 		emoji = "(Emoji)",
-		-- 		nvim_lsp = "(LSP)",
-		-- 		path = "(Path)",
-		-- 		look = "(Look)",
-		-- 		treesitter = "(Treesitter)",
-		-- 		luasnip = "(LuaSnip)",
-		-- 		nvim_lua = "(Lua)",
-		-- 		latex_symbols = "(Latex)",
-		-- 		cmp_tabnine = "(Tabnine)",
-		-- 		orgmode = "(orgmode)",
-		-- 		ultisnips = "(UltiSnips)",
-		-- 		npm = "",
-		-- 	})[entry.source.name]
-		-- 	return item
-		-- end,
+
 		format = lspkind.cmp_format({
 			with_text = true,
 			menu = {
@@ -163,7 +125,7 @@ cmp.setup({
 				luasnip = "(LuaSnip)",
 				nvim_lua = "(api)",
 				latex_symbols = "(Latex)",
-				--cmp_tabnine = "(Tabnine)",
+				cmp_tabnine = "(Tabnine)",
 				orgmode = "(orgmode)",
 				ultisnips = "(UltiSnips)",
 				npm = "",
@@ -185,13 +147,12 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "treesitter" },
 		{ name = "spell" },
-		{ name = 'copilot' },
-
+		{ name = "copilot" },
 		-- { name = "calc" },
 		-- { name = "emoji" },
 		-- { name = "look" },
 		-- { name = "latex_symbols" },
-		--{ name = "cmp_tabnine" },
+		{ name = "cmp_tabnine" },
 		{ name = "neorg" },
 		{ name = "orgmode" },
 		-- { name = "npm" },
@@ -207,15 +168,19 @@ au!
 au FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
 augroup END
 ]])
---[[
+
 local tabnine = require("cmp_tabnine.config")
 tabnine:setup({
 	max_lines = 1000,
-	max_num_results = 20,
+	max_num_results = 3,
 	sort = true,
+	show_prediction_strength = true,
 	run_on_every_keystroke = true,
+	snipper_placeholder = "..",
+	ignored_file_types = {},
 })
---]]
+
+--
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 
 --[[

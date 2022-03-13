@@ -4,7 +4,6 @@ local tab_modules = {
 	"plugins.configs.alpha",
 	"plugins.configs.vsnip",
 	"plugins.configs.icons",
-	"plugins.configs.luasnip",
 	"plugins.core.lsp.signature-lsp",
 	"core.lsp",
 	"plugins.configs.cmp-nvim",

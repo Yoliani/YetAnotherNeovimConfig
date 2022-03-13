@@ -5,6 +5,7 @@ async =
   vim.schedule_wrap(
     function()
       require("yoliani.globals")
+      require("config")
       require("plugins")
       require("settings")
       require("yoliani.plugins")

@@ -141,6 +141,10 @@ M.tokyonight = function()
     vim.g.tokyonight_italic_functions = false
     vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
     vim.g.tokyonight_colors = {hint = "orange", error = "#ff0000"}
+    vim.g.tokyonight_colors = {
+        border = "#1A1B26"
+    }
+
     vim.cmd [[colorscheme tokyonight]]
 end
 M.nord = function()
@@ -230,8 +234,7 @@ end
 
 M.mytheme = function()
     vim.g.mytheme_style = "catppuccin"
-    
-    
+
     local Group = require("colorbuddy.group").Group
     local g = require("colorbuddy.group").groups
     local s = require("colorbuddy.style").styles
@@ -245,4 +248,42 @@ M.mytheme = function()
 end
 
 --M.mytheme()
-M.catppuccino()
+if YantNeovim.colorscheme == "nightfox" then
+    M.nightfox()
+elseif YantNeovim.colorscheme == "gruvbox" then
+    M.gruvbox_baby()
+elseif YantNeovim.colorscheme == "material" then
+    M.material()
+elseif YantNeovim.colorscheme == "tokyonight" then
+    M.tokyonight()
+    vim.highlight.link("LineNr", "Comment", true)
+    vim.highlight.create("NormalFloat", {guibg = "None", guifg = "None"}, false)
+    vim.highlight.create("FloatBorder", {guibg = "None"}, false)
+    vim.highlight.create("WhichKeyFloat", {guibg = "None"}, false)
+    vim.highlight.create("BufferTabpageFill", {guifg = "None"}, false)
+    vim.highlight.create("VertSplit", {guibg = "#16161e", guifg = "#16161e"}, false)
+    vim.highlight.create("TelescopeNormal", {guibg = "None", guifg = "None"}, false)
+    vim.highlight.create("TelescopeBorder", {guibg = "None", guifg = "None"}, false)
+    vim.highlight.link("TelescopeMatching", "Constant", true)
+    vim.highlight.link("GitSignsCurrentLineBlame", "Comment", true)
+    vim.highlight.create("StatusLine", {guibg = "None"}, false)
+    vim.highlight.create("StatusLineNC", {guibg = "None"}, false)
+elseif YantNeovim.colorscheme == "nord" then
+    M.nord()
+elseif YantNeovim.colorscheme == "palenightfall" then
+    M.palenightfall()
+elseif YantNeovim.colorscheme == "Vscode" then
+    M.Vscode()
+elseif YantNeovim.colorscheme == "Moonlight" then
+    M.Moonlight()
+elseif YantNeovim.colorscheme == "onedarker" then
+    M.onedarker()
+elseif YantNeovim.colorscheme == "Kanagawa" then
+    M.Kanagawa()
+elseif YantNeovim.colorscheme == "onedark" then
+    M.onedark()
+elseif YantNeovim.colorscheme == "catppuccin" then
+    M.catppuccino()
+elseif YantNeovim.colorscheme == "mytheme" then
+    M.mytheme()
+end

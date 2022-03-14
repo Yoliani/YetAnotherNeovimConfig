@@ -144,7 +144,8 @@ opt.shortmess:append({
 
 local g = vim.g
 
-g.vsnip_snippet_dir = "~/.config/nvim/snippets/"
+g.vsnip_snippet_dir = vim.fn.expand('~/.config/nvim/extra/snippets')
+
 g.mapleader = " "
 g.auto_save = 0
 

@@ -1,15 +1,7 @@
-------------------------------------------------
---                                            --
---    This is a main configuation file for    --
---                    EcoVim                  --
---      Change variables which you need to    --
---                                            --
-------------------------------------------------
-
 local icons = require("yoliani.icons")
 
 YantNeovim = {
-	colorscheme = "tokyonight",
+	colorscheme = "onedarkpro",
 	ui = {
 		float = {
 			border = "rounded",

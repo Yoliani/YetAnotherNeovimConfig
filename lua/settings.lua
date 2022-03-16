@@ -91,6 +91,11 @@ set completeopt=menu,menuone,noselect
 set modifiable
 ]])
 
+--ultis
+vim.g.UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = "~/.config/nvim/my_snippets"
+
+
+
 --- Settings---
 o.fileencoding = "utf-8"
 o.updatetime = 100

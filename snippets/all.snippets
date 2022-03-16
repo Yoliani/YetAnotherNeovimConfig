@@ -1,0 +1,44 @@
+snippet log "variable logger"
+	console.log('${1:#:variable}', $1);
+
+snippet lg "basic logger"
+	console.log($1);
+
+snippet logp "promise logger"
+	.then(res => console.log('res', res) || res)
+	.catch(err => console.log('err', err) || Promise.reject(err))
+
+snippet ii "magic import" b
+	import `!p
+	def formatVariableName(path):
+		parts = path.split('/')
+		module = parts[0]
+		if len(parts) > 1:
+			return parts[-1]
+		else:
+			return re.sub(r'[_\-]', '', module.title())
+	snip.rv = formatVariableName(t[1])
+	` from '${1}';$0
+
+snippet mi "material ui import"
+	import ${1:#:component} from '@material-ui/core/$1';
+
+snippet im "standard import"
+	import { $1 } from '$2';
+
+snippet uw "unwrap an object"
+	const { ${1} } = ${2};
+
+snippet fn "fat arrow" w
+	() => {$1}
+
+snippet fa "fat arrow" w
+	=> {$1}
+
+snippet fna "fat arrow with args" w
+	($1) => {$2}
+
+snippet ue "useEffect"
+	useEffect(() => {
+		$1
+	},[]);

@@ -1,0 +1,51 @@
+extends javascript
+
+snippet comp "react component"
+	import React, { Component } from 'react';
+	import PropTypes from 'prop-types';
+
+	export default class ${1:#:name} extends Component {
+		static propTypes = {};
+		render() {
+			return (
+				<div className="">
+					Hello $1
+				</div>
+			);
+		}
+	}
+
+snippet ccomp "react component"
+	import React from 'react';
+
+	const ${1:#:name} = () => {
+			return (
+				<div className="">
+					Hello $1
+				</div>
+			);
+	}
+	export default ${1:#:name};
+	
+snippet fcomp "react function component"
+	import React from 'react';
+
+	export default function $1() {
+		return (
+			<div>Hello $1</div>
+		);
+	}
+
+snippet con "react constructor"
+	constructor(props) {
+		super(props);
+		// this.state = { $1 };
+		// this.${2:func} = this.$2.bind(this);
+		$0
+	}
+
+snippet msp "mapStateToProps"
+	const mapStateToProps = ({ ${1:state} }, { ${2:props} }) => ({,
+		$4,
+	});,
+	export default connect(mapStateToProps)(${3:component});

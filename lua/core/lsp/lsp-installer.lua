@@ -21,7 +21,7 @@ local attachments = require("core.lsp.attachments")
 local capabilities = require("core.lsp.capabilities")
 
 lsp_installer.on_server_ready(function(server)
-	local opts = { capabilities = capabilities.common(), on_attach = attachments.common(), handlers = handlers }
+	local opts = { capabilities = capabilities.common(), on_attach = attachments.on_attach, handlers = handlers }
 
 	if server.name == "sumneko_lua" then
 		opts.settings = require("core.lsp.servers.sumneko_lua")

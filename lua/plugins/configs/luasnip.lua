@@ -44,7 +44,7 @@ require("luasnip/loaders/from_vscode").load({ include = { "html" } })
 --require "luasnip/loaders/from_vscode".lazy_load()
 
 local filetype = vim.bo.filetype
-print(filetype)
+--print(filetype)
 if filetype == "javascript" then
 	require("luasnip/loaders/from_vscode").load({ include = { "javascriptreact" } })
 	return

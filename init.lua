@@ -1,7 +1,7 @@
 local async
 
 async = vim.loop.new_async(vim.schedule_wrap(function()
-  require 'yoliani.globals'
+  require 'utils'
   require 'config'
   require 'plugins'
   require 'settings'
@@ -9,7 +9,6 @@ async = vim.loop.new_async(vim.schedule_wrap(function()
   require 'core.mappings'
   require 'core.autocmds'
   require 'core.commands'
-  require 'yoliani.custom_plugins'
 end))
 
 async:send()

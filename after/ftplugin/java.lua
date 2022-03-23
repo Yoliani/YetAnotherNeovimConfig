@@ -29,12 +29,13 @@ local config = {
 
 -- Java specific
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap("n", "<leader>lA", "<Cmd>lua require'jdtls'.code_action()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>di", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>dt", "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
-vim.api.nvim_set_keymap("v", "<leader>de", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
-vim.api.nvim_set_keymap("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+local map = require("utils.keymaps").map
+map("n", "<leader>lA", "<Cmd>lua require'jdtls'.code_action()<CR>", opts)
+map("n", "<leader>di", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
+map("n", "<leader>dt", "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
+map("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
+map("v", "<leader>de", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opts)
+map("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
+map("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
+map("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 require("jdtls").start_or_attach(config)

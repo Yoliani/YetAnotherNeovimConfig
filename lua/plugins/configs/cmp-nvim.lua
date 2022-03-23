@@ -152,7 +152,7 @@ cmp.setup({
 		-- { name = "emoji" },
 		-- { name = "look" },
 		-- { name = "latex_symbols" },
-		{ name = "cmp_tabnine" },
+		-- { name = "cmp_tabnine" },
 		{ name = "neorg" },
 		{ name = "orgmode" },
 		-- { name = "npm" },
@@ -169,42 +169,33 @@ au FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
 augroup END
 ]])
 
-local tabnine = require("cmp_tabnine.config")
-tabnine:setup({
-	max_lines = 1000,
-	max_num_results = 3,
-	sort = true,
-	show_prediction_strength = true,
-	run_on_every_keystroke = true,
-	snipper_placeholder = "..",
-	ignored_file_types = {},
-})
+-- local tabnine = require("cmp_tabnine.config")
+-- tabnine:setup({
+-- 	max_lines = 1000,
+-- 	max_num_results = 3,
+-- 	sort = true,
+-- 	show_prediction_strength = true,
+-- 	run_on_every_keystroke = true,
+-- 	snipper_placeholder = "..",
+-- 	ignored_file_types = {},
+-- })
 
---
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-
---[[
-cmp.setup.cmdline(
-  "/",
-  {
+  -- Use buffer source for `/`
+  cmp.setup.cmdline("/", {
     sources = {
-      {name = "buffer"}
-    }
-  }
-)
+      { name = "buffer" },
+    },
+  })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(
-  ":",
-  {
-    sources = cmp.config.sources(
-      {
-        {name = "path"}
-      },
-      {
-        {name = "cmdline"}
-      }
-    )
-  }
-)
---]]
+  -- Use cmdline & path source for ':'
+  cmp.setup.cmdline(":", {
+    sources = cmp.config.sources({
+      { name = "path" },
+    }, {
+      { name = "cmdline" },
+    }),
+  })
+
+  -- Auto pairs
+  local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })

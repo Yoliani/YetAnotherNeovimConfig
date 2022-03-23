@@ -98,7 +98,7 @@ force_inactive.buftypes = {
 
 -- vi-mode
 components.active[1][1] = {
-	provider = "  ",
+	provider = "  ",
 	hl = function()
 		local val = {}
 

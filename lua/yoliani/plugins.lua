@@ -7,7 +7,7 @@ local tab_modules = {
 	"core.lsp",
 	"plugins.configs.cmp-nvim",
 	"plugins.configs.treesitter-nvim",
-	--"plugins.configs.chadtree",
+	"plugins.configs.devicons",
 	"plugins.configs.nvimtree",
 	"plugins.core.lsp.lspsaga",
 	"plugins.configs.formatter",

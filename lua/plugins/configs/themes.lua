@@ -204,29 +204,134 @@ M.onedarkpro = function()
     local onedarkpro = require("onedarkpro")
     onedarkpro.setup(
         {
-            theme = "onedark",
-            colors = {},
-            hlgroups = {}, -- Override default highlight groups
-            styles = {
-                strings = "NONE", -- Style that is applied to strings
-                comments = "NONE", -- Style that is applied to comments
-                keywords = "bold", -- Style that is applied to keywords
-                functions = "italic", -- Style that is applied to functions
-                variables = "NONE" -- Style that is applied to variables
-            },
+            plugins = {polygot = false, telescope = false},
+            styles = {comments = "italic", keywords = "bold,italic"},
             options = {
-                bold = true, -- Use the themes opinionated bold styles?
-                italic = true, -- Use the themes opinionated italic styles?
-                underline = true, -- Use the themes opinionated underline styles?
-                undercurl = true, -- Use the themes opinionated undercurl styles?
-                cursorline = false, -- Use cursorline highlighting?
-                transparency = false, -- Use a transparent background?
-                terminal_colors = false, -- Use the theme's colors for Neovim's :terminal?
-                window_unfocussed_color = false -- When the window is out of focus, change the normal background?
+                bold = true,
+                italic = true,
+                underline = true,
+                undercurl = true,
+                cursorline = true
+            },
+            filetype_hlgroups = {
+                yaml = {TSField = {fg = "${red}"}},
+                ruby = {
+                    TSParameter = {fg = "${fg}"},
+                    TSSymbol = {fg = "${cyan}"}
+                },
+                scss = {
+                    TSFunction = {fg = "${cyan}"},
+                    TSProperty = {fg = "${orange}"},
+                    TSPunctDelimiter = {fg = "${orange}"},
+                    TSType = {fg = "${red}"}
+                }
+            },
+            hlgroups = {
+                ModeMsg = {link = "LineNr"}, -- Make command line text darker
+                VertSplit = {fg = "${bg}"}, -- Hide the vertical split line
+                -- Highlight brackets with a custom color
+                TSPunctBracket = {fg = "${brackets}"},
+                TSPunctSpecial = {fg = "${brackets}"},
+                -- Aerial plugin
+                AerialClassIcon = {fg = "${purple}"},
+                AerialConstructorIcon = {fg = "${yellow}"},
+                AerialEnumIcon = {fg = "${blue}"},
+                AerialFunctionIcon = {fg = "${red}"},
+                AerialInterfaceIcon = {fg = "${orange}"},
+                AerialMethodIcon = {fg = "${green}"},
+                AerialStructIcon = {fg = "${cyan}"},
+                -- Alpha (dashboard) plugin
+                -- AlphaHeader = {
+                --   fg = (vim.o.background == "dark" and "${red}" or "${green}"),
+                -- },
+                AlphaHeader1 = {
+                    fg = "${red}"
+                },
+                AlphaHeader2 = {
+                    fg = "${cyan}"
+                },
+                AlphaHeader3 = {
+                    fg = "${blue}"
+                },
+                AlphaHeader4 = {
+                    fg = "${green}"
+                },
+                AlphaHeader5 = {
+                    fg = "${yellow}"
+                },
+                AlphaHeader6 = {
+                    fg = "${orange}"
+                },
+                AlphaHeader7 = {
+                    fg = "${purple}"
+                },
+                AlphaButtonText = {
+                    fg = (vim.o.background == "dark" and "${blue}" or "${purple}"),
+                    style = "bold"
+                },
+                AlphaButtonShortcut = {
+                    fg = (vim.o.background == "dark" and "${yellow}" or "${blue}"),
+                    style = "italic,bold"
+                },
+                AlphaFooter = {fg = "${fg}", style = "italic"},
+                -- LSP plugin
+                LspDiagnosticsVirtualTextError = {
+                    fg = "${red}",
+                    style = "italic,underline"
+                },
+                LspDiagnosticsVirtualTextWarning = {
+                    fg = "${yellow}",
+                    style = "italic,underline"
+                },
+                LspDiagnosticsVirtualTextInformation = {
+                    fg = "${blue}",
+                    style = "italic,underline"
+                },
+                LspDiagnosticsVirtualTextHint = {
+                    fg = "${cyan}",
+                    style = "italic,underline"
+                },
+                -- Luasnip
+                LuaSnipChoiceNode = {fg = "${yellow}"},
+                LuaSnipInsertNode = {fg = "${yellow}"},
+                -- Minimap
+                MapBase = {fg = "${gray}"},
+                MapCursor = {fg = "${purple}", bg = "${cursorline}"},
+                -- MapRange = { fg = "${fg}" },
+
+                -- Telescope
+                TelescopeBorder = {
+                    fg = "${telescope_results}",
+                    bg = "${telescope_results}"
+                },
+                TelescopePromptBorder = {
+                    fg = "${telescope_prompt}",
+                    bg = "${telescope_prompt}"
+                },
+                TelescopePromptCounter = {fg = "${fg}"},
+                TelescopePromptNormal = {fg = "${fg}", bg = "${telescope_prompt}"},
+                TelescopePromptPrefix = {
+                    fg = "${purple}",
+                    bg = "${telescope_prompt}"
+                },
+                TelescopePromptTitle = {
+                    fg = "${telescope_prompt}",
+                    bg = "${purple}"
+                },
+                TelescopePreviewTitle = {
+                    fg = "${telescope_results}",
+                    bg = "${green}"
+                },
+                TelescopeResultsTitle = {
+                    fg = "${telescope_results}",
+                    bg = "${telescope_results}"
+                },
+                TelescopeMatching = {fg = "${purple}"},
+                TelescopeNormal = {bg = "${telescope_results}"},
+                TelescopeSelection = {bg = "${telescope_prompt}"}
             }
         }
     )
-
     onedarkpro.load()
 end
 

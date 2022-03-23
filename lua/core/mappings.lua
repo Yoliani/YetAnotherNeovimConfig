@@ -1,10 +1,4 @@
-local function map(mode, lhs, rhs, opts)
-	local options = { noremap = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+local map = require("utils.keymaps").map
 
 local opt = {}
 local M = {}
@@ -59,12 +53,9 @@ M.others = function()
 	map("n", "<leader>vv", ":DiffviewOpen<CR>", { noremap = true, silent = true })
 	map("n", "<leader>vc", ":DiffviewClose<CR>", { noremap = true, silent = true })
 
-	--Split
-	--map("n", "<leader>3", ":<C-u>split<CR>")
-	--map("n", "<leader>31", ":<C-u>vsplit<CR>")
 
 	map("n", "<leader>ip", ":lua Indent_Php()<Cr>")
-	vim.api.nvim_set_keymap(
+	map(
 		"n",
 		"<leader>ln",
 		"<cmd>lua require('tests.nui_lsp').lsp_rename()<CR>",
@@ -213,6 +204,6 @@ M.others()
 M.treesitter()
 M.telescope()
 M.visual_multi()
-M.dap()
+--M.dap()
 --Return the table
 return M

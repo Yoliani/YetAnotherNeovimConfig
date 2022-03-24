@@ -1,7 +1,7 @@
 local icons = require("yoliani.icons")
 
 YantNeovim = {
-	colorscheme = "catppuccin",
+	colorscheme = "onedarkpro",
 	ui = {
 		float = {
 			border = "rounded",

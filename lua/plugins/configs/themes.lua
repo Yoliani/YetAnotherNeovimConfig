@@ -91,8 +91,6 @@ M.catppuccino = function()
             }
         }
     )
-    local api = require("catppuccin.api.colors")
-    local colors = api.get_colors()
     vim.cmd([[colorscheme catppuccin ]])
 end
 

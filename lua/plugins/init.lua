@@ -85,6 +85,8 @@ return packer.startup(function(use, use_rocks)
   --Github Copílot
   use 'github/copilot.vim'
 
+--  use { 'zbirenbaum/copilot-cmp', after = { 'nvim-cmp' } }
+
   use 'kyazdani42/nvim-tree.lua'
   --For tests
   use { 'mfussenegger/nvim-dap' }
@@ -141,8 +143,8 @@ return packer.startup(function(use, use_rocks)
     opt = true,
     keys = { [[<C-p>]] },
     wants = { 'dressing.nvim' },
-		config = function()
-			require('plugins.configs.legendary').setup()
+    config = function()
+      require('plugins.configs.legendary').setup()
     end,
     requires = { 'stevearc/dressing.nvim' },
   }
@@ -196,7 +198,7 @@ return packer.startup(function(use, use_rocks)
     module = { 'harpoon', 'harpoon.cmd-ui', 'harpoon.mark', 'harpoon.ui', 'harpoon.term' },
     wants = { 'telescope.nvim' },
     config = function()
-      require('plugins.configs.harpoon')
+      require 'plugins.configs.harpoon'
     end,
   }
 

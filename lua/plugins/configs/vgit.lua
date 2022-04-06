@@ -6,8 +6,8 @@ end
 
 vgit.setup({
 	keymaps = {
-		["n <C-k>"] = "hunk_up",
-		["n <C-j>"] = "hunk_down",
+		--["n <C-k>"] = "hunk_up",
+		--["n <C-j>"] = "hunk_down",
 		["n <leader>gs"] = "buffer_hunk_stage",
 		["n <leader>gr"] = "buffer_hunk_reset",
 		["n <leader>gp"] = "buffer_hunk_preview",

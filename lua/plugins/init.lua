@@ -62,7 +62,7 @@ return packer.startup(function(use, use_rocks)
   --use("simrat39/rust-tools.nvim")-- Rust Language
   ---------------------------CMP--------------------------
   use 'hrsh7th/nvim-cmp' -- Code completion menu
-  use { 'hrsh7th/cmp-nvim-lsp' }
+  use 'hrsh7th/cmp-nvim-lsp'
   use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
   use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
   use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
@@ -85,7 +85,7 @@ return packer.startup(function(use, use_rocks)
   --Github Copílot
   use 'github/copilot.vim'
 
---  use { 'zbirenbaum/copilot-cmp', after = { 'nvim-cmp' } }
+  --  use { 'zbirenbaum/copilot-cmp', after = { 'nvim-cmp' } }
 
   use 'kyazdani42/nvim-tree.lua'
   --For tests

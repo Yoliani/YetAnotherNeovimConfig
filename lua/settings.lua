@@ -253,3 +253,5 @@ vim.g.rainbow_active = 1
 -- Lf.vim
 vim.g.lf_replace_netrw = 1
 --[[ vim.gNERDTreeHijackNetrw = 0 ]]
+--
+vim.cmd('set laststatus=3')

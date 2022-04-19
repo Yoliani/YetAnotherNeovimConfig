@@ -178,7 +178,6 @@ components.active[1][3] = {
   provider = function()
     return ' '
       .. require('feline.providers.file').file_info({
-        icon = '',
       }, {
         type = 'short',
       })

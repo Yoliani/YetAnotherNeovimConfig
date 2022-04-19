@@ -82,14 +82,17 @@ local function block(bg, fg)
     body = {
       fg = fg,
       bg = bg,
+			style = 'bold',
     },
     sep_left = {
       fg = colors.bg,
       bg = bg,
+			style = 'bold',
     },
     sep_right = {
       fg = colors.bg,
       bg = colors.bg,
+			style = 'bold',
     },
   }
 end

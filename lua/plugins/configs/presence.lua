@@ -1,7 +1,8 @@
-local status, presence = pcall(require, "presence")
+local status, presence = ey.safe_require(require, "presence")
 
 if not status then
-	print("[presence] Could not load presence.lua")
+	--print()
+	vim.notify("[presence] Could not load presence.lua", "warn")
 	return
 end
 

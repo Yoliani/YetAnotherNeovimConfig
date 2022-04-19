@@ -3,17 +3,16 @@ local tab_modules = {
 	"plugins.configs.alpha",
 	"plugins.configs.vsnip",
 	"plugins.configs.icons",
-	"plugins.core.lsp.signature-lsp",
 	"core.lsp",
 	"plugins.configs.cmp-nvim",
 	"plugins.configs.treesitter-nvim",
 	"plugins.configs.devicons",
 	"plugins.configs.nvimtree",
-	"plugins.core.lsp.lspsaga",
 	"plugins.configs.formatter",
 	"plugins.configs.gitsigns",
 	"plugins.configs.colorizer",
-	"plugins.configs.statusline",
+	--"plugins.configs.statusline",
+	"yoliani.statusline",
 	"plugins.configs.bufferline",
 	"plugins.configs.telescope",
 	"plugins.configs.whichkey",
@@ -35,5 +34,5 @@ local tab_modules = {
 }
 
 for i = 1, #tab_modules, 1 do
-	pcall(require, tab_modules[i])
+ ey.safe_require(tab_modules[i])
 end

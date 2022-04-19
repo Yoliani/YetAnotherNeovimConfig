@@ -4,7 +4,6 @@ if not status then
 end
 telescope.load_extension("media_files")
 telescope.load_extension("workspaces")
-telescope.load_extension("project")
 telescope.setup({
 	defaults = {
 		color_devicons = true,
@@ -78,16 +77,6 @@ telescope.setup({
 				ruby = { "ruby", "eruby", "rails", "rspec", "rspec-rails" },
 			},
 		},
-		project = {
-			base_dirs = {
-				"~/Workspace/Aprendizaje/",
-				{ "~/.dotfile/nvim/" },
-				{ "~/.dotfile/", max_depth = 4 },
-				{ path = "~/Workspace/Github/" },
-				{ path = "~/Workspace/Plugins/", max_depth = 2 },
-			},
-			hidden_files = true, -- default: false
-		},
 		frecency = {
 			show_scores = false,
 			show_unindexed = true,
@@ -96,12 +85,6 @@ telescope.setup({
 				"*/tmp/*",
 				"*/node_modules/*",
 				"*/vendor/*",
-			},
-			workspaces = {
-				["nvim"] = os.getenv("HOME_DIR") .. ".config/nvim",
-				["dots"] = os.getenv("HOME_DIR") .. ".dotfiles",
-				["project"] = os.getenv("PROJECT_DIR"),
-				["project2"] = os.getenv("OTHER_PROJECT_DIR"),
 			},
 		},
 		workspaces = {
@@ -115,6 +98,5 @@ telescope.setup({
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			-- the default case_mode is "smart_case"
 		},
-		--project = {base_dirs = {{path = os.getenv("PROJECTS_DIR")}}}
 	},
 })

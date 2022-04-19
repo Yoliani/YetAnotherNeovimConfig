@@ -202,7 +202,7 @@ M.onedarkpro = function()
     local onedarkpro = require("onedarkpro")
     onedarkpro.setup(
         {
-            plugins = {polygot = false, telescope = false},
+            plugins = {polygot = false, telescope = false, treesitter = true, native_lsp = true},
             styles = {comments = "italic", keywords = "bold,italic"},
             options = {
                 bold = true,

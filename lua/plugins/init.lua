@@ -10,7 +10,7 @@ return packer.startup(function(use, use_rocks)
 
   use 'wbthomason/packer.nvim'
   use { 'nathom/filetype.nvim' }
-  use { 'lewis6991/impatient.nvim', rocks = 'mpack' }
+  use 'lewis6991/impatient.nvim'
   --Highlight
   --use("sheerun/vim-polyglot")
   use {
@@ -56,6 +56,7 @@ return packer.startup(function(use, use_rocks)
     'ray-x/lsp_signature.nvim',
   }
   use 'kosayoda/nvim-lightbulb'
+	use 'folke/lsp-colors.nvim'
 
   --use("mfussenegger/nvim-jdtls")--Java
   --use({"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"})--Flutter
@@ -191,6 +192,7 @@ return packer.startup(function(use, use_rocks)
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
   }
+	use 'anuvyklack/pretty-fold.nvim'
   -- Harpoon
   use {
     'ThePrimeagen/harpoon',

@@ -21,5 +21,5 @@ require("pretty-fold").setup({
 	},
 })
 require("pretty-fold.preview").setup({
-	key = "fd", -- choose 'h' or 'l' key
+	key = "h", -- choose 'h' or 'l' key
 })

@@ -39,6 +39,10 @@ packer.init({
 	},
 	auto_clean = true,
 	compile_on_sync = true,
+	profile = {
+    enable = false,
+    threshold = 1, -- integer in milliseconds, plugins which load faster than this won't be shown in profile output
+  },
 })
 
 return packer

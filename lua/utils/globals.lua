@@ -1,5 +1,5 @@
 local icons = require("yoliani.icons")
-
+_G.ey = {}
 YantNeovim = {
 	colorscheme = "onedarkpro",
 	ui = {
@@ -53,4 +53,47 @@ end
 R = function(name)
 	RELOAD(name)
 	return require(name)
+end
+
+
+function ey.safe_require(module, opts)
+  opts = opts or { silent = false }
+  local ok, result = pcall(require, module)
+  if not ok and not opts.silent then
+		print(module)
+    vim.notify(result, vim.log.levels.ERROR, { title = string.format("Error requiring: %s", module) })
+  end
+  return ok, result
+end
+
+function ey.get_icon(filename, extension, opts)
+  local ok, devicons = ey.safe_require("nvim-web-devicons")
+  if not ok then
+    vim.notify("nvim-web-devicons not installed")
+  end
+
+  local icon_str, icon_color = devicons.get_icon_color(filename, extension, { default = true })
+
+  local icon = { str = icon_str }
+
+  if opts.colored_icon ~= false then
+    icon.hl = { fg = icon_color }
+  end
+
+  return icon
+end
+function ey.find_pattern_match(tbl, val)
+  return tbl and next(vim.tbl_filter(function(pattern)
+    return val:match(pattern)
+  end, tbl))
+end
+local lsp = vim.lsp
+function ey.get_lsp_names()
+    local clients = {}
+
+    for _, client in pairs(lsp.buf_get_clients(0)) do
+        clients[#clients + 1] = client.name
+    end
+
+    return table.concat(clients, ' '), ' '
 end

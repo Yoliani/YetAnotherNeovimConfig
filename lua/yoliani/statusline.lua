@@ -1,191 +1,448 @@
--- TODO: Need to add those sweet sweet lsp workspace diagnostic counts
-
-RELOAD("el")
-require("el").reset_windows()
-
-local builtin = require("el.builtin")
-local extensions = require("el.extensions")
-local sections = require("el.sections")
-local subscribe = require("el.subscribe")
-local lsp_statusline = require("el.plugins.lsp_status")
-local helper = require("el.helper")
-local diagnostic = require("el.diagnostic")
-
-local has_lsp_extensions, ws_diagnostics = pcall(require, "lsp_extensions.workspace.diagnostic")
-
--- TODO: Spinning planet extension. Integrated w/ telescope.
--- ◐ ◓ ◑ ◒
--- 🌛︎🌝︎🌜︎🌚︎
--- Show telescope icon / emoji when you open it as well
-
-local git_icon = subscribe.buf_autocmd("el_file_icon", "BufRead", function(_, bufnr)
-	local icon = extensions.file_icon(_, bufnr)
-	if icon then
-		return icon .. " "
-	end
-
-	return ""
-end)
-
-local git_branch = subscribe.buf_autocmd("el_git_branch", "BufEnter", function(window, buffer)
-	local branch = extensions.git_branch(window, buffer)
-	if branch then
-		return " " .. extensions.git_icon() .. " " .. branch
-	end
-end)
-
-local git_changes = subscribe.buf_autocmd("el_git_changes", "BufWritePost", function(window, buffer)
-	return extensions.git_changes(window, buffer)
-end)
-
-local ws_diagnostic_counts = function(_, buffer)
-	if not has_lsp_extensions then
-		return ""
-	end
-
-	local messages = {}
-
-	local error_count = ws_diagnostics.get_count(buffer.bufnr, "Error")
-
-	local x = "⬤"
-	if error_count == 0 then
-		-- pass
-	elseif error_count < 5 then
-		table.insert(messages, string.format("%s#%s#%s%%*", "%", "StatuslineError" .. error_count, x))
-	else
-		table.insert(messages, string.format("%s#%s#%s%%*", "%", "StatuslineError5", x))
-	end
-
-	return table.concat(messages, "")
+local ok, feline = ey.safe_require 'feline'
+if not ok then
+  return
 end
 
-local show_current_func = function(window, buffer)
-	if buffer.filetype == "lua" then
-		return ""
-	end
+local lsp = require 'feline.providers.lsp'
+local vi_mode_utils = require 'feline.providers.vi_mode'
+local gps = require 'nvim-gps'
 
-	return lsp_statusline.current_function(window, buffer)
+local git = require 'feline.providers.git'
+local bg_to_mode_color = false -- Set the whole statusbar to be the color of the vim
+
+local force_inactive = {
+  filetypes = {},
+  buftypes = {},
+  bufnames = {},
+}
+
+local components = {
+  active = { {}, {}, {} },
+  inactive = { {}, {}, {} },
+}
+
+---------------------------------PROPERTIES---------------------------------
+
+local colors = {
+  bg = '#0F8DC3',
+  black = '#282828',
+  yellow = '#d8a657',
+  cyan = '#89b482',
+  oceanblue = '#45707a',
+  gray = '#45707a',
+  green = '#a9b665',
+  orange = '#e78a4e',
+  violet = '#d3869b',
+  magenta = '#c14a4a',
+  fg = '#a89984',
+  skyblue = '#7daea3',
+  red = '#ea6962',
+  white = '#fafafa',
+}
+
+force_inactive.filetypes = {
+  'NvimTree',
+  'dbui',
+  'packer',
+  'startify',
+  'fugitive',
+  'fugitiveblame',
+  'CHADTree',
+}
+
+force_inactive.buftypes = {
+  'terminal',
+}
+
+local vi_mode_colors = {
+  NORMAL = 'green',
+  OP = 'green',
+  INSERT = 'red',
+  VISUAL = 'skyblue',
+  LINES = 'skyblue',
+  BLOCK = 'skyblue',
+  REPLACE = 'violet',
+  ['V-REPLACE'] = 'violet',
+  ENTER = 'cyan',
+  MORE = 'cyan',
+  SELECT = 'orange',
+  COMMAND = 'green',
+  SHELL = 'green',
+  TERM = 'green',
+  NONE = 'yellow',
+}
+local function block(bg, fg)
+  if not bg then
+    bg = colors.bg
+  end
+  if not fg then
+    fg = colors.white
+  end
+  return {
+    body = {
+      fg = fg,
+      bg = bg,
+    },
+    sep_left = {
+      fg = colors.bg,
+      bg = bg,
+    },
+    sep_right = {
+      fg = colors.bg,
+      bg = colors.bg,
+    },
+  }
+end
+local function default_hl()
+  return {
+    fg = bg_to_mode_color and colors.bg or colors.gray,
+    bg = bg_to_mode_color and vi_mode_utils.get_mode_color() or 'NONE',
+  }
 end
 
-local minimal_status_line = function(_, buffer)
-	if string.find(buffer.name, "sourcegraph/sourcegraph") then
-		return true
-	end
+local function line_percentage()
+  local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+  local lines = vim.api.nvim_buf_line_count(0)
+  local percent = string.format('%s', 100)
+
+  if curr_line ~= lines then
+    percent = string.format('%s', math.ceil(curr_line / lines * 99))
+  end
+
+  return lines, percent
+end
+local function line_col()
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+
+  return row .. ':' .. col
 end
 
-local is_sourcegraph = function(_, buffer)
-	if string.find(buffer.name, "sg://") then
-		return true
-	end
+components.active[1][1] = {
+  provider = function()
+    return require('feline.providers.vi_mode').get_vim_mode() .. ' '
+  end,
+  hl = function()
+    local val = {}
+    val.fg = 'white'
+    val.bg = 'bg'
+    val.style = 'bold'
+    return val
+  end,
+  left_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return {
+        fg = vi_mode_utils.get_mode_color(),
+        bg = 'bg',
+      }
+    end,
+  },
+  right_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return {
+        fg = colors.bg,
+        bg = colors.bg,
+      }
+    end,
+  },
+}
+
+components.active[1][2] = {
+  provider = function()
+    return '  ' .. require('feline.providers.git').git_branch() .. ' '
+  end,
+  truncate_hide = true,
+  enabled = function()
+    return git.git_info_exists()
+  end,
+  hl = function()
+    return block().body
+  end,
+  left_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_left
+    end,
+  },
+  right_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_right
+    end,
+  },
+}
+
+components.active[1][3] = {
+  provider = function()
+    return ' '
+      .. require('feline.providers.file').file_info({
+        icon = '',
+      }, {
+        type = 'short',
+      })
+      .. ' '
+  end,
+  hl = function()
+    return block().body
+  end,
+  left_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_left
+    end,
+  },
+  right_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_right
+    end,
+  },
+}
+
+components.active[1][4] = {
+  provider = 'diagnostic_errors',
+  icon = ' ',
+  hl = function()
+    return block().body
+  end,
+  left_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_left
+    end,
+  },
+  right_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_right
+    end,
+  },
+}
+
+components.active[1][5] = {
+  provider = 'diagnostic_warnings',
+  icon = ' ',
+  hl = function()
+    return block().body
+  end,
+  left_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_left
+    end,
+  },
+  right_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_right
+    end,
+  },
+}
+
+components.active[1][6] = {
+  provider = 'diagnostic_hints',
+  icon = ' ',
+  hl = function()
+    return block().body
+  end,
+  left_sep = {
+    str = ' ',
+    hl = function()
+      return block().sep_left
+    end,
+  },
+  right_sep = {
+    str = ' ',
+    hl = function()
+      return block().sep_right
+    end,
+  },
+}
+
+components.active[1][7] = {
+  provider = 'diagnostic_info',
+  icon = ' ',
+  hl = function()
+    return block().body
+  end,
+  left_sep = {
+    str = ' ',
+    hl = function()
+      return block().sep_left
+    end,
+  },
+  right_sep = {
+    str = ' ',
+    hl = function()
+      return block().sep_right
+    end,
+  },
+}
+
+-- diffAdd
+components.active[3][1] = {
+  provider = 'git_diff_added',
+  hl = {
+    fg = 'green',
+    bg = 'bg',
+    style = 'bold',
+  },
+}
+-- diffModfified
+components.active[3][2] = {
+  provider = 'git_diff_changed',
+  hl = {
+    fg = 'orange',
+    bg = 'bg',
+    style = 'bold',
+  },
+}
+-- diffRemove
+components.active[3][3] = {
+  provider = 'git_diff_removed',
+  hl = {
+    fg = 'red',
+    bg = 'bg',
+    style = 'bold',
+  },
+}
+
+components.active[3][4] = {
+  provider = function()
+    local filename = vim.api.nvim_buf_get_name(0)
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    local filetype = vim.bo.filetype
+
+    local icon = ey.get_icon(filename, extension, {})
+    return ' ' .. icon.str .. ' ' .. filetype .. ' '
+  end,
+  hl = function()
+    return block().body
+  end,
+  left_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_right
+    end,
+  },
+  right_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_left
+    end,
+  },
+}
+local function using_session()
+  return (vim.g.persisting ~= nil)
 end
+components.active[3][5] = {
+  provider = function()
+    if vim.g.persisting then
+      return '   '
+    elseif vim.g.persisting == false then
+      return '   '
+    end
+  end,
+  enabled = function()
+    return using_session()
+  end,
+  hl = function()
+    return block().body
+  end,
+  left_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_right
+    end,
+  },
+  right_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_left
+    end,
+  },
+}
 
-local diagnostic_display = diagnostic.make_buffer()
+local function inverse_block()
+  return {
+    body = {
+      fg = colors.bg,
+      bg = vim.o.background == 'light' and colors.black or colors.gray,
+    },
+    sep_left = {
+      fg = colors.bg,
+      bg = vim.o.background == 'light' and colors.black or colors.gray,
+    },
+    sep_right = {
+      fg = vim.o.background == 'light' and colors.black or colors.gray,
+      bg = colors.bg,
+    },
+  }
+end
+-- components.active[3][6] = {
+--   provider = function()
+--     return ' ' .. line_col() .. ' '
+--   end,
+--   hl = function()
+--     return block().body
+--   end,
+--   left_sep = {
+--     str = 'vertical_bar_thin',
+--     hl = function()
+--       return block().sep_right
+--     end,
+--   },
+--   right_sep = {
+--     str = 'vertical_bar_thin',
+--     hl = function()
+--       return block().sep_left
+--     end,
+--   },
+-- }
+--
+components.active[3][6] = {
+  provider = function()
+    local lines, percent = line_percentage()
 
-require("el").setup({
-	generator = function(window, buffer)
-		local is_minimal = minimal_status_line(window, buffer)
-		--local is_sourcegraph = is_sourcegraph(window, buffer)
+    return ' ' .. percent .. '%%' 
+  end,
+  hl = function()
+    return block().body
+  end,
+  left_sep = {
+    str = 'vertical_bar_thin',
+    hl = function()
+      return block().sep_right
+    end,
+  },
+  right_sep = {
+    str = ' ',
+    hl = function()
+      return block().body
+    end,
+  },
+}
 
-		local mode = extensions.gen_mode({ format_string = " %s " })
-		-- if is_sourcegraph then
-		--   return {
-		--     { mode },
-		--     { sections.split, required = true },
-		--     { builtin.file },
-		--     { sections.split, required = true },
-		--     { builtin.filetype },
-		--   }
-		-- end
+-- LspName
+components.active[2][1] = {
+  provider = function()
+    return '[LSP: ' .. ey.get_lsp_names() .. ']'
+  end,
+  hl = {
+    fg = 'white',
+    bg = 'bg',
+    style = 'bold',
+  },
+  right_sep = ' ',
+}
 
-		local items = {
-			{ mode, required = true },
-			{ git_branch },
-			{ " " },
-			{ sections.split, required = true },
-			{ git_icon },
-			{ sections.maximum_width(builtin.make_responsive_file(140, 90), 0.40), required = true },
-			{ sections.collapse_builtin({ { " " }, { builtin.modified_flag } }) },
-			{ sections.split, required = true },
-			{ diagnostic_display },
-			{ show_current_func },
-			-- { lsp_statusline.server_progress },
-			-- { ws_diagnostic_counts },
-			{ git_changes },
-			{ "[" },
-			{ builtin.line_with_width(3) },
-			{ ":" },
-			{ builtin.column_with_width(2) },
-			{ "]" },
-			{
-				sections.collapse_builtin({
-					"[",
-					builtin.help_list,
-					builtin.readonly_list,
-					"]",
-				}),
-			},
-			{ builtin.filetype },
-		}
-
-		local add_item = function(result, item)
-			if is_minimal and not item.required then
-				return
-			end
-
-			table.insert(result, item)
-		end
-
-		local result = {}
-		for _, item in ipairs(items) do
-			add_item(result, item)
-		end
-
-		return result
-	end,
-})
-
-require("fidget").setup({
-	text = {
-		spinner = "moon",
-	},
-	align = {
-		bottom = true,
-	},
-	window = {
-		relative = "editor",
-	},
-})
-
---[[
-let s:left_sep = ' ❯❯ '
-let s:right_sep = ' ❮❮ '
-
-        let s:seperator.filenameright = ''
-        let s:seperator.filesizeright = ''
-        let s:seperator.gitleft = ''
-        let s:seperator.gitright = ''
-        let s:seperator.lineinfoleft = ''
-        let s:seperator.lineformatright = ''
-        let s:seperator.EndSeperate = ' '
-        let s:seperator.emptySeperate1 = ''
-    elseif a:style == 'slant-cons'
-        let s:seperator.homemoderight = ''
-        let s:seperator.filenameright = ''
-        let s:seperator.filesizeright = '' let s:seperator.gitleft = ''
-        let s:seperator.gitright = ''
-        let s:seperator.lineinfoleft = ''
-        let s:seperator.lineformatright = ''
-        let s:seperator.EndSeperate = ' '
-        let s:seperator.emptySeperate1 = ''
-    elseif a:style == 'slant-fade'
-        let s:seperator.homemoderight = ''
-        let s:seperator.filenameright = ''
-        let s:seperator.filesizeright = ''
-        let s:seperator.gitleft = ''
-        let s:seperator.gitright = ''
-        " let s:seperator.gitright = ''
-        let s:seperator.lineinfoleft = ''
-        let s:seperator.lineformatright = ''
-        let s:seperator.EndSeperate = ' '
-        let s:seperator.emptySeperate1 = ''
---]]
+require('feline').setup {
+  theme = colors,
+  default_bg = colors.bg,
+  default_fg = colors.white,
+  vi_mode_colors = vi_mode_colors,
+  components = components,
+  force_inactive = force_inactive,
+}

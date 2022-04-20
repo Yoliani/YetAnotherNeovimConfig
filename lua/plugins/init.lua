@@ -121,7 +121,7 @@ return packer.startup(function(use, use_rocks)
 
   use 'AckslD/nvim-neoclip.lua'
   --Discord presence
-  use 'andweeb/presence.nvim'
+ -- use 'andweeb/presence.nvim'
 
   --Replace nvim tree
   -- use({ "ms-jpq/chadtree", run = "python3 -m chadtree deps" })

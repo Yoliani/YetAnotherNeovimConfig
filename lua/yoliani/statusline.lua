@@ -1,4 +1,4 @@
-local ok, feline = ey.safe_require 'feline'
+local ok, feline = ey.safe_require('feline')
 if not ok then
   return
 end
@@ -440,7 +440,7 @@ components.active[2][1] = {
   right_sep = ' ',
 }
 
-require('feline').setup {
+feline.setup {
   theme = colors,
   default_bg = colors.bg,
   default_fg = colors.white,

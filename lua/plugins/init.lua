@@ -216,6 +216,7 @@ return packer.startup(function(use, use_rocks)
       'nvim-lua/plenary.nvim',
     },
   }
+	use 'tpope/vim-fugitive'
   use {
     'pwntester/octo.nvim',
     requires = {

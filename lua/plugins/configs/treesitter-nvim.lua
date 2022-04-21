@@ -29,6 +29,9 @@ parser_configs.norg_table = {
 		branch = "main",
 	},
 }
+
+local ts_utils = require("nvim-treesitter.ts_utils")
+ts_utils.get_node_text = vim.treesitter.query.get_node_text
 ts_config.setup({
 	sync_install = true,
 	ensure_installed = {
@@ -65,7 +68,7 @@ ts_config.setup({
 	},
 	autopairs = { enable = true },
 	autotag = {
-		enable = true,
+		enable = false,
 		filetypes = { "html", "javascript", "xml", "javascriptreact", "typescriptreact", "vue" },
 	}, --> textobjects selection <--
 	textobjects = {

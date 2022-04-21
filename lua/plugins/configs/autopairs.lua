@@ -54,29 +54,29 @@ npairs.add_rules({
 		:set_end_pair_length(2),
 })
 
-require("nvim-ts-autotag").setup({
-	autotag = {
-		enable = true,
-		filetypes = { "html", "xml", "javascriptreact", "typescriptreact", "javascript", "vue" },
-		skip_tags = {
-			"area",
-			"base",
-			"br",
-			"col",
-			"command",
-			"embed",
-			"hr",
-			"img",
-			"slot",
-			"input",
-			"keygen",
-			"link",
-			"meta",
-			"param",
-			"source",
-			"track",
-			"wbr",
-			"menuitem",
-		},
-	},
-})
+-- require("nvim-ts-autotag").setup({
+-- 	autotag = {
+-- 		enable = true,
+-- 		filetypes = { "html", "xml", "javascriptreact", "typescriptreact", "javascript", "vue" },
+-- 		skip_tags = {
+-- 			"area",
+-- 			"base",
+-- 			"br",
+-- 			"col",
+-- 			"command",
+-- 			"embed",
+-- 			"hr",
+-- 			"img",
+-- 			"slot",
+-- 			"input",
+-- 			"keygen",
+-- 			"link",
+-- 			"meta",
+-- 			"param",
+-- 			"source",
+-- 			"track",
+-- 			"wbr",
+-- 			"menuitem",
+-- 		},
+-- 	},
+-- })

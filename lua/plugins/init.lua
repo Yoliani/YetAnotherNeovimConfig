@@ -56,7 +56,7 @@ return packer.startup(function(use, use_rocks)
     'ray-x/lsp_signature.nvim',
   }
   use 'kosayoda/nvim-lightbulb'
-	use 'folke/lsp-colors.nvim'
+  use 'folke/lsp-colors.nvim'
 
   --use("mfussenegger/nvim-jdtls")--Java
   --use({"akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim"})--Flutter
@@ -121,7 +121,7 @@ return packer.startup(function(use, use_rocks)
 
   use 'AckslD/nvim-neoclip.lua'
   --Discord presence
- -- use 'andweeb/presence.nvim'
+  -- use 'andweeb/presence.nvim'
 
   --Replace nvim tree
   -- use({ "ms-jpq/chadtree", run = "python3 -m chadtree deps" })
@@ -192,7 +192,8 @@ return packer.startup(function(use, use_rocks)
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
   }
-	use 'anuvyklack/pretty-fold.nvim'
+  use 'anuvyklack/pretty-fold.nvim'
+  use 'anuvyklack/nvim-keymap-amend'
   -- Harpoon
   use {
     'ThePrimeagen/harpoon',
@@ -216,7 +217,7 @@ return packer.startup(function(use, use_rocks)
       'nvim-lua/plenary.nvim',
     },
   }
-	use 'tpope/vim-fugitive'
+  use 'tpope/vim-fugitive'
   use {
     'pwntester/octo.nvim',
     requires = {

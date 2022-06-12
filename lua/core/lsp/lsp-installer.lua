@@ -30,7 +30,7 @@ lsp_installer.on_server_ready(function(server)
     opts.settings = require 'core.lsp.servers.sumneko_lua'
   elseif server.name == 'eslint' then
     opts.on_attach = function(client, bufnr)
-      client.resolved_capabilities.document_formatting = true
+      client.server_capabilities.document_formatting = true
       attachments.common(client, bufnr)
     end
   elseif server.name == 'tsserver' then

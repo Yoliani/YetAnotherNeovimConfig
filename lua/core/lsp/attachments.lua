@@ -29,7 +29,7 @@ M.nullls = function(client, bufnr)
   map('n', '<space>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
     augroup lsp_document_highlight
@@ -76,13 +76,13 @@ M.common = function(client, bufnr)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
   --map("n", "<space>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  -- if client.resolved_capabilities.document_formatting then
+  -- if client.server_capabilities.document_formatting then
   --   map("n", "<space>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  -- elseif client.resolved_capabilities.document_range_formatting then
+  -- elseif client.server_capabilities.document_range_formatting then
   --   map("n", "<space>cf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   -- end
   -- -- Set autocommands conditional on server_capabilities
-  -- if client.resolved_capabilities.document_highlight then
+  -- if client.server_capabilities.document_highlight then
   --   vim.api.nvim_exec(
   --     [[
   --   augroup lsp_document_highlight
@@ -97,7 +97,7 @@ M.common = function(client, bufnr)
 end
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
       augroup lsp_document_highlight
@@ -131,7 +131,7 @@ end
 
 function M.on_attach(client, bufnr)
   if client.name == 'tsserver' then
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.document_formatting = false
   end
 
   -- Enable completion triggered by <C-X><C-O>

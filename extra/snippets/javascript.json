@@ -3,6 +3,10 @@
     "prefix": "st",
     "body": "setTimeout(() => {\n\t${0}\n}, ${1:delay})"
   },
+	"consoleLog": {
+    "prefix": "clg",
+    "body": "console.log(${1:value})"
+  },
   "setInterval": {
     "prefix": "si",
     "body": "setInterval(() => {\n\t${0}\n}, ${1:delay})"

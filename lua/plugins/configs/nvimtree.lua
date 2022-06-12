@@ -1,47 +1,5 @@
-local g = vim.g
 
 vim.o.termguicolors = true
---[[
-g.nvim_tree_side = "left"
-g.nvim_tree_width = 25
-g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
-g.nvim_tree_auto_open = 0
-g.nvim_tree_auto_close = 0
-g.nvim_tree_follow = 1
-g.nvim_tree_indent_markers = 1
-g.nvim_tree_hide_dotfiles = 1
-g.nvim_tree_git_hl = 1
-g.nvim_tree_root_folder_modifier = ":t"
-g.nvim_tree_tab_open = 0
-g.nvim_tree_allow_resize = 1
-
-g.nvim_tree_show_icons = {
-  git = 1,
-  folders = 1,
-  files = 1
-}
---]]
-g.nvim_tree_icons = {
-  default = '',
-  symlink = '',
-  git = {
-    unstaged = '✗',
-    staged = '✓',
-    unmerged = '',
-    renamed = '➜',
-    untracked = '★',
-    deleted = '',
-    ignored = '◌',
-  },
-  folder = {
-    default = '',
-    open = '',
-    symlink = '',
-    empty = '',
-    empty_open = '',
-    symlink_open = '',
-  },
-}
 -- Mappings for nvimtree
 
 vim.api.nvim_set_keymap('n', '<leader>1', ':NvimTreeToggle<CR>', {
@@ -94,7 +52,6 @@ require('nvim-treesitter.configs').setup {
     -- termcolors = {} -- table of colour name strings
   },
 }
-
 
 require('nvim-tree').setup {
   auto_reload_on_write = true,
@@ -153,6 +110,47 @@ require('nvim-tree').setup {
     enable = true,
     ignore = true,
     timeout = 400,
+  },
+  renderer = {
+    highlight_git = false,
+    highlight_opened_files = 'none',
+
+    indent_markers = {
+      enable = false,
+    },
+    icons = {
+      padding = ' ',
+      symlink_arrow = ' ➛ ',
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = false,
+      },
+      glyphs = {
+        default = '',
+        symlink = '',
+        folder = {
+          default = '',
+          empty = '',
+          empty_open = '',
+          open = '',
+          symlink = '',
+          symlink_open = '',
+          arrow_open = '',
+          arrow_closed = '',
+        },
+        git = {
+          unstaged = '✗',
+          staged = '✓',
+          unmerged = '',
+          renamed = '➜',
+          untracked = '★',
+          deleted = '',
+          ignored = '◌',
+        },
+      },
+    },
   },
   actions = {
     change_dir = {

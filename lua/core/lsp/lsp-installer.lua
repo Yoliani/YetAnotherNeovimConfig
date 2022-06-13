@@ -4,6 +4,7 @@ if not status then
 end
 
 lsp_installer.settings {
+	automatic_installation = true,
   ui = {
     icons = {
       server_installed = '✓',
@@ -34,7 +35,7 @@ lsp_installer.on_server_ready(function(server)
       attachments.common(client, bufnr)
     end
   elseif server.name == 'tsserver' then
-    opts.settings = require('core.lsp.servers.tsserver').setup(opts)
+    -- opts.settings = require('core.lsp.servers.tsserver').setup(opts)
   elseif server.name == 'gopls' then
     opts = require('core.lsp.servers.gopls').setup(opts)
   elseif server.name == 'diagnosticls' then
@@ -52,14 +53,14 @@ lsp_installer.on_server_ready(function(server)
   elseif server.name == 'bashls' then
     opts.cmd = { 'bash-language-server', 'start' }
   elseif server.name == 'solargraph' then
-    opts.settings = {
-      cmd = { 'solargraph', 'stdio' },
-      solargraph = {
-        diagnostics = true,
-      },
-      root_dir = require('lspconfig').util.root_pattern('Gemfile', '.git'),
-      filetypes = { 'ruby' },
-    }
+    -- opts.settings = {
+    --   cmd = { 'solargraph', 'stdio' },
+    --   solargraph = {
+    --     diagnostics = true,
+    --   },
+    --   root_dir = require('lspconfig').util.root_pattern('Gemfile', '.git'),
+    --   filetypes = { 'ruby' },
+    -- }
   end
   vim.cmd [[ do User LspAttachBuffers ]]
 
@@ -67,3 +68,6 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 require('lspconfig').solargraph.setup { settings = { solargraph = { diagnostics = true, logLevel = 'debug' } } }
+
+require'lspconfig'.tsserver.setup{}
+

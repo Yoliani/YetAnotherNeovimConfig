@@ -25,6 +25,7 @@ telescope.setup({
 			"%.ipynb",
 			"vendor/*",
 			"node_modules/*",
+			"node_modules",
 		},
 		initial_mode = "insert",
 		selection_strategy = "reset",
@@ -57,6 +58,8 @@ telescope.setup({
 			"--line-number",
 			"--column",
 			"--smart-case",
+			'--ignore-file',
+      '.gitignore'
 		},
 	},
 	extensions = {

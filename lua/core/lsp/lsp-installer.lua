@@ -35,7 +35,7 @@ lsp_installer.on_server_ready(function(server)
       attachments.common(client, bufnr)
     end
   elseif server.name == 'tsserver' then
-    -- opts.settings = require('core.lsp.servers.tsserver').setup(opts)
+    opts = require('core.lsp.servers.tsserver').setup(opts)
   elseif server.name == 'gopls' then
     opts = require('core.lsp.servers.gopls').setup(opts)
   elseif server.name == 'diagnosticls' then
@@ -68,6 +68,5 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 require('lspconfig').solargraph.setup { settings = { solargraph = { diagnostics = true, logLevel = 'debug' } } }
-
 require'lspconfig'.tsserver.setup{}
 

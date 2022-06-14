@@ -19,7 +19,23 @@ M.common = function()
 			"kind",
 		},
 	}
-
+capabilities.textDocument.codeAction = {
+    dynamicRegistration = false,
+    codeActionLiteralSupport = {
+      codeActionKind = {
+        valueSet = {
+          "",
+          "quickfix",
+          "refactor",
+          "refactor.extract",
+          "refactor.inline",
+          "refactor.rewrite",
+          "source",
+          "source.organizeImports",
+     },
+    },
+  },
+}
 	return capabilities
 end
 

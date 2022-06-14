@@ -69,5 +69,4 @@ end)
 
 require('lspconfig').solargraph.setup { settings = { solargraph = { diagnostics = true, logLevel = 'debug' } } }
 
-require'lspconfig'.tsserver.setup{}
 

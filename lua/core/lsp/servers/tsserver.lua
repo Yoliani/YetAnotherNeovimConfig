@@ -28,6 +28,23 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     'additionalTextEdits',
   },
 }
+capabilities.textDocument.codeAction = {
+    dynamicRegistration = false,
+    codeActionLiteralSupport = {
+      codeActionKind = {
+        valueSet = {
+          "",
+          "quickfix",
+          "refactor",
+          "refactor.extract",
+          "refactor.inline",
+          "refactor.rewrite",
+          "source",
+          "source.organizeImports",
+     },
+    },
+  },
+}
 local ts_utils_settings = {
   debug = false,
   disable_commands = false,
@@ -60,7 +77,7 @@ local ts_utils_settings = {
   filter_out_diagnostics_by_severity = { 'hint' },
   filter_out_diagnostics_by_code = {},
 }
-local attachments = require 'core.lsp.attachments'
+-- local attachments = require 'core.lsp.attachments'
 M.setup = function(opts)
   local ts_utils = require 'nvim-lsp-ts-utils'
   opts.handlers = handlers
@@ -70,15 +87,16 @@ M.setup = function(opts)
   opts.on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = false
     client.server_capabilities.document_range_formatting = false
-
-    attachments.on_attach(client, bufnr)
-
-    ts_utils.setup(ts_utils_settings)
-    ts_utils.setup_client(client)
-
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'tgs', ':TSLspOrganize<CR>', { silent = true })
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'tgI', ':TSLspRenameFile<CR>', { silent = true })
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'tgo', ':TSLspImportAll<CR>', { silent = true })
+		-- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+		-- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+    -- attachments.on_attach(client, bufnr)
+    --
+    -- ts_utils.setup(ts_utils_settings)
+    -- ts_utils.setup_client(client)
+    --
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'tgs', ':TSLspOrganize<CR>', { silent = true })
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'tgI', ':TSLspRenameFile<CR>', { silent = true })
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'tgo', ':TSLspImportAll<CR>', { silent = true })
   end
   opts.filetypes = {
     'typescript',
@@ -104,7 +122,17 @@ M.setup = function(opts)
     return vim.loop.cwd()
   end
 
-  return opts
+	return opts
 end
+
+local on_attach = function(client, bufnr)
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
+
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+end
+M.capabilities = capabilities;
+M.on_attach = on_attach;
 
 return M
